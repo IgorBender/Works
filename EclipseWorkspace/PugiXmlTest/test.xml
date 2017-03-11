@@ -1,0 +1,13 @@
+<!DOCTYPE aaa SYSTEM "aaa.dtd">
+<Configuration>
+	<File>
+	    <FileName text="text.txt"></FileName>
+	    <FilePath text="~/Projects"></FilePath>
+	    <Number>128</Number>
+	</File>
+	<DoCopy bool="true"></DoCopy>
+	<Threshold float="184.7"></Threshold>
+	<Threshold2 double="17.8"></Threshold2>
+	<Test unsigned_int="0x10"></Test>
+	<Buffer size="128M"></Buffer></Configuration>
+
