@@ -5,5 +5,9 @@ Release
 DebugClang
 ReleaseClang
 DebugCobalt
-REleaseCobalt
+ReleaseCobalt
+Debug_NO_EXCEPTIONS
+Release_NO_EXCEPTIONS
+
+
 
