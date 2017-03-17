@@ -275,7 +275,7 @@ int main(int argc, char* argv[])
     std::thread ConsumerThread(Cons.functor());
     std::thread ProducerThread(Prod.functor());
 
-    sleep(10);
+    std::this_thread::sleep_for(std::chrono::seconds{10});
 
     Prod.setExit();
     Cons.setExit();

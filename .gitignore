@@ -8,6 +8,9 @@ DebugCobalt
 ReleaseCobalt
 Debug_NO_EXCEPTIONS
 Release_NO_EXCEPTIONS
+.dep.inc
+.make.state*
+pthreads
 
 
 
