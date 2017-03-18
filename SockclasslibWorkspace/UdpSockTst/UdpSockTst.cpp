@@ -214,11 +214,11 @@ int main(int argc, char* argv[])
 #endif
 #ifdef _WITHOUT_SOCK_EXCEPTIONS
 #ifdef _WIN32
-        int Res = Sock.sendSubnetBroadcast(InterfBroad, htons(SERV_PORT), Buf,
+        Res = Sock.sendSubnetBroadcast(InterfBroad, htons(SERV_PORT), Buf,
                                        strlen("Hello"));
 #else
 
-        int Res =Sock.sendSubnetBroadcast(InterfBroad, htons(SERV_PORT + 1), Buf,
+        Res =Sock.sendSubnetBroadcast(InterfBroad, htons(SERV_PORT + 1), Buf,
                                        strlen("Hello"));
 #endif
         if(Res == SOCKET_ERROR)
@@ -262,7 +262,7 @@ int main(int argc, char* argv[])
 //        Res = Sock.sendTo(Buf, strlen("Hello"));
 
 #ifdef _WITHOUT_SOCK_EXCEPTIONS
-        int Res = Sock.sendTo(Buf, strlen("Hello"));
+        Res = Sock.sendTo(Buf, strlen("Hello"));
         if(Res == SOCKET_ERROR)
         {
         	char Msg[256];
@@ -305,7 +305,7 @@ int main(int argc, char* argv[])
 
         DatSock.send(Buf, strlen("Hello"));
 #ifdef _WITHOUT_SOCK_EXCEPTIONS
-        int Res = DatSock.send(Buf, strlen("Hello"));
+        Res = DatSock.send(Buf, strlen("Hello"));
         if(Res == SOCKET_ERROR)
         {
         	char Msg[256];

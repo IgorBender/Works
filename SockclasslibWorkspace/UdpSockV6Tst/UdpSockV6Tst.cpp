@@ -256,7 +256,7 @@ int main(int argc, char* argv[])
 
         DatSock.send(Buf, strlen("Hello"));
 #ifdef _WITHOUT_SOCK_EXCEPTIONS
-        int Res = DatSock.send(Buf, strlen("Hello"));
+        Res = DatSock.send(Buf, strlen("Hello"));
         if(Res == SOCKET_ERROR)
 		{
 			char Msg[256];
