@@ -87,10 +87,10 @@ public:
 
     void operator()();
 
-    std::shared_ptr<SyncElement> syncElement()
-    {
-        return m_pSync;
-    }
+//    std::shared_ptr<SyncElement> syncElement()
+//    {
+//        return m_pSync;
+//    }
     // Initial Pong notification.
     void start(Pong* pPong);
     void ping()
@@ -136,10 +136,10 @@ public:
         }
     }
 
-    std::shared_ptr<SyncElement> syncElement()
-    {
-        return m_pSync;
-    }
+//    std::shared_ptr<SyncElement> syncElement()
+//    {
+//        return m_pSync;
+//    }
     void pong()
     {
         std::unique_lock<std::mutex> Lock(m_pSync->m_Mutex);

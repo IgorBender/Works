@@ -110,14 +110,12 @@ void* posixThreadRoutine1(uint32_t* i)
 {
     this_thread::sleep_for(chrono::milliseconds{1});
     cout << "C++ thread Simple1 with input parameter " << ++(*i) << endl;
-//    cout << "C++ thread Simple1 with input parameter " << ++(*(static_cast<uint32_t*>(p))) << endl;
     return nullptr;
 }
 
 // POSIX style thread routine.
 void* posixThreadRoutine2(uint32_t* i, uint32_t n)
 {
-//    cout << "C++ thread Simple2 with input parameter " << ++(*(static_cast<uint32_t*>(p))) << endl;
     *i += n;
     cout << "C++ thread Simple2 with input parameter " << ++(*i) << endl;
     return nullptr;
