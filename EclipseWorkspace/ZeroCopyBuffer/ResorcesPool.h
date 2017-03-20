@@ -10,6 +10,7 @@
 
 #include <memory>
 #include <set>
+#include <mutex>
 
 #include <iostream>
 
@@ -91,6 +92,7 @@ public:
     ResourcePtrType acqireResource()
     {
         std::cout << "Acquire resource" << std::endl;
+        std::lock_guard<std::mutex> Lock(m_Lock);
         PtrWrapper Buff(nullptr, nullptr);
         if(m_PoolFree.empty())
         {
@@ -107,6 +109,7 @@ public:
     /// @param pPtr - pointer to a resource.
     void reclaimRecource(PtrWrapper* pPtr)
     {
+        std::lock_guard<std::mutex> Lock(m_Lock);
         m_PoolFree.insert(pPtr);
         m_PoolAcquired.erase(pPtr);
         std::cout << "Reclaim resource" << std::endl;
@@ -125,6 +128,7 @@ public:
 protected:
     std::set<PtrWrapper*> m_PoolFree; ///< Available resources storage.
     std::set<PtrWrapper*> m_PoolAcquired; ///< Acquired resources storage.
+    std::mutex m_Lock; ///< Thread safety lock.
 };
 
 /// @struct BufferWrapper - wrapper on buffer of entities.
