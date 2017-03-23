@@ -68,7 +68,8 @@ public:
         /// @param p - pointer to PtrWrapper.
         virtual void operator()(PtrWrapper* p)
         {
-            p->m_pPool->reclaimRecource(p);
+            if(p && p->m_pPool)
+                p->m_pPool->reclaimRecource(p);
         }
     };
     /// @typedef shared_ptr of PtrWrapper.
@@ -149,7 +150,7 @@ template <typename T> struct BufferWrapper
 };
 
 /// @class BuffersPool - pool of memory allocated buffers.
-class BuffersPool : public ResoucesPool<BufferWrapper<char> >
+class BuffersPool : public ResoucesPool<BufferWrapper<char>>
 {
 public:
     /// Constructor.
@@ -170,8 +171,19 @@ struct Element
 {
     uint32_t EventType; ///< Type discriminator.
     BuffersPool::ResourcePtrType m_pBuff; ///< shared_ptr to buffer wrapper.
+    /// Default constructor. Needs to be defined explicitly for older versions of GCC and BOOST.
+    Element()
+    {
+        EventType = 0xFFFFFFFF;
+        BuffersPool::Deleter Deleter;
+        BuffersPool::ResourcePtrType pBuff(nullptr, Deleter);
+        m_pBuff = pBuff;
+    }
+    /// Constructor.
     Element(uint32_t Type, BuffersPool::ResourcePtrType pBuff) : EventType(Type), m_pBuff(pBuff) {}
+    /// Copy constructor.
     Element(const Element& e) : EventType(e.EventType), m_pBuff(e.m_pBuff) {}
+    /// Assign operator.
     Element& operator=(const Element& e)
     {
         EventType = e.EventType;

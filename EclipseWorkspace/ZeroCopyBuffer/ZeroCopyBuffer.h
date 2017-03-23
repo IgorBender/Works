@@ -14,8 +14,8 @@
 #include <condition_variable>
 #include <atomic>
 
-typedef BufferWrapper<char> CharBufferType;
-typedef ResoucesPool<CharBufferType> CharBuffersPoolTtype;
+//typedef BufferWrapper<char> CharBufferType;
+typedef ResoucesPool<BufferWrapper<char>> CharBuffersPoolType;
 typedef std::queue<Element<char>> CharBuffersQueueType;
 typedef Element<char> CharBufferElement;
 
@@ -27,7 +27,7 @@ struct Synch
 };
 
 /// @class BuffersPool - pool of memory allocated buffers.
-class BuffersPool : public CharBuffersPoolTtype
+class BuffersPool : public CharBuffersPoolType
 {
 public:
     /// Constructor.
