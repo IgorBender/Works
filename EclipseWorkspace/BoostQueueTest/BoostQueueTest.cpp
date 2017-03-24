@@ -95,6 +95,7 @@ public:
     ResourcePtrType acqireResource()
     {
         std::cout << "Acquire resource" << std::endl;
+        std::lock_guard<std::mutex> Lock(m_Lock);
         PtrWrapper Buff(nullptr, nullptr);
         if(m_PoolFree.empty())
         {
@@ -111,6 +112,7 @@ public:
     /// @param pPtr - pointer to a resource.
     void reclaimRecource(PtrWrapper* pPtr)
     {
+        std::lock_guard<std::mutex> Lock(m_Lock);
         m_PoolFree.insert(pPtr);
         m_PoolAcquired.erase(pPtr);
         std::cout << "Reclaim resource" << std::endl;
@@ -129,6 +131,7 @@ public:
 protected:
     std::set<PtrWrapper*> m_PoolFree; ///< Available resources storage.
     std::set<PtrWrapper*> m_PoolAcquired; ///< Acquired resources storage.
+    std::mutex m_Lock; ///< Thread safety lock.
 };
 
 /// @struct BufferWrapper - wrapper on buffer of entities.
@@ -167,30 +170,32 @@ public:
 };
 
 /// @struct Element - queue element.
-struct Element
+template <typename T> struct ElementTemplate
 {
     uint32_t EventType; ///< Type discriminator.
-    BuffersPool::ResourcePtrType m_pBuff; ///< shared_ptr to buffer wrapper.
+    typename ResoucesPool<BufferWrapper<T>>::ResourcePtrType m_pBuff; ///< shared_ptr to buffer wrapper.
     /// Default constructor. Needs to be defined explicitly for older versions of GCC and BOOST.
-    Element()
+    ElementTemplate()
     {
         EventType = 0xFFFFFFFF;
-        BuffersPool::Deleter Deleter;
-        BuffersPool::ResourcePtrType pBuff(nullptr, Deleter);
+        typename ResoucesPool<BufferWrapper<T>>::Deleter Deleter;
+        typename ResoucesPool<BufferWrapper<T>>::ResourcePtrType pBuff(nullptr, Deleter);
         m_pBuff = pBuff;
     }
     /// Constructor.
-    Element(uint32_t Type, BuffersPool::ResourcePtrType pBuff) : EventType(Type), m_pBuff(pBuff) {}
+    ElementTemplate(uint32_t Type, typename ResoucesPool<BufferWrapper<T>>::ResourcePtrType pBuff) : EventType(Type), m_pBuff(pBuff) {}
     /// Copy constructor.
-    Element(const Element& e) : EventType(e.EventType), m_pBuff(e.m_pBuff) {}
+    ElementTemplate(const ElementTemplate& e) : EventType(e.EventType), m_pBuff(e.m_pBuff) {}
     /// Assign operator.
-    Element& operator=(const Element& e)
+    ElementTemplate& operator=(const ElementTemplate& e)
     {
         EventType = e.EventType;
         m_pBuff = e.m_pBuff;
         return *this;
     }
 };
+
+typedef ElementTemplate<char> Element;
 
 /// @struct Synch - notification synchronization primitives.
 struct Synch
@@ -310,7 +315,8 @@ void Consumer::ThreadFunctor::operator()()
         {
             // Process the whole queue.
             {
-                Element e(0, BuffersPool::ResourcePtrType(nullptr));
+                BuffersPool::Deleter Deleter;
+                Element e(0, BuffersPool::ResourcePtrType(nullptr, Deleter));
                 m_pCons->m_Queue.pop(e);
                 std::cout << e.EventType << " " << *(e.m_pBuff->m_pPtr) << std::endl;
             }
@@ -333,15 +339,15 @@ void Producer::ThreadFunctor::operator()()
         static uint32_t Count = 0;
         {
             // Acquire buffer from pool.
-            BuffersPool::ResourcePtrType pBuff = m_pProd->m_Pool.acqireResource();
-            if(!pBuff.get())
+//            BuffersPool::ResourcePtrType pBuff = m_pProd->m_Pool.acqireResource();
+            Element e(0, m_pProd->m_Pool.acqireResource());
+            if(!e.m_pBuff.get())
             {
                 // If no free buffers wait and continue.
                 std::this_thread::sleep_for(std::chrono::milliseconds{200});
                 continue;
             }
             // The buffer had successfully acquired.
-            Element e(0, pBuff);
             e.EventType = Count++; // Set type.
             strcpy(*(e.m_pBuff->m_pPtr), "Hello"); // Fill buffer.
             m_pProd->m_pCons->notify(e); // Notify the consumer.

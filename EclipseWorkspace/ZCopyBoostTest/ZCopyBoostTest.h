@@ -1,25 +1,28 @@
 /*
- * ZeroCopyBuffer.h
+ * ZCopyBoostTest.h
  *
- *  Created on: Mar 19, 2017
+ *  Created on: Mar 24, 2017
  *      Author: Igor Bender
  */
 
-#ifndef ZEROCOPYBUFFER_H_
-#define ZEROCOPYBUFFER_H_
+#ifndef ZCOPYBOOSTTEST_H_
+#define ZCOPYBOOSTTEST_H_
 
 #include "CharBuffersPool.h"
+#include <boost/lockfree/spsc_queue.hpp>
 #include <mutex>
 #include <condition_variable>
-#include <atomic>
 
-//typedef BufferWrapper<char> CharBufferType;
 /// @struct Synch - notification synchronization primitives.
 struct Synch
 {
     std::mutex m_Mutex; ///< Mutual exclusive lock.
     std::condition_variable m_Event; ///< Condition variable.
 };
+
+
+/// @typedef - BOOST lock free queue with single provider and single consumer.
+typedef boost::lockfree::spsc_queue<Element, boost::lockfree::capacity<1024> > CharBuffersQueueType;
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 /// Test classes.
@@ -43,15 +46,9 @@ public:
     {
         m_ThreadFunctor.init(this);
     }
-    virtual ~Consumer()
-    {
-        while(!m_Queue.empty())
-        {
-            m_Queue.pop();
-        }
-    }
+    virtual ~Consumer() {}
 
-    void notify(const CharBufferElement& e);
+    void notify(const Element& e);
     void setExit()
     {
         m_Exit.store(true);
@@ -102,4 +99,4 @@ protected:
     BuffersPool m_Pool;
 };
 
-#endif /* ZEROCOPYBUFFER_H_ */
+#endif /* ZCOPYBOOSTTEST_H_ */

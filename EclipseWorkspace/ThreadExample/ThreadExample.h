@@ -20,17 +20,17 @@
 // Simple thread routine.
 void regularThreadRoutine();
 
-// POSIX style thread routine.
-void* posixThreadRoutine1(uint32_t* i);
+// thread routine.
+void* threadRoutine1(uint32_t* i);
 
-// POSIX style thread routine.
-void* posixThreadRoutine2(uint32_t* i, uint32_t n);
+// thread routine.
+void* threadRoutine2(uint32_t* i, uint32_t n);
 
-// POSIX style thread routine.
-void* posixThreadRoutine1Safe(void* p);
+// thread routine.
+void* threadRoutine1Safe(void* p);
 
-// POSIX style thread routine.
-void* posixThreadRoutine2Safe(void* p);
+// thread routine.
+void* threadRoutine2Safe(void* p);
 
 // Data structure encapsulating actual data with guardian mutex.
 struct Data

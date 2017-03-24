@@ -12,6 +12,8 @@
 #include <set>
 #include <mutex>
 
+#include <iostream>
+
 /// @class ResoucesPool - template of resources pool class.
 /// Resources pool is pool of dynamically allocated resources providing automatic
 /// return of the acquired resource to the pool by using shared_ptr template with
@@ -70,7 +72,6 @@ public:
     /// @typedef shared_ptr of PtrWrapper.
     typedef std::shared_ptr<PtrWrapper> ResourcePtrType;
     /// Constructor.
-    /// @param Number - number of resources to be allocated.
     ResoucesPool() {}
     /// Destructor.
     virtual ~ResoucesPool()
@@ -89,6 +90,7 @@ public:
     /// @return - shared_ptr of a resource, containing nullptr if no free resources.
     ResourcePtrType acqireResource()
     {
+        std::cout << "Acquire resource" << std::endl;
         std::lock_guard<std::mutex> Lock(m_Lock);
         PtrWrapper Buff(nullptr, nullptr);
         if(m_PoolFree.empty())
@@ -109,6 +111,7 @@ public:
         std::lock_guard<std::mutex> Lock(m_Lock);
         m_PoolFree.insert(pPtr);
         m_PoolAcquired.erase(pPtr);
+        std::cout << "Reclaim resource" << std::endl;
     }
     /// @return - nubber of resources allocated.
     uint32_t capacity()
@@ -138,6 +141,7 @@ template <typename T> struct BufferWrapper
     {
         if(nullptr != m_pBuffer)
             delete [] m_pBuffer;
+        std::cout << "Free resource" << std::endl;
     }
     operator T*() { return m_pBuffer; }
 
@@ -145,19 +149,30 @@ template <typename T> struct BufferWrapper
 };
 
 /// @struct Element - queue element.
-template <typename T> struct Element
+template <typename T> struct ElementTemplate
 {
     uint32_t EventType; ///< Type discriminator.
-    typename ResoucesPool<BufferWrapper<T> >::ResourcePtrType m_pBuff; ///< shared_ptr to buffer wrapper.
-    Element() {}
-    Element(uint32_t Type, typename ResoucesPool<BufferWrapper<T> >::ResourcePtrType pBuff) : EventType(Type), m_pBuff(pBuff) {}
-    Element(const Element& e) : EventType(e.EventType), m_pBuff(e.m_pBuff) {}
-    Element& operator=(const Element& e)
+    typename ResoucesPool<BufferWrapper<T>>::ResourcePtrType m_pBuff; ///< shared_ptr to buffer wrapper.
+    /// Default constructor. Needs to be defined explicitly for older versions of GCC and BOOST.
+    ElementTemplate()
+    {
+        EventType = 0xFFFFFFFF;
+        typename ResoucesPool<BufferWrapper<T>>::Deleter Deleter;
+        typename ResoucesPool<BufferWrapper<T>>::ResourcePtrType pBuff(nullptr, Deleter);
+        m_pBuff = pBuff;
+    }
+    /// Constructor.
+    ElementTemplate(uint32_t Type, typename ResoucesPool<BufferWrapper<T>>::ResourcePtrType pBuff) : EventType(Type), m_pBuff(pBuff) {}
+    /// Copy constructor.
+    ElementTemplate(const ElementTemplate& e) : EventType(e.EventType), m_pBuff(e.m_pBuff) {}
+    /// Assign operator.
+    ElementTemplate& operator=(const ElementTemplate& e)
     {
         EventType = e.EventType;
         m_pBuff = e.m_pBuff;
         return *this;
     }
 };
+
 
 #endif /* RESORCESPOOL_H_ */

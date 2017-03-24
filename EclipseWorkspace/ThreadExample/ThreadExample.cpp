@@ -68,16 +68,16 @@ int main(int argc, char* argv[])
 
     // Threads with POSIX style thread routines. What is wrong? Not thread-safe code.
     uint32_t Param = 1;
-    thread Simple1(posixThreadRoutine1, &Param);
-    thread Simple2(posixThreadRoutine2, &Param, 5);
+    thread Simple1(threadRoutine1, &Param);
+    thread Simple2(threadRoutine2, &Param, 5);
     Simple1.join();
     Simple2.join();
 
     // Same with thread-safe code.
     Data d;
     d.Param = 3;
-    thread Simple1Safe(posixThreadRoutine1Safe, &d);
-    thread Simple2Safe(posixThreadRoutine2Safe, &d);
+    thread Simple1Safe(threadRoutine1Safe, &d);
+    thread Simple2Safe(threadRoutine2Safe, &d);
     Simple1Safe.join();
     Simple2Safe.join();
 
@@ -105,32 +105,33 @@ void regularThreadRoutine()
     cout << "C++ thread with simple thread routine run." << endl;
 }
 
-// POSIX style thread routine.
-void* posixThreadRoutine1(uint32_t* i)
+// thread routine.
+void* threadRoutine1(uint32_t* i)
 {
     this_thread::sleep_for(chrono::milliseconds{1});
     cout << "C++ thread Simple1 with input parameter " << ++(*i) << endl;
     return nullptr;
 }
 
-// POSIX style thread routine.
-void* posixThreadRoutine2(uint32_t* i, uint32_t n)
+// thread routine.
+void* threadRoutine2(uint32_t* i, uint32_t n)
 {
     *i += n;
     cout << "C++ thread Simple2 with input parameter " << ++(*i) << endl;
     return nullptr;
 }
 
-// POSIX style thread routine.
-void* posixThreadRoutine1Safe(void* p)
+// thread routine.
+void* threadRoutine1Safe(void* p)
 {
     this_thread::sleep_for(chrono::milliseconds{1});
     lock_guard<mutex>(reinterpret_cast<Data*>(p)->Mutex);
     cout << "C++ thread Simple1Safe with input parameter " << ++(static_cast<Data*>(p)->Param) << endl;
     return nullptr;
 }
-// POSIX style thread routine.
-void* posixThreadRoutine2Safe(void* p)
+
+// thread routine.
+void* threadRoutine2Safe(void* p)
 {
     lock_guard<mutex>(reinterpret_cast<Data*>(p)->Mutex);
     cout << "C++ thread Simple2Safe with input parameter " << ++(static_cast<Data*>(p)->Param) << endl;
