@@ -198,6 +198,7 @@ void* PThreadClass::threadLoop()
                 m_pStartCondition->unlockMutex();
                 continue;
             }
+            m_ControlCondVar.lockMutex();
         }
 
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
@@ -217,6 +218,7 @@ void* PThreadClass::threadLoop()
         if(StartPred)
 #endif
         {
+            m_ControlCondVar.unlockMutex();
             continue;
         }
         int WaitResult = m_ControlCondVar.wait();

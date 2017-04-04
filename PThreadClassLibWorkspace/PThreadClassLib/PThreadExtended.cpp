@@ -80,6 +80,7 @@ void* PThreadExtended::threadLoop()
 					m_StopNotificationFunc(m_StopNotificationFuncArg);
 				}
 			}
+            m_ControlCondVar.lockMutex();
         }
 
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
@@ -99,6 +100,7 @@ void* PThreadExtended::threadLoop()
         if(StartPred)
 #endif
         {
+            m_ControlCondVar.unlockMutex();
             continue;
         }
         int WaitResult = m_ControlCondVar.wait();
