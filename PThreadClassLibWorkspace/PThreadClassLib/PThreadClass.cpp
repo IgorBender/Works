@@ -204,8 +204,8 @@ void* PThreadClass::threadLoop()
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
         if(m_pExitCondition->getPredicate())
 #else
-        m_pExitCondition->getPredicate(StartPred);
-        if(StartPred)
+        m_pExitCondition->getPredicate(ExitPred);
+        if(ExitPred)
 #endif
         {
             m_ControlCondVar.unlockMutex();

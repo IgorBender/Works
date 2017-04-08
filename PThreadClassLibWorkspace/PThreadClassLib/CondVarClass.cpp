@@ -193,7 +193,7 @@ CondVarClass::PredicateIdType CondVarClass::addPredicate(bool PredicateValue)
 #endif
 CondVarClass::~CondVarClass()
 {
-    pthread_mutex_unlock(&m_Mutex);
+//    pthread_mutex_unlock(&m_Mutex);
     pthread_mutex_destroy(&m_Mutex);
     pthread_cond_destroy(&m_CondVar);
 }
