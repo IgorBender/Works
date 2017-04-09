@@ -48,7 +48,13 @@ void TestTcpConnection::receiveRoutine()
     FD_ZERO(&ErrSet);
     FD_SET(m_pWorkingSocket->getSock(), &RecvSet);
     FD_SET(m_pWorkingSocket->getSock(), &ErrSet);
+#ifndef _WIN32
     timeval Timeout = { .tv_sec = 1, .tv_usec = 0 };
+#else
+	timeval Timeout;
+	Timeout.tv_sec = 1;
+	Timeout.tv_usec = 0;
+#endif
     int32_t SelectResult = select(m_pWorkingSocket->getSock() + 1, &RecvSet, nullptr, &ErrSet, &Timeout);
     if(0 > SelectResult)
     {
@@ -146,7 +152,7 @@ void TestTcpConnection::receiveRoutine()
     case ReceiveState::DiscardBody:
         SOCK_TRY
         {
-            int32_t Received = m_pWorkingSocket->receive(m_DiscardBuffer, std::min(static_cast<int32_t>(sizeof(m_DiscardBuffer)), m_ReceivingBytes));
+	    int32_t Received = m_pWorkingSocket->receive(m_DiscardBuffer, std::min<int32_t>(static_cast<int32_t>(sizeof(m_DiscardBuffer)), m_ReceivingBytes));
             m_ReceivingBytes -= Received;
             if(0 < m_ReceivingBytes)
                 return;

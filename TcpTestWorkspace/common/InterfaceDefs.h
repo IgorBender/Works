@@ -49,6 +49,10 @@ union AllMessages
     ExitMessage Exit;
 };
 
+#ifndef _WIN32
 constexpr uint32_t MaxMessageSize() { return sizeof(AllMessages); }
+#else
+#define MaxMessageSize() (sizeof(AllMessages))
+#endif
 
 #endif /* COMMON_INTERFACEDEFS_H_ */
