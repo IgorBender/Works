@@ -9,15 +9,7 @@
 #include <algorithm>
 
 TestTcpConnection::TestTcpConnection() : m_ReceivePool(MaxMessageSize(), 4), m_SendPool(MaxMessageSize(), 4)
-{
-    // TODO Auto-generated constructor stub
-
-}
-
-TestTcpConnection::~TestTcpConnection()
-{
-    // TODO Auto-generated destructor stub
-}
+{}
 
 void TestTcpConnection::connectRoutine()
 {

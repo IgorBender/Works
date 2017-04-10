@@ -5,10 +5,7 @@
 const uint32_t CONNECTION_THREAD_PERIOD_MSEC = 50;
 
 
-TcpConnection::TcpConnection() : m_pSocket(NULL), m_pWorkingSocket(NULL), m_pServer(NULL),
-	m_pRecvThread(NULL), m_pSendThread(NULL), m_pConnectThread(NULL),
-	m_Address(0), m_CommPort(0), m_ConnectionState(NoState), m_Connected(false), m_Working(false), m_Initiate(false), m_ConnectSeconds(0),
-	m_StartTime(std::chrono::steady_clock::now()), m_ConnectorFunctor(this), m_ReceiveFunctor(this), m_SendFunctor(this)
+TcpConnection::TcpConnection() : m_StartTime(std::chrono::steady_clock::now()), m_ConnectorFunctor(this), m_ReceiveFunctor(this), m_SendFunctor(this)
 {
 #ifdef _WIN32
 	WORD wVersionRequested;
@@ -57,7 +54,7 @@ bool TcpConnection::init(unsigned long Addr, unsigned short Port, int32_t Time, 
 	if(m_pConnectThread)
 	{
 		m_StartTime = std::chrono::steady_clock::now();
-		m_ConnectionState = StartConnection;
+		m_ConnectionState = ConnectState::StartConnection;
 		m_pConnectThread->run();
 		m_pConnectThread->start();
 	}
@@ -117,7 +114,7 @@ void TcpConnection::connectRoutine()
 		}
 	}
 
-	if(m_Working)
+	if(m_Connected)
 	{
 		m_pConnectThread->stop();
 		return;
@@ -125,12 +122,11 @@ void TcpConnection::connectRoutine()
 
 	switch(m_ConnectionState)
 	{
-	case StartConnection:
+	case ConnectState::StartConnection:
 		m_Connected = false;
 		m_Connected = connection(100, NUMBER_OF_CONNECT_TRIALS);
 		if(m_Connected)
 		{
-			m_Working = true;
 			m_pConnectThread->stop();
 
 			m_pRecvThread->setCyclic(true);
@@ -139,11 +135,11 @@ void TcpConnection::connectRoutine()
 			m_pSendThread->setCyclic(true);
 			m_SendStopIndicator.reset();
 			m_pSendThread->start();
-			m_ConnectionState = NoState;
+			m_ConnectionState = ConnectState::NoState;
 		}
 		break;
 
-	case NoState:
+	case ConnectState::NoState:
 		break;
 
 	default:
@@ -319,8 +315,7 @@ void TcpConnection::reset()
 	while(m_ReceiveStopIndicator.isRunning() || m_ReceiveStopIndicator.isRunning())
 	    std::this_thread::sleep_for(std::chrono::milliseconds{50});
 	m_Connected = false;
-	m_Working = false;
-	m_ConnectionState = StartConnection;
+	m_ConnectionState = ConnectState::StartConnection;
 	if(m_pWorkingSocket)
 	{
 		delete m_pWorkingSocket;

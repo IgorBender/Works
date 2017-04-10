@@ -15,6 +15,7 @@ using namespace std;
 struct RecvFunctor : public ThreadClassLib::ThreadClass::ThreadRoutineType
 {
     RecvFunctor(TestTcpConnection* pConnection, bool& Exit) : m_pConnection(pConnection), m_Exit(Exit) {}
+    virtual ~RecvFunctor() {}
     virtual void operator()()
     {
         CharBufferElement Msg;
@@ -85,7 +86,7 @@ int main(int argc, char* argv[])
 
     TcpConnection.init(Address, htons(Port), 0, IsInitiator);
 
-    while(!TcpConnection.isWorking())
+    while(!TcpConnection.isConnected())
         this_thread::sleep_for(chrono::milliseconds{100});
 
     if(IsInitiator)

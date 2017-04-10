@@ -78,6 +78,9 @@ public:
         for(auto i : m_PoolFree)
             delete i;
         m_PoolFree.clear();
+        for(auto i : m_PoolAcquired)
+            delete i;
+        m_PoolAcquired.clear();
     }
     /// Insert resource into the pool.
     /// @param pResource - pointer to allocated resource.
@@ -127,7 +130,7 @@ protected:
     std::mutex m_Lock; ///< Thread safety lock.
 };
 
-/// @struct BufferWrapper - wrapper on buffer of entities.
+/// @struct BufferWrapper - template of buffer of entities.
 template <typename T> struct BufferWrapper
 {
     BufferWrapper(size_t Size) : m_Size(Size)

@@ -147,7 +147,7 @@ namespace SockClassLib
     {
         Versions.Major = 3;
         Versions.Minor = 0;
-        Versions.SubMinor = 4;
+        Versions.SubMinor = 5;
     }
 /// \}
 }

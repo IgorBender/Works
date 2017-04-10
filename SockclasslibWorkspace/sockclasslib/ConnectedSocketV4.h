@@ -59,7 +59,7 @@ public:
     /// \param Port : port number in network byte order.
     void setDestination(const char* Address, short Port) throw(SockException);
 #else
-    int setDestination(const char* Address, short Port);
+    in_addr_t setDestination(const char* Address, short Port);
 #endif
     /// Deliver destination endpoint properties.
     /// \return sockaddr_in structure filled with endpoint properties.

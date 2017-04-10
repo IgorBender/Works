@@ -109,7 +109,7 @@ public:
     }
     int connect(const char* Address, short Port)
     {
-        if(setDestination(Address, Port) == INADDR_NONE)
+        if(0 > setDestination(Address, Port))
         {
             return SOCKET_ERROR;
         }

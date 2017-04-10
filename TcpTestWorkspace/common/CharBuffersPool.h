@@ -17,7 +17,7 @@ typedef ResoucesPool<BufferWrapper<char>> CharBuffersPoolType;
 /// @struct Element - queue element.
 template <typename T> struct Element
 {
-    uint32_t EventType; ///< Type discriminator.
+    uint32_t EventType = 0; ///< Type discriminator.
     typename ResoucesPool<BufferWrapper<T>>::ResourcePtrType m_pBuff; ///< shared_ptr to buffer wrapper.
     Element() {}
     Element(uint32_t Type, typename ResoucesPool<BufferWrapper<T> >::ResourcePtrType pBuff) : EventType(Type), m_pBuff(pBuff) {}
@@ -47,7 +47,7 @@ struct CharBufferElement : public Element<char>
     size_t m_ActualSize = 0;
 };
 
-/// @typedef CharBuffersQueueType - queue of Elements instantiated on buffer of chars.
+/// @typedef CharBuffersQueueType - queue of Elements.
 typedef std::queue<CharBufferElement> CharBuffersQueueType;
 
 /// @class BuffersPool - pool of memory allocated buffers.

@@ -30,7 +30,7 @@ void ConnectedSocketV4::setDestination(in_addr_t Address, short Port)
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 void ConnectedSocketV4::setDestination(const char* Address, short Port) throw(SockException)
 #else
-int ConnectedSocketV4::setDestination(const char* Address, short Port)
+in_addr_t ConnectedSocketV4::setDestination(const char* Address, short Port)
 #endif
 {
     in_addr_t  Addr = inet_addr(const_cast < char* > (Address));
