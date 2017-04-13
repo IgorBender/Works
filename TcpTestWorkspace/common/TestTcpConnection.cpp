@@ -8,7 +8,7 @@
 #include <TestTcpConnection.h>
 #include <algorithm>
 
-TestTcpConnection::TestTcpConnection() : m_ReceivePool(MaxMessageSize(), 4), m_SendPool(MaxMessageSize(), 4)
+TestTcpConnection::TestTcpConnection() : m_ReceivePool{MaxMessageSize(), 4}, m_SendPool{MaxMessageSize(), 4}
 {}
 
 void TestTcpConnection::connectRoutine()

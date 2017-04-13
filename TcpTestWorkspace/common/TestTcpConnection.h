@@ -26,7 +26,7 @@ public:
 
     /// Constructor.
     TestTcpConnection();
-    // Destructor.
+    /// Destructor.
     virtual ~TestTcpConnection() {}
 
     /// Initializing method
