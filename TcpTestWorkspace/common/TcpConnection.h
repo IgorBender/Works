@@ -124,8 +124,10 @@ protected:
 	    }
 	    virtual void operator()(void* p)
 	    {
+            m_p = p; // To eliminate compiler warning about unused parameter.
 	        m_Running.store(true);
 	    }
+        void* m_p = nullptr; // To eliminate compiler warning about unused parameter.
 	}
 	m_ReceiveStopIndicator, ///< Receive stop indicator.
 	m_SendStopIndicator; ///< Send stop indicator.

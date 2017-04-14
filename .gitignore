@@ -11,6 +11,7 @@ Release_NO_EXCEPTIONS
 .dep.inc
 .make.state*
 pthreads
+build-*
 
 
 

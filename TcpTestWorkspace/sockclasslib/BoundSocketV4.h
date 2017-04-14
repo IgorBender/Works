@@ -30,7 +30,7 @@
 
 /// Socket bounded to particular port and IPv4 address (end-point).
 
-class SOCKLIB_API BoundSocketV4 : public InternetSocketV4
+class SOCKLIB_API BoundSocketV4 : virtual public InternetSocketV4
 {
 public:
     /// Constructor.
