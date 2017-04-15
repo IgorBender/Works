@@ -12,6 +12,7 @@ Release_NO_EXCEPTIONS
 .make.state*
 pthreads
 build-*
-
+*pro.user
+/.project
 
 

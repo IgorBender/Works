@@ -33,3 +33,4 @@ HEADERS += \
 DEPENDPATH += ../common ../sockclasslib ../ThreadClassLib
 INCLUDEPATH += ../common ../sockclasslib ../ThreadClassLib
 LIBS += -lsockclasslib -lThreadClassLib -lpthread
+QMAKE_CLEAN += $$DESTDIR/$$TARGET*
