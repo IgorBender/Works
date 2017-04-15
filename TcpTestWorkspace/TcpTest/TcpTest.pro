@@ -8,10 +8,10 @@ QMAKE_LFLAGS +=
 CONF_VAR = $$(CONFIG_NAME)
 
 contains(CONF_VAR, DebugConf) {
-    DESTDIR = ../dist/Debug
+    DESTDIR = ../Debug
 }
 contains(CONF_VAR, ReleaseConf) {
-    DESTDIR = ../dist/Release
+    DESTDIR = ../Release
 }
 
 QMAKE_LFLAGS += -L$$DESTDIR
