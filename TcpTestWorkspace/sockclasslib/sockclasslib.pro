@@ -99,10 +99,10 @@ HEADERS +=\
     StreamSocketV4.h \
     StreamSocketV6.h
 
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
-}
+#unix {
+#    target.path = /usr/lib
+#    INSTALLS += target
+#}
 
 DEPENDPATH += .
 QMAKE_CLEAN += $$DESTDIR/lib$$TARGET*

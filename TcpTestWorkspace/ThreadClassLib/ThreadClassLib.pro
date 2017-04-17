@@ -47,9 +47,9 @@ HEADERS += \
     ThreadClassLib.h \
     ThreadException.h
 
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
-}
+#unix {
+#    target.path = /usr/lib
+#    INSTALLS += target
+#}
 
 QMAKE_CLEAN += $$DESTDIR/lib$$TARGET*
