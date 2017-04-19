@@ -9,6 +9,6 @@
 	<Threshold float="184.7"></Threshold>
 	<Threshold2 double="17.8"></Threshold2>
 	<Test unsigned_int="0x10"></Test>
-  <Buffer size="128M"></Buffer>
+        <Buffer size="128M"></Buffer>
 </Configuration>
 
