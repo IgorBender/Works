@@ -10,14 +10,13 @@ QMAKE_CXXFLAGS += -std=c++0x
 #CONFIG += $$MY_CONFIG
 TARGET = ThreadClassLib
 
-CONF_VAR = $$(CONFIG_NAME)
-
-contains(CONF_VAR, DebugConf) {
+CONFIG(debug, debug|release) {
     DESTDIR = ../Debug
 }
-contains(CONF_VAR, ReleaseConf) {
+CONFIG(release, debug|release) {
     DESTDIR = ../Release
 }
+
 TEMPLATE = lib
 VERSION = 0.0.1
 

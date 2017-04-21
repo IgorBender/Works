@@ -8,12 +8,10 @@ QT       -= core gui
 
 TARGET = sockclasslib
 
-CONF_VAR = $$(CONFIG_NAME)
-
-contains(CONF_VAR, DebugConf) {
+CONFIG(debug, debug|release) {
     DESTDIR = ../Debug
 }
-contains(CONF_VAR, ReleaseConf) {
+CONFIG(release, debug|release) {
     DESTDIR = ../Release
 }
 
