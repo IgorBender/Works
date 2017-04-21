@@ -8,6 +8,8 @@
 #ifndef COMMON_INTERFACEDEFS_H_
 #define COMMON_INTERFACEDEFS_H_
 
+#include <cstdint>
+
 const uint32_t EXIT_MSG_TYPE = 1;
 
 struct MessageHeader
