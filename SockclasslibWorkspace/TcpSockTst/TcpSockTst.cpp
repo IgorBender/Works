@@ -165,7 +165,7 @@ int main()
 
     SOCK_TRY
     {
-        auto_ptr < ClientSimple > Sock(new ClientSimple);
+        shared_ptr < ClientSimple > Sock(new ClientSimple);
         forever
 		{
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
@@ -179,9 +179,9 @@ int main()
                 Sock.reset();
 #endif
 
-                auto_ptr < ClientSimple > SockTmp(new ClientSimple);
+                shared_ptr < ClientSimple > SockTmp(new ClientSimple);
                 Sock = SockTmp;
-                SockTmp.release();
+                SockTmp.reset();
 #ifndef _WIN32
 
                 sleep(1);

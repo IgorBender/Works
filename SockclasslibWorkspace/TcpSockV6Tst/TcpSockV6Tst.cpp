@@ -198,7 +198,7 @@ int main(int argc, char* argv[])
 
     SOCK_TRY
     {
-        auto_ptr < ClientSimpleV6 > Sock(new ClientSimpleV6);
+        shared_ptr < ClientSimpleV6 > Sock(new ClientSimpleV6);
         forever
 		{
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
@@ -212,9 +212,9 @@ int main(int argc, char* argv[])
                 Sock.reset();
 #endif
 
-                auto_ptr < ClientSimpleV6 > SockTmp(new ClientSimpleV6);
+                shared_ptr < ClientSimpleV6 > SockTmp(new ClientSimpleV6);
                 Sock = SockTmp;
-                SockTmp.release();
+                SockTmp.reset();
 #ifndef _WIN32
 
                 sleep(1);

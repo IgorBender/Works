@@ -169,7 +169,7 @@ int main(int argc, char* argv[])
         bool Exit = false;
         while (!Exit)
         {
-            auto_ptr < StreamSocket > Sock(Serv.accept());
+            unique_ptr < StreamSocket > Sock(Serv.accept());
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
             cout << "Connection accepted..." << endl;
 #else

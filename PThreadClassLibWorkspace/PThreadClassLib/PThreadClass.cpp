@@ -485,11 +485,10 @@ bool PThreadClass::setStackAddr(void* pStack)
     size_t Size;
     if(pthread_attr_getstack(&m_ThreadAttribute, &pTmpAddr, &Size) != 0)
         return  false;
-    if(pthread_attr_setstack(&m_ThreadAttribute, &pTmpAddr, Size) != 0)
+    if(pthread_attr_setstack(&m_ThreadAttribute, &pStack, Size) != 0)
         return false;
     else
-        return true;
-    
+        return true;    
 #endif
     return true;
 }
@@ -510,8 +509,7 @@ void* PThreadClass::getStackAddr()
     if(pthread_attr_getstack(&m_ThreadAttribute, &TmpPtr, &Size) != 0)
         return  NULL;
     else
-        return TmpPtr;
-    
+        return TmpPtr;   
 #endif
     return NULL;
 }

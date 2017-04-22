@@ -204,7 +204,7 @@ int main(int argc, char* argv[])
         bool Exit = false;
         while (!Exit)
         {
-            auto_ptr < StreamSocketV6 > Sock(Serv.accept());
+            unique_ptr < StreamSocketV6 > Sock(Serv.accept());
      #ifndef _WITHOUT_SOCK_EXCEPTIONS
             cout << "Connection accepted : "
             		<< inet_ntop(AF_INET6, &Sock->getSockName().sin6_addr, Tmp, 64) << "-" << ntohs(Sock->getSockName().sin6_port)

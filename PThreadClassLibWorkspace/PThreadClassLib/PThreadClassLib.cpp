@@ -55,5 +55,5 @@ void PTHREADCLASSLIB_API PThreadClassLib::getVersion(PThreadClassLib::VersionTri
 {
     Versions.Major = 2;
     Versions.Minor = 3;
-    Versions.SubMinor = 5;
+    Versions.SubMinor = 6;
 }

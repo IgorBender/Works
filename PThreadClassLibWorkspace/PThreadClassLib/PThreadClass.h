@@ -252,7 +252,7 @@ public:
     {
         int Result = 0;
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 )
-        Result = pthread_attr_setinheritsched(&m_ThreadAttribute, PTHREAD_INHERIT_SCHED);
+        Result = pthread_attr_setinheritsched(&m_ThreadAttribute, InheritanceType);
         if(Result != 0)
         {
             THREAD_EXCEPT_THROW(Result);

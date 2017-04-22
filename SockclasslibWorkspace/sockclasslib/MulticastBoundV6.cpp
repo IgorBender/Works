@@ -58,6 +58,7 @@ MulticastBoundV6::MulticastBoundV6(short Port, const char* Address)
     throw(SockException)
 #endif
 {
+    inet_addr(Address); // To eliminate compiler warning about unused parameter.
     if(!isBound())
     {
 #ifdef _WIN32
