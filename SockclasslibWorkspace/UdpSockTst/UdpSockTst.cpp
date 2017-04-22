@@ -101,6 +101,11 @@ bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& Net
 
 int main(int argc, char* argv[])
 {
+    // Nonsense to eliminate compiler warning abut unused parameter.
+    if(argc > 10)
+        cout << argv[0] << endl;
+    // -------------------------------------------------------------
+
     in_addr_t InterfAddr = 0;
     in_addr_t InterfMask = 0;
     in_addr_t InterfBroad = 0;

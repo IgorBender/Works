@@ -158,6 +158,11 @@ bool getAddresses(in6_addr& InterfaceAddr)
 
 int main(int argc, char* argv[])
 {
+    // Nonsense to eliminate compiler warning abut unused parameter.
+    if(argc > 10)
+        cout << argv[0] << endl;
+    // -------------------------------------------------------------
+
 #ifdef _NO_IPV6
 	cout << "No IPv6 support configured in sockclasslib." << endl;
 	return 1;

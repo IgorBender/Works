@@ -28,8 +28,13 @@ PBarrierClass Barrier(2);
 int Count = 0;
 double d;
 
-int main(int args, char** argv)
+int main(int argc, char** argv)
 {
+    // Nonsense to eliminate compiler warning abut unused parameter.
+    if(argc > 10)
+        cout << argv[0] << endl;
+    // -------------------------------------------------------------
+
     PThreadClassLib::VersionTriple Version;
     PThreadClassLib::getVersion(Version);
 #ifdef __linux__
@@ -340,6 +345,10 @@ int main(int args, char** argv)
 
 void* helloRoutine(void* pContext)
 {
+    if(pContext) // To eliminate compiler warning about unused parameter.
+    {
+        ;
+    }
     cout << "Hello World" << endl << flush;
     return NULL;
 }
@@ -348,6 +357,10 @@ void* parseMessage(void* pContext)
 {
 	// Assume that pContext points to message buffer
 	// Parse message here
+    if(pContext) // To eliminate compiler warning about unused parameter.
+    {
+        ;
+    }
     cout << "Message is parsed successfully" << endl << flush;
     Barrier.wait();
     return NULL;
@@ -355,7 +368,11 @@ void* parseMessage(void* pContext)
 
 void* receiveMessage(void* pContext)
 {
-	// Receve messages and signal parser
+    if(pContext) // To eliminate compiler warning about unused parameter.
+    {
+        ;
+    }
+    // Receve messages and signal parser
     if(Count > 10)
     {
         pReceiver->exit();
@@ -369,12 +386,20 @@ void* receiveMessage(void* pContext)
 
 void cleanCount(void* pContext)
 {
+    if(pContext) // To eliminate compiler warning about unused parameter.
+    {
+        ;
+    }
     Count = 0;
     cout << "Count = 0" << endl << flush;
 }
 
 void* oneSecond(void* pContext)
 {
+    if(pContext) // To eliminate compiler warning about unused parameter.
+    {
+        ;
+    }
 #ifdef WIN32
     Sleep(1000);
 #else
@@ -391,6 +416,10 @@ void stopNotif(void* p)
 
 void* endless(void* p)
 {
+    if(p) // To eliminate compiler warning about unused parameter.
+    {
+        ;
+    }
     int Dummy;
     pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &Dummy);
     while(1)
