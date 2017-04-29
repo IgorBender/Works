@@ -23,3 +23,5 @@ SOURCES += \
     MoveTest.cpp
 
 QMAKE_CLEAN += $$DESTDIR/$$TARGET*
+
+HEADERS +=
