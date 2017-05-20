@@ -3,6 +3,8 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
+QMAKE_CXXFLAGS += -Wno-unused-parameter
+
 CONF_VAR = $$(CONFIG_NAME)
 
 contains(CONF_VAR, DebugConf) {

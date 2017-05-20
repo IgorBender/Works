@@ -3,7 +3,7 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-QMAKE_CXXFLAGS += -Wno-unused-parameter
+QMAKE_CXXFLAGS += -Wno-unused-parameter -Wno-sign-compare
 
 CONFIG(debug, debug|release) {
     DESTDIR = ../Debug

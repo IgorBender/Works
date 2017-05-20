@@ -6,7 +6,7 @@
 %define api.pure full
 
  /* Define prefix. */
-%define api.prefix "def"
+%define api.prefix {def}
 %lex-param   { yyscan_t scanner }
 %parse-param { yyscan_t scanner }
 

@@ -1,7 +1,7 @@
 %output  "Parser.cpp"
 %defines "Parser.h"
 %define api.pure full
-%define api.prefix "bit"
+%define api.prefix {bit}
 %lex-param   { yyscan_t scanner }
 %parse-param { yyscan_t scanner }
 
