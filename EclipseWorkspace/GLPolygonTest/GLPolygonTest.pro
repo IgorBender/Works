@@ -10,6 +10,9 @@ CONFIG(release, debug|release) {
     DESTDIR = ../Release
 }
 
+QMAKE_CXXFLAGS += -Wno-unused-result
+QMAKE_CFLAGS += -Wno-unused-result -Wno-maybe-uninitialized
+
 SOURCES += \
     GLPolygonTest.cpp \
     GpcPolygon.cpp \
