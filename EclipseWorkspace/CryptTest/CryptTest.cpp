@@ -37,8 +37,7 @@ int main(void)
         exit(1);
     }
     // Discover real file size
-    In.seekg(0, In.end);
-    size_t FileSize = In.tellg();
+    size_t FileSize = In.seekg(0, In.end).tellg();
     In.seekg(0, In.beg);
 
     char Buffer[8];

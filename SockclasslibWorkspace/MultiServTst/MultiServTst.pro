@@ -20,3 +20,4 @@ SOURCES += \
 
 LIBS += -L$$DESTDIR -lsockclasslib
 QMAKE_CLEAN += $$DESTDIR/$$TARGET*
+
