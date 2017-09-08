@@ -41,6 +41,6 @@ bison.name = Bison Sources  ${QMAKE_FILE_IN}
 bison.CONFIG += target_predeps
 QMAKE_EXTRA_COMPILERS += bison
 
-OTHER_FILES += \
-    $$BISONSOURCES \
-    $$FLEXSOURCES
+#OTHER_FILES += \
+#    $$BISONSOURCES \
+#    $$FLEXSOURCES
