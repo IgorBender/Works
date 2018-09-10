@@ -9,10 +9,10 @@ QT       -= core gui
 TARGET = PThreadClassLib
 
 CONFIG(debug, debug|release) {
-    DESTDIR = ../Debug
+    DESTDIR = ../../Debug
 }
 CONFIG(release, debug|release) {
-    DESTDIR = ../Release
+    DESTDIR = ../../Release
 }
 
 TEMPLATE = lib

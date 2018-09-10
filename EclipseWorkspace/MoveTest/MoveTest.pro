@@ -5,21 +5,13 @@ CONFIG -= qt
 
 QMAKE_CXXFLAGS += -Wno-unused-parameter
 
-CONF_VAR = $$(CONFIG_NAME)
-
-contains(CONF_VAR, DebugConf) {
-    DESTDIR = ../MoveTest/Debug
+CONFIG(debug, debug|release) {
+    DESTDIR = ../../Debug
 }
-contains(CONF_VAR, ReleaseConf) {
-    DESTDIR = ../MoveTest/Release
+CONFIG(release, debug|release) {
+    DESTDIR = ../../Release
 }
 
-contains(CONF_VAR, DebugClang) {
-    DESTDIR = ../MoveTest/DebugClang
-}
-contains(CONF_VAR, ReleaseClang) {
-    DESTDIR = ../MoveTest/ReleaseClang
-}
 
 SOURCES += \
     MoveTest.cpp

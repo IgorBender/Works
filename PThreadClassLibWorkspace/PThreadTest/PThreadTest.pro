@@ -4,10 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 CONFIG(debug, debug|release) {
-    DESTDIR = ../Debug
+    DESTDIR = ../../Debug
 }
 CONFIG(release, debug|release) {
-    DESTDIR = ../Release
+    DESTDIR = ../../Release
 }
 
 #QMAKE_LFLAGS += -L$$DESTDIR
