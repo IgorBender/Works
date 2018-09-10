@@ -16,8 +16,17 @@ public:
     TestClass() {}
     ~TestClass() {}
 
+    void setInt(uint32_t Int)
+    {
+        m_Int = Int;
+    }
+    uint32_t getInt()
+    {
+        return m_Int;
+    }
+
 protected:
-    uint32_t m_Int;
+    uint32_t m_Int = 0;
 };
 
 class MoveTestClass
@@ -47,6 +56,18 @@ public:
         return *this;
     }
 
+    void setInt(uint32_t Int)
+    {
+        if(m_pTestClass)
+            m_pTestClass->setInt(Int);
+    }
+    uint32_t getInt()
+    {
+        if(m_pTestClass)
+            return m_pTestClass->getInt();
+        return 0;
+    }
+
 protected:
     TestClass* m_pTestClass = nullptr;
 };
@@ -54,6 +75,7 @@ protected:
 int main(int argc, char *argv[])
 {
     MoveTestClass t1;
+    t1.setInt(3);
     MoveTestClass t2(t1); // t2 is copy of t1.
     MoveTestClass t3(move(t1)); // t3 contains resource of t1. t1 don't contain resource.
     MoveTestClass t4;
