@@ -1,0 +1,138 @@
+\hypertarget{classBroadcastSocket}{}\section{Broadcast\+Socket Class Reference}
+\label{classBroadcastSocket}\index{Broadcast\+Socket@{Broadcast\+Socket}}
+
+
+Broadcast socket class.  
+
+
+
+
+{\ttfamily \#include $<$Broadcast\+Socket.\+h$>$}
+
+
+
+Inheritance diagram for Broadcast\+Socket\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBroadcastSocket__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBroadcastSocket_a1d24d481f9947743896280d1f1c2cc8a}{Broadcast\+Socket} ()
+\item 
+int \hyperlink{classBroadcastSocket_a5e8f0ca3c127e9e5be5b6c994feb46ad}{send\+Broadcast} (short Port, const void $\ast$Buffer, size\+\_\+t Length, int Flags=0)
+\item 
+int \hyperlink{classBroadcastSocket_a184bc48d22498cb3a8c8de927cbae917}{send\+Subnet\+Broadcast} (in\+\_\+addr\+\_\+t Addr, short Port, const void $\ast$Buffer, size\+\_\+t Length, int Flags=0)
+\item 
+virtual void \hyperlink{classBroadcastSocket_a330f3448f2c53eef77af683cfd94eafd}{connect} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBroadcastSocket_a3f141e2a8c35c074ae18e8f6da272189}{Broadcast\+Socket} (\hyperlink{classBroadcastSocket}{Broadcast\+Socket} \&b)
+\item 
+\hyperlink{classBroadcastSocket}{Broadcast\+Socket} \& \hyperlink{classBroadcastSocket_adf79ba7c618dd87731908773e77bea8b}{operator=} (\hyperlink{classBroadcastSocket}{Broadcast\+Socket} \&b)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Broadcast socket class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBroadcastSocket_a1d24d481f9947743896280d1f1c2cc8a}\label{classBroadcastSocket_a1d24d481f9947743896280d1f1c2cc8a}} 
+\index{Broadcast\+Socket@{Broadcast\+Socket}!Broadcast\+Socket@{Broadcast\+Socket}}
+\index{Broadcast\+Socket@{Broadcast\+Socket}!Broadcast\+Socket@{Broadcast\+Socket}}
+\subsubsection{\texorpdfstring{Broadcast\+Socket()}{BroadcastSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Broadcast\+Socket\+::\+Broadcast\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor. Default constructor. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classBroadcastSocket_a3f141e2a8c35c074ae18e8f6da272189}\label{classBroadcastSocket_a3f141e2a8c35c074ae18e8f6da272189}} 
+\index{Broadcast\+Socket@{Broadcast\+Socket}!Broadcast\+Socket@{Broadcast\+Socket}}
+\index{Broadcast\+Socket@{Broadcast\+Socket}!Broadcast\+Socket@{Broadcast\+Socket}}
+\subsubsection{\texorpdfstring{Broadcast\+Socket()}{BroadcastSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Broadcast\+Socket\+::\+Broadcast\+Socket (\begin{DoxyParamCaption}\item[{\hyperlink{classBroadcastSocket}{Broadcast\+Socket} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBroadcastSocket_a330f3448f2c53eef77af683cfd94eafd}\label{classBroadcastSocket_a330f3448f2c53eef77af683cfd94eafd}} 
+\index{Broadcast\+Socket@{Broadcast\+Socket}!connect@{connect}}
+\index{connect@{connect}!Broadcast\+Socket@{Broadcast\+Socket}}
+\subsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily virtual void Broadcast\+Socket\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Connect the socket. Implements pure virtual function of base class. Has no meaning for this particular class. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Reimplemented from \hyperlink{classConnectedSocketV4_a034d0c949fa1a0f14c136f839915d1a4}{Connected\+Socket\+V4}.
+
+\mbox{\Hypertarget{classBroadcastSocket_adf79ba7c618dd87731908773e77bea8b}\label{classBroadcastSocket_adf79ba7c618dd87731908773e77bea8b}} 
+\index{Broadcast\+Socket@{Broadcast\+Socket}!operator=@{operator=}}
+\index{operator=@{operator=}!Broadcast\+Socket@{Broadcast\+Socket}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classBroadcastSocket}{Broadcast\+Socket}\& Broadcast\+Socket\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classBroadcastSocket}{Broadcast\+Socket} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. \mbox{\Hypertarget{classBroadcastSocket_a5e8f0ca3c127e9e5be5b6c994feb46ad}\label{classBroadcastSocket_a5e8f0ca3c127e9e5be5b6c994feb46ad}} 
+\index{Broadcast\+Socket@{Broadcast\+Socket}!send\+Broadcast@{send\+Broadcast}}
+\index{send\+Broadcast@{send\+Broadcast}!Broadcast\+Socket@{Broadcast\+Socket}}
+\subsubsection{\texorpdfstring{send\+Broadcast()}{sendBroadcast()}}
+{\footnotesize\ttfamily int Broadcast\+Socket\+::send\+Broadcast (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{const void $\ast$}]{Buffer,  }\item[{size\+\_\+t}]{Length,  }\item[{int}]{Flags = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send broadcast. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: destination port in network byte order. \\
+\hline
+{\em Buffer} & \+: data to send. \\
+\hline
+{\em Length} & \+: amount of the data. \\
+\hline
+{\em Flags} & \+: flags, default value -\/ 0. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classBroadcastSocket_a184bc48d22498cb3a8c8de927cbae917}\label{classBroadcastSocket_a184bc48d22498cb3a8c8de927cbae917}} 
+\index{Broadcast\+Socket@{Broadcast\+Socket}!send\+Subnet\+Broadcast@{send\+Subnet\+Broadcast}}
+\index{send\+Subnet\+Broadcast@{send\+Subnet\+Broadcast}!Broadcast\+Socket@{Broadcast\+Socket}}
+\subsubsection{\texorpdfstring{send\+Subnet\+Broadcast()}{sendSubnetBroadcast()}}
+{\footnotesize\ttfamily int Broadcast\+Socket\+::send\+Subnet\+Broadcast (\begin{DoxyParamCaption}\item[{in\+\_\+addr\+\_\+t}]{Addr,  }\item[{short}]{Port,  }\item[{const void $\ast$}]{Buffer,  }\item[{size\+\_\+t}]{Length,  }\item[{int}]{Flags = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send subnet broadcast. 
+\begin{DoxyParams}{Parameters}
+{\em Addr} & \+: subnet address in network byte order. \\
+\hline
+{\em Port} & \+: destination port in network byte order. \\
+\hline
+{\em Buffer} & \+: data to send. \\
+\hline
+{\em Length} & \+: amount of the data. \\
+\hline
+{\em Flags} & \+: flags, default value -\/ 0. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{BroadcastSocket_8h}{Broadcast\+Socket.\+h}\item 
+\hyperlink{BroadcastSocket_8cpp}{Broadcast\+Socket.\+cpp}\end{DoxyCompactItemize}

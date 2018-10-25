@@ -1,0 +1,588 @@
+\hypertarget{classPThreadClass}{}\section{P\+Thread\+Class Class Reference}
+\label{classPThreadClass}\index{P\+Thread\+Class@{P\+Thread\+Class}}
+
+
+{\ttfamily \#include $<$P\+Thread\+Class.\+h$>$}
+
+
+
+Inheritance diagram for P\+Thread\+Class\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classPThreadClass__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPThreadClass_ac0e02c9a05d995e4980837c1491d85e9}{P\+Thread\+Class} (\hyperlink{structRunnable}{Runnable} Routine, unsigned long Time=\hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE}, bool Cyclic\+Thread=false, bool Attached\+Thread=true) noexcept(false)
+\item 
+virtual \hyperlink{classPThreadClass_acd1859c3acc32abc90f677578eeb6749}{$\sim$\+P\+Thread\+Class} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run} () noexcept(false)
+\item 
+virtual bool \hyperlink{classPThreadClass_a94862a3179469348fd89aefe9dac8244}{start} () noexcept(false)
+\item 
+virtual bool \hyperlink{classPThreadClass_a699d636eda769173287c18bd1a5f4a77}{exit} () noexcept(false)
+\item 
+virtual bool \hyperlink{classPThreadClass_a71e308a0324c76e20c504c037a3e7652}{stop} ()
+\begin{DoxyCompactList}\small\item\em Stop cyclic execution of thread routine. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classPThreadClass_afe4c0ea5bd3e1c89e01499bbca5e194d}{join} ()
+\begin{DoxyCompactList}\small\item\em Join attached thread after. \end{DoxyCompactList}\item 
+bool \hyperlink{classPThreadClass_a8d6247e87165abb43186f1a03261f175}{set\+Priority} (int Prio)
+\item 
+int \hyperlink{classPThreadClass_aca9cc33ac2e0d2f25e1fa993c78e68cc}{get\+Priority} ()
+\item 
+bool \hyperlink{classPThreadClass_a9fd180b8c007384057618c2c5111e834}{set\+Policy} (int Pol)
+\item 
+int \hyperlink{classPThreadClass_a8a77ce45b960ad25c2bbdcc4ba8341b6}{get\+Policy} ()
+\item 
+bool \hyperlink{classPThreadClass_a637580a700f744236440695abe689efa}{set\+Stack\+Addr} (void $\ast$p\+Stack)
+\item 
+void $\ast$ \hyperlink{classPThreadClass_a0ca8d7ebf843ee190c4cfdfe7909d3f5}{get\+Stack\+Addr} ()
+\item 
+bool \hyperlink{classPThreadClass_a25c4ea5d463a772ee3b916621e388bed}{set\+Stack\+Size} (size\+\_\+t Stack\+Size)
+\item 
+size\+\_\+t \hyperlink{classPThreadClass_a2c7527172a945ef9b66f414c142bcefd}{get\+Stack\+Size} ()
+\item 
+bool \hyperlink{classPThreadClass_af2ad966c36b6995587bde14965722ffc}{is\+Attached} ()
+\item 
+bool \hyperlink{classPThreadClass_a707a99aa60413db5d6e42230f1f63632}{is\+Cyclic} ()
+\item 
+void \hyperlink{classPThreadClass_ae217dc6602148a3a5be79089089dc807}{set\+Cyclic} (bool On)
+\item 
+bool \hyperlink{classPThreadClass_a4f88c65bb031c89b2b0efd31c1c37fc5}{is\+Running} ()
+\item 
+void \hyperlink{classPThreadClass_a88cda74fba292ade7054204a6833e8ac}{set\+Time\+Out} (unsigned long Time)
+\item 
+unsigned long \hyperlink{classPThreadClass_accc3e3d98e44796d9f78bc16e22c5403}{get\+Time\+Out} ()
+\item 
+\hyperlink{classCondVarClass}{Cond\+Var\+Class} \& \hyperlink{classPThreadClass_a9a1dc6820222741276087d0323905b4d}{get\+Condition\+Var} ()
+\item 
+pthread\+\_\+t \hyperlink{classPThreadClass_a28368c1db23e60e2ab7e12acbd8eef83}{get\+Thread\+Id} ()
+\item 
+int \hyperlink{classPThreadClass_ad79d5e4fe69d0b77f5c16bf83259c3ad}{set\+Scheduling\+Inheritance} (int Inheritance\+Type)
+\item 
+void \hyperlink{classPThreadClass_a7d320ee54f3a8f26fc4a3245c36f7df6}{set\+Cancel\+Type} (int Cancel\+Type=P\+T\+H\+R\+E\+A\+D\+\_\+\+C\+A\+N\+C\+E\+L\+\_\+\+D\+E\+F\+E\+R\+R\+ED)
+\item 
+void \hyperlink{classPThreadClass_a6e4fffd986c68d60ef3c089293007eab}{cancel} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void $\ast$ \hyperlink{classPThreadClass_a012fe659b15bb0c0c19125ee0d1fa94e}{thread\+Control\+Routine} ()
+\begin{DoxyCompactList}\small\item\em Internal thread routine. \end{DoxyCompactList}\item 
+virtual void $\ast$ \hyperlink{classPThreadClass_a77732762f14058291d35bdbbc49018c6}{thread\+Loop} ()
+\begin{DoxyCompactList}\small\item\em Internal thread loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void $\ast$ \hyperlink{classPThreadClass_a0639ba7f95bfe914271a2fe4b61003b1}{thread\+Launcher} (void $\ast$p\+Context)
+\begin{DoxyCompactList}\small\item\em Thread launcher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+t \hyperlink{classPThreadClass_a10ae0a7572009a65e961e14e00368f04}{m\+\_\+\+Thread\+Id}
+\begin{DoxyCompactList}\small\item\em P\+O\+S\+IX thread ID. \end{DoxyCompactList}\item 
+\hyperlink{classCondVarClass}{Cond\+Var\+Class} \hyperlink{classPThreadClass_a47d4ad65715d6d9bed6987212f05839a}{m\+\_\+\+Control\+Cond\+Var}
+\begin{DoxyCompactList}\small\item\em Internal condition variable. \end{DoxyCompactList}\item 
+\hyperlink{structRunnable}{Runnable} \hyperlink{classPThreadClass_a80e0b0007257f5c9ef8d74ddacac4113}{m\+\_\+\+Thread\+Routine}
+\begin{DoxyCompactList}\small\item\em Thread riotines structure. \end{DoxyCompactList}\item 
+volatile bool \hyperlink{classPThreadClass_a6becb8dccddf8546a4091517c1cc5033}{m\+\_\+\+Cyclic}
+\begin{DoxyCompactList}\small\item\em Cyclic state. \end{DoxyCompactList}\item 
+bool \hyperlink{classPThreadClass_a1905932de950f876dbff1d07e6824954}{m\+\_\+\+Attached}
+\begin{DoxyCompactList}\small\item\em Attached state. \end{DoxyCompactList}\item 
+bool \hyperlink{classPThreadClass_a390356f43f2203acb2c0abd0f41fe9a1}{m\+\_\+\+Running}
+\begin{DoxyCompactList}\small\item\em Running state. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{classPThreadClass_a73118712c992ed9921a928cf676bf4d6}{m\+\_\+\+Time\+Out}
+\begin{DoxyCompactList}\small\item\em Cyclic period value. \end{DoxyCompactList}\item 
+\hyperlink{classSpecificCondition}{Specific\+Condition} $\ast$ \hyperlink{classPThreadClass_a24f676a031214426786294fd15daca30}{m\+\_\+p\+Exit\+Condition}
+\begin{DoxyCompactList}\small\item\em Scpecified exit condipion variable. \end{DoxyCompactList}\item 
+\hyperlink{classSpecificCondition}{Specific\+Condition} $\ast$ \hyperlink{classPThreadClass_ae7da7ff84d5d96f3dae9d539a0ce8bcb}{m\+\_\+p\+Start\+Condition}
+\begin{DoxyCompactList}\small\item\em Scpecified start condipion variable. \end{DoxyCompactList}\item 
+\hyperlink{classSpecificCondition}{Specific\+Condition} $\ast$ \hyperlink{classPThreadClass_a1889576909d898228cc4e2eda3acbf8b}{m\+\_\+p\+Wait\+Condition}
+\begin{DoxyCompactList}\small\item\em Scpecified wait condipion variable. \end{DoxyCompactList}\item 
+pthread\+\_\+attr\+\_\+t \hyperlink{classPThreadClass_a1c637c9e20fb8ccbd8bd9e5431c31883}{m\+\_\+\+Thread\+Attribute}
+\begin{DoxyCompactList}\small\item\em P\+O\+S\+IX thread attributes. \end{DoxyCompactList}\item 
+struct timeb \hyperlink{classPThreadClass_a21352db28ed04eabcb2d7e353c886319}{m\+\_\+\+Start\+Time}
+\begin{DoxyCompactList}\small\item\em Start time of cycle. \end{DoxyCompactList}\item 
+int \hyperlink{classPThreadClass_adf415e7e1021b7234ed371744a545daf}{m\+\_\+\+Cancel\+Type}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+P\+O\+S\+IX thread class
+
+Wrapper on P\+O\+S\+IX thread. The thread can be \+: ~\newline
+ cyclic / on shot ~\newline
+ attached / unattached ~\newline
+ bound / unbound to L\+WP (for O\+Ss supporting this) 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPThreadClass_ac0e02c9a05d995e4980837c1491d85e9}\label{classPThreadClass_ac0e02c9a05d995e4980837c1491d85e9}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!P\+Thread\+Class@{P\+Thread\+Class}}
+\index{P\+Thread\+Class@{P\+Thread\+Class}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{P\+Thread\+Class()}{PThreadClass()}}
+{\footnotesize\ttfamily P\+Thread\+Class\+::\+P\+Thread\+Class (\begin{DoxyParamCaption}\item[{\hyperlink{structRunnable}{Runnable}}]{Routine,  }\item[{unsigned long}]{Time = {\ttfamily \hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE}},  }\item[{bool}]{Cyclic\+Thread = {\ttfamily false},  }\item[{bool}]{Attached\+Thread = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em Routine} & \+: routines structure reference. \\
+\hline
+{\em Time} & \+: cyclic period value in milliseconds. \\
+\hline
+{\em Cyclic\+Thread} & \+: cyclic (true) or one-\/shot (false) thread. \\
+\hline
+{\em Attached\+Thread} & \+: attached (true) or unattached (false) thread. \\
+\hline
+{\em Bound\+Thread} & \+: binding to L\+WP flag. Applicable only on supporting binding O\+Ss. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPThreadClass_acd1859c3acc32abc90f677578eeb6749}\label{classPThreadClass_acd1859c3acc32abc90f677578eeb6749}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!````~P\+Thread\+Class@{$\sim$\+P\+Thread\+Class}}
+\index{````~P\+Thread\+Class@{$\sim$\+P\+Thread\+Class}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+P\+Thread\+Class()}{~PThreadClass()}}
+{\footnotesize\ttfamily P\+Thread\+Class\+::$\sim$\+P\+Thread\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPThreadClass_a6e4fffd986c68d60ef3c089293007eab}\label{classPThreadClass_a6e4fffd986c68d60ef3c089293007eab}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!cancel@{cancel}}
+\index{cancel@{cancel}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{cancel()}{cancel()}}
+{\footnotesize\ttfamily void P\+Thread\+Class\+::cancel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classPThreadClass_a699d636eda769173287c18bd1a5f4a77}\label{classPThreadClass_a699d636eda769173287c18bd1a5f4a77}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!exit@{exit}}
+\index{exit@{exit}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{exit()}{exit()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::exit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+Destroy thread. 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPThreadClass_a9a1dc6820222741276087d0323905b4d}\label{classPThreadClass_a9a1dc6820222741276087d0323905b4d}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!get\+Condition\+Var@{get\+Condition\+Var}}
+\index{get\+Condition\+Var@{get\+Condition\+Var}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{get\+Condition\+Var()}{getConditionVar()}}
+{\footnotesize\ttfamily \hyperlink{classCondVarClass}{Cond\+Var\+Class}\& P\+Thread\+Class\+::get\+Condition\+Var (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get reference on internal condition variable. \begin{DoxyReturn}{Returns}
+reference on internal condition variable. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_a8a77ce45b960ad25c2bbdcc4ba8341b6}\label{classPThreadClass_a8a77ce45b960ad25c2bbdcc4ba8341b6}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!get\+Policy@{get\+Policy}}
+\index{get\+Policy@{get\+Policy}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{get\+Policy()}{getPolicy()}}
+{\footnotesize\ttfamily int P\+Thread\+Class\+::get\+Policy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get P\+O\+S\+IX priority level.
+
+should be called after \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run()}. \begin{DoxyReturn}{Returns}
+policy or -\/1 on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_aca9cc33ac2e0d2f25e1fa993c78e68cc}\label{classPThreadClass_aca9cc33ac2e0d2f25e1fa993c78e68cc}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!get\+Priority@{get\+Priority}}
+\index{get\+Priority@{get\+Priority}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{get\+Priority()}{getPriority()}}
+{\footnotesize\ttfamily int P\+Thread\+Class\+::get\+Priority (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get P\+O\+S\+IX priority level.
+
+should be called after \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run()}. \begin{DoxyReturn}{Returns}
+priority level or -\/1 on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_a0ca8d7ebf843ee190c4cfdfe7909d3f5}\label{classPThreadClass_a0ca8d7ebf843ee190c4cfdfe7909d3f5}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!get\+Stack\+Addr@{get\+Stack\+Addr}}
+\index{get\+Stack\+Addr@{get\+Stack\+Addr}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{get\+Stack\+Addr()}{getStackAddr()}}
+{\footnotesize\ttfamily void $\ast$ P\+Thread\+Class\+::get\+Stack\+Addr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get thread stack address.
+
+should be called after \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run()}. \begin{DoxyReturn}{Returns}
+stack address or -\/1 on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_a2c7527172a945ef9b66f414c142bcefd}\label{classPThreadClass_a2c7527172a945ef9b66f414c142bcefd}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!get\+Stack\+Size@{get\+Stack\+Size}}
+\index{get\+Stack\+Size@{get\+Stack\+Size}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{get\+Stack\+Size()}{getStackSize()}}
+{\footnotesize\ttfamily size\+\_\+t P\+Thread\+Class\+::get\+Stack\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get thread stack size. \begin{DoxyReturn}{Returns}
+stack size or -\/1 on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_a28368c1db23e60e2ab7e12acbd8eef83}\label{classPThreadClass_a28368c1db23e60e2ab7e12acbd8eef83}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!get\+Thread\+Id@{get\+Thread\+Id}}
+\index{get\+Thread\+Id@{get\+Thread\+Id}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{get\+Thread\+Id()}{getThreadId()}}
+{\footnotesize\ttfamily pthread\+\_\+t P\+Thread\+Class\+::get\+Thread\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get P\+O\+S\+IX thread ID.
+
+should be called after \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run()}. \begin{DoxyReturn}{Returns}
+P\+O\+S\+IX thread ID. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_accc3e3d98e44796d9f78bc16e22c5403}\label{classPThreadClass_accc3e3d98e44796d9f78bc16e22c5403}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!get\+Time\+Out@{get\+Time\+Out}}
+\index{get\+Time\+Out@{get\+Time\+Out}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{get\+Time\+Out()}{getTimeOut()}}
+{\footnotesize\ttfamily unsigned long P\+Thread\+Class\+::get\+Time\+Out (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get cyclic period value. \begin{DoxyReturn}{Returns}
+cyclic period in milliseconds. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_af2ad966c36b6995587bde14965722ffc}\label{classPThreadClass_af2ad966c36b6995587bde14965722ffc}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!is\+Attached@{is\+Attached}}
+\index{is\+Attached@{is\+Attached}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{is\+Attached()}{isAttached()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::is\+Attached (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Is thread attached? \begin{DoxyReturn}{Returns}
+attached state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_a707a99aa60413db5d6e42230f1f63632}\label{classPThreadClass_a707a99aa60413db5d6e42230f1f63632}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!is\+Cyclic@{is\+Cyclic}}
+\index{is\+Cyclic@{is\+Cyclic}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{is\+Cyclic()}{isCyclic()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::is\+Cyclic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Is thread cyclic? \begin{DoxyReturn}{Returns}
+cyclic state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_a4f88c65bb031c89b2b0efd31c1c37fc5}\label{classPThreadClass_a4f88c65bb031c89b2b0efd31c1c37fc5}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!is\+Running@{is\+Running}}
+\index{is\+Running@{is\+Running}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{is\+Running()}{isRunning()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Is thread ready for execution? \begin{DoxyReturn}{Returns}
+running state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPThreadClass_afe4c0ea5bd3e1c89e01499bbca5e194d}\label{classPThreadClass_afe4c0ea5bd3e1c89e01499bbca5e194d}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!join@{join}}
+\index{join@{join}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::join (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Join attached thread after. 
+
+\mbox{\Hypertarget{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}\label{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!run@{run}}
+\index{run@{run}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+Initialize and run thread, make it ready to execute thread routine. 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPThreadClass_a7d320ee54f3a8f26fc4a3245c36f7df6}\label{classPThreadClass_a7d320ee54f3a8f26fc4a3245c36f7df6}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!set\+Cancel\+Type@{set\+Cancel\+Type}}
+\index{set\+Cancel\+Type@{set\+Cancel\+Type}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{set\+Cancel\+Type()}{setCancelType()}}
+{\footnotesize\ttfamily void P\+Thread\+Class\+::set\+Cancel\+Type (\begin{DoxyParamCaption}\item[{int}]{Cancel\+Type = {\ttfamily PTHREAD\+\_\+CANCEL\+\_\+DEFERRED} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classPThreadClass_ae217dc6602148a3a5be79089089dc807}\label{classPThreadClass_ae217dc6602148a3a5be79089089dc807}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!set\+Cyclic@{set\+Cyclic}}
+\index{set\+Cyclic@{set\+Cyclic}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{set\+Cyclic()}{setCyclic()}}
+{\footnotesize\ttfamily void P\+Thread\+Class\+::set\+Cyclic (\begin{DoxyParamCaption}\item[{bool}]{On }\end{DoxyParamCaption})}
+
+Set thread cyclic state. 
+\begin{DoxyParams}{Parameters}
+{\em On} & \+: true or false. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadClass_a9fd180b8c007384057618c2c5111e834}\label{classPThreadClass_a9fd180b8c007384057618c2c5111e834}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!set\+Policy@{set\+Policy}}
+\index{set\+Policy@{set\+Policy}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{set\+Policy()}{setPolicy()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::set\+Policy (\begin{DoxyParamCaption}\item[{int}]{Pol }\end{DoxyParamCaption})}
+
+Set thread scheduling policy.
+
+should be called before \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run()}. \begin{DoxyReturn}{Returns}
+success or fail of the operation. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Pol} & \+: P\+O\+S\+IX scheduling policy. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadClass_a8d6247e87165abb43186f1a03261f175}\label{classPThreadClass_a8d6247e87165abb43186f1a03261f175}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!set\+Priority@{set\+Priority}}
+\index{set\+Priority@{set\+Priority}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{set\+Priority()}{setPriority()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::set\+Priority (\begin{DoxyParamCaption}\item[{int}]{Prio }\end{DoxyParamCaption})}
+
+Set thread priority. \begin{DoxyReturn}{Returns}
+success or fail of the operation. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Prio} & \+: P\+O\+S\+IX priority level. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadClass_ad79d5e4fe69d0b77f5c16bf83259c3ad}\label{classPThreadClass_ad79d5e4fe69d0b77f5c16bf83259c3ad}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!set\+Scheduling\+Inheritance@{set\+Scheduling\+Inheritance}}
+\index{set\+Scheduling\+Inheritance@{set\+Scheduling\+Inheritance}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{set\+Scheduling\+Inheritance()}{setSchedulingInheritance()}}
+{\footnotesize\ttfamily int P\+Thread\+Class\+::set\+Scheduling\+Inheritance (\begin{DoxyParamCaption}\item[{int}]{Inheritance\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Scheduling policy inheritance setting
+
+should be called after \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run()}. 
+\begin{DoxyParams}{Parameters}
+{\em Inheritance\+Type} & \+: scheduling policy inheritance type P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+H\+E\+R\+I\+T\+\_\+\+S\+C\+H\+ED or P\+T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+P\+L\+I\+C\+I\+T\+\_\+\+S\+C\+H\+ED. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadClass_a637580a700f744236440695abe689efa}\label{classPThreadClass_a637580a700f744236440695abe689efa}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!set\+Stack\+Addr@{set\+Stack\+Addr}}
+\index{set\+Stack\+Addr@{set\+Stack\+Addr}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{set\+Stack\+Addr()}{setStackAddr()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::set\+Stack\+Addr (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+Stack }\end{DoxyParamCaption})}
+
+Set thread stack address.
+
+should be called before \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run()}. \begin{DoxyReturn}{Returns}
+success or fail of the operation. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Stack} & \+: stack address. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadClass_a25c4ea5d463a772ee3b916621e388bed}\label{classPThreadClass_a25c4ea5d463a772ee3b916621e388bed}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!set\+Stack\+Size@{set\+Stack\+Size}}
+\index{set\+Stack\+Size@{set\+Stack\+Size}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{set\+Stack\+Size()}{setStackSize()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::set\+Stack\+Size (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{Stack\+Size }\end{DoxyParamCaption})}
+
+Set thread stack address.
+
+should be called before \hyperlink{classPThreadClass_a9e60b014b8e8ba6892cc322b6ba183d8}{run()}. \begin{DoxyReturn}{Returns}
+success or fail of the operation. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Stack} & \+: stack address. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadClass_a88cda74fba292ade7054204a6833e8ac}\label{classPThreadClass_a88cda74fba292ade7054204a6833e8ac}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!set\+Time\+Out@{set\+Time\+Out}}
+\index{set\+Time\+Out@{set\+Time\+Out}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{set\+Time\+Out()}{setTimeOut()}}
+{\footnotesize\ttfamily void P\+Thread\+Class\+::set\+Time\+Out (\begin{DoxyParamCaption}\item[{unsigned long}]{Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set cyclic period. 
+\begin{DoxyParams}{Parameters}
+{\em Time} & \+: cyclic period in milliseconds. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadClass_a94862a3179469348fd89aefe9dac8244}\label{classPThreadClass_a94862a3179469348fd89aefe9dac8244}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!start@{start}}
+\index{start@{start}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+Start execution of thread routine. 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPThreadClass_a71e308a0324c76e20c504c037a3e7652}\label{classPThreadClass_a71e308a0324c76e20c504c037a3e7652}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!stop@{stop}}
+\index{stop@{stop}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Stop cyclic execution of thread routine. 
+
+\mbox{\Hypertarget{classPThreadClass_a012fe659b15bb0c0c19125ee0d1fa94e}\label{classPThreadClass_a012fe659b15bb0c0c19125ee0d1fa94e}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!thread\+Control\+Routine@{thread\+Control\+Routine}}
+\index{thread\+Control\+Routine@{thread\+Control\+Routine}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{thread\+Control\+Routine()}{threadControlRoutine()}}
+{\footnotesize\ttfamily void $\ast$ P\+Thread\+Class\+::thread\+Control\+Routine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Internal thread routine. 
+
+\mbox{\Hypertarget{classPThreadClass_a0639ba7f95bfe914271a2fe4b61003b1}\label{classPThreadClass_a0639ba7f95bfe914271a2fe4b61003b1}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!thread\+Launcher@{thread\+Launcher}}
+\index{thread\+Launcher@{thread\+Launcher}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{thread\+Launcher()}{threadLauncher()}}
+{\footnotesize\ttfamily static void$\ast$ P\+Thread\+Class\+::thread\+Launcher (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Thread launcher. 
+
+\mbox{\Hypertarget{classPThreadClass_a77732762f14058291d35bdbbc49018c6}\label{classPThreadClass_a77732762f14058291d35bdbbc49018c6}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!thread\+Loop@{thread\+Loop}}
+\index{thread\+Loop@{thread\+Loop}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{thread\+Loop()}{threadLoop()}}
+{\footnotesize\ttfamily void $\ast$ P\+Thread\+Class\+::thread\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Internal thread loop. 
+
+
+
+Reimplemented in \hyperlink{classPThreadExtended_a43d31ca653ffe314e400a48a77f8e0a9}{P\+Thread\+Extended}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classPThreadClass_a1905932de950f876dbff1d07e6824954}\label{classPThreadClass_a1905932de950f876dbff1d07e6824954}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Attached@{m\+\_\+\+Attached}}
+\index{m\+\_\+\+Attached@{m\+\_\+\+Attached}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Attached}{m\_Attached}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::m\+\_\+\+Attached\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Attached state. 
+
+\mbox{\Hypertarget{classPThreadClass_adf415e7e1021b7234ed371744a545daf}\label{classPThreadClass_adf415e7e1021b7234ed371744a545daf}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Cancel\+Type@{m\+\_\+\+Cancel\+Type}}
+\index{m\+\_\+\+Cancel\+Type@{m\+\_\+\+Cancel\+Type}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Cancel\+Type}{m\_CancelType}}
+{\footnotesize\ttfamily int P\+Thread\+Class\+::m\+\_\+\+Cancel\+Type\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classPThreadClass_a47d4ad65715d6d9bed6987212f05839a}\label{classPThreadClass_a47d4ad65715d6d9bed6987212f05839a}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Control\+Cond\+Var@{m\+\_\+\+Control\+Cond\+Var}}
+\index{m\+\_\+\+Control\+Cond\+Var@{m\+\_\+\+Control\+Cond\+Var}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Control\+Cond\+Var}{m\_ControlCondVar}}
+{\footnotesize\ttfamily \hyperlink{classCondVarClass}{Cond\+Var\+Class} P\+Thread\+Class\+::m\+\_\+\+Control\+Cond\+Var\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Internal condition variable. 
+
+\mbox{\Hypertarget{classPThreadClass_a6becb8dccddf8546a4091517c1cc5033}\label{classPThreadClass_a6becb8dccddf8546a4091517c1cc5033}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Cyclic@{m\+\_\+\+Cyclic}}
+\index{m\+\_\+\+Cyclic@{m\+\_\+\+Cyclic}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Cyclic}{m\_Cyclic}}
+{\footnotesize\ttfamily volatile bool P\+Thread\+Class\+::m\+\_\+\+Cyclic\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Cyclic state. 
+
+\mbox{\Hypertarget{classPThreadClass_a24f676a031214426786294fd15daca30}\label{classPThreadClass_a24f676a031214426786294fd15daca30}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+p\+Exit\+Condition@{m\+\_\+p\+Exit\+Condition}}
+\index{m\+\_\+p\+Exit\+Condition@{m\+\_\+p\+Exit\+Condition}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+p\+Exit\+Condition}{m\_pExitCondition}}
+{\footnotesize\ttfamily \hyperlink{classSpecificCondition}{Specific\+Condition}$\ast$ P\+Thread\+Class\+::m\+\_\+p\+Exit\+Condition\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Scpecified exit condipion variable. 
+
+\mbox{\Hypertarget{classPThreadClass_ae7da7ff84d5d96f3dae9d539a0ce8bcb}\label{classPThreadClass_ae7da7ff84d5d96f3dae9d539a0ce8bcb}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+p\+Start\+Condition@{m\+\_\+p\+Start\+Condition}}
+\index{m\+\_\+p\+Start\+Condition@{m\+\_\+p\+Start\+Condition}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+p\+Start\+Condition}{m\_pStartCondition}}
+{\footnotesize\ttfamily \hyperlink{classSpecificCondition}{Specific\+Condition}$\ast$ P\+Thread\+Class\+::m\+\_\+p\+Start\+Condition\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Scpecified start condipion variable. 
+
+\mbox{\Hypertarget{classPThreadClass_a1889576909d898228cc4e2eda3acbf8b}\label{classPThreadClass_a1889576909d898228cc4e2eda3acbf8b}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+p\+Wait\+Condition@{m\+\_\+p\+Wait\+Condition}}
+\index{m\+\_\+p\+Wait\+Condition@{m\+\_\+p\+Wait\+Condition}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+p\+Wait\+Condition}{m\_pWaitCondition}}
+{\footnotesize\ttfamily \hyperlink{classSpecificCondition}{Specific\+Condition}$\ast$ P\+Thread\+Class\+::m\+\_\+p\+Wait\+Condition\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Scpecified wait condipion variable. 
+
+\mbox{\Hypertarget{classPThreadClass_a390356f43f2203acb2c0abd0f41fe9a1}\label{classPThreadClass_a390356f43f2203acb2c0abd0f41fe9a1}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Running@{m\+\_\+\+Running}}
+\index{m\+\_\+\+Running@{m\+\_\+\+Running}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Running}{m\_Running}}
+{\footnotesize\ttfamily bool P\+Thread\+Class\+::m\+\_\+\+Running\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Running state. 
+
+\mbox{\Hypertarget{classPThreadClass_a21352db28ed04eabcb2d7e353c886319}\label{classPThreadClass_a21352db28ed04eabcb2d7e353c886319}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Start\+Time@{m\+\_\+\+Start\+Time}}
+\index{m\+\_\+\+Start\+Time@{m\+\_\+\+Start\+Time}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Start\+Time}{m\_StartTime}}
+{\footnotesize\ttfamily struct timeb P\+Thread\+Class\+::m\+\_\+\+Start\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Start time of cycle. 
+
+\mbox{\Hypertarget{classPThreadClass_a1c637c9e20fb8ccbd8bd9e5431c31883}\label{classPThreadClass_a1c637c9e20fb8ccbd8bd9e5431c31883}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Thread\+Attribute@{m\+\_\+\+Thread\+Attribute}}
+\index{m\+\_\+\+Thread\+Attribute@{m\+\_\+\+Thread\+Attribute}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Thread\+Attribute}{m\_ThreadAttribute}}
+{\footnotesize\ttfamily pthread\+\_\+attr\+\_\+t P\+Thread\+Class\+::m\+\_\+\+Thread\+Attribute\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+P\+O\+S\+IX thread attributes. 
+
+\mbox{\Hypertarget{classPThreadClass_a10ae0a7572009a65e961e14e00368f04}\label{classPThreadClass_a10ae0a7572009a65e961e14e00368f04}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Thread\+Id@{m\+\_\+\+Thread\+Id}}
+\index{m\+\_\+\+Thread\+Id@{m\+\_\+\+Thread\+Id}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Thread\+Id}{m\_ThreadId}}
+{\footnotesize\ttfamily pthread\+\_\+t P\+Thread\+Class\+::m\+\_\+\+Thread\+Id\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+P\+O\+S\+IX thread ID. 
+
+\mbox{\Hypertarget{classPThreadClass_a80e0b0007257f5c9ef8d74ddacac4113}\label{classPThreadClass_a80e0b0007257f5c9ef8d74ddacac4113}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Thread\+Routine@{m\+\_\+\+Thread\+Routine}}
+\index{m\+\_\+\+Thread\+Routine@{m\+\_\+\+Thread\+Routine}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Thread\+Routine}{m\_ThreadRoutine}}
+{\footnotesize\ttfamily \hyperlink{structRunnable}{Runnable} P\+Thread\+Class\+::m\+\_\+\+Thread\+Routine\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Thread riotines structure. 
+
+\mbox{\Hypertarget{classPThreadClass_a73118712c992ed9921a928cf676bf4d6}\label{classPThreadClass_a73118712c992ed9921a928cf676bf4d6}} 
+\index{P\+Thread\+Class@{P\+Thread\+Class}!m\+\_\+\+Time\+Out@{m\+\_\+\+Time\+Out}}
+\index{m\+\_\+\+Time\+Out@{m\+\_\+\+Time\+Out}!P\+Thread\+Class@{P\+Thread\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Time\+Out}{m\_TimeOut}}
+{\footnotesize\ttfamily unsigned long P\+Thread\+Class\+::m\+\_\+\+Time\+Out\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Cyclic period value. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PThreadClass_8h}{P\+Thread\+Class.\+h}\item 
+\hyperlink{PThreadClass_8cpp}{P\+Thread\+Class.\+cpp}\end{DoxyCompactItemize}

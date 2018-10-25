@@ -1,0 +1,47 @@
+\hypertarget{classBaseException}{}\section{Base\+Exception Class Reference}
+\label{classBaseException}\index{Base\+Exception@{Base\+Exception}}
+
+
+{\ttfamily \#include $<$Base\+Exception.\+h$>$}
+
+
+
+Inheritance diagram for Base\+Exception\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{classBaseException__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__EXCEPT__GROUP_ga50ebb96feb32366ffc4e992ae5b95e31}{Base\+Exception} (const char $\ast$File\+Name, int Line\+Num)
+\item 
+\hyperlink{group__EXCEPT__GROUP_ga7b53cdc179f7919010bd7e22c32081e7}{Base\+Exception} (const \hyperlink{classBaseException}{Base\+Exception} \&exp)
+\item 
+virtual \hyperlink{group__EXCEPT__GROUP_gabc351b149be47d3e078dc04b9b5c8891}{$\sim$\+Base\+Exception} ()
+\item 
+virtual const char $\ast$ \hyperlink{group__EXCEPT__GROUP_gaf092dd6587491cd7a8cdd987597b1018}{what} ()
+\item 
+const char $\ast$ \hyperlink{group__EXCEPT__GROUP_gaeea140646898fbe7642cd2dc13b2b22c}{get\+File\+Name} ()
+\item 
+int \hyperlink{group__EXCEPT__GROUP_ga70bef940bbfd7bb2cc50b8150e1bded2}{get\+Line\+Num} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{group__EXCEPT__GROUP_gab2b4ea653318d8effd1d4d6d3cdc53d2}{m\+\_\+\+File\+Name} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer for filename of the exception source. \end{DoxyCompactList}\item 
+int \hyperlink{group__EXCEPT__GROUP_ga40bdabd0e0187fc6738ce0c44564da99}{m\+\_\+\+Line\+Num}
+\begin{DoxyCompactList}\small\item\em Line number of the exception source. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{group__EXCEPT__GROUP_gad3dcd3ea212b160842c33b62955c4ff9}{repstr}
+\begin{DoxyCompactList}\small\item\em String for the exception report will be build to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for socket class library exceptions 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{BaseException_8h}{Base\+Exception.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,102 @@
+\hypertarget{classPBarrierClass}{}\section{P\+Barrier\+Class Class Reference}
+\label{classPBarrierClass}\index{P\+Barrier\+Class@{P\+Barrier\+Class}}
+
+
+{\ttfamily \#include $<$P\+Barrier\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPBarrierClass_ac10aa9da8e6abd94c8ea2f3ec16b0465}{P\+Barrier\+Class} (int Counter) noexcept(false)
+\item 
+virtual \hyperlink{classPBarrierClass_ae2b26bf61dbb556584701967d1769658}{$\sim$\+P\+Barrier\+Class} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classPBarrierClass_a7baf6225e2044591a1ef6f509d6dc1b1}{wait} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+barrier\+\_\+t \hyperlink{classPBarrierClass_a7ba33e81f5f045ff89f215077b562c60}{m\+\_\+\+Barrier}
+\begin{DoxyCompactList}\small\item\em P\+O\+S\+IX barrier. \end{DoxyCompactList}\item 
+pthread\+\_\+barrierattr\+\_\+t \hyperlink{classPBarrierClass_aef1dd3e10cedc850d14023d17b58d2a6}{m\+\_\+\+Barrier\+Attribute}
+\begin{DoxyCompactList}\small\item\em P\+O\+S\+IX barrier attribute. \end{DoxyCompactList}\item 
+bool \hyperlink{classPBarrierClass_a7413466ef1598d299dcc7bdc023e0414}{Ok}
+\begin{DoxyCompactList}\small\item\em Health status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper on P\+O\+S\+IX barrier. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPBarrierClass_ac10aa9da8e6abd94c8ea2f3ec16b0465}\label{classPBarrierClass_ac10aa9da8e6abd94c8ea2f3ec16b0465}} 
+\index{P\+Barrier\+Class@{P\+Barrier\+Class}!P\+Barrier\+Class@{P\+Barrier\+Class}}
+\index{P\+Barrier\+Class@{P\+Barrier\+Class}!P\+Barrier\+Class@{P\+Barrier\+Class}}
+\subsubsection{\texorpdfstring{P\+Barrier\+Class()}{PBarrierClass()}}
+{\footnotesize\ttfamily P\+Barrier\+Class\+::\+P\+Barrier\+Class (\begin{DoxyParamCaption}\item[{int}]{Counter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Constructor. 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPBarrierClass_ae2b26bf61dbb556584701967d1769658}\label{classPBarrierClass_ae2b26bf61dbb556584701967d1769658}} 
+\index{P\+Barrier\+Class@{P\+Barrier\+Class}!````~P\+Barrier\+Class@{$\sim$\+P\+Barrier\+Class}}
+\index{````~P\+Barrier\+Class@{$\sim$\+P\+Barrier\+Class}!P\+Barrier\+Class@{P\+Barrier\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+P\+Barrier\+Class()}{~PBarrierClass()}}
+{\footnotesize\ttfamily P\+Barrier\+Class\+::$\sim$\+P\+Barrier\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPBarrierClass_a7baf6225e2044591a1ef6f509d6dc1b1}\label{classPBarrierClass_a7baf6225e2044591a1ef6f509d6dc1b1}} 
+\index{P\+Barrier\+Class@{P\+Barrier\+Class}!wait@{wait}}
+\index{wait@{wait}!P\+Barrier\+Class@{P\+Barrier\+Class}}
+\subsubsection{\texorpdfstring{wait()}{wait()}}
+{\footnotesize\ttfamily int P\+Barrier\+Class\+::wait (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Wait for all threads at the barrier. \begin{DoxyReturn}{Returns}
+result of wait operation (0 -\/ success). 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classPBarrierClass_a7ba33e81f5f045ff89f215077b562c60}\label{classPBarrierClass_a7ba33e81f5f045ff89f215077b562c60}} 
+\index{P\+Barrier\+Class@{P\+Barrier\+Class}!m\+\_\+\+Barrier@{m\+\_\+\+Barrier}}
+\index{m\+\_\+\+Barrier@{m\+\_\+\+Barrier}!P\+Barrier\+Class@{P\+Barrier\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Barrier}{m\_Barrier}}
+{\footnotesize\ttfamily pthread\+\_\+barrier\+\_\+t P\+Barrier\+Class\+::m\+\_\+\+Barrier\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+P\+O\+S\+IX barrier. 
+
+\mbox{\Hypertarget{classPBarrierClass_aef1dd3e10cedc850d14023d17b58d2a6}\label{classPBarrierClass_aef1dd3e10cedc850d14023d17b58d2a6}} 
+\index{P\+Barrier\+Class@{P\+Barrier\+Class}!m\+\_\+\+Barrier\+Attribute@{m\+\_\+\+Barrier\+Attribute}}
+\index{m\+\_\+\+Barrier\+Attribute@{m\+\_\+\+Barrier\+Attribute}!P\+Barrier\+Class@{P\+Barrier\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Barrier\+Attribute}{m\_BarrierAttribute}}
+{\footnotesize\ttfamily pthread\+\_\+barrierattr\+\_\+t P\+Barrier\+Class\+::m\+\_\+\+Barrier\+Attribute\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+P\+O\+S\+IX barrier attribute. 
+
+\mbox{\Hypertarget{classPBarrierClass_a7413466ef1598d299dcc7bdc023e0414}\label{classPBarrierClass_a7413466ef1598d299dcc7bdc023e0414}} 
+\index{P\+Barrier\+Class@{P\+Barrier\+Class}!Ok@{Ok}}
+\index{Ok@{Ok}!P\+Barrier\+Class@{P\+Barrier\+Class}}
+\subsubsection{\texorpdfstring{Ok}{Ok}}
+{\footnotesize\ttfamily bool P\+Barrier\+Class\+::\+Ok\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Health status. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PBarrierClass_8h}{P\+Barrier\+Class.\+h}\item 
+\hyperlink{PBarrierClass_8cpp}{P\+Barrier\+Class.\+cpp}\end{DoxyCompactItemize}

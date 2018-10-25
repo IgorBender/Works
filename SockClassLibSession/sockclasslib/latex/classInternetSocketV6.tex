@@ -1,0 +1,114 @@
+\hypertarget{classInternetSocketV6}{}\section{Internet\+Socket\+V6 Class Reference}
+\label{classInternetSocketV6}\index{Internet\+Socket\+V6@{Internet\+Socket\+V6}}
+
+
+{\ttfamily \#include $<$Internet\+Socket\+V6.\+h$>$}
+
+
+
+Inheritance diagram for Internet\+Socket\+V6\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classInternetSocketV6__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInternetSocketV6_a9be445b17d5fc20a56c95a129f4e3bfd}{Internet\+Socket\+V6} (\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} type=\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE}, int protocol=0)
+\item 
+virtual \hyperlink{classInternetSocketV6_aa91c9ad4f01dd5c7a305cc868d46af2c}{$\sim$\+Internet\+Socket\+V6} ()
+\item 
+void \hyperlink{classInternetSocketV6_a6150f7fdce307a1b4dd0adf20cafbc54}{set\+Ip\+Level\+Opt} (int Opt, const char $\ast$Value, int Opt\+Len)
+\item 
+void \hyperlink{classInternetSocketV6_a455f355f674add52641d4713c42f8f6b}{get\+Ip\+Level\+Opt} (int Opt, char $\ast$Value, int $\ast$Opt\+Len)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInternetSocketV6_a30243b27e0d83abaacd9c8c170fd684b}{Internet\+Socket\+V6} (int sock, \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} type=\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE}, int protocol=0)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+I\+Pv6 base abstract class. Is base for all kinds of I\+Pv6 sockets. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classInternetSocketV6_a9be445b17d5fc20a56c95a129f4e3bfd}\label{classInternetSocketV6_a9be445b17d5fc20a56c95a129f4e3bfd}} 
+\index{Internet\+Socket\+V6@{Internet\+Socket\+V6}!Internet\+Socket\+V6@{Internet\+Socket\+V6}}
+\index{Internet\+Socket\+V6@{Internet\+Socket\+V6}!Internet\+Socket\+V6@{Internet\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Internet\+Socket\+V6()}{InternetSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Internet\+Socket\+V6\+::\+Internet\+Socket\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type}}]{type = {\ttfamily \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE}},  }\item[{int}]{protocol = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor. Default constructor. \mbox{\Hypertarget{classInternetSocketV6_aa91c9ad4f01dd5c7a305cc868d46af2c}\label{classInternetSocketV6_aa91c9ad4f01dd5c7a305cc868d46af2c}} 
+\index{Internet\+Socket\+V6@{Internet\+Socket\+V6}!````~Internet\+Socket\+V6@{$\sim$\+Internet\+Socket\+V6}}
+\index{````~Internet\+Socket\+V6@{$\sim$\+Internet\+Socket\+V6}!Internet\+Socket\+V6@{Internet\+Socket\+V6}}
+\subsubsection{\texorpdfstring{$\sim$\+Internet\+Socket\+V6()}{~InternetSocketV6()}}
+{\footnotesize\ttfamily virtual Internet\+Socket\+V6\+::$\sim$\+Internet\+Socket\+V6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classInternetSocketV6_a30243b27e0d83abaacd9c8c170fd684b}\label{classInternetSocketV6_a30243b27e0d83abaacd9c8c170fd684b}} 
+\index{Internet\+Socket\+V6@{Internet\+Socket\+V6}!Internet\+Socket\+V6@{Internet\+Socket\+V6}}
+\index{Internet\+Socket\+V6@{Internet\+Socket\+V6}!Internet\+Socket\+V6@{Internet\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Internet\+Socket\+V6()}{InternetSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Internet\+Socket\+V6\+::\+Internet\+Socket\+V6 (\begin{DoxyParamCaption}\item[{int}]{sock,  }\item[{\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type}}]{type = {\ttfamily \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE}},  }\item[{int}]{protocol = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Constructor. Constructs socket on given socket file descriptor/handle. 
+\begin{DoxyParams}{Parameters}
+{\em sock} & \+: socket file descriptor/handle. \\
+\hline
+{\em type} & \+: socket type. \\
+\hline
+{\em protocol} & \+: socket protocol. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classInternetSocketV6_a455f355f674add52641d4713c42f8f6b}\label{classInternetSocketV6_a455f355f674add52641d4713c42f8f6b}} 
+\index{Internet\+Socket\+V6@{Internet\+Socket\+V6}!get\+Ip\+Level\+Opt@{get\+Ip\+Level\+Opt}}
+\index{get\+Ip\+Level\+Opt@{get\+Ip\+Level\+Opt}!Internet\+Socket\+V6@{Internet\+Socket\+V6}}
+\subsubsection{\texorpdfstring{get\+Ip\+Level\+Opt()}{getIpLevelOpt()}}
+{\footnotesize\ttfamily void Internet\+Socket\+V6\+::get\+Ip\+Level\+Opt (\begin{DoxyParamCaption}\item[{int}]{Opt,  }\item[{char $\ast$}]{Value,  }\item[{int $\ast$}]{Opt\+Len }\end{DoxyParamCaption})}
+
+Deliver I\+Pv6 level option. 
+\begin{DoxyParams}{Parameters}
+{\em Opt} & \+: option type. \\
+\hline
+{\em Value} & \+: option value. \\
+\hline
+{\em Opt\+Len} & \+: option value length. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classInternetSocketV6_a6150f7fdce307a1b4dd0adf20cafbc54}\label{classInternetSocketV6_a6150f7fdce307a1b4dd0adf20cafbc54}} 
+\index{Internet\+Socket\+V6@{Internet\+Socket\+V6}!set\+Ip\+Level\+Opt@{set\+Ip\+Level\+Opt}}
+\index{set\+Ip\+Level\+Opt@{set\+Ip\+Level\+Opt}!Internet\+Socket\+V6@{Internet\+Socket\+V6}}
+\subsubsection{\texorpdfstring{set\+Ip\+Level\+Opt()}{setIpLevelOpt()}}
+{\footnotesize\ttfamily void Internet\+Socket\+V6\+::set\+Ip\+Level\+Opt (\begin{DoxyParamCaption}\item[{int}]{Opt,  }\item[{const char $\ast$}]{Value,  }\item[{int}]{Opt\+Len }\end{DoxyParamCaption})}
+
+Set I\+Pv6 level option. 
+\begin{DoxyParams}{Parameters}
+{\em Opt} & \+: option type. \\
+\hline
+{\em Value} & \+: option value. \\
+\hline
+{\em Opt\+Len} & \+: option value length. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{InternetSocketV6_8h}{Internet\+Socket\+V6.\+h}\item 
+\hyperlink{InternetSocketV6_8cpp}{Internet\+Socket\+V6.\+cpp}\end{DoxyCompactItemize}

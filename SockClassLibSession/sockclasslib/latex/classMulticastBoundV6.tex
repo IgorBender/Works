@@ -1,0 +1,178 @@
+\hypertarget{classMulticastBoundV6}{}\section{Multicast\+Bound\+V6 Class Reference}
+\label{classMulticastBoundV6}\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+
+
+I\+Pv4 socket capable to receive multicast datagrams.  
+
+
+
+
+{\ttfamily \#include $<$Multicast\+Bound\+V6.\+h$>$}
+
+
+
+Inheritance diagram for Multicast\+Bound\+V6\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMulticastBoundV6__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMulticastBoundV6_aeff8613d8b6c8c7e5ecbdbbc2b73bf8a}{Multicast\+Bound\+V6} (short Port, in6\+\_\+addr Address=in6addr\+\_\+any)
+\item 
+\hyperlink{classMulticastBoundV6_a90c23a309b94b8e997dff8177a478ab2}{Multicast\+Bound\+V6} (short Port, const char $\ast$Address)
+\item 
+void \hyperlink{classMulticastBoundV6_a8ad4a26d4469cc1ffd3f451d4ce8ebd9}{join\+Group} (in6\+\_\+addr Group)
+\item 
+void \hyperlink{classMulticastBoundV6_a7264da712de9e131b3a3ab1e8a86942a}{leave\+Group} (in6\+\_\+addr Group)
+\item 
+void \hyperlink{classMulticastBoundV6_a94ea6a1c81af951376b82d23d58a7acd}{leave\+All\+Groups} ()
+\item 
+\hyperlink{MulticastBound_8h_a9584173a620a338ea7d88264229e36dd}{Groups\+List\+Type} $\ast$ \hyperlink{classMulticastBoundV6_afcb2560007274a519ed11101bc95fbee}{get\+Groups} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{MulticastBound_8h_a9584173a620a338ea7d88264229e36dd}{Groups\+List\+Type} \hyperlink{classMulticastBoundV6_a6ccdbb56f54017f5a4372eb816b5b077}{Groups\+List}
+\begin{DoxyCompactList}\small\item\em Joined multicast groups list. \end{DoxyCompactList}\item 
+in6\+\_\+addr \hyperlink{classMulticastBoundV6_a792a38740cf29b50fb74785b12358988}{Addr}
+\begin{DoxyCompactList}\small\item\em Bound address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMulticastBoundV6_a207359a0e4b496dfe9a00ceb33be4c18}{Multicast\+Bound\+V6} (\hyperlink{classMulticastBoundV6}{Multicast\+Bound\+V6} \&s)
+\item 
+\hyperlink{classMulticastBoundV6}{Multicast\+Bound\+V6} \& \hyperlink{classMulticastBoundV6_a5bcf54776fe97dd2ffd26a36de092284}{operator=} (\hyperlink{classMulticastBoundV6}{Multicast\+Bound\+V6} \&)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+I\+Pv4 socket capable to receive multicast datagrams. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMulticastBoundV6_aeff8613d8b6c8c7e5ecbdbbc2b73bf8a}\label{classMulticastBoundV6_aeff8613d8b6c8c7e5ecbdbbc2b73bf8a}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Multicast\+Bound\+V6()}{MulticastBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Multicast\+Bound\+V6\+::\+Multicast\+Bound\+V6 (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{in6\+\_\+addr}]{Address = {\ttfamily in6addr\+\_\+any} }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: address for bind in network byte order. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastBoundV6_a90c23a309b94b8e997dff8177a478ab2}\label{classMulticastBoundV6_a90c23a309b94b8e997dff8177a478ab2}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Multicast\+Bound\+V6()}{MulticastBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Multicast\+Bound\+V6\+::\+Multicast\+Bound\+V6 (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{const char $\ast$}]{Address }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: address for bind in textual notation. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastBoundV6_a207359a0e4b496dfe9a00ceb33be4c18}\label{classMulticastBoundV6_a207359a0e4b496dfe9a00ceb33be4c18}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Multicast\+Bound\+V6()}{MulticastBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Multicast\+Bound\+V6\+::\+Multicast\+Bound\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{classMulticastBoundV6}{Multicast\+Bound\+V6} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMulticastBoundV6_afcb2560007274a519ed11101bc95fbee}\label{classMulticastBoundV6_afcb2560007274a519ed11101bc95fbee}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!get\+Groups@{get\+Groups}}
+\index{get\+Groups@{get\+Groups}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{get\+Groups()}{getGroups()}}
+{\footnotesize\ttfamily \hyperlink{MulticastBound_8h_a9584173a620a338ea7d88264229e36dd}{Groups\+List\+Type}$\ast$ Multicast\+Bound\+V6\+::get\+Groups (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get list of joined multicast groups. \begin{DoxyReturn}{Returns}
+group list pointer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMulticastBoundV6_a8ad4a26d4469cc1ffd3f451d4ce8ebd9}\label{classMulticastBoundV6_a8ad4a26d4469cc1ffd3f451d4ce8ebd9}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!join\+Group@{join\+Group}}
+\index{join\+Group@{join\+Group}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{join\+Group()}{joinGroup()}}
+{\footnotesize\ttfamily void Multicast\+Bound\+V6\+::join\+Group (\begin{DoxyParamCaption}\item[{in6\+\_\+addr}]{Group }\end{DoxyParamCaption})}
+
+Join multicast group. Param Group \+: multicast group address in network byte order. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastBoundV6_a94ea6a1c81af951376b82d23d58a7acd}\label{classMulticastBoundV6_a94ea6a1c81af951376b82d23d58a7acd}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!leave\+All\+Groups@{leave\+All\+Groups}}
+\index{leave\+All\+Groups@{leave\+All\+Groups}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{leave\+All\+Groups()}{leaveAllGroups()}}
+{\footnotesize\ttfamily void Multicast\+Bound\+V6\+::leave\+All\+Groups (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Leave all multicast groups previously joined. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastBoundV6_a7264da712de9e131b3a3ab1e8a86942a}\label{classMulticastBoundV6_a7264da712de9e131b3a3ab1e8a86942a}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!leave\+Group@{leave\+Group}}
+\index{leave\+Group@{leave\+Group}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{leave\+Group()}{leaveGroup()}}
+{\footnotesize\ttfamily void Multicast\+Bound\+V6\+::leave\+Group (\begin{DoxyParamCaption}\item[{in6\+\_\+addr}]{Group }\end{DoxyParamCaption})}
+
+Leave multicast group. Param Group \+: multicast group address in network byte order. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastBoundV6_a5bcf54776fe97dd2ffd26a36de092284}\label{classMulticastBoundV6_a5bcf54776fe97dd2ffd26a36de092284}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!operator=@{operator=}}
+\index{operator=@{operator=}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classMulticastBoundV6}{Multicast\+Bound\+V6}\& Multicast\+Bound\+V6\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classMulticastBoundV6}{Multicast\+Bound\+V6} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classMulticastBoundV6_a792a38740cf29b50fb74785b12358988}\label{classMulticastBoundV6_a792a38740cf29b50fb74785b12358988}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!Addr@{Addr}}
+\index{Addr@{Addr}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Addr}{Addr}}
+{\footnotesize\ttfamily in6\+\_\+addr Multicast\+Bound\+V6\+::\+Addr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Bound address. 
+
+\mbox{\Hypertarget{classMulticastBoundV6_a6ccdbb56f54017f5a4372eb816b5b077}\label{classMulticastBoundV6_a6ccdbb56f54017f5a4372eb816b5b077}} 
+\index{Multicast\+Bound\+V6@{Multicast\+Bound\+V6}!Groups\+List@{Groups\+List}}
+\index{Groups\+List@{Groups\+List}!Multicast\+Bound\+V6@{Multicast\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Groups\+List}{GroupsList}}
+{\footnotesize\ttfamily \hyperlink{MulticastBound_8h_a9584173a620a338ea7d88264229e36dd}{Groups\+List\+Type} Multicast\+Bound\+V6\+::\+Groups\+List\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Joined multicast groups list. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{MulticastBoundV6_8h}{Multicast\+Bound\+V6.\+h}\item 
+\hyperlink{MulticastBoundV6_8cpp}{Multicast\+Bound\+V6.\+cpp}\end{DoxyCompactItemize}

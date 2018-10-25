@@ -1,0 +1,267 @@
+\hypertarget{group__EXCEPT__GROUP}{}\section{Exceptions Group}
+\label{group__EXCEPT__GROUP}\index{Exceptions Group@{Exceptions Group}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classPThreadBaseException}{P\+Thread\+Base\+Exception}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__EXCEPT__GROUP_gaf6a9cbd32371e5892a6b4190928651dd}{P\+T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+R\+A\+MS}~\+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+
+\begin{DoxyCompactList}\small\item\em Exception parameters includes filename and line number. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__EXCEPT__GROUP_ga5db5dc006d9e017998d2def9ce105503}{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+T\+H\+R\+OW}(x)
+\begin{DoxyCompactList}\small\item\em Throw exception based on filename and line number. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__EXCEPT__GROUP_ga30ed89be31363fd6edbdf69c667f6a6e}{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+N\+D\+\_\+\+R\+A\+I\+SE}(x)
+\begin{DoxyCompactList}\small\item\em Catch and re-\/throw an exception. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__EXCEPT__GROUP_ga0c52d227f70b6081ba66c3139a4e93f4}{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+I\+N\+\_\+\+N\+O\+R\+EP}
+\begin{DoxyCompactList}\small\item\em Begin catch block with no reporter. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__EXCEPT__GROUP_gaf7630fb76915f40ee3d6f7499a20671d}{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+IN}(x)
+\begin{DoxyCompactList}\small\item\em Begin catch block. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__EXCEPT__GROUP_gac9a9fa6b62369772230ad12ff2b51e89}{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+LL}(x)
+\begin{DoxyCompactList}\small\item\em Catch all -\/ aka catch(...). \end{DoxyCompactList}\item 
+\#define \hyperlink{group__EXCEPT__GROUP_gab885e9554b19d207b874259b5c5fd9be}{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+E\+ND}~\}
+\begin{DoxyCompactList}\small\item\em End catch block. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__EXCEPT__GROUP_ga517202bf1ba7e87014662a560bbcb43c}{T\+H\+R\+E\+A\+D\+\_\+\+T\+RY}~try
+\begin{DoxyCompactList}\small\item\em Begin try block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__EXCEPT__GROUP_ga479c992ccbf4a39cd707a27906925601}{P\+Thread\+Base\+Exception\+::\+P\+Thread\+Base\+Exception} (const char $\ast$File\+Name, int Line\+Num)
+\item 
+\hyperlink{group__EXCEPT__GROUP_gaf6dded31d5ab6283d588f99a702241ec}{P\+Thread\+Base\+Exception\+::\+P\+Thread\+Base\+Exception} (const \hyperlink{classPThreadBaseException}{P\+Thread\+Base\+Exception} \&exp)
+\item 
+virtual \hyperlink{group__EXCEPT__GROUP_gae4edc60cd7923ef9305a1312cdbc9fc1}{P\+Thread\+Base\+Exception\+::$\sim$\+P\+Thread\+Base\+Exception} ()
+\item 
+virtual const char $\ast$ \hyperlink{group__EXCEPT__GROUP_ga4389169c01caec3fe93ac45a5d69a9ec}{P\+Thread\+Base\+Exception\+::what} ()
+\item 
+const char $\ast$ \hyperlink{group__EXCEPT__GROUP_ga4d72952887facf12a96971e964d3427b}{P\+Thread\+Base\+Exception\+::get\+File\+Name} ()
+\item 
+int \hyperlink{group__EXCEPT__GROUP_ga7a06d992e2dbfa1d283e6c6fb209fd62}{P\+Thread\+Base\+Exception\+::get\+Line\+Num} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{group__EXCEPT__GROUP_gace215cb27c8b35eae74d51e9a18f5bfa}{P\+Thread\+Base\+Exception\+::m\+\_\+\+File\+Name} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer for filename of the exception source. \end{DoxyCompactList}\item 
+int \hyperlink{group__EXCEPT__GROUP_ga14fc21c1387d9427ec22d7712c509517}{P\+Thread\+Base\+Exception\+::m\+\_\+\+Line\+Num}
+\begin{DoxyCompactList}\small\item\em Line number of the exception source. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{group__EXCEPT__GROUP_ga13ce50b63f814e93fc17c484fc28fcd6}{P\+Thread\+Base\+Exception\+::repstr}
+\begin{DoxyCompactList}\small\item\em String for the exception report will be build to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__EXCEPT__GROUP_gaf6a9cbd32371e5892a6b4190928651dd}\label{group__EXCEPT__GROUP_gaf6a9cbd32371e5892a6b4190928651dd}} 
+\index{Exceptions Group@{Exceptions Group}!P\+T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+R\+A\+MS@{P\+T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+R\+A\+MS}}
+\index{P\+T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+R\+A\+MS@{P\+T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+R\+A\+MS}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{P\+T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+R\+A\+MS}{PTHREAD\_EXCEPTION\_PARAMS}}
+{\footnotesize\ttfamily \#define P\+T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+P\+A\+R\+A\+MS~\+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+}
+
+
+
+Exception parameters includes filename and line number. 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_gac9a9fa6b62369772230ad12ff2b51e89}\label{group__EXCEPT__GROUP_gac9a9fa6b62369772230ad12ff2b51e89}} 
+\index{Exceptions Group@{Exceptions Group}!T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+LL@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+LL}}
+\index{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+LL@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+LL}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+LL}{THREAD\_EXCEPT\_CATCH\_ALL}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+LL(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\} \(\backslash\)
+    catch(...) \{ \(\backslash\)
+        if(x) \{ \(\backslash\)
+            x << \textcolor{stringliteral}{"Unknown exception"} << std::endl << std::flush; \(\backslash\)
+        \}
+\end{DoxyCode}
+
+
+Catch all -\/ aka catch(...). 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga30ed89be31363fd6edbdf69c667f6a6e}\label{group__EXCEPT__GROUP_ga30ed89be31363fd6edbdf69c667f6a6e}} 
+\index{Exceptions Group@{Exceptions Group}!T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+N\+D\+\_\+\+R\+A\+I\+SE@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+N\+D\+\_\+\+R\+A\+I\+SE}}
+\index{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+N\+D\+\_\+\+R\+A\+I\+SE@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+N\+D\+\_\+\+R\+A\+I\+SE}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+N\+D\+\_\+\+R\+A\+I\+SE}{THREAD\_EXCEPT\_CATCH\_AND\_RAISE}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+A\+N\+D\+\_\+\+R\+A\+I\+SE(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{catch}(\hyperlink{classThreadException}{ThreadException}&) \{ \(\backslash\)
+        throw; \(\backslash\)
+    \}
+\end{DoxyCode}
+
+
+Catch and re-\/throw an exception. 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_gaf7630fb76915f40ee3d6f7499a20671d}\label{group__EXCEPT__GROUP_gaf7630fb76915f40ee3d6f7499a20671d}} 
+\index{Exceptions Group@{Exceptions Group}!T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+IN@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+IN}}
+\index{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+IN@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+IN}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+IN}{THREAD\_EXCEPT\_CATCH\_BEGIN}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+IN(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{catch}(\hyperlink{classThreadException}{ThreadException}& exc) \{ \(\backslash\)
+        if(x) \{ \(\backslash\)
+            x << \textcolor{stringliteral}{"******"} << std::endl; \(\backslash\)
+            x << exc.\hyperlink{classThreadException_a3b8dcf8e441a9cba0539ca2455087e57}{what}(); \(\backslash\)
+            x << \textcolor{stringliteral}{"******"} << std::endl << std::endl << std::flush; \(\backslash\)
+        \}
+\end{DoxyCode}
+
+
+Begin catch block. 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga0c52d227f70b6081ba66c3139a4e93f4}\label{group__EXCEPT__GROUP_ga0c52d227f70b6081ba66c3139a4e93f4}} 
+\index{Exceptions Group@{Exceptions Group}!T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+I\+N\+\_\+\+N\+O\+R\+EP@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+I\+N\+\_\+\+N\+O\+R\+EP}}
+\index{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+I\+N\+\_\+\+N\+O\+R\+EP@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+I\+N\+\_\+\+N\+O\+R\+EP}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+I\+N\+\_\+\+N\+O\+R\+EP}{THREAD\_EXCEPT\_CATCH\_BEGIN\_NOREP}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+B\+E\+G\+I\+N\+\_\+\+N\+O\+R\+EP}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{catch}(\hyperlink{classThreadException}{ThreadException}& exc) \{ \(\backslash\)
+        exc.what();
+\end{DoxyCode}
+
+
+Begin catch block with no reporter. 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_gab885e9554b19d207b874259b5c5fd9be}\label{group__EXCEPT__GROUP_gab885e9554b19d207b874259b5c5fd9be}} 
+\index{Exceptions Group@{Exceptions Group}!T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+E\+ND@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+E\+ND}}
+\index{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+E\+ND@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+E\+ND}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+E\+ND}{THREAD\_EXCEPT\_CATCH\_END}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+C\+A\+T\+C\+H\+\_\+\+E\+ND~\}}
+
+
+
+End catch block. 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga5db5dc006d9e017998d2def9ce105503}\label{group__EXCEPT__GROUP_ga5db5dc006d9e017998d2def9ce105503}} 
+\index{Exceptions Group@{Exceptions Group}!T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+T\+H\+R\+OW@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+T\+H\+R\+OW}}
+\index{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+T\+H\+R\+OW@{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+T\+H\+R\+OW}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+T\+H\+R\+OW}{THREAD\_EXCEPT\_THROW}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+A\+D\+\_\+\+E\+X\+C\+E\+P\+T\+\_\+\+T\+H\+R\+OW(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{classThreadException}{ThreadException} THREAD\_EXCEPT(\hyperlink{group__EXCEPT__GROUP_gaf6a9cbd32371e5892a6b4190928651dd}{PTHREAD\_EXCEPTION\_PARAMS}, x); \(\backslash\)
+    throw(THREAD\_EXCEPT)
+\end{DoxyCode}
+
+
+Throw exception based on filename and line number. 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga517202bf1ba7e87014662a560bbcb43c}\label{group__EXCEPT__GROUP_ga517202bf1ba7e87014662a560bbcb43c}} 
+\index{Exceptions Group@{Exceptions Group}!T\+H\+R\+E\+A\+D\+\_\+\+T\+RY@{T\+H\+R\+E\+A\+D\+\_\+\+T\+RY}}
+\index{T\+H\+R\+E\+A\+D\+\_\+\+T\+RY@{T\+H\+R\+E\+A\+D\+\_\+\+T\+RY}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+A\+D\+\_\+\+T\+RY}{THREAD\_TRY}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+A\+D\+\_\+\+T\+RY~try}
+
+
+
+Begin try block. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga4d72952887facf12a96971e964d3427b}\label{group__EXCEPT__GROUP_ga4d72952887facf12a96971e964d3427b}} 
+\index{Exceptions Group@{Exceptions Group}!get\+File\+Name@{get\+File\+Name}}
+\index{get\+File\+Name@{get\+File\+Name}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{get\+File\+Name()}{getFileName()}}
+{\footnotesize\ttfamily const char$\ast$ P\+Thread\+Base\+Exception\+::get\+File\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers filename of the exception source. \begin{DoxyReturn}{Returns}
+Filename. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga7a06d992e2dbfa1d283e6c6fb209fd62}\label{group__EXCEPT__GROUP_ga7a06d992e2dbfa1d283e6c6fb209fd62}} 
+\index{Exceptions Group@{Exceptions Group}!get\+Line\+Num@{get\+Line\+Num}}
+\index{get\+Line\+Num@{get\+Line\+Num}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{get\+Line\+Num()}{getLineNum()}}
+{\footnotesize\ttfamily int P\+Thread\+Base\+Exception\+::get\+Line\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers line number of the exception source. \begin{DoxyReturn}{Returns}
+Line number. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga479c992ccbf4a39cd707a27906925601}\label{group__EXCEPT__GROUP_ga479c992ccbf4a39cd707a27906925601}} 
+\index{Exceptions Group@{Exceptions Group}!P\+Thread\+Base\+Exception@{P\+Thread\+Base\+Exception}}
+\index{P\+Thread\+Base\+Exception@{P\+Thread\+Base\+Exception}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{P\+Thread\+Base\+Exception()}{PThreadBaseException()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily P\+Thread\+Base\+Exception\+::\+P\+Thread\+Base\+Exception (\begin{DoxyParamCaption}\item[{const char $\ast$}]{File\+Name,  }\item[{int}]{Line\+Num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor
+
+Constructs exception object with filename and line number 
+\begin{DoxyParams}{Parameters}
+{\em File\+Name} & \+: name of source file. \\
+\hline
+{\em Line\+Num} & \+: number of code line. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__EXCEPT__GROUP_gaf6dded31d5ab6283d588f99a702241ec}\label{group__EXCEPT__GROUP_gaf6dded31d5ab6283d588f99a702241ec}} 
+\index{Exceptions Group@{Exceptions Group}!P\+Thread\+Base\+Exception@{P\+Thread\+Base\+Exception}}
+\index{P\+Thread\+Base\+Exception@{P\+Thread\+Base\+Exception}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{P\+Thread\+Base\+Exception()}{PThreadBaseException()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily P\+Thread\+Base\+Exception\+::\+P\+Thread\+Base\+Exception (\begin{DoxyParamCaption}\item[{const \hyperlink{classPThreadBaseException}{P\+Thread\+Base\+Exception} \&}]{exp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor.
+
+Copy constructor \mbox{\Hypertarget{group__EXCEPT__GROUP_ga4389169c01caec3fe93ac45a5d69a9ec}\label{group__EXCEPT__GROUP_ga4389169c01caec3fe93ac45a5d69a9ec}} 
+\index{Exceptions Group@{Exceptions Group}!what@{what}}
+\index{what@{what}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char $\ast$ P\+Thread\+Base\+Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Reports exception\textquotesingle{}s properties. \begin{DoxyReturn}{Returns}
+String buffer with report text. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classThreadException_a3b8dcf8e441a9cba0539ca2455087e57}{Thread\+Exception}.
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_gae4edc60cd7923ef9305a1312cdbc9fc1}\label{group__EXCEPT__GROUP_gae4edc60cd7923ef9305a1312cdbc9fc1}} 
+\index{Exceptions Group@{Exceptions Group}!````~P\+Thread\+Base\+Exception@{$\sim$\+P\+Thread\+Base\+Exception}}
+\index{````~P\+Thread\+Base\+Exception@{$\sim$\+P\+Thread\+Base\+Exception}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{$\sim$\+P\+Thread\+Base\+Exception()}{~PThreadBaseException()}}
+{\footnotesize\ttfamily virtual P\+Thread\+Base\+Exception\+::$\sim$\+P\+Thread\+Base\+Exception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Destructor
+
+Intentionally empty 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{group__EXCEPT__GROUP_gace215cb27c8b35eae74d51e9a18f5bfa}\label{group__EXCEPT__GROUP_gace215cb27c8b35eae74d51e9a18f5bfa}} 
+\index{Exceptions Group@{Exceptions Group}!m\+\_\+\+File\+Name@{m\+\_\+\+File\+Name}}
+\index{m\+\_\+\+File\+Name@{m\+\_\+\+File\+Name}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{m\+\_\+\+File\+Name}{m\_FileName}}
+{\footnotesize\ttfamily char P\+Thread\+Base\+Exception\+::m\+\_\+\+File\+Name\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Buffer for filename of the exception source. 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga14fc21c1387d9427ec22d7712c509517}\label{group__EXCEPT__GROUP_ga14fc21c1387d9427ec22d7712c509517}} 
+\index{Exceptions Group@{Exceptions Group}!m\+\_\+\+Line\+Num@{m\+\_\+\+Line\+Num}}
+\index{m\+\_\+\+Line\+Num@{m\+\_\+\+Line\+Num}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Line\+Num}{m\_LineNum}}
+{\footnotesize\ttfamily int P\+Thread\+Base\+Exception\+::m\+\_\+\+Line\+Num\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Line number of the exception source. 
+
+\mbox{\Hypertarget{group__EXCEPT__GROUP_ga13ce50b63f814e93fc17c484fc28fcd6}\label{group__EXCEPT__GROUP_ga13ce50b63f814e93fc17c484fc28fcd6}} 
+\index{Exceptions Group@{Exceptions Group}!repstr@{repstr}}
+\index{repstr@{repstr}!Exceptions Group@{Exceptions Group}}
+\subsubsection{\texorpdfstring{repstr}{repstr}}
+{\footnotesize\ttfamily std\+::string P\+Thread\+Base\+Exception\+::repstr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+String for the exception report will be build to. 
+

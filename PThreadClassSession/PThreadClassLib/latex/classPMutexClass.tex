@@ -1,0 +1,114 @@
+\hypertarget{classPMutexClass}{}\section{P\+Mutex\+Class Class Reference}
+\label{classPMutexClass}\index{P\+Mutex\+Class@{P\+Mutex\+Class}}
+
+
+{\ttfamily \#include $<$P\+Mutex\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPMutexClass_a688e581b72b3b5315e7b2a36d1c251a1}{P\+Mutex\+Class} () noexcept(false)
+\item 
+virtual \hyperlink{classPMutexClass_aa323680c6acc1f99f96489856c115768}{$\sim$\+P\+Mutex\+Class} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classPMutexClass_a6fb1831791f79d71be6fb4d4bb5b887e}{lock\+Mutex} ()
+\item 
+int \hyperlink{classPMutexClass_a21eab0587c0a3b769f952b5a61db8c10}{try\+Lock\+Mutex} ()
+\item 
+int \hyperlink{classPMutexClass_a18cc2519c5f1d0ee601af43cd400aa67}{timed\+Lock\+Mutex} (unsigned long Timeout=\hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE})
+\item 
+int \hyperlink{classPMutexClass_a95b98e4a3823affac8caed41e5522124}{unlock\+Mutex} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+mutex\+\_\+t \hyperlink{classPMutexClass_a6f1080f8c78d754f60b4e284d879c06b}{m\+\_\+\+Mutex}
+\begin{DoxyCompactList}\small\item\em P\+O\+S\+IX mutual exclusive lock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper on P\+O\+S\+IX mutual exclusive lock. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPMutexClass_a688e581b72b3b5315e7b2a36d1c251a1}\label{classPMutexClass_a688e581b72b3b5315e7b2a36d1c251a1}} 
+\index{P\+Mutex\+Class@{P\+Mutex\+Class}!P\+Mutex\+Class@{P\+Mutex\+Class}}
+\index{P\+Mutex\+Class@{P\+Mutex\+Class}!P\+Mutex\+Class@{P\+Mutex\+Class}}
+\subsubsection{\texorpdfstring{P\+Mutex\+Class()}{PMutexClass()}}
+{\footnotesize\ttfamily P\+Mutex\+Class\+::\+P\+Mutex\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Constructor. 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPMutexClass_aa323680c6acc1f99f96489856c115768}\label{classPMutexClass_aa323680c6acc1f99f96489856c115768}} 
+\index{P\+Mutex\+Class@{P\+Mutex\+Class}!````~P\+Mutex\+Class@{$\sim$\+P\+Mutex\+Class}}
+\index{````~P\+Mutex\+Class@{$\sim$\+P\+Mutex\+Class}!P\+Mutex\+Class@{P\+Mutex\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+P\+Mutex\+Class()}{~PMutexClass()}}
+{\footnotesize\ttfamily P\+Mutex\+Class\+::$\sim$\+P\+Mutex\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPMutexClass_a6fb1831791f79d71be6fb4d4bb5b887e}\label{classPMutexClass_a6fb1831791f79d71be6fb4d4bb5b887e}} 
+\index{P\+Mutex\+Class@{P\+Mutex\+Class}!lock\+Mutex@{lock\+Mutex}}
+\index{lock\+Mutex@{lock\+Mutex}!P\+Mutex\+Class@{P\+Mutex\+Class}}
+\subsubsection{\texorpdfstring{lock\+Mutex()}{lockMutex()}}
+{\footnotesize\ttfamily int P\+Mutex\+Class\+::lock\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Lock mutual exclusive lock. \begin{DoxyReturn}{Returns}
+result of lock operation (0 -\/ success). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPMutexClass_a18cc2519c5f1d0ee601af43cd400aa67}\label{classPMutexClass_a18cc2519c5f1d0ee601af43cd400aa67}} 
+\index{P\+Mutex\+Class@{P\+Mutex\+Class}!timed\+Lock\+Mutex@{timed\+Lock\+Mutex}}
+\index{timed\+Lock\+Mutex@{timed\+Lock\+Mutex}!P\+Mutex\+Class@{P\+Mutex\+Class}}
+\subsubsection{\texorpdfstring{timed\+Lock\+Mutex()}{timedLockMutex()}}
+{\footnotesize\ttfamily int P\+Mutex\+Class\+::timed\+Lock\+Mutex (\begin{DoxyParamCaption}\item[{unsigned long}]{Timeout = {\ttfamily \hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE}} }\end{DoxyParamCaption})}
+
+Try to lock mutual exclusive lock with timeout. \begin{DoxyReturn}{Returns}
+result of lock operation \+:~\newline
+ 0 -\/ success. ~\newline
+ E\+T\+I\+M\+E\+D\+O\+UT -\/ timeout expired.~\newline
+ other -\/ error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPMutexClass_a21eab0587c0a3b769f952b5a61db8c10}\label{classPMutexClass_a21eab0587c0a3b769f952b5a61db8c10}} 
+\index{P\+Mutex\+Class@{P\+Mutex\+Class}!try\+Lock\+Mutex@{try\+Lock\+Mutex}}
+\index{try\+Lock\+Mutex@{try\+Lock\+Mutex}!P\+Mutex\+Class@{P\+Mutex\+Class}}
+\subsubsection{\texorpdfstring{try\+Lock\+Mutex()}{tryLockMutex()}}
+{\footnotesize\ttfamily int P\+Mutex\+Class\+::try\+Lock\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to lock mutual exclusive lock. \begin{DoxyReturn}{Returns}
+result of lock operation (0 -\/ success). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPMutexClass_a95b98e4a3823affac8caed41e5522124}\label{classPMutexClass_a95b98e4a3823affac8caed41e5522124}} 
+\index{P\+Mutex\+Class@{P\+Mutex\+Class}!unlock\+Mutex@{unlock\+Mutex}}
+\index{unlock\+Mutex@{unlock\+Mutex}!P\+Mutex\+Class@{P\+Mutex\+Class}}
+\subsubsection{\texorpdfstring{unlock\+Mutex()}{unlockMutex()}}
+{\footnotesize\ttfamily int P\+Mutex\+Class\+::unlock\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Unlock mutual exclusive lock. \begin{DoxyReturn}{Returns}
+result of lock operation (0 -\/ success). 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classPMutexClass_a6f1080f8c78d754f60b4e284d879c06b}\label{classPMutexClass_a6f1080f8c78d754f60b4e284d879c06b}} 
+\index{P\+Mutex\+Class@{P\+Mutex\+Class}!m\+\_\+\+Mutex@{m\+\_\+\+Mutex}}
+\index{m\+\_\+\+Mutex@{m\+\_\+\+Mutex}!P\+Mutex\+Class@{P\+Mutex\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Mutex}{m\_Mutex}}
+{\footnotesize\ttfamily pthread\+\_\+mutex\+\_\+t P\+Mutex\+Class\+::m\+\_\+\+Mutex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+P\+O\+S\+IX mutual exclusive lock. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PMutexClass_8h}{P\+Mutex\+Class.\+h}\item 
+\hyperlink{PMutexClass_8cpp}{P\+Mutex\+Class.\+cpp}\end{DoxyCompactItemize}

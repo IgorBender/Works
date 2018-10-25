@@ -1,0 +1,256 @@
+\hypertarget{classCondVarClass}{}\section{Cond\+Var\+Class Class Reference}
+\label{classCondVarClass}\index{Cond\+Var\+Class@{Cond\+Var\+Class}}
+
+
+{\ttfamily \#include $<$Cond\+Var\+Class.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int \hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCondVarClass_a03da5f7409d43577a5831dc350e3e2dd}{Cond\+Var\+Class} (int Pred\+Num) noexcept(false)
+\item 
+\hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type} \hyperlink{classCondVarClass_a18c457bbb27be21285f9cc52a5b8e877}{add\+Predicate} (bool Predicate\+Value) noexcept(false)
+\item 
+bool \hyperlink{classCondVarClass_a9511628fc388d3e8a3d35bd2d9daacb7}{get\+Predicate} (\hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type} Pred\+Num) noexcept(false)
+\item 
+void \hyperlink{classCondVarClass_a6858cc038d21b6ab4432f2259a1e0a08}{set\+Predicate} (\hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type} Pred\+Num, bool Predicate\+Value) noexcept(false)
+\item 
+virtual \hyperlink{classCondVarClass_ac6095148586b51ec4b2425628e21e225}{$\sim$\+Cond\+Var\+Class} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classCondVarClass_a23809969d99080860b737fca1a5167af}{lock\+Mutex} ()
+\item 
+int \hyperlink{classCondVarClass_adf84284d765eab42cee949e94c945678}{try\+Lock\+Mutex} ()
+\item 
+int \hyperlink{classCondVarClass_a10ccd0a73746e5c4bf66157468ae8bf5}{unlock\+Mutex} ()
+\item 
+int \hyperlink{classCondVarClass_ab17290f0dcf8c4c9dd31ef2739a073ba}{signal} ()
+\item 
+int \hyperlink{classCondVarClass_a31519d403ae332e86d9d93defe6031da}{broadcast} ()
+\item 
+int \hyperlink{classCondVarClass_a7d8ef7832aff2cb2b4a627beb4707c6b}{wait} (time\+\_\+t Timeout=\hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE})
+\item 
+\hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type} \hyperlink{classCondVarClass_adf7a6eb861c7fdd02767239680726456}{get\+Pred\+Num} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bitset$<$ \hyperlink{CondVarClass_8h_a6e8562f77c7eeea17bbd7dad99cc5a5d}{M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+O\+F\+\_\+\+P\+R\+E\+DS} $>$ \hyperlink{classCondVarClass_aaf966656af82194b11b9277dfd331d7f}{m\+\_\+\+Predicates}
+\begin{DoxyCompactList}\small\item\em Associated predicates set. \end{DoxyCompactList}\item 
+\hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type} \hyperlink{classCondVarClass_a3e3eff2444917f162ede65d687ebeb06}{m\+\_\+\+Pred\+Num}
+\begin{DoxyCompactList}\small\item\em Number of associated predicates. \end{DoxyCompactList}\item 
+pthread\+\_\+cond\+\_\+t \hyperlink{classCondVarClass_ae74b5148e366723b2124aed2c3181d83}{m\+\_\+\+Cond\+Var}
+\begin{DoxyCompactList}\small\item\em P\+O\+S\+IX condition variable. \end{DoxyCompactList}\item 
+pthread\+\_\+mutex\+\_\+t \hyperlink{classCondVarClass_a175e2f43db6ca2fe35d4d1a35b8b2453}{m\+\_\+\+Mutex}
+\begin{DoxyCompactList}\small\item\em Associated mutual exclusive lock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapping on P\+O\+S\+IX condition variable. 
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}\label{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!Predicate\+Id\+Type@{Predicate\+Id\+Type}}
+\index{Predicate\+Id\+Type@{Predicate\+Id\+Type}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{Predicate\+Id\+Type}{PredicateIdType}}
+{\footnotesize\ttfamily typedef unsigned int \hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Cond\+Var\+Class\+::\+Predicate\+Id\+Type}}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCondVarClass_a03da5f7409d43577a5831dc350e3e2dd}\label{classCondVarClass_a03da5f7409d43577a5831dc350e3e2dd}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{Cond\+Var\+Class()}{CondVarClass()}}
+{\footnotesize\ttfamily Cond\+Var\+Class\+::\+Cond\+Var\+Class (\begin{DoxyParamCaption}\item[{int}]{Pred\+Num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Pred\+Num} & \+: number of predicates. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCondVarClass_ac6095148586b51ec4b2425628e21e225}\label{classCondVarClass_ac6095148586b51ec4b2425628e21e225}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!````~Cond\+Var\+Class@{$\sim$\+Cond\+Var\+Class}}
+\index{````~Cond\+Var\+Class@{$\sim$\+Cond\+Var\+Class}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Cond\+Var\+Class()}{~CondVarClass()}}
+{\footnotesize\ttfamily Cond\+Var\+Class\+::$\sim$\+Cond\+Var\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCondVarClass_a18c457bbb27be21285f9cc52a5b8e877}\label{classCondVarClass_a18c457bbb27be21285f9cc52a5b8e877}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!add\+Predicate@{add\+Predicate}}
+\index{add\+Predicate@{add\+Predicate}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{add\+Predicate()}{addPredicate()}}
+{\footnotesize\ttfamily \hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Cond\+Var\+Class\+::\+Predicate\+Id\+Type} Cond\+Var\+Class\+::add\+Predicate (\begin{DoxyParamCaption}\item[{bool}]{Predicate\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Add predicate to predicates set. 
+\begin{DoxyParams}{Parameters}
+{\em Predicate\+Value} & \+: value of adding predicate. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classCondVarClass_a31519d403ae332e86d9d93defe6031da}\label{classCondVarClass_a31519d403ae332e86d9d93defe6031da}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{broadcast()}{broadcast()}}
+{\footnotesize\ttfamily int Cond\+Var\+Class\+::broadcast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Broadcast condition variable. \begin{DoxyReturn}{Returns}
+result of broadcast operation (0 -\/ success). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCondVarClass_a9511628fc388d3e8a3d35bd2d9daacb7}\label{classCondVarClass_a9511628fc388d3e8a3d35bd2d9daacb7}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!get\+Predicate@{get\+Predicate}}
+\index{get\+Predicate@{get\+Predicate}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{get\+Predicate()}{getPredicate()}}
+{\footnotesize\ttfamily bool Cond\+Var\+Class\+::get\+Predicate (\begin{DoxyParamCaption}\item[{\hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type}}]{Pred\+Num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Get value of the specified predicate. \begin{DoxyReturn}{Returns}
+Predicate value. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Pred\+Num} & \+: predicate number. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classCondVarClass_adf7a6eb861c7fdd02767239680726456}\label{classCondVarClass_adf7a6eb861c7fdd02767239680726456}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!get\+Pred\+Num@{get\+Pred\+Num}}
+\index{get\+Pred\+Num@{get\+Pred\+Num}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{get\+Pred\+Num()}{getPredNum()}}
+{\footnotesize\ttfamily \hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type} Cond\+Var\+Class\+::get\+Pred\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of associated predicates. \begin{DoxyReturn}{Returns}
+number of predicates. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCondVarClass_a23809969d99080860b737fca1a5167af}\label{classCondVarClass_a23809969d99080860b737fca1a5167af}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!lock\+Mutex@{lock\+Mutex}}
+\index{lock\+Mutex@{lock\+Mutex}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{lock\+Mutex()}{lockMutex()}}
+{\footnotesize\ttfamily int Cond\+Var\+Class\+::lock\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Lock condition variable associated mutual exclusive lock. \begin{DoxyReturn}{Returns}
+result of lock operation (0 -\/ success). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCondVarClass_a6858cc038d21b6ab4432f2259a1e0a08}\label{classCondVarClass_a6858cc038d21b6ab4432f2259a1e0a08}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!set\+Predicate@{set\+Predicate}}
+\index{set\+Predicate@{set\+Predicate}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{set\+Predicate()}{setPredicate()}}
+{\footnotesize\ttfamily void Cond\+Var\+Class\+::set\+Predicate (\begin{DoxyParamCaption}\item[{\hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type}}]{Pred\+Num,  }\item[{bool}]{Predicate\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Set value of the specified predicate. 
+\begin{DoxyParams}{Parameters}
+{\em Pred\+Num} & \+: predicate number. \\
+\hline
+{\em Predicate\+Value} & \+: predicate value. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classCondVarClass_ab17290f0dcf8c4c9dd31ef2739a073ba}\label{classCondVarClass_ab17290f0dcf8c4c9dd31ef2739a073ba}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!signal@{signal}}
+\index{signal@{signal}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{signal()}{signal()}}
+{\footnotesize\ttfamily int Cond\+Var\+Class\+::signal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Signal condition variable . \begin{DoxyReturn}{Returns}
+result of signal operation (0 -\/ success). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCondVarClass_adf84284d765eab42cee949e94c945678}\label{classCondVarClass_adf84284d765eab42cee949e94c945678}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!try\+Lock\+Mutex@{try\+Lock\+Mutex}}
+\index{try\+Lock\+Mutex@{try\+Lock\+Mutex}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{try\+Lock\+Mutex()}{tryLockMutex()}}
+{\footnotesize\ttfamily int Cond\+Var\+Class\+::try\+Lock\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to lock condition variable associated mutual exclusive lock. \begin{DoxyReturn}{Returns}
+result of lock operation (0 -\/ success). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCondVarClass_a10ccd0a73746e5c4bf66157468ae8bf5}\label{classCondVarClass_a10ccd0a73746e5c4bf66157468ae8bf5}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!unlock\+Mutex@{unlock\+Mutex}}
+\index{unlock\+Mutex@{unlock\+Mutex}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{unlock\+Mutex()}{unlockMutex()}}
+{\footnotesize\ttfamily int Cond\+Var\+Class\+::unlock\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Unlock condition variable associated mutual exclusive lock. \begin{DoxyReturn}{Returns}
+result of unlock operation (0 -\/ success). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCondVarClass_a7d8ef7832aff2cb2b4a627beb4707c6b}\label{classCondVarClass_a7d8ef7832aff2cb2b4a627beb4707c6b}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!wait@{wait}}
+\index{wait@{wait}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{wait()}{wait()}}
+{\footnotesize\ttfamily int Cond\+Var\+Class\+::wait (\begin{DoxyParamCaption}\item[{time\+\_\+t}]{Timeout = {\ttfamily \hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE}} }\end{DoxyParamCaption})}
+
+Wait for condition variable to be signaled. \begin{DoxyReturn}{Returns}
+result of wait \+: ~\newline
+ 0 -\/ condition variable is signaled.~\newline
+ E\+T\+I\+M\+E\+D\+O\+UT -\/ wait timeout expired.~\newline
+ other -\/ error. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classCondVarClass_ae74b5148e366723b2124aed2c3181d83}\label{classCondVarClass_ae74b5148e366723b2124aed2c3181d83}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!m\+\_\+\+Cond\+Var@{m\+\_\+\+Cond\+Var}}
+\index{m\+\_\+\+Cond\+Var@{m\+\_\+\+Cond\+Var}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Cond\+Var}{m\_CondVar}}
+{\footnotesize\ttfamily pthread\+\_\+cond\+\_\+t Cond\+Var\+Class\+::m\+\_\+\+Cond\+Var\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+P\+O\+S\+IX condition variable. 
+
+\mbox{\Hypertarget{classCondVarClass_a175e2f43db6ca2fe35d4d1a35b8b2453}\label{classCondVarClass_a175e2f43db6ca2fe35d4d1a35b8b2453}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!m\+\_\+\+Mutex@{m\+\_\+\+Mutex}}
+\index{m\+\_\+\+Mutex@{m\+\_\+\+Mutex}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Mutex}{m\_Mutex}}
+{\footnotesize\ttfamily pthread\+\_\+mutex\+\_\+t Cond\+Var\+Class\+::m\+\_\+\+Mutex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Associated mutual exclusive lock. 
+
+\mbox{\Hypertarget{classCondVarClass_aaf966656af82194b11b9277dfd331d7f}\label{classCondVarClass_aaf966656af82194b11b9277dfd331d7f}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!m\+\_\+\+Predicates@{m\+\_\+\+Predicates}}
+\index{m\+\_\+\+Predicates@{m\+\_\+\+Predicates}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Predicates}{m\_Predicates}}
+{\footnotesize\ttfamily bitset$<$ \hyperlink{CondVarClass_8h_a6e8562f77c7eeea17bbd7dad99cc5a5d}{M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+O\+F\+\_\+\+P\+R\+E\+DS} $>$ Cond\+Var\+Class\+::m\+\_\+\+Predicates\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Associated predicates set. 
+
+\mbox{\Hypertarget{classCondVarClass_a3e3eff2444917f162ede65d687ebeb06}\label{classCondVarClass_a3e3eff2444917f162ede65d687ebeb06}} 
+\index{Cond\+Var\+Class@{Cond\+Var\+Class}!m\+\_\+\+Pred\+Num@{m\+\_\+\+Pred\+Num}}
+\index{m\+\_\+\+Pred\+Num@{m\+\_\+\+Pred\+Num}!Cond\+Var\+Class@{Cond\+Var\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Pred\+Num}{m\_PredNum}}
+{\footnotesize\ttfamily \hyperlink{classCondVarClass_a8e27f99972b8b95f064d6657a4583a5b}{Predicate\+Id\+Type} Cond\+Var\+Class\+::m\+\_\+\+Pred\+Num\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Number of associated predicates. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CondVarClass_8h}{Cond\+Var\+Class.\+h}\item 
+\hyperlink{CondVarClass_8cpp}{Cond\+Var\+Class.\+cpp}\end{DoxyCompactItemize}

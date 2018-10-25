@@ -1,0 +1,146 @@
+\hypertarget{structRunnable}{}\section{Runnable Struct Reference}
+\label{structRunnable}\index{Runnable@{Runnable}}
+
+
+{\ttfamily \#include $<$P\+Thread\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structRunnable_a55a54a10b0f3733f276d07db584f2549}{Runnable} (\hyperlink{group__FUNC__DEFS_gaeef66643e734485d781ca826339879ea}{P\+Thread\+Routine\+Type} p\+Routine, \hyperlink{group__FUNC__DEFS_ga77ca9e695666040451b77632df4847b9}{P\+Thread\+Clean\+Up\+Routine\+Type} p\+Clean\+Up\+Routine=N\+U\+LL, void $\ast$p=N\+U\+LL, void $\ast$cp=N\+U\+LL, int Clean\+Up\+Execute=0)
+\item 
+\hyperlink{structRunnable_ad4a6cf9daf0f17048c0a8972e90d295d}{operator P\+Thread\+Routine\+Type} ()
+\begin{DoxyCompactList}\small\item\em Cast to thread routine operator. \end{DoxyCompactList}\item 
+\hyperlink{structRunnable_a8d99767578589e79ba59f8ddece80e69}{operator P\+Thread\+Clean\+Up\+Routine\+Type} ()
+\begin{DoxyCompactList}\small\item\em Cast to clean-\/up routine operator. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{structRunnable_a017eeb87c9076ffcb34338bba7fefb99}{operator()} ()
+\begin{DoxyCompactList}\small\item\em Function operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__FUNC__DEFS_gaeef66643e734485d781ca826339879ea}{P\+Thread\+Routine\+Type} \hyperlink{structRunnable_ad850dfe862b73a3e9f59c5fe383bd20d}{pthread\+Routine}
+\begin{DoxyCompactList}\small\item\em Thread routine. \end{DoxyCompactList}\item 
+\hyperlink{group__FUNC__DEFS_ga77ca9e695666040451b77632df4847b9}{P\+Thread\+Clean\+Up\+Routine\+Type} \hyperlink{structRunnable_a62c14bef1f2acabcff9c126faf9c0218}{clean\+Up\+Routine}
+\begin{DoxyCompactList}\small\item\em Clean-\/up routine. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{structRunnable_a5b950239feca1d3033297fae933209e9}{p\+Context}
+\begin{DoxyCompactList}\small\item\em Thread routine context. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{structRunnable_a30fc8274b7103f58fbbd56aa165692b4}{p\+Clean\+Up\+Context}
+\begin{DoxyCompactList}\small\item\em Clean-\/up routine context. \end{DoxyCompactList}\item 
+int \hyperlink{structRunnable_aee103a0bc58c7dc4a92da67eac8436fc}{m\+\_\+\+Clean\+Up\+Execute}
+\begin{DoxyCompactList}\small\item\em Clean-\/up handler execution flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C++ wrapper on thread routine and clean-\/up routine. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structRunnable_a55a54a10b0f3733f276d07db584f2549}\label{structRunnable_a55a54a10b0f3733f276d07db584f2549}} 
+\index{Runnable@{Runnable}!Runnable@{Runnable}}
+\index{Runnable@{Runnable}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{Runnable()}{Runnable()}}
+{\footnotesize\ttfamily Runnable\+::\+Runnable (\begin{DoxyParamCaption}\item[{\hyperlink{group__FUNC__DEFS_gaeef66643e734485d781ca826339879ea}{P\+Thread\+Routine\+Type}}]{p\+Routine,  }\item[{\hyperlink{group__FUNC__DEFS_ga77ca9e695666040451b77632df4847b9}{P\+Thread\+Clean\+Up\+Routine\+Type}}]{p\+Clean\+Up\+Routine = {\ttfamily NULL},  }\item[{void $\ast$}]{p = {\ttfamily NULL},  }\item[{void $\ast$}]{cp = {\ttfamily NULL},  }\item[{int}]{Clean\+Up\+Execute = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em p\+Routine} & \+: pointer to thread routine. \\
+\hline
+{\em p\+Clean\+Up\+Routine} & \+: pointer to clean-\/up routine. \\
+\hline
+{\em p} & \+: pointer to thread routine context. \\
+\hline
+{\em cp} & \+: pointer to clean-\/up routine context. \\
+\hline
+{\em Clean\+Up\+Execute} & \+: clean-\/up handler execution flag. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structRunnable_a8d99767578589e79ba59f8ddece80e69}\label{structRunnable_a8d99767578589e79ba59f8ddece80e69}} 
+\index{Runnable@{Runnable}!operator P\+Thread\+Clean\+Up\+Routine\+Type@{operator P\+Thread\+Clean\+Up\+Routine\+Type}}
+\index{operator P\+Thread\+Clean\+Up\+Routine\+Type@{operator P\+Thread\+Clean\+Up\+Routine\+Type}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{operator P\+Thread\+Clean\+Up\+Routine\+Type()}{operator PThreadCleanUpRoutineType()}}
+{\footnotesize\ttfamily Runnable\+::operator \hyperlink{group__FUNC__DEFS_ga77ca9e695666040451b77632df4847b9}{P\+Thread\+Clean\+Up\+Routine\+Type} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cast to clean-\/up routine operator. 
+
+\mbox{\Hypertarget{structRunnable_ad4a6cf9daf0f17048c0a8972e90d295d}\label{structRunnable_ad4a6cf9daf0f17048c0a8972e90d295d}} 
+\index{Runnable@{Runnable}!operator P\+Thread\+Routine\+Type@{operator P\+Thread\+Routine\+Type}}
+\index{operator P\+Thread\+Routine\+Type@{operator P\+Thread\+Routine\+Type}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{operator P\+Thread\+Routine\+Type()}{operator PThreadRoutineType()}}
+{\footnotesize\ttfamily Runnable\+::operator \hyperlink{group__FUNC__DEFS_gaeef66643e734485d781ca826339879ea}{P\+Thread\+Routine\+Type} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cast to thread routine operator. 
+
+\mbox{\Hypertarget{structRunnable_a017eeb87c9076ffcb34338bba7fefb99}\label{structRunnable_a017eeb87c9076ffcb34338bba7fefb99}} 
+\index{Runnable@{Runnable}!operator()@{operator()}}
+\index{operator()@{operator()}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily void$\ast$ Runnable\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function operator. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structRunnable_a62c14bef1f2acabcff9c126faf9c0218}\label{structRunnable_a62c14bef1f2acabcff9c126faf9c0218}} 
+\index{Runnable@{Runnable}!clean\+Up\+Routine@{clean\+Up\+Routine}}
+\index{clean\+Up\+Routine@{clean\+Up\+Routine}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{clean\+Up\+Routine}{cleanUpRoutine}}
+{\footnotesize\ttfamily \hyperlink{group__FUNC__DEFS_ga77ca9e695666040451b77632df4847b9}{P\+Thread\+Clean\+Up\+Routine\+Type} Runnable\+::clean\+Up\+Routine}
+
+
+
+Clean-\/up routine. 
+
+\mbox{\Hypertarget{structRunnable_aee103a0bc58c7dc4a92da67eac8436fc}\label{structRunnable_aee103a0bc58c7dc4a92da67eac8436fc}} 
+\index{Runnable@{Runnable}!m\+\_\+\+Clean\+Up\+Execute@{m\+\_\+\+Clean\+Up\+Execute}}
+\index{m\+\_\+\+Clean\+Up\+Execute@{m\+\_\+\+Clean\+Up\+Execute}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Clean\+Up\+Execute}{m\_CleanUpExecute}}
+{\footnotesize\ttfamily int Runnable\+::m\+\_\+\+Clean\+Up\+Execute}
+
+
+
+Clean-\/up handler execution flag. 
+
+\mbox{\Hypertarget{structRunnable_a30fc8274b7103f58fbbd56aa165692b4}\label{structRunnable_a30fc8274b7103f58fbbd56aa165692b4}} 
+\index{Runnable@{Runnable}!p\+Clean\+Up\+Context@{p\+Clean\+Up\+Context}}
+\index{p\+Clean\+Up\+Context@{p\+Clean\+Up\+Context}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{p\+Clean\+Up\+Context}{pCleanUpContext}}
+{\footnotesize\ttfamily void$\ast$ Runnable\+::p\+Clean\+Up\+Context}
+
+
+
+Clean-\/up routine context. 
+
+\mbox{\Hypertarget{structRunnable_a5b950239feca1d3033297fae933209e9}\label{structRunnable_a5b950239feca1d3033297fae933209e9}} 
+\index{Runnable@{Runnable}!p\+Context@{p\+Context}}
+\index{p\+Context@{p\+Context}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{p\+Context}{pContext}}
+{\footnotesize\ttfamily void$\ast$ Runnable\+::p\+Context}
+
+
+
+Thread routine context. 
+
+\mbox{\Hypertarget{structRunnable_ad850dfe862b73a3e9f59c5fe383bd20d}\label{structRunnable_ad850dfe862b73a3e9f59c5fe383bd20d}} 
+\index{Runnable@{Runnable}!pthread\+Routine@{pthread\+Routine}}
+\index{pthread\+Routine@{pthread\+Routine}!Runnable@{Runnable}}
+\subsubsection{\texorpdfstring{pthread\+Routine}{pthreadRoutine}}
+{\footnotesize\ttfamily \hyperlink{group__FUNC__DEFS_gaeef66643e734485d781ca826339879ea}{P\+Thread\+Routine\+Type} Runnable\+::pthread\+Routine}
+
+
+
+Thread routine. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PThreadClass_8h}{P\+Thread\+Class.\+h}\end{DoxyCompactItemize}

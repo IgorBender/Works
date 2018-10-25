@@ -1,0 +1,3 @@
+<map id="PThreadBaseException" name="PThreadBaseException">
+<area shape="rect" id="node2" href="$classThreadException.html" title="{ThreadException\n|# m_ErrCode\l# lpMsgBuf\l# m_Message\l|+ ThreadException()\l+ ThreadException()\l+ ~ThreadException()\l+ what()\l+ getErrCode()\l+ getMessage()\l+ getErrNum()\l+ setErrNum()\l}" alt="" coords="25,233,173,443"/>
+</map>

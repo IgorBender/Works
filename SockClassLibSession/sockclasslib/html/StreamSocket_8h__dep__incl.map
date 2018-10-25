@@ -1,0 +1,23 @@
+<map id="StreamSocket.h" name="StreamSocket.h">
+<area shape="rect" id="node2" href="$StreamSocketV4_8h.html" title="StreamSocketV4.h" alt="" coords="215,80,347,107"/>
+<area shape="rect" id="node12" href="$StreamSocketV6_8h.html" title="StreamSocketV6.h" alt="" coords="529,80,661,107"/>
+<area shape="rect" id="node22" href="$StreamSocket_8cpp.html" title="StreamSocket.cpp" alt="" coords="685,80,816,107"/>
+<area shape="rect" id="node3" href="$ClientSimple_8h.html" title="ClientSimple.h" alt="" coords="5,155,112,181"/>
+<area shape="rect" id="node5" href="$StreamBoundV4_8h.html" title="StreamBoundV4.h" alt="" coords="136,155,264,181"/>
+<area shape="rect" id="node11" href="$StreamSocketV4_8cpp.html" title="StreamSocketV4.cpp" alt="" coords="288,155,435,181"/>
+<area shape="rect" id="node4" href="$ClientBound_8h.html" title="ClientBound.h" alt="" coords="7,229,111,256"/>
+<area shape="rect" id="node6" href="$ServerSimple_8h.html" title="ServerSimple.h" alt="" coords="141,229,251,256"/>
+<area shape="rect" id="node10" href="$StreamBoundV4_8cpp.html" title="StreamBoundV4.cpp" alt="" coords="275,229,418,256"/>
+<area shape="rect" id="node7" href="$ServerReuse_8h.html" title="ServerReuse.h" alt="" coords="71,304,180,331"/>
+<area shape="rect" id="node9" href="$ServerSimple_8cpp.html" title="ServerSimple.cpp" alt="" coords="204,304,329,331"/>
+<area shape="rect" id="node8" href="$ServerReuse_8cpp.html" title="ServerReuse.cpp" alt="" coords="64,379,187,405"/>
+<area shape="rect" id="node13" href="$ClientSimpleV6_8h.html" title="ClientSimpleV6.h" alt="" coords="459,155,581,181"/>
+<area shape="rect" id="node15" href="$StreamBoundV6_8h.html" title="StreamBoundV6.h" alt="" coords="605,155,733,181"/>
+<area shape="rect" id="node21" href="$StreamSocketV6_8cpp.html" title="StreamSocketV6.cpp" alt="" coords="757,155,904,181"/>
+<area shape="rect" id="node14" href="$ClientBoundV6_8h.html" title="ClientBoundV6.h" alt="" coords="460,229,580,256"/>
+<area shape="rect" id="node16" href="$ServerSimpleV6_8h.html" title="ServerSimpleV6.h" alt="" coords="605,229,731,256"/>
+<area shape="rect" id="node20" href="$StreamBoundV6_8cpp.html" title="StreamBoundV6.cpp" alt="" coords="755,229,898,256"/>
+<area shape="rect" id="node17" href="$ServerReuseV6_8h.html" title="ServerReuseV6.h" alt="" coords="527,304,652,331"/>
+<area shape="rect" id="node19" href="$ServerSimpleV6_8cpp.html" title="ServerSimpleV6.cpp" alt="" coords="676,304,817,331"/>
+<area shape="rect" id="node18" href="$ServerReuseV6_8cpp.html" title="ServerReuseV6.cpp" alt="" coords="520,379,659,405"/>
+</map>

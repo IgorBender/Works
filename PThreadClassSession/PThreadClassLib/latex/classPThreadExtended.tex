@@ -1,0 +1,159 @@
+\hypertarget{classPThreadExtended}{}\section{P\+Thread\+Extended Class Reference}
+\label{classPThreadExtended}\index{P\+Thread\+Extended@{P\+Thread\+Extended}}
+
+
+{\ttfamily \#include $<$P\+Thread\+Extended.\+h$>$}
+
+
+
+Inheritance diagram for P\+Thread\+Extended\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classPThreadExtended__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPThreadExtended_a7bbc8901875c01e475b7a1637e176cad}{P\+Thread\+Extended} (\hyperlink{structRunnable}{Runnable} Routine, unsigned long Time=\hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE}, bool Cyclic\+Thread=false, bool Attached\+Thread=true)
+\item 
+void \hyperlink{classPThreadExtended_a1df3e69e3cfae6f56e12da3ce80446d4}{name\+Thread} (string Name)
+\item 
+string \hyperlink{classPThreadExtended_a3c49f906e273860f45c44b5a988cf139}{thread\+Name} ()
+\item 
+void \hyperlink{classPThreadExtended_aa9a16de484a20e787223ee8750e6d7c1}{register\+Stop\+Notification\+Func} (\hyperlink{group__FUNC__DEFS_ga164076b53d35e4dba4c51bb336c15dab}{P\+Thread\+Notification\+Func\+Type} Func, void $\ast$Arg)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void $\ast$ \hyperlink{classPThreadExtended_a43d31ca653ffe314e400a48a77f8e0a9}{thread\+Loop} ()
+\begin{DoxyCompactList}\small\item\em Stop notification function argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{classPThreadExtended_a43d72651db43fda0d627e87ca2a71ba3}{m\+\_\+\+Name}
+\item 
+\hyperlink{group__FUNC__DEFS_ga164076b53d35e4dba4c51bb336c15dab}{P\+Thread\+Notification\+Func\+Type} \hyperlink{classPThreadExtended_ae922e8bf6a63ea08521785c1875e02e2}{m\+\_\+\+Stop\+Notification\+Func}
+\begin{DoxyCompactList}\small\item\em Thread name. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{classPThreadExtended_a666cf4f4189eb9dc04b2aa42da0f4acd}{m\+\_\+\+Stop\+Notification\+Func\+Arg}
+\begin{DoxyCompactList}\small\item\em Stop notification function pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+P\+O\+S\+IX thread class with extended info
+
+Wrapper on \hyperlink{classPThreadClass}{P\+Thread\+Class}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPThreadExtended_a7bbc8901875c01e475b7a1637e176cad}\label{classPThreadExtended_a7bbc8901875c01e475b7a1637e176cad}} 
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\subsubsection{\texorpdfstring{P\+Thread\+Extended()}{PThreadExtended()}}
+{\footnotesize\ttfamily P\+Thread\+Extended\+::\+P\+Thread\+Extended (\begin{DoxyParamCaption}\item[{\hyperlink{structRunnable}{Runnable}}]{Routine,  }\item[{unsigned long}]{Time = {\ttfamily \hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE}},  }\item[{bool}]{Cyclic\+Thread = {\ttfamily false},  }\item[{bool}]{Attached\+Thread = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em Routine} & \+: routines structure reference. \\
+\hline
+{\em Time} & \+: cyclic period value in milliseconds. \\
+\hline
+{\em Cyclic\+Thread} & \+: cyclic (true) or one-\/shot (false) thread. \\
+\hline
+{\em Attached\+Thread} & \+: attached (true) or unattached (false) thread. \\
+\hline
+{\em Bound\+Thread} & \+: binding to L\+WP flag. Applicable only on supporting binding O\+Ss. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPThreadExtended_a1df3e69e3cfae6f56e12da3ce80446d4}\label{classPThreadExtended_a1df3e69e3cfae6f56e12da3ce80446d4}} 
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!name\+Thread@{name\+Thread}}
+\index{name\+Thread@{name\+Thread}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\subsubsection{\texorpdfstring{name\+Thread()}{nameThread()}}
+{\footnotesize\ttfamily void P\+Thread\+Extended\+::name\+Thread (\begin{DoxyParamCaption}\item[{string}]{Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Name the thread. 
+\begin{DoxyParams}{Parameters}
+{\em Name} & \+: thread name string. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadExtended_aa9a16de484a20e787223ee8750e6d7c1}\label{classPThreadExtended_aa9a16de484a20e787223ee8750e6d7c1}} 
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!register\+Stop\+Notification\+Func@{register\+Stop\+Notification\+Func}}
+\index{register\+Stop\+Notification\+Func@{register\+Stop\+Notification\+Func}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\subsubsection{\texorpdfstring{register\+Stop\+Notification\+Func()}{registerStopNotificationFunc()}}
+{\footnotesize\ttfamily void P\+Thread\+Extended\+::register\+Stop\+Notification\+Func (\begin{DoxyParamCaption}\item[{\hyperlink{group__FUNC__DEFS_ga164076b53d35e4dba4c51bb336c15dab}{P\+Thread\+Notification\+Func\+Type}}]{Func,  }\item[{void $\ast$}]{Arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Registering of thread notification function. ~\newline
+ The function is actually called on main thread context, therefore should be as short as possible in runtime. 
+\begin{DoxyParams}{Parameters}
+{\em Func} & \+: notification function pointer. \\
+\hline
+{\em Arg} & \+: notification function argument. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPThreadExtended_a43d31ca653ffe314e400a48a77f8e0a9}\label{classPThreadExtended_a43d31ca653ffe314e400a48a77f8e0a9}} 
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!thread\+Loop@{thread\+Loop}}
+\index{thread\+Loop@{thread\+Loop}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\subsubsection{\texorpdfstring{thread\+Loop()}{threadLoop()}}
+{\footnotesize\ttfamily void $\ast$ P\+Thread\+Extended\+::thread\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Stop notification function argument. 
+
+Internal thread loop. 
+
+Reimplemented from \hyperlink{classPThreadClass_a77732762f14058291d35bdbbc49018c6}{P\+Thread\+Class}.
+
+\mbox{\Hypertarget{classPThreadExtended_a3c49f906e273860f45c44b5a988cf139}\label{classPThreadExtended_a3c49f906e273860f45c44b5a988cf139}} 
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!thread\+Name@{thread\+Name}}
+\index{thread\+Name@{thread\+Name}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\subsubsection{\texorpdfstring{thread\+Name()}{threadName()}}
+{\footnotesize\ttfamily string P\+Thread\+Extended\+::thread\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get thread name. \begin{DoxyReturn}{Returns}
+Thread name string. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classPThreadExtended_a43d72651db43fda0d627e87ca2a71ba3}\label{classPThreadExtended_a43d72651db43fda0d627e87ca2a71ba3}} 
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!m\+\_\+\+Name@{m\+\_\+\+Name}}
+\index{m\+\_\+\+Name@{m\+\_\+\+Name}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Name}{m\_Name}}
+{\footnotesize\ttfamily string P\+Thread\+Extended\+::m\+\_\+\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPThreadExtended_ae922e8bf6a63ea08521785c1875e02e2}\label{classPThreadExtended_ae922e8bf6a63ea08521785c1875e02e2}} 
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!m\+\_\+\+Stop\+Notification\+Func@{m\+\_\+\+Stop\+Notification\+Func}}
+\index{m\+\_\+\+Stop\+Notification\+Func@{m\+\_\+\+Stop\+Notification\+Func}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Stop\+Notification\+Func}{m\_StopNotificationFunc}}
+{\footnotesize\ttfamily \hyperlink{group__FUNC__DEFS_ga164076b53d35e4dba4c51bb336c15dab}{P\+Thread\+Notification\+Func\+Type} P\+Thread\+Extended\+::m\+\_\+\+Stop\+Notification\+Func\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Thread name. 
+
+\mbox{\Hypertarget{classPThreadExtended_a666cf4f4189eb9dc04b2aa42da0f4acd}\label{classPThreadExtended_a666cf4f4189eb9dc04b2aa42da0f4acd}} 
+\index{P\+Thread\+Extended@{P\+Thread\+Extended}!m\+\_\+\+Stop\+Notification\+Func\+Arg@{m\+\_\+\+Stop\+Notification\+Func\+Arg}}
+\index{m\+\_\+\+Stop\+Notification\+Func\+Arg@{m\+\_\+\+Stop\+Notification\+Func\+Arg}!P\+Thread\+Extended@{P\+Thread\+Extended}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Stop\+Notification\+Func\+Arg}{m\_StopNotificationFuncArg}}
+{\footnotesize\ttfamily void$\ast$ P\+Thread\+Extended\+::m\+\_\+\+Stop\+Notification\+Func\+Arg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stop notification function pointer. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PThreadExtended_8h}{P\+Thread\+Extended.\+h}\item 
+\hyperlink{PThreadExtended_8cpp}{P\+Thread\+Extended.\+cpp}\end{DoxyCompactItemize}

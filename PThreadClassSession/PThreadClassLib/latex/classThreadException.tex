@@ -1,0 +1,184 @@
+\hypertarget{classThreadException}{}\section{Thread\+Exception Class Reference}
+\label{classThreadException}\index{Thread\+Exception@{Thread\+Exception}}
+
+
+{\ttfamily \#include $<$Thread\+Exception.\+h$>$}
+
+
+
+Inheritance diagram for Thread\+Exception\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classThreadException__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classThreadException_a6367b52f02d9b964073474e2a4bf065a}{Thread\+Exception} (const char $\ast$File\+Name, int Line\+Num, int errcode)
+\item 
+\hyperlink{classThreadException_a8e2fd5fddc16b2ef79f9ff9152e07bae}{Thread\+Exception} (const char $\ast$File\+Name, int Line\+Num, const char $\ast$Message)
+\item 
+virtual \hyperlink{classThreadException_a2b6c29bbca2d87808a573530f9bf354c}{$\sim$\+Thread\+Exception} ()  throw ()
+\item 
+virtual const char $\ast$ \hyperlink{classThreadException_a3b8dcf8e441a9cba0539ca2455087e57}{what} ()
+\item 
+int \hyperlink{classThreadException_adb548dbb352870603d20921ffe5d2535}{get\+Err\+Code} ()
+\item 
+char $\ast$ \hyperlink{classThreadException_a49a3a8d894925c4f76b0ec3338354006}{get\+Message} ()
+\item 
+int \hyperlink{classThreadException_a03564289d24e7d5246bf43fbcae2f7f3}{get\+Err\+Num} ()
+\item 
+void \hyperlink{classThreadException_adaa1940a2b6fa8beff808bee9b9fa2cf}{set\+Err\+Num} (int Num=0)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classThreadException_af35c621f09ff63e9928a8ad5ce596d34}{m\+\_\+\+Err\+Code}
+\begin{DoxyCompactList}\small\item\em Error code. \end{DoxyCompactList}\item 
+char \hyperlink{classThreadException_a7687b9835112b0381c09ac0b52637be1}{lp\+Msg\+Buf} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Error message buffer. \end{DoxyCompactList}\item 
+char \hyperlink{classThreadException_aa2ab3078b7211738d8eeb1e9e4e2a8cb}{m\+\_\+\+Message} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em User\+Message buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Thread class library exception. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classThreadException_a6367b52f02d9b964073474e2a4bf065a}\label{classThreadException_a6367b52f02d9b964073474e2a4bf065a}} 
+\index{Thread\+Exception@{Thread\+Exception}!Thread\+Exception@{Thread\+Exception}}
+\index{Thread\+Exception@{Thread\+Exception}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{Thread\+Exception()}{ThreadException()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Thread\+Exception\+::\+Thread\+Exception (\begin{DoxyParamCaption}\item[{const char $\ast$}]{File\+Name,  }\item[{int}]{Line\+Num,  }\item[{int}]{errcode }\end{DoxyParamCaption})}
+
+Constructor
+
+Constructs exception object with filename and line number. 
+\begin{DoxyParams}{Parameters}
+{\em File\+Name} & \+: name of source file. \\
+\hline
+{\em Line\+Num} & \+: number of code line. \\
+\hline
+{\em errcode} & \+: error numeric code. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classThreadException_a8e2fd5fddc16b2ef79f9ff9152e07bae}\label{classThreadException_a8e2fd5fddc16b2ef79f9ff9152e07bae}} 
+\index{Thread\+Exception@{Thread\+Exception}!Thread\+Exception@{Thread\+Exception}}
+\index{Thread\+Exception@{Thread\+Exception}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{Thread\+Exception()}{ThreadException()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Thread\+Exception\+::\+Thread\+Exception (\begin{DoxyParamCaption}\item[{const char $\ast$}]{File\+Name,  }\item[{int}]{Line\+Num,  }\item[{const char $\ast$}]{Message }\end{DoxyParamCaption})}
+
+Constructor
+
+Constructs exception object with filename, line number and text message 
+\begin{DoxyParams}{Parameters}
+{\em File\+Name} & \+: name of source file. \\
+\hline
+{\em Line\+Num} & \+: number of code line. \\
+\hline
+{\em Message} & \+: user message. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classThreadException_a2b6c29bbca2d87808a573530f9bf354c}\label{classThreadException_a2b6c29bbca2d87808a573530f9bf354c}} 
+\index{Thread\+Exception@{Thread\+Exception}!````~Thread\+Exception@{$\sim$\+Thread\+Exception}}
+\index{````~Thread\+Exception@{$\sim$\+Thread\+Exception}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{$\sim$\+Thread\+Exception()}{~ThreadException()}}
+{\footnotesize\ttfamily virtual Thread\+Exception\+::$\sim$\+Thread\+Exception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  ) \hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Destructor
+
+Intentionally empty 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classThreadException_adb548dbb352870603d20921ffe5d2535}\label{classThreadException_adb548dbb352870603d20921ffe5d2535}} 
+\index{Thread\+Exception@{Thread\+Exception}!get\+Err\+Code@{get\+Err\+Code}}
+\index{get\+Err\+Code@{get\+Err\+Code}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{get\+Err\+Code()}{getErrCode()}}
+{\footnotesize\ttfamily int Thread\+Exception\+::get\+Err\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers error code \begin{DoxyReturn}{Returns}
+error cod of the exception cause. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classThreadException_a03564289d24e7d5246bf43fbcae2f7f3}\label{classThreadException_a03564289d24e7d5246bf43fbcae2f7f3}} 
+\index{Thread\+Exception@{Thread\+Exception}!get\+Err\+Num@{get\+Err\+Num}}
+\index{get\+Err\+Num@{get\+Err\+Num}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{get\+Err\+Num()}{getErrNum()}}
+{\footnotesize\ttfamily int Thread\+Exception\+::get\+Err\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers errno \begin{DoxyReturn}{Returns}
+errno 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classThreadException_a49a3a8d894925c4f76b0ec3338354006}\label{classThreadException_a49a3a8d894925c4f76b0ec3338354006}} 
+\index{Thread\+Exception@{Thread\+Exception}!get\+Message@{get\+Message}}
+\index{get\+Message@{get\+Message}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{get\+Message()}{getMessage()}}
+{\footnotesize\ttfamily char$\ast$ Thread\+Exception\+::get\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers error message. \begin{DoxyReturn}{Returns}
+message buffer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classThreadException_adaa1940a2b6fa8beff808bee9b9fa2cf}\label{classThreadException_adaa1940a2b6fa8beff808bee9b9fa2cf}} 
+\index{Thread\+Exception@{Thread\+Exception}!set\+Err\+Num@{set\+Err\+Num}}
+\index{set\+Err\+Num@{set\+Err\+Num}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{set\+Err\+Num()}{setErrNum()}}
+{\footnotesize\ttfamily void Thread\+Exception\+::set\+Err\+Num (\begin{DoxyParamCaption}\item[{int}]{Num = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets error number. 
+\begin{DoxyParams}{Parameters}
+{\em Num} & \+: error number. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classThreadException_a3b8dcf8e441a9cba0539ca2455087e57}\label{classThreadException_a3b8dcf8e441a9cba0539ca2455087e57}} 
+\index{Thread\+Exception@{Thread\+Exception}!what@{what}}
+\index{what@{what}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char $\ast$ Thread\+Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Reports exception\textquotesingle{}s properties. \begin{DoxyReturn}{Returns}
+String buffer with report text. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{group__EXCEPT__GROUP_ga4389169c01caec3fe93ac45a5d69a9ec}{P\+Thread\+Base\+Exception}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classThreadException_a7687b9835112b0381c09ac0b52637be1}\label{classThreadException_a7687b9835112b0381c09ac0b52637be1}} 
+\index{Thread\+Exception@{Thread\+Exception}!lp\+Msg\+Buf@{lp\+Msg\+Buf}}
+\index{lp\+Msg\+Buf@{lp\+Msg\+Buf}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{lp\+Msg\+Buf}{lpMsgBuf}}
+{\footnotesize\ttfamily char Thread\+Exception\+::lp\+Msg\+Buf\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Error message buffer. 
+
+\mbox{\Hypertarget{classThreadException_af35c621f09ff63e9928a8ad5ce596d34}\label{classThreadException_af35c621f09ff63e9928a8ad5ce596d34}} 
+\index{Thread\+Exception@{Thread\+Exception}!m\+\_\+\+Err\+Code@{m\+\_\+\+Err\+Code}}
+\index{m\+\_\+\+Err\+Code@{m\+\_\+\+Err\+Code}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Err\+Code}{m\_ErrCode}}
+{\footnotesize\ttfamily int Thread\+Exception\+::m\+\_\+\+Err\+Code\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Error code. 
+
+\mbox{\Hypertarget{classThreadException_aa2ab3078b7211738d8eeb1e9e4e2a8cb}\label{classThreadException_aa2ab3078b7211738d8eeb1e9e4e2a8cb}} 
+\index{Thread\+Exception@{Thread\+Exception}!m\+\_\+\+Message@{m\+\_\+\+Message}}
+\index{m\+\_\+\+Message@{m\+\_\+\+Message}!Thread\+Exception@{Thread\+Exception}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Message}{m\_Message}}
+{\footnotesize\ttfamily char Thread\+Exception\+::m\+\_\+\+Message\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+User\+Message buffer. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{ThreadException_8h}{Thread\+Exception.\+h}\item 
+\hyperlink{ThreadException_8cpp}{Thread\+Exception.\+cpp}\end{DoxyCompactItemize}

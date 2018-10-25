@@ -1,0 +1,178 @@
+\hypertarget{sockclasslib_8h}{}\section{sockclasslib.\+h File Reference}
+\label{sockclasslib_8h}\index{sockclasslib.\+h@{sockclasslib.\+h}}
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+Include dependency graph for sockclasslib.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sockclasslib_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sockclasslib_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structSockClassLib_1_1VersionTriple}{Sock\+Class\+Lib\+::\+Version\+Triple}
+\begin{DoxyCompactList}\small\item\em Structure for library versions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceSockClassLib}{Sock\+Class\+Lib}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{sockclasslib_8h_a633b0396ff93d336a088412a190a5072}{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR}~-\/1
+\item 
+\#define \hyperlink{sockclasslib_8h_a26769957ec1a2beaf223f33b66ee64ab}{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET}~-\/1
+\item 
+\#define \hyperlink{sockclasslib_8h_a0bd21aecb531950a6c4d3c8605705c58}{S\+E\+N\+D\+C\+O\+N\+N\+R\+E\+S\+ET}~E\+P\+I\+PE
+\item 
+\#define \hyperlink{sockclasslib_8h_a0b7f3c243b0866f10c0b45ab48030beb}{R\+E\+C\+V\+C\+O\+N\+N\+R\+E\+S\+ET}~E\+C\+O\+N\+N\+R\+E\+S\+ET
+\item 
+\#define \hyperlink{sockclasslib_8h_a990acc876290fc28437b4cce88c897a8}{W\+S\+A\+E\+C\+O\+N\+N\+R\+E\+S\+ET}~E\+C\+O\+N\+N\+R\+E\+S\+ET
+\item 
+\#define \hyperlink{sockclasslib_8h_a02d38f38d44ac5fde8b172aae530e907}{W\+S\+A\+E\+I\+S\+C\+O\+NN}~E\+I\+S\+C\+O\+NN
+\item 
+\#define \hyperlink{sockclasslib_8h_a4ba23242bee4784b72a0a170e2f975a0}{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}~E\+W\+O\+U\+L\+D\+B\+L\+O\+CK
+\item 
+\#define \hyperlink{sockclasslib_8h_ada8711ffab59910a2732cfa4b7c24e29}{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}~E\+I\+N\+P\+R\+O\+G\+R\+E\+SS
+\item 
+\#define \hyperlink{sockclasslib_8h_a10fefe81d89fa6e5e5d9a2aca151fe70}{W\+S\+A\+E\+A\+L\+R\+E\+A\+DY}~E\+A\+L\+R\+E\+A\+DY
+\item 
+\#define \hyperlink{sockclasslib_8h_a6d24fe3ab2906c21c373505ca244f90b}{W\+S\+A\+Get\+Last\+Error}()~errno
+\item 
+\#define \hyperlink{sockclasslib_8h_a678c94df8384a0229dcfb99136ae19ef}{W\+S\+A\+Set\+Last\+Error}(x)~errno = x
+\item 
+\#define \hyperlink{sockclasslib_8h_a9cc1058a4314729e5966c036881bed34}{S\+O\+C\+K\+L\+I\+B\+\_\+\+A\+PI}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int \hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET}
+\item 
+typedef int \hyperlink{sockclasslib_8h_afa24cdb4712388f457abbaeb3fe89762}{socklen\+\_\+type}
+\item 
+typedef size\+\_\+t \hyperlink{sockclasslib_8h_a49b489a408a211a90e766329c0732d7b}{size\+\_\+type}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{sockclasslib_8h_ad272c8891ecce101c35bf18e3dc03d38}{closesocket} (int sock)
+\item 
+void \hyperlink{sockclasslib_8h_a9cc1058a4314729e5966c036881bed34}{S\+O\+C\+K\+L\+I\+B\+\_\+\+A\+PI} \hyperlink{group__LIB__GROUP_ga618a999613777f55f50f3e9b3253b6e7}{Sock\+Class\+Lib\+::get\+Version} (Version\+Triple \&Versions)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{sockclasslib_8h_a26769957ec1a2beaf223f33b66ee64ab}\label{sockclasslib_8h_a26769957ec1a2beaf223f33b66ee64ab}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET}}
+\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET}{INVALID\_SOCKET}}
+{\footnotesize\ttfamily \#define I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET~-\/1}
+
+\mbox{\Hypertarget{sockclasslib_8h_a0b7f3c243b0866f10c0b45ab48030beb}\label{sockclasslib_8h_a0b7f3c243b0866f10c0b45ab48030beb}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!R\+E\+C\+V\+C\+O\+N\+N\+R\+E\+S\+ET@{R\+E\+C\+V\+C\+O\+N\+N\+R\+E\+S\+ET}}
+\index{R\+E\+C\+V\+C\+O\+N\+N\+R\+E\+S\+ET@{R\+E\+C\+V\+C\+O\+N\+N\+R\+E\+S\+ET}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+C\+V\+C\+O\+N\+N\+R\+E\+S\+ET}{RECVCONNRESET}}
+{\footnotesize\ttfamily \#define R\+E\+C\+V\+C\+O\+N\+N\+R\+E\+S\+ET~E\+C\+O\+N\+N\+R\+E\+S\+ET}
+
+\mbox{\Hypertarget{sockclasslib_8h_a0bd21aecb531950a6c4d3c8605705c58}\label{sockclasslib_8h_a0bd21aecb531950a6c4d3c8605705c58}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!S\+E\+N\+D\+C\+O\+N\+N\+R\+E\+S\+ET@{S\+E\+N\+D\+C\+O\+N\+N\+R\+E\+S\+ET}}
+\index{S\+E\+N\+D\+C\+O\+N\+N\+R\+E\+S\+ET@{S\+E\+N\+D\+C\+O\+N\+N\+R\+E\+S\+ET}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+N\+D\+C\+O\+N\+N\+R\+E\+S\+ET}{SENDCONNRESET}}
+{\footnotesize\ttfamily \#define S\+E\+N\+D\+C\+O\+N\+N\+R\+E\+S\+ET~E\+P\+I\+PE}
+
+\mbox{\Hypertarget{sockclasslib_8h_a633b0396ff93d336a088412a190a5072}\label{sockclasslib_8h_a633b0396ff93d336a088412a190a5072}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR@{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR}}
+\index{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR@{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR}{SOCKET\_ERROR}}
+{\footnotesize\ttfamily \#define S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR~-\/1}
+
+\mbox{\Hypertarget{sockclasslib_8h_a9cc1058a4314729e5966c036881bed34}\label{sockclasslib_8h_a9cc1058a4314729e5966c036881bed34}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!S\+O\+C\+K\+L\+I\+B\+\_\+\+A\+PI@{S\+O\+C\+K\+L\+I\+B\+\_\+\+A\+PI}}
+\index{S\+O\+C\+K\+L\+I\+B\+\_\+\+A\+PI@{S\+O\+C\+K\+L\+I\+B\+\_\+\+A\+PI}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{S\+O\+C\+K\+L\+I\+B\+\_\+\+A\+PI}{SOCKLIB\_API}}
+{\footnotesize\ttfamily \#define S\+O\+C\+K\+L\+I\+B\+\_\+\+A\+PI}
+
+\mbox{\Hypertarget{sockclasslib_8h_a10fefe81d89fa6e5e5d9a2aca151fe70}\label{sockclasslib_8h_a10fefe81d89fa6e5e5d9a2aca151fe70}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!W\+S\+A\+E\+A\+L\+R\+E\+A\+DY@{W\+S\+A\+E\+A\+L\+R\+E\+A\+DY}}
+\index{W\+S\+A\+E\+A\+L\+R\+E\+A\+DY@{W\+S\+A\+E\+A\+L\+R\+E\+A\+DY}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{W\+S\+A\+E\+A\+L\+R\+E\+A\+DY}{WSAEALREADY}}
+{\footnotesize\ttfamily \#define W\+S\+A\+E\+A\+L\+R\+E\+A\+DY~E\+A\+L\+R\+E\+A\+DY}
+
+\mbox{\Hypertarget{sockclasslib_8h_a990acc876290fc28437b4cce88c897a8}\label{sockclasslib_8h_a990acc876290fc28437b4cce88c897a8}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!W\+S\+A\+E\+C\+O\+N\+N\+R\+E\+S\+ET@{W\+S\+A\+E\+C\+O\+N\+N\+R\+E\+S\+ET}}
+\index{W\+S\+A\+E\+C\+O\+N\+N\+R\+E\+S\+ET@{W\+S\+A\+E\+C\+O\+N\+N\+R\+E\+S\+ET}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{W\+S\+A\+E\+C\+O\+N\+N\+R\+E\+S\+ET}{WSAECONNRESET}}
+{\footnotesize\ttfamily \#define W\+S\+A\+E\+C\+O\+N\+N\+R\+E\+S\+ET~E\+C\+O\+N\+N\+R\+E\+S\+ET}
+
+\mbox{\Hypertarget{sockclasslib_8h_ada8711ffab59910a2732cfa4b7c24e29}\label{sockclasslib_8h_ada8711ffab59910a2732cfa4b7c24e29}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+SS@{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}}
+\index{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+SS@{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}{WSAEINPROGRESS}}
+{\footnotesize\ttfamily \#define W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+SS~E\+I\+N\+P\+R\+O\+G\+R\+E\+SS}
+
+\mbox{\Hypertarget{sockclasslib_8h_a02d38f38d44ac5fde8b172aae530e907}\label{sockclasslib_8h_a02d38f38d44ac5fde8b172aae530e907}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!W\+S\+A\+E\+I\+S\+C\+O\+NN@{W\+S\+A\+E\+I\+S\+C\+O\+NN}}
+\index{W\+S\+A\+E\+I\+S\+C\+O\+NN@{W\+S\+A\+E\+I\+S\+C\+O\+NN}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{W\+S\+A\+E\+I\+S\+C\+O\+NN}{WSAEISCONN}}
+{\footnotesize\ttfamily \#define W\+S\+A\+E\+I\+S\+C\+O\+NN~E\+I\+S\+C\+O\+NN}
+
+\mbox{\Hypertarget{sockclasslib_8h_a4ba23242bee4784b72a0a170e2f975a0}\label{sockclasslib_8h_a4ba23242bee4784b72a0a170e2f975a0}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK@{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}}
+\index{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK@{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}{WSAEWOULDBLOCK}}
+{\footnotesize\ttfamily \#define W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK~E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}
+
+\mbox{\Hypertarget{sockclasslib_8h_a6d24fe3ab2906c21c373505ca244f90b}\label{sockclasslib_8h_a6d24fe3ab2906c21c373505ca244f90b}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!W\+S\+A\+Get\+Last\+Error@{W\+S\+A\+Get\+Last\+Error}}
+\index{W\+S\+A\+Get\+Last\+Error@{W\+S\+A\+Get\+Last\+Error}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{W\+S\+A\+Get\+Last\+Error}{WSAGetLastError}}
+{\footnotesize\ttfamily \#define W\+S\+A\+Get\+Last\+Error(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~errno}
+
+\mbox{\Hypertarget{sockclasslib_8h_a678c94df8384a0229dcfb99136ae19ef}\label{sockclasslib_8h_a678c94df8384a0229dcfb99136ae19ef}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!W\+S\+A\+Set\+Last\+Error@{W\+S\+A\+Set\+Last\+Error}}
+\index{W\+S\+A\+Set\+Last\+Error@{W\+S\+A\+Set\+Last\+Error}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{W\+S\+A\+Set\+Last\+Error}{WSASetLastError}}
+{\footnotesize\ttfamily \#define W\+S\+A\+Set\+Last\+Error(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~errno = x}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{sockclasslib_8h_a49b489a408a211a90e766329c0732d7b}\label{sockclasslib_8h_a49b489a408a211a90e766329c0732d7b}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!size\+\_\+type@{size\+\_\+type}}
+\index{size\+\_\+type@{size\+\_\+type}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{size\+\_\+type}{size\_type}}
+{\footnotesize\ttfamily typedef size\+\_\+t \hyperlink{sockclasslib_8h_a49b489a408a211a90e766329c0732d7b}{size\+\_\+type}}
+
+\mbox{\Hypertarget{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}\label{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!S\+O\+C\+K\+ET@{S\+O\+C\+K\+ET}}
+\index{S\+O\+C\+K\+ET@{S\+O\+C\+K\+ET}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{S\+O\+C\+K\+ET}{SOCKET}}
+{\footnotesize\ttfamily typedef int \hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET}}
+
+\mbox{\Hypertarget{sockclasslib_8h_afa24cdb4712388f457abbaeb3fe89762}\label{sockclasslib_8h_afa24cdb4712388f457abbaeb3fe89762}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!socklen\+\_\+type@{socklen\+\_\+type}}
+\index{socklen\+\_\+type@{socklen\+\_\+type}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{socklen\+\_\+type}{socklen\_type}}
+{\footnotesize\ttfamily typedef int \hyperlink{sockclasslib_8h_afa24cdb4712388f457abbaeb3fe89762}{socklen\+\_\+type}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sockclasslib_8h_ad272c8891ecce101c35bf18e3dc03d38}\label{sockclasslib_8h_ad272c8891ecce101c35bf18e3dc03d38}} 
+\index{sockclasslib.\+h@{sockclasslib.\+h}!closesocket@{closesocket}}
+\index{closesocket@{closesocket}!sockclasslib.\+h@{sockclasslib.\+h}}
+\subsubsection{\texorpdfstring{closesocket()}{closesocket()}}
+{\footnotesize\ttfamily int closesocket (\begin{DoxyParamCaption}\item[{int}]{sock }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

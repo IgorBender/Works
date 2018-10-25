@@ -1,0 +1,10 @@
+<map id="ClientBoundV6" name="ClientBoundV6">
+<area shape="rect" id="node2" href="$classClientSimpleV6.html" title="Stream oriented socket with connection ability for IPv6. " alt="" coords="150,1262,282,1369"/>
+<area shape="rect" id="node3" href="$classStreamSocketV6.html" title="{StreamSocketV6\n|# m_SockName\l# m_PeerName\l|+ StreamSocketV6()\l+ ~StreamSocketV6()\l+ getSockName()\l+ getPeerName()\l# StreamSocketV6()\l&#45; StreamSocketV6()\l&#45; operator=()\l}" alt="" coords="5,975,155,1155"/>
+<area shape="rect" id="node4" href="$classInternetSocketV6.html" title="{InternetSocketV6\n||+ InternetSocketV6()\l+ ~InternetSocketV6()\l+ setIpLevelOpt()\l+ getIpLevelOpt()\l# InternetSocketV6()\l}" alt="" coords="181,696,331,832"/>
+<area shape="rect" id="node8" href="$classConnectedSocketV6.html" title="Socket that can connect to another. " alt="" coords="179,953,341,1177"/>
+<area shape="rect" id="node9" href="$classBoundSocketV6.html" title="Socket bounded to particular port and IPv6 address (end&#45;point). " alt="" coords="307,1225,451,1405"/>
+<area shape="rect" id="node5" href="$classInternetSocket.html" title="{InternetSocket\n||+ InternetSocket()\l+ ~InternetSocket()\l# InternetSocket()\l}" alt="" coords="102,468,237,575"/>
+<area shape="rect" id="node7" href="$classStreamSocket.html" title="{StreamSocket\n|# m_SockName\l# m_GotSockName\l# m_PeerName\l# m_GotPeerName\l|+ StreamSocket()\l+ ~StreamSocket()\l+ getSockName()\l+ getPeerName()\l+ setSock()\l+ setTcpLevelOpt()\l+ getTcpLevelOpt()\l+ disconnect()\l# StreamSocket()\l# close()\l&#45; StreamSocket()\l&#45; operator=()\l}" alt="" coords="17,623,154,905"/>
+<area shape="rect" id="node6" href="$classSocketClass.html" title="{SocketClass\n|# m_Sock\l# m_Domain\l# m_Type\l# m_Protocol\l# m_Flags\l# m_Connected\l|+ SocketClass()\l+ setDomain()\l+ getDomain()\l+ setType()\l+ getType()\l+ setProtocol()\l+ getProtocol()\l+ getSock()\l+ setNonBlockMode()\l+ setSockLevelOpt()\l+ getSockLevelOpt()\l+ send()\l+ receive()\l+ isConnected()\l+ setConnected()\l# SocketClass()\l# ~SocketClass()\l# create()\l# close()\l}" alt="" coords="95,5,244,420"/>
+</map>

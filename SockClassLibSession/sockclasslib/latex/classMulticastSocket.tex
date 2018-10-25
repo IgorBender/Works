@@ -1,0 +1,160 @@
+\hypertarget{classMulticastSocket}{}\section{Multicast\+Socket Class Reference}
+\label{classMulticastSocket}\index{Multicast\+Socket@{Multicast\+Socket}}
+
+
+I\+Pv4 datagram socket capable to send multicast datagrams.  
+
+
+
+
+{\ttfamily \#include $<$Multicast\+Socket.\+h$>$}
+
+
+
+Inheritance diagram for Multicast\+Socket\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMulticastSocket__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMulticastSocket_a757cf27883d58403d8c407ac6e1b9abb}{Multicast\+Socket} ()
+\item 
+void \hyperlink{classMulticastSocket_abf3fae43ee2575adfc7c90ee31b1fc0a}{set\+T\+TL} (unsigned char ttl)
+\item 
+void \hyperlink{classMulticastSocket_a64399ca9f96c7f8fcf453c6233d17165}{set\+Default\+If} (in\+\_\+addr\+\_\+t Address)
+\item 
+void \hyperlink{classMulticastSocket_abd769428b74a9dc88fca8c27bb53da1a}{set\+Default\+If} (const char $\ast$Address)
+\item 
+void \hyperlink{classMulticastSocket_a3f30553f778aa0bf541fc8d1c772e2e2}{set\+Loop\+Back} (bool On=true)
+\item 
+virtual void \hyperlink{classMulticastSocket_a30ffd3d7fe782c2d74d69d994e465a4d}{connect} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMulticastSocket_a85ca1e8e1c4c726d906393eec29adf00}{Multicast\+Socket} (\hyperlink{classMulticastSocket}{Multicast\+Socket} \&s)
+\item 
+\hyperlink{classMulticastSocket}{Multicast\+Socket} \& \hyperlink{classMulticastSocket_a644a16ae716496f9d92389f7a9e80b3e}{operator=} (\hyperlink{classMulticastSocket}{Multicast\+Socket} \&)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+I\+Pv4 datagram socket capable to send multicast datagrams. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMulticastSocket_a757cf27883d58403d8c407ac6e1b9abb}\label{classMulticastSocket_a757cf27883d58403d8c407ac6e1b9abb}} 
+\index{Multicast\+Socket@{Multicast\+Socket}!Multicast\+Socket@{Multicast\+Socket}}
+\index{Multicast\+Socket@{Multicast\+Socket}!Multicast\+Socket@{Multicast\+Socket}}
+\subsubsection{\texorpdfstring{Multicast\+Socket()}{MulticastSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Multicast\+Socket\+::\+Multicast\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocket_a85ca1e8e1c4c726d906393eec29adf00}\label{classMulticastSocket_a85ca1e8e1c4c726d906393eec29adf00}} 
+\index{Multicast\+Socket@{Multicast\+Socket}!Multicast\+Socket@{Multicast\+Socket}}
+\index{Multicast\+Socket@{Multicast\+Socket}!Multicast\+Socket@{Multicast\+Socket}}
+\subsubsection{\texorpdfstring{Multicast\+Socket()}{MulticastSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Multicast\+Socket\+::\+Multicast\+Socket (\begin{DoxyParamCaption}\item[{\hyperlink{classMulticastSocket}{Multicast\+Socket} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMulticastSocket_a30ffd3d7fe782c2d74d69d994e465a4d}\label{classMulticastSocket_a30ffd3d7fe782c2d74d69d994e465a4d}} 
+\index{Multicast\+Socket@{Multicast\+Socket}!connect@{connect}}
+\index{connect@{connect}!Multicast\+Socket@{Multicast\+Socket}}
+\subsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily virtual void Multicast\+Socket\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Connect the socket. Implements pure virtual function of base class. Has no meaning for this particular class. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Reimplemented from \hyperlink{classConnectedSocketV4_a034d0c949fa1a0f14c136f839915d1a4}{Connected\+Socket\+V4}.
+
+\mbox{\Hypertarget{classMulticastSocket_a644a16ae716496f9d92389f7a9e80b3e}\label{classMulticastSocket_a644a16ae716496f9d92389f7a9e80b3e}} 
+\index{Multicast\+Socket@{Multicast\+Socket}!operator=@{operator=}}
+\index{operator=@{operator=}!Multicast\+Socket@{Multicast\+Socket}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classMulticastSocket}{Multicast\+Socket}\& Multicast\+Socket\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classMulticastSocket}{Multicast\+Socket} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. \mbox{\Hypertarget{classMulticastSocket_a64399ca9f96c7f8fcf453c6233d17165}\label{classMulticastSocket_a64399ca9f96c7f8fcf453c6233d17165}} 
+\index{Multicast\+Socket@{Multicast\+Socket}!set\+Default\+If@{set\+Default\+If}}
+\index{set\+Default\+If@{set\+Default\+If}!Multicast\+Socket@{Multicast\+Socket}}
+\subsubsection{\texorpdfstring{set\+Default\+If()}{setDefaultIf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Multicast\+Socket\+::set\+Default\+If (\begin{DoxyParamCaption}\item[{in\+\_\+addr\+\_\+t}]{Address }\end{DoxyParamCaption})}
+
+Set default network interface. 
+\begin{DoxyParams}{Parameters}
+{\em Address} & \+: address of default network interface in network byte order. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocket_abd769428b74a9dc88fca8c27bb53da1a}\label{classMulticastSocket_abd769428b74a9dc88fca8c27bb53da1a}} 
+\index{Multicast\+Socket@{Multicast\+Socket}!set\+Default\+If@{set\+Default\+If}}
+\index{set\+Default\+If@{set\+Default\+If}!Multicast\+Socket@{Multicast\+Socket}}
+\subsubsection{\texorpdfstring{set\+Default\+If()}{setDefaultIf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Multicast\+Socket\+::set\+Default\+If (\begin{DoxyParamCaption}\item[{const char $\ast$}]{Address }\end{DoxyParamCaption})}
+
+Set default network interface. 
+\begin{DoxyParams}{Parameters}
+{\em Address} & \+: address of default network interface in decilmal dot notation. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocket_a3f30553f778aa0bf541fc8d1c772e2e2}\label{classMulticastSocket_a3f30553f778aa0bf541fc8d1c772e2e2}} 
+\index{Multicast\+Socket@{Multicast\+Socket}!set\+Loop\+Back@{set\+Loop\+Back}}
+\index{set\+Loop\+Back@{set\+Loop\+Back}!Multicast\+Socket@{Multicast\+Socket}}
+\subsubsection{\texorpdfstring{set\+Loop\+Back()}{setLoopBack()}}
+{\footnotesize\ttfamily void Multicast\+Socket\+::set\+Loop\+Back (\begin{DoxyParamCaption}\item[{bool}]{On = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Switch on or off loppback for sent multicasts. 
+\begin{DoxyParams}{Parameters}
+{\em On} & \+: lopback on/off. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocket_abf3fae43ee2575adfc7c90ee31b1fc0a}\label{classMulticastSocket_abf3fae43ee2575adfc7c90ee31b1fc0a}} 
+\index{Multicast\+Socket@{Multicast\+Socket}!set\+T\+TL@{set\+T\+TL}}
+\index{set\+T\+TL@{set\+T\+TL}!Multicast\+Socket@{Multicast\+Socket}}
+\subsubsection{\texorpdfstring{set\+T\+T\+L()}{setTTL()}}
+{\footnotesize\ttfamily void Multicast\+Socket\+::set\+T\+TL (\begin{DoxyParamCaption}\item[{unsigned char}]{ttl }\end{DoxyParamCaption})}
+
+Set Time-\/\+To-\/\+Live for sent multicasts. 
+\begin{DoxyParams}{Parameters}
+{\em ttl} & \+: T\+TL number. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{MulticastSocket_8h}{Multicast\+Socket.\+h}\item 
+\hyperlink{MulticastSocket_8cpp}{Multicast\+Socket.\+cpp}\end{DoxyCompactItemize}

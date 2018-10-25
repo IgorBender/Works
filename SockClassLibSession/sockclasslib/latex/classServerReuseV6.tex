@@ -1,0 +1,98 @@
+\hypertarget{classServerReuseV6}{}\section{Server\+Reuse\+V6 Class Reference}
+\label{classServerReuseV6}\index{Server\+Reuse\+V6@{Server\+Reuse\+V6}}
+
+
+T\+CP server socket with reuse local address ability.  
+
+
+
+
+{\ttfamily \#include $<$Server\+Reuse\+V6.\+h$>$}
+
+
+
+Inheritance diagram for Server\+Reuse\+V6\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classServerReuseV6__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classServerReuseV6_ab18b2c131544cff19092e079cad65183}{Server\+Reuse\+V6} (short Port, in6\+\_\+addr Address=in6addr\+\_\+any)
+\item 
+\hyperlink{classServerReuseV6_aede672796d4fd33b27682fd6b0120ae2}{Server\+Reuse\+V6} (short Port, const char $\ast$Address)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classServerReuseV6_a84ece67785e19d6ff31b002aa88d2bff}{Server\+Reuse\+V6} (\hyperlink{classServerReuseV6}{Server\+Reuse\+V6} \&s)
+\item 
+\hyperlink{classServerReuseV6}{Server\+Reuse\+V6} \& \hyperlink{classServerReuseV6_af517a336f3c8f9166ee1cc70e2e6a5f4}{operator=} (\hyperlink{classServerReuseV6}{Server\+Reuse\+V6} \&s)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\+CP server socket with reuse local address ability. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classServerReuseV6_ab18b2c131544cff19092e079cad65183}\label{classServerReuseV6_ab18b2c131544cff19092e079cad65183}} 
+\index{Server\+Reuse\+V6@{Server\+Reuse\+V6}!Server\+Reuse\+V6@{Server\+Reuse\+V6}}
+\index{Server\+Reuse\+V6@{Server\+Reuse\+V6}!Server\+Reuse\+V6@{Server\+Reuse\+V6}}
+\subsubsection{\texorpdfstring{Server\+Reuse\+V6()}{ServerReuseV6()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Server\+Reuse\+V6\+::\+Server\+Reuse\+V6 (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{in6\+\_\+addr}]{Address = {\ttfamily in6addr\+\_\+any} }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: I\+Pv6 address for bind in network byte order. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classServerReuseV6_aede672796d4fd33b27682fd6b0120ae2}\label{classServerReuseV6_aede672796d4fd33b27682fd6b0120ae2}} 
+\index{Server\+Reuse\+V6@{Server\+Reuse\+V6}!Server\+Reuse\+V6@{Server\+Reuse\+V6}}
+\index{Server\+Reuse\+V6@{Server\+Reuse\+V6}!Server\+Reuse\+V6@{Server\+Reuse\+V6}}
+\subsubsection{\texorpdfstring{Server\+Reuse\+V6()}{ServerReuseV6()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Server\+Reuse\+V6\+::\+Server\+Reuse\+V6 (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{const char $\ast$}]{Address }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: I\+Pv6 address for bind in textual notation. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classServerReuseV6_a84ece67785e19d6ff31b002aa88d2bff}\label{classServerReuseV6_a84ece67785e19d6ff31b002aa88d2bff}} 
+\index{Server\+Reuse\+V6@{Server\+Reuse\+V6}!Server\+Reuse\+V6@{Server\+Reuse\+V6}}
+\index{Server\+Reuse\+V6@{Server\+Reuse\+V6}!Server\+Reuse\+V6@{Server\+Reuse\+V6}}
+\subsubsection{\texorpdfstring{Server\+Reuse\+V6()}{ServerReuseV6()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Server\+Reuse\+V6\+::\+Server\+Reuse\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{classServerReuseV6}{Server\+Reuse\+V6} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classServerReuseV6_af517a336f3c8f9166ee1cc70e2e6a5f4}\label{classServerReuseV6_af517a336f3c8f9166ee1cc70e2e6a5f4}} 
+\index{Server\+Reuse\+V6@{Server\+Reuse\+V6}!operator=@{operator=}}
+\index{operator=@{operator=}!Server\+Reuse\+V6@{Server\+Reuse\+V6}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classServerReuseV6}{Server\+Reuse\+V6}\& Server\+Reuse\+V6\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classServerReuseV6}{Server\+Reuse\+V6} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{ServerReuseV6_8h}{Server\+Reuse\+V6.\+h}\item 
+\hyperlink{ServerReuseV6_8cpp}{Server\+Reuse\+V6.\+cpp}\end{DoxyCompactItemize}

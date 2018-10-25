@@ -1,0 +1,18 @@
+<map id="InternetSocketV4" name="InternetSocketV4">
+<area shape="rect" id="node4" href="$classBoundSocketV4.html" title="Socket bounded to particular port and IPv4 address (end&#45;point). " alt="" coords="471,1086,615,1266"/>
+<area shape="rect" id="node12" href="$classConnectedSocketV4.html" title="Socket that can connect to another. " alt="" coords="365,807,528,1031"/>
+<area shape="rect" id="node17" href="$classStreamSocketV4.html" title="{StreamSocketV4\n|# m_SockName\l# m_PeerName\l|+ StreamSocketV4()\l+ ~StreamSocketV4()\l+ getSockName()\l+ getPeerName()\l# StreamSocketV4()\l&#45; StreamSocketV4()\l&#45; operator=()\l}" alt="" coords="627,829,776,1009"/>
+<area shape="rect" id="node2" href="$classInternetSocket.html" title="{InternetSocket\n||+ InternetSocket()\l+ ~InternetSocket()\l# InternetSocket()\l}" alt="" coords="498,468,633,575"/>
+<area shape="rect" id="node3" href="$classSocketClass.html" title="{SocketClass\n|# m_Sock\l# m_Domain\l# m_Type\l# m_Protocol\l# m_Flags\l# m_Connected\l|+ SocketClass()\l+ setDomain()\l+ getDomain()\l+ setType()\l+ getType()\l+ setProtocol()\l+ getProtocol()\l+ getSock()\l+ setNonBlockMode()\l+ setSockLevelOpt()\l+ getSockLevelOpt()\l+ send()\l+ receive()\l+ isConnected()\l+ setConnected()\l# SocketClass()\l# ~SocketClass()\l# create()\l# close()\l}" alt="" coords="491,5,640,420"/>
+<area shape="rect" id="node5" href="$classBroadcastBound.html" title="Bounded socket with broadcast capabilities. " alt="" coords="348,1586,487,1707"/>
+<area shape="rect" id="node6" href="$classClientBound.html" title="Client socket bound to specified port and address. " alt="" coords="622,1351,735,1472"/>
+<area shape="rect" id="node7" href="$classDatagramBound.html" title="UDP socket bound to specified port and address (aka UDP server). " alt="" coords="360,1351,496,1472"/>
+<area shape="rect" id="node8" href="$classMulticastBound.html" title="IPv4 socket capable to receive multicast datagrams. " alt="" coords="183,1549,315,1744"/>
+<area shape="rect" id="node9" href="$classStreamBoundV4.html" title="TCP socket bound to specified port and address. " alt="" coords="759,1351,897,1472"/>
+<area shape="rect" id="node10" href="$classServerSimple.html" title="TCP server socket. " alt="" coords="768,1571,888,1722"/>
+<area shape="rect" id="node11" href="$classServerReuse.html" title="TCP server socket with reuse local address ability. " alt="" coords="769,1792,887,1913"/>
+<area shape="rect" id="node13" href="$classClientSimple.html" title="Stream oriented socket with connection ability. " alt="" coords="639,1115,763,1237"/>
+<area shape="rect" id="node14" href="$classDatagramSocket.html" title="Class for UDP sockets. " alt="" coords="242,1079,390,1273"/>
+<area shape="rect" id="node15" href="$classBroadcastSocket.html" title="Broadcast socket class. " alt="" coords="165,1336,336,1487"/>
+<area shape="rect" id="node16" href="$classMulticastSocket.html" title="IPv4 datagram socket capable to send multicast datagrams. " alt="" coords="5,1321,141,1501"/>
+</map>

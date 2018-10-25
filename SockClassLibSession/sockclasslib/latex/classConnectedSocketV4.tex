@@ -1,0 +1,213 @@
+\hypertarget{classConnectedSocketV4}{}\section{Connected\+Socket\+V4 Class Reference}
+\label{classConnectedSocketV4}\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+
+
+Socket that can connect to another.  
+
+
+
+
+{\ttfamily \#include $<$Connected\+Socket\+V4.\+h$>$}
+
+
+
+Inheritance diagram for Connected\+Socket\+V4\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classConnectedSocketV4__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classConnectedSocketV4_ab6fd7088764d07f276a6be26e2dd8334}{Connected\+Socket\+V4} ()
+\item 
+void \hyperlink{classConnectedSocketV4_a550cc6530361565ea80e0b2ce892402e}{set\+Destination} (sockaddr\+\_\+in Dest)
+\item 
+void \hyperlink{classConnectedSocketV4_a8f069939a6796530ba9f2a781e787db7}{set\+Destination} (in\+\_\+addr\+\_\+t Address, short Port)
+\item 
+void \hyperlink{classConnectedSocketV4_a9ba0783ad8bdeabd25a1ba5a2a1178fc}{set\+Destination} (const char $\ast$Address, short Port)
+\item 
+sockaddr\+\_\+in \& \hyperlink{classConnectedSocketV4_aba8df9ab0af83ab20a522e32b6d8e3bb}{get\+Destination} ()
+\item 
+virtual void \hyperlink{classConnectedSocketV4_a034d0c949fa1a0f14c136f839915d1a4}{connect} ()
+\item 
+void \hyperlink{classConnectedSocketV4_a9998be702c3a10a686bc6dfd914a10fe}{connect} (in\+\_\+addr\+\_\+t Address, short Port)
+\item 
+void \hyperlink{classConnectedSocketV4_af094a90dbff1746f213f7dcb2a46a0b7}{connect} (const char $\ast$Address, short Port)
+\item 
+void \hyperlink{classConnectedSocketV4_a751123cd0d6a737e87748ce2a175cd47}{connect} (sockaddr\+\_\+in Dest)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sockaddr\+\_\+in \hyperlink{classConnectedSocketV4_ab07c2124a1a10a7f402bba27e457d15d}{m\+\_\+\+Destination}
+\begin{DoxyCompactList}\small\item\em Destination endpoint properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classConnectedSocketV4_a12724341a7a57fd8b5d79bce7b1dd385}{Connected\+Socket\+V4} (\hyperlink{classConnectedSocketV4}{Connected\+Socket\+V4} \&s)
+\item 
+\hyperlink{classConnectedSocketV4}{Connected\+Socket\+V4} \& \hyperlink{classConnectedSocketV4_a9fcb520d8f3aa2454155b6a6b5e97b39}{operator=} (\hyperlink{classConnectedSocketV4}{Connected\+Socket\+V4} \&s)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Socket that can connect to another. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classConnectedSocketV4_ab6fd7088764d07f276a6be26e2dd8334}\label{classConnectedSocketV4_ab6fd7088764d07f276a6be26e2dd8334}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{Connected\+Socket\+V4()}{ConnectedSocketV4()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Connected\+Socket\+V4\+::\+Connected\+Socket\+V4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor. Default constructor. \mbox{\Hypertarget{classConnectedSocketV4_a12724341a7a57fd8b5d79bce7b1dd385}\label{classConnectedSocketV4_a12724341a7a57fd8b5d79bce7b1dd385}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{Connected\+Socket\+V4()}{ConnectedSocketV4()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Connected\+Socket\+V4\+::\+Connected\+Socket\+V4 (\begin{DoxyParamCaption}\item[{\hyperlink{classConnectedSocketV4}{Connected\+Socket\+V4} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable . 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classConnectedSocketV4_a034d0c949fa1a0f14c136f839915d1a4}\label{classConnectedSocketV4_a034d0c949fa1a0f14c136f839915d1a4}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!connect@{connect}}
+\index{connect@{connect}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Connected\+Socket\+V4\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Connect to destination endpoint. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Reimplemented in \hyperlink{classBroadcastSocket_a330f3448f2c53eef77af683cfd94eafd}{Broadcast\+Socket}, and \hyperlink{classMulticastSocket_a30ffd3d7fe782c2d74d69d994e465a4d}{Multicast\+Socket}.
+
+\mbox{\Hypertarget{classConnectedSocketV4_a9998be702c3a10a686bc6dfd914a10fe}\label{classConnectedSocketV4_a9998be702c3a10a686bc6dfd914a10fe}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!connect@{connect}}
+\index{connect@{connect}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Connected\+Socket\+V4\+::connect (\begin{DoxyParamCaption}\item[{in\+\_\+addr\+\_\+t}]{Address,  }\item[{short}]{Port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Connect to destination endpoint. 
+\begin{DoxyParams}{Parameters}
+{\em Address} & \+: I\+Pv4 address in network byte order. \\
+\hline
+{\em Port} & \+: port number in network byte order. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classConnectedSocketV4_af094a90dbff1746f213f7dcb2a46a0b7}\label{classConnectedSocketV4_af094a90dbff1746f213f7dcb2a46a0b7}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!connect@{connect}}
+\index{connect@{connect}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Connected\+Socket\+V4\+::connect (\begin{DoxyParamCaption}\item[{const char $\ast$}]{Address,  }\item[{short}]{Port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Connect to destination endpoint. 
+\begin{DoxyParams}{Parameters}
+{\em Address} & \+: I\+Pv4 address in decimal dot notation. \\
+\hline
+{\em Port} & \+: port number in network byte order. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classConnectedSocketV4_a751123cd0d6a737e87748ce2a175cd47}\label{classConnectedSocketV4_a751123cd0d6a737e87748ce2a175cd47}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!connect@{connect}}
+\index{connect@{connect}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Connected\+Socket\+V4\+::connect (\begin{DoxyParamCaption}\item[{sockaddr\+\_\+in}]{Dest }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Connect to destination endpoint. 
+\begin{DoxyParams}{Parameters}
+{\em Dest} & \+: sockaddr\+\_\+in structure filled with destination endpoint properties. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classConnectedSocketV4_aba8df9ab0af83ab20a522e32b6d8e3bb}\label{classConnectedSocketV4_aba8df9ab0af83ab20a522e32b6d8e3bb}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!get\+Destination@{get\+Destination}}
+\index{get\+Destination@{get\+Destination}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{get\+Destination()}{getDestination()}}
+{\footnotesize\ttfamily sockaddr\+\_\+in\& Connected\+Socket\+V4\+::get\+Destination (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Deliver destination endpoint properties. \begin{DoxyReturn}{Returns}
+sockaddr\+\_\+in structure filled with endpoint properties. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classConnectedSocketV4_a9fcb520d8f3aa2454155b6a6b5e97b39}\label{classConnectedSocketV4_a9fcb520d8f3aa2454155b6a6b5e97b39}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!operator=@{operator=}}
+\index{operator=@{operator=}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classConnectedSocketV4}{Connected\+Socket\+V4}\& Connected\+Socket\+V4\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classConnectedSocketV4}{Connected\+Socket\+V4} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable . \mbox{\Hypertarget{classConnectedSocketV4_a550cc6530361565ea80e0b2ce892402e}\label{classConnectedSocketV4_a550cc6530361565ea80e0b2ce892402e}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!set\+Destination@{set\+Destination}}
+\index{set\+Destination@{set\+Destination}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{set\+Destination()}{setDestination()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Connected\+Socket\+V4\+::set\+Destination (\begin{DoxyParamCaption}\item[{sockaddr\+\_\+in}]{Dest }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set connection destination endpoint. 
+\begin{DoxyParams}{Parameters}
+{\em Dest} & \+: sockaddr\+\_\+in structure filled with destination endpoint properties. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConnectedSocketV4_a8f069939a6796530ba9f2a781e787db7}\label{classConnectedSocketV4_a8f069939a6796530ba9f2a781e787db7}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!set\+Destination@{set\+Destination}}
+\index{set\+Destination@{set\+Destination}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{set\+Destination()}{setDestination()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Connected\+Socket\+V4\+::set\+Destination (\begin{DoxyParamCaption}\item[{in\+\_\+addr\+\_\+t}]{Address,  }\item[{short}]{Port }\end{DoxyParamCaption})}
+
+Set connection destination endpoint. 
+\begin{DoxyParams}{Parameters}
+{\em Address} & \+: I\+Pv4 address in network byte order. \\
+\hline
+{\em Port} & \+: port number in network byte order. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConnectedSocketV4_a9ba0783ad8bdeabd25a1ba5a2a1178fc}\label{classConnectedSocketV4_a9ba0783ad8bdeabd25a1ba5a2a1178fc}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!set\+Destination@{set\+Destination}}
+\index{set\+Destination@{set\+Destination}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{set\+Destination()}{setDestination()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Connected\+Socket\+V4\+::set\+Destination (\begin{DoxyParamCaption}\item[{const char $\ast$}]{Address,  }\item[{short}]{Port }\end{DoxyParamCaption})}
+
+Set connection destination endpoint. 
+\begin{DoxyParams}{Parameters}
+{\em Address} & \+: I\+Pv4 address in decimal dot notation. \\
+\hline
+{\em Port} & \+: port number in network byte order. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classConnectedSocketV4_ab07c2124a1a10a7f402bba27e457d15d}\label{classConnectedSocketV4_ab07c2124a1a10a7f402bba27e457d15d}} 
+\index{Connected\+Socket\+V4@{Connected\+Socket\+V4}!m\+\_\+\+Destination@{m\+\_\+\+Destination}}
+\index{m\+\_\+\+Destination@{m\+\_\+\+Destination}!Connected\+Socket\+V4@{Connected\+Socket\+V4}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Destination}{m\_Destination}}
+{\footnotesize\ttfamily sockaddr\+\_\+in Connected\+Socket\+V4\+::m\+\_\+\+Destination\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Destination endpoint properties. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{ConnectedSocketV4_8h}{Connected\+Socket\+V4.\+h}\item 
+\hyperlink{ConnectedSocketV4_8cpp}{Connected\+Socket\+V4.\+cpp}\end{DoxyCompactItemize}

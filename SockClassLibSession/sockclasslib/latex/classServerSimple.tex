@@ -1,0 +1,136 @@
+\hypertarget{classServerSimple}{}\section{Server\+Simple Class Reference}
+\label{classServerSimple}\index{Server\+Simple@{Server\+Simple}}
+
+
+T\+CP server socket.  
+
+
+
+
+{\ttfamily \#include $<$Server\+Simple.\+h$>$}
+
+
+
+Inheritance diagram for Server\+Simple\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classServerSimple__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classServerSimple_a9ed49ad0f3ebaaae208886c472d06827}{Server\+Simple} (short Port, in\+\_\+addr\+\_\+t Address=I\+N\+A\+D\+D\+R\+\_\+\+A\+NY, bool Late\+Bind=false)
+\item 
+\hyperlink{classServerSimple_a47713f4385917c592b2db4236b27e20e}{Server\+Simple} (short Port, const char $\ast$Address, bool Late\+Bind=false)
+\item 
+virtual void \hyperlink{classServerSimple_ae2c87189faf4d3b0c87e160bd561be05}{listen} (int Backlog=5)
+\item 
+virtual \hyperlink{classStreamSocketV4}{Stream\+Socket\+V4} $\ast$ \hyperlink{classServerSimple_ad1494d88a28fdb9c392ed9b03172fdfd}{accept} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classServerSimple_a8e89675d8a51130655cf8060d203c287}{Server\+Simple} (\hyperlink{classServerSimple}{Server\+Simple} \&s)
+\item 
+\hyperlink{classServerSimple}{Server\+Simple} \& \hyperlink{classServerSimple_a2c144e6e1b4a58b4edd838db998f5903}{operator=} (\hyperlink{classServerSimple}{Server\+Simple} \&s)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\+CP server socket. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classServerSimple_a9ed49ad0f3ebaaae208886c472d06827}\label{classServerSimple_a9ed49ad0f3ebaaae208886c472d06827}} 
+\index{Server\+Simple@{Server\+Simple}!Server\+Simple@{Server\+Simple}}
+\index{Server\+Simple@{Server\+Simple}!Server\+Simple@{Server\+Simple}}
+\subsubsection{\texorpdfstring{Server\+Simple()}{ServerSimple()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Server\+Simple\+::\+Server\+Simple (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{in\+\_\+addr\+\_\+t}]{Address = {\ttfamily INADDR\+\_\+ANY},  }\item[{bool}]{Late\+Bind = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: address for bind in network byte order. \\
+\hline
+{\em Late\+Bind} & \+: do bind now or later according to bind method call. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classServerSimple_a47713f4385917c592b2db4236b27e20e}\label{classServerSimple_a47713f4385917c592b2db4236b27e20e}} 
+\index{Server\+Simple@{Server\+Simple}!Server\+Simple@{Server\+Simple}}
+\index{Server\+Simple@{Server\+Simple}!Server\+Simple@{Server\+Simple}}
+\subsubsection{\texorpdfstring{Server\+Simple()}{ServerSimple()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Server\+Simple\+::\+Server\+Simple (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{const char $\ast$}]{Address,  }\item[{bool}]{Late\+Bind = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: I\+Pv4 address for bind in decimal dot notation. \\
+\hline
+{\em Late\+Bind} & \+: do bind now or later according to bind method call. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classServerSimple_a8e89675d8a51130655cf8060d203c287}\label{classServerSimple_a8e89675d8a51130655cf8060d203c287}} 
+\index{Server\+Simple@{Server\+Simple}!Server\+Simple@{Server\+Simple}}
+\index{Server\+Simple@{Server\+Simple}!Server\+Simple@{Server\+Simple}}
+\subsubsection{\texorpdfstring{Server\+Simple()}{ServerSimple()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Server\+Simple\+::\+Server\+Simple (\begin{DoxyParamCaption}\item[{\hyperlink{classServerSimple}{Server\+Simple} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classServerSimple_ad1494d88a28fdb9c392ed9b03172fdfd}\label{classServerSimple_ad1494d88a28fdb9c392ed9b03172fdfd}} 
+\index{Server\+Simple@{Server\+Simple}!accept@{accept}}
+\index{accept@{accept}!Server\+Simple@{Server\+Simple}}
+\subsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily \hyperlink{classStreamSocketV4}{Stream\+Socket\+V4} $\ast$ Server\+Simple\+::accept (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Accept connection request. \begin{DoxyReturn}{Returns}
+\hyperlink{classStreamSocketV4}{Stream\+Socket\+V4} pointer representing local connection endpoint. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classServerSimple_ae2c87189faf4d3b0c87e160bd561be05}\label{classServerSimple_ae2c87189faf4d3b0c87e160bd561be05}} 
+\index{Server\+Simple@{Server\+Simple}!listen@{listen}}
+\index{listen@{listen}!Server\+Simple@{Server\+Simple}}
+\subsubsection{\texorpdfstring{listen()}{listen()}}
+{\footnotesize\ttfamily void Server\+Simple\+::listen (\begin{DoxyParamCaption}\item[{int}]{Backlog = {\ttfamily 5} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Listen for input connections. 
+\begin{DoxyParams}{Parameters}
+{\em Backlog} & \+: number of simultaneously held connection requests. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classServerSimple_a2c144e6e1b4a58b4edd838db998f5903}\label{classServerSimple_a2c144e6e1b4a58b4edd838db998f5903}} 
+\index{Server\+Simple@{Server\+Simple}!operator=@{operator=}}
+\index{operator=@{operator=}!Server\+Simple@{Server\+Simple}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classServerSimple}{Server\+Simple}\& Server\+Simple\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classServerSimple}{Server\+Simple} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{ServerSimple_8h}{Server\+Simple.\+h}\item 
+\hyperlink{ServerSimple_8cpp}{Server\+Simple.\+cpp}\end{DoxyCompactItemize}

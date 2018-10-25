@@ -1,0 +1,155 @@
+\hypertarget{classStreamSocketV6}{}\section{Stream\+Socket\+V6 Class Reference}
+\label{classStreamSocketV6}\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+
+
+{\ttfamily \#include $<$Stream\+Socket\+V6.\+h$>$}
+
+
+
+Inheritance diagram for Stream\+Socket\+V6\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classStreamSocketV6__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStreamSocketV6_a5054358161d8ef234de9aa0bdb125b39}{Stream\+Socket\+V6} (\hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET} sock)
+\item 
+virtual \hyperlink{classStreamSocketV6_a5708fcef318b11a9992f6b0b1861b2ff}{$\sim$\+Stream\+Socket\+V6} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+sockaddr\+\_\+in6 \& \hyperlink{classStreamSocketV6_a93f4d15bfc95c567da19372d18e44cf1}{get\+Sock\+Name} ()
+\item 
+sockaddr\+\_\+in6 \& \hyperlink{classStreamSocketV6_a8ebf6f50686e62c8aa080a2a47d4f82e}{get\+Peer\+Name} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStreamSocketV6_a0853a7bf3a3d52e4fd0fbed57e2424ef}{Stream\+Socket\+V6} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sockaddr\+\_\+in6 \hyperlink{classStreamSocketV6_a85f854ff218fbdeb902fd2878fe25526}{m\+\_\+\+Sock\+Name}
+\begin{DoxyCompactList}\small\item\em Bound endpoint properties. \end{DoxyCompactList}\item 
+sockaddr\+\_\+in6 \hyperlink{classStreamSocketV6_a1817bd2ca5296c8adc8a73234b9ce1cd}{m\+\_\+\+Peer\+Name}
+\begin{DoxyCompactList}\small\item\em Destination endpoint properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStreamSocketV6_a49ebe7ba5b2e991bd8008d25dd1bd5f3}{Stream\+Socket\+V6} (\hyperlink{classStreamSocketV6}{Stream\+Socket\+V6} \&s)
+\item 
+\hyperlink{classStreamSocketV6}{Stream\+Socket\+V6} \& \hyperlink{classStreamSocketV6_a4e7ad9f0cfabfe509880ad671636a194}{operator=} (\hyperlink{classStreamSocketV6}{Stream\+Socket\+V6} \&s)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Stream socket class for I\+Pv6. The base class for all stream-\/oriented sockets. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStreamSocketV6_a5054358161d8ef234de9aa0bdb125b39}\label{classStreamSocketV6_a5054358161d8ef234de9aa0bdb125b39}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Stream\+Socket\+V6()}{StreamSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Stream\+Socket\+V6\+::\+Stream\+Socket\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET}}]{sock }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em sock} & \+: socket file descriptor/handle. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStreamSocketV6_a5708fcef318b11a9992f6b0b1861b2ff}\label{classStreamSocketV6_a5708fcef318b11a9992f6b0b1861b2ff}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!````~Stream\+Socket\+V6@{$\sim$\+Stream\+Socket\+V6}}
+\index{````~Stream\+Socket\+V6@{$\sim$\+Stream\+Socket\+V6}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{$\sim$\+Stream\+Socket\+V6()}{~StreamSocketV6()}}
+{\footnotesize\ttfamily virtual Stream\+Socket\+V6\+::$\sim$\+Stream\+Socket\+V6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+\mbox{\Hypertarget{classStreamSocketV6_a0853a7bf3a3d52e4fd0fbed57e2424ef}\label{classStreamSocketV6_a0853a7bf3a3d52e4fd0fbed57e2424ef}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Stream\+Socket\+V6()}{StreamSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Stream\+Socket\+V6\+::\+Stream\+Socket\+V6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{classStreamSocketV6_a49ebe7ba5b2e991bd8008d25dd1bd5f3}\label{classStreamSocketV6_a49ebe7ba5b2e991bd8008d25dd1bd5f3}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Stream\+Socket\+V6()}{StreamSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Stream\+Socket\+V6\+::\+Stream\+Socket\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{classStreamSocketV6}{Stream\+Socket\+V6} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Constructor. Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStreamSocketV6_a8ebf6f50686e62c8aa080a2a47d4f82e}\label{classStreamSocketV6_a8ebf6f50686e62c8aa080a2a47d4f82e}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!get\+Peer\+Name@{get\+Peer\+Name}}
+\index{get\+Peer\+Name@{get\+Peer\+Name}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{get\+Peer\+Name()}{getPeerName()}}
+{\footnotesize\ttfamily sockaddr\+\_\+in6 \& Stream\+Socket\+V6\+::get\+Peer\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Deliver connected endpoint properties. \begin{DoxyReturn}{Returns}
+sockaddr\+\_\+in structure filled with connected endpoint properties. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classStreamSocketV6_a93f4d15bfc95c567da19372d18e44cf1}\label{classStreamSocketV6_a93f4d15bfc95c567da19372d18e44cf1}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!get\+Sock\+Name@{get\+Sock\+Name}}
+\index{get\+Sock\+Name@{get\+Sock\+Name}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{get\+Sock\+Name()}{getSockName()}}
+{\footnotesize\ttfamily sockaddr\+\_\+in6 \& Stream\+Socket\+V6\+::get\+Sock\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Deliver bound endpoint properties. \begin{DoxyReturn}{Returns}
+sockaddr\+\_\+in structure filled with bound endpoint properties. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classStreamSocketV6_a4e7ad9f0cfabfe509880ad671636a194}\label{classStreamSocketV6_a4e7ad9f0cfabfe509880ad671636a194}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!operator=@{operator=}}
+\index{operator=@{operator=}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classStreamSocketV6}{Stream\+Socket\+V6}\& Stream\+Socket\+V6\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classStreamSocketV6}{Stream\+Socket\+V6} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classStreamSocketV6_a1817bd2ca5296c8adc8a73234b9ce1cd}\label{classStreamSocketV6_a1817bd2ca5296c8adc8a73234b9ce1cd}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!m\+\_\+\+Peer\+Name@{m\+\_\+\+Peer\+Name}}
+\index{m\+\_\+\+Peer\+Name@{m\+\_\+\+Peer\+Name}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Peer\+Name}{m\_PeerName}}
+{\footnotesize\ttfamily sockaddr\+\_\+in6 Stream\+Socket\+V6\+::m\+\_\+\+Peer\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Destination endpoint properties. 
+
+\mbox{\Hypertarget{classStreamSocketV6_a85f854ff218fbdeb902fd2878fe25526}\label{classStreamSocketV6_a85f854ff218fbdeb902fd2878fe25526}} 
+\index{Stream\+Socket\+V6@{Stream\+Socket\+V6}!m\+\_\+\+Sock\+Name@{m\+\_\+\+Sock\+Name}}
+\index{m\+\_\+\+Sock\+Name@{m\+\_\+\+Sock\+Name}!Stream\+Socket\+V6@{Stream\+Socket\+V6}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Sock\+Name}{m\_SockName}}
+{\footnotesize\ttfamily sockaddr\+\_\+in6 Stream\+Socket\+V6\+::m\+\_\+\+Sock\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Bound endpoint properties. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{StreamSocketV6_8h}{Stream\+Socket\+V6.\+h}\item 
+\hyperlink{StreamSocketV6_8cpp}{Stream\+Socket\+V6.\+cpp}\end{DoxyCompactItemize}

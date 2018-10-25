@@ -1,0 +1,8 @@
+<map id="DatagramBoundV6" name="DatagramBoundV6">
+<area shape="rect" id="node2" href="$classDatagramSocketV6.html" title="Class for UDP sockets IPv6. " alt="" coords="5,1079,169,1273"/>
+<area shape="rect" id="node3" href="$classConnectedSocketV6.html" title="Socket that can connect to another. " alt="" coords="35,807,198,1031"/>
+<area shape="rect" id="node4" href="$classInternetSocketV6.html" title="{InternetSocketV6\n||+ InternetSocketV6()\l+ ~InternetSocketV6()\l+ setIpLevelOpt()\l+ getIpLevelOpt()\l# InternetSocketV6()\l}" alt="" coords="100,623,251,759"/>
+<area shape="rect" id="node7" href="$classBoundSocketV6.html" title="Socket bounded to particular port and IPv6 address (end&#45;point). " alt="" coords="194,1086,338,1266"/>
+<area shape="rect" id="node5" href="$classInternetSocket.html" title="{InternetSocket\n||+ InternetSocket()\l+ ~InternetSocket()\l# InternetSocket()\l}" alt="" coords="108,468,243,575"/>
+<area shape="rect" id="node6" href="$classSocketClass.html" title="{SocketClass\n|# m_Sock\l# m_Domain\l# m_Type\l# m_Protocol\l# m_Flags\l# m_Connected\l|+ SocketClass()\l+ setDomain()\l+ getDomain()\l+ setType()\l+ getType()\l+ setProtocol()\l+ getProtocol()\l+ getSock()\l+ setNonBlockMode()\l+ setSockLevelOpt()\l+ getSockLevelOpt()\l+ send()\l+ receive()\l+ isConnected()\l+ setConnected()\l# SocketClass()\l# ~SocketClass()\l# create()\l# close()\l}" alt="" coords="101,5,250,420"/>
+</map>

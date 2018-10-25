@@ -1,0 +1,13 @@
+<map id="ConnectedSocketV4" name="ConnectedSocketV4">
+<area shape="rect" id="node5" href="$classClientSimple.html" title="Stream oriented socket with connection ability. " alt="" coords="92,1115,216,1237"/>
+<area shape="rect" id="node7" href="$classDatagramSocket.html" title="Class for UDP sockets. " alt="" coords="243,1079,391,1273"/>
+<area shape="rect" id="node2" href="$classInternetSocketV4.html" title="{InternetSocketV4\n||+ InternetSocketV4()\l+ ~InternetSocketV4()\l+ setIpLevelOpt()\l+ getIpLevelOpt()\l# InternetSocketV4()\l}" alt="" coords="159,623,309,759"/>
+<area shape="rect" id="node3" href="$classInternetSocket.html" title="{InternetSocket\n||+ InternetSocket()\l+ ~InternetSocket()\l# InternetSocket()\l}" alt="" coords="167,468,301,575"/>
+<area shape="rect" id="node4" href="$classSocketClass.html" title="{SocketClass\n|# m_Sock\l# m_Domain\l# m_Type\l# m_Protocol\l# m_Flags\l# m_Connected\l|+ SocketClass()\l+ setDomain()\l+ getDomain()\l+ setType()\l+ getType()\l+ setProtocol()\l+ getProtocol()\l+ getSock()\l+ setNonBlockMode()\l+ setSockLevelOpt()\l+ getSockLevelOpt()\l+ send()\l+ receive()\l+ isConnected()\l+ setConnected()\l# SocketClass()\l# ~SocketClass()\l# create()\l# close()\l}" alt="" coords="159,5,309,420"/>
+<area shape="rect" id="node6" href="$classClientBound.html" title="Client socket bound to specified port and address. " alt="" coords="5,1351,119,1472"/>
+<area shape="rect" id="node8" href="$classBroadcastSocket.html" title="Broadcast socket class. " alt="" coords="143,1336,314,1487"/>
+<area shape="rect" id="node10" href="$classDatagramBound.html" title="UDP socket bound to specified port and address (aka UDP server). " alt="" coords="338,1351,474,1472"/>
+<area shape="rect" id="node11" href="$classMulticastSocket.html" title="IPv4 datagram socket capable to send multicast datagrams. " alt="" coords="498,1321,634,1501"/>
+<area shape="rect" id="node9" href="$classBroadcastBound.html" title="Bounded socket with broadcast capabilities. " alt="" coords="159,1586,298,1707"/>
+<area shape="rect" id="node12" href="$classMulticastBound.html" title="IPv4 socket capable to receive multicast datagrams. " alt="" coords="500,1549,632,1744"/>
+</map>

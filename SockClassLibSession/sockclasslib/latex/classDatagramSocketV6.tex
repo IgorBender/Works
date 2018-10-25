@@ -1,0 +1,202 @@
+\hypertarget{classDatagramSocketV6}{}\section{Datagram\+Socket\+V6 Class Reference}
+\label{classDatagramSocketV6}\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+
+
+Class for U\+DP sockets I\+Pv6.  
+
+
+
+
+{\ttfamily \#include $<$Datagram\+Socket\+V6.\+h$>$}
+
+
+
+Inheritance diagram for Datagram\+Socket\+V6\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classDatagramSocketV6__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDatagramSocketV6_a6ef4a140f2eca611448413ef768ffee3}{Datagram\+Socket\+V6} (int protocol=0)
+\item 
+virtual \hyperlink{classDatagramSocketV6_a4057e9a144bcc237411d32f76d034b7c}{$\sim$\+Datagram\+Socket\+V6} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+sockaddr\+\_\+in6 \& \hyperlink{classDatagramSocketV6_abc2e68bf8b201e882f7ef4c273f02e19}{get\+Source} ()
+\item 
+int \hyperlink{classDatagramSocketV6_a2dbde712807a402b1cc06aa9093932c3}{send\+To} (const void $\ast$Buffer, size\+\_\+t Length, int Flags=0)
+\item 
+int \hyperlink{classDatagramSocketV6_ab94e99d82f82e9819e529873aadfa567}{send\+To\+Last} (const void $\ast$Buffer, size\+\_\+t Length, int Flags=0)
+\item 
+int \hyperlink{classDatagramSocketV6_a86966965f492e9b7f1beb627ca7c4d4b}{receive\+From} (void $\ast$Buffer, size\+\_\+t Length, int Flags=0)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classDatagramSocketV6_ad002933c38f60f789a5a425921d9ca4d}{close} ()
+\begin{DoxyCompactList}\small\item\em Close socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sockaddr\+\_\+in6 \hyperlink{classDatagramSocketV6_a5a82b5500e449bcd0017284e8b18a9a5}{m\+\_\+\+Source}
+\begin{DoxyCompactList}\small\item\em Properties of the endpoint, that last received datagram was send from. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDatagramSocketV6_abafce8dec242d3f9899ddcc5dfa11761}{Datagram\+Socket\+V6} (\hyperlink{classDatagramSocketV6}{Datagram\+Socket\+V6} \&d)
+\item 
+\hyperlink{classDatagramSocketV6}{Datagram\+Socket\+V6} \& \hyperlink{classDatagramSocketV6_a0c09ba2187bbbf0fceeba81d96d111b7}{operator=} (\hyperlink{classDatagramSocketV6}{Datagram\+Socket\+V6} \&d)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class for U\+DP sockets I\+Pv6. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDatagramSocketV6_a6ef4a140f2eca611448413ef768ffee3}\label{classDatagramSocketV6_a6ef4a140f2eca611448413ef768ffee3}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Datagram\+Socket\+V6()}{DatagramSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Datagram\+Socket\+V6\+::\+Datagram\+Socket\+V6 (\begin{DoxyParamCaption}\item[{int}]{protocol = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Constructor. Default constructor. 
+\begin{DoxyParams}{Parameters}
+{\em protocol} & \+: socket protocol, default value -\/ 0. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classDatagramSocketV6_a4057e9a144bcc237411d32f76d034b7c}\label{classDatagramSocketV6_a4057e9a144bcc237411d32f76d034b7c}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!````~Datagram\+Socket\+V6@{$\sim$\+Datagram\+Socket\+V6}}
+\index{````~Datagram\+Socket\+V6@{$\sim$\+Datagram\+Socket\+V6}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{$\sim$\+Datagram\+Socket\+V6()}{~DatagramSocketV6()}}
+{\footnotesize\ttfamily virtual Datagram\+Socket\+V6\+::$\sim$\+Datagram\+Socket\+V6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+\mbox{\Hypertarget{classDatagramSocketV6_abafce8dec242d3f9899ddcc5dfa11761}\label{classDatagramSocketV6_abafce8dec242d3f9899ddcc5dfa11761}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Datagram\+Socket\+V6()}{DatagramSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Datagram\+Socket\+V6\+::\+Datagram\+Socket\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{classDatagramSocketV6}{Datagram\+Socket\+V6} \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDatagramSocketV6_ad002933c38f60f789a5a425921d9ca4d}\label{classDatagramSocketV6_ad002933c38f60f789a5a425921d9ca4d}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!close@{close}}
+\index{close@{close}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily virtual void Datagram\+Socket\+V6\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Close socket. 
+
+
+
+Implements \hyperlink{classSocketClass_a92c8c1b22b98f0231932cbd84cdc4cfe}{Socket\+Class}.
+
+\mbox{\Hypertarget{classDatagramSocketV6_abc2e68bf8b201e882f7ef4c273f02e19}\label{classDatagramSocketV6_abc2e68bf8b201e882f7ef4c273f02e19}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!get\+Source@{get\+Source}}
+\index{get\+Source@{get\+Source}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{get\+Source()}{getSource()}}
+{\footnotesize\ttfamily sockaddr\+\_\+in6\& Datagram\+Socket\+V6\+::get\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers source of the last received datagram. \begin{DoxyReturn}{Returns}
+sockaddr\+\_\+in6 structure field with source of the last received datagram. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDatagramSocketV6_a0c09ba2187bbbf0fceeba81d96d111b7}\label{classDatagramSocketV6_a0c09ba2187bbbf0fceeba81d96d111b7}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!operator=@{operator=}}
+\index{operator=@{operator=}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classDatagramSocketV6}{Datagram\+Socket\+V6}\& Datagram\+Socket\+V6\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classDatagramSocketV6}{Datagram\+Socket\+V6} \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. \mbox{\Hypertarget{classDatagramSocketV6_a86966965f492e9b7f1beb627ca7c4d4b}\label{classDatagramSocketV6_a86966965f492e9b7f1beb627ca7c4d4b}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!receive\+From@{receive\+From}}
+\index{receive\+From@{receive\+From}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{receive\+From()}{receiveFrom()}}
+{\footnotesize\ttfamily int Datagram\+Socket\+V6\+::receive\+From (\begin{DoxyParamCaption}\item[{void $\ast$}]{Buffer,  }\item[{size\+\_\+t}]{Length,  }\item[{int}]{Flags = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Receive datagram. 
+\begin{DoxyParams}{Parameters}
+{\em Buffer} & \+: buffer for received data . \\
+\hline
+{\em Length} & \+: size of buffer. \\
+\hline
+{\em Flags} & \+: flags, default value -\/ 0. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classDatagramSocketV6_a2dbde712807a402b1cc06aa9093932c3}\label{classDatagramSocketV6_a2dbde712807a402b1cc06aa9093932c3}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!send\+To@{send\+To}}
+\index{send\+To@{send\+To}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{send\+To()}{sendTo()}}
+{\footnotesize\ttfamily int Datagram\+Socket\+V6\+::send\+To (\begin{DoxyParamCaption}\item[{const void $\ast$}]{Buffer,  }\item[{size\+\_\+t}]{Length,  }\item[{int}]{Flags = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Send datagram to defined destination. Destination should be define with \char`\"{}set\+Destination\char`\"{} method. 
+\begin{DoxyParams}{Parameters}
+{\em Buffer} & \+: data for send. \\
+\hline
+{\em Length} & \+: size of data to send. \\
+\hline
+{\em Flags} & \+: flags, default value -\/ 0. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classDatagramSocketV6_ab94e99d82f82e9819e529873aadfa567}\label{classDatagramSocketV6_ab94e99d82f82e9819e529873aadfa567}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!send\+To\+Last@{send\+To\+Last}}
+\index{send\+To\+Last@{send\+To\+Last}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{send\+To\+Last()}{sendToLast()}}
+{\footnotesize\ttfamily int Datagram\+Socket\+V6\+::send\+To\+Last (\begin{DoxyParamCaption}\item[{const void $\ast$}]{Buffer,  }\item[{size\+\_\+t}]{Length,  }\item[{int}]{Flags = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send datagram to the source of last received datagram. 
+\begin{DoxyParams}{Parameters}
+{\em Buffer} & \+: data for send. \\
+\hline
+{\em Length} & \+: size of data to send. \\
+\hline
+{\em Flags} & \+: flags, default value -\/ 0. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classDatagramSocketV6_a5a82b5500e449bcd0017284e8b18a9a5}\label{classDatagramSocketV6_a5a82b5500e449bcd0017284e8b18a9a5}} 
+\index{Datagram\+Socket\+V6@{Datagram\+Socket\+V6}!m\+\_\+\+Source@{m\+\_\+\+Source}}
+\index{m\+\_\+\+Source@{m\+\_\+\+Source}!Datagram\+Socket\+V6@{Datagram\+Socket\+V6}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Source}{m\_Source}}
+{\footnotesize\ttfamily sockaddr\+\_\+in6 Datagram\+Socket\+V6\+::m\+\_\+\+Source\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Properties of the endpoint, that last received datagram was send from. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{DatagramSocketV6_8h}{Datagram\+Socket\+V6.\+h}\item 
+\hyperlink{DatagramSocketV6_8cpp}{Datagram\+Socket\+V6.\+cpp}\end{DoxyCompactItemize}

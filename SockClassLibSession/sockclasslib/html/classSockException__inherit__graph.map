@@ -1,0 +1,4 @@
+<map id="SockException" name="SockException">
+<area shape="rect" id="node3" href="$classDisconnectException.html" title="{DisconnectException\n||+ DisconnectException()\l+ DisconnectException()\l}" alt="" coords="5,520,172,612"/>
+<area shape="rect" id="node2" href="$classBaseException.html" title="{BaseException\n|# m_FileName\l# m_LineNum\l# repstr\l|+ BaseException()\l+ BaseException()\l+ ~BaseException()\l+ what()\l+ getFileName()\l+ getLineNum()\l}" alt="" coords="19,5,158,185"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="StreamSocketV4.h" name="StreamSocketV4.h">
+<area shape="rect" id="node2" href="$ClientSimple_8h.html" title="ClientSimple.h" alt="" coords="5,80,112,107"/>
+<area shape="rect" id="node4" href="$StreamBoundV4_8h.html" title="StreamBoundV4.h" alt="" coords="136,80,264,107"/>
+<area shape="rect" id="node10" href="$StreamSocketV4_8cpp.html" title="StreamSocketV4.cpp" alt="" coords="288,80,435,107"/>
+<area shape="rect" id="node3" href="$ClientBound_8h.html" title="ClientBound.h" alt="" coords="7,155,111,181"/>
+<area shape="rect" id="node5" href="$ServerSimple_8h.html" title="ServerSimple.h" alt="" coords="139,155,250,181"/>
+<area shape="rect" id="node9" href="$StreamBoundV4_8cpp.html" title="StreamBoundV4.cpp" alt="" coords="274,155,417,181"/>
+<area shape="rect" id="node6" href="$ServerReuse_8h.html" title="ServerReuse.h" alt="" coords="69,229,179,256"/>
+<area shape="rect" id="node8" href="$ServerSimple_8cpp.html" title="ServerSimple.cpp" alt="" coords="203,229,328,256"/>
+<area shape="rect" id="node7" href="$ServerReuse_8cpp.html" title="ServerReuse.cpp" alt="" coords="63,304,185,331"/>
+</map>

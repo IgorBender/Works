@@ -1,0 +1,99 @@
+\hypertarget{classPThreadTraceException}{\section{P\-Thread\-Trace\-Exception Class Reference}
+\label{classPThreadTraceException}\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}}
+}
+
+
+{\ttfamily \#include $<$P\-Thread\-Trace\-Exception.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPThreadTraceException_aaf5e0e3209a7dd3164f86391ecad9197}{P\-Thread\-Trace\-Exception} (const char $\ast$Message, const char $\ast$File, int Line)
+\item 
+\hyperlink{classPThreadTraceException_a7eed7176fca13dcee841b94dc56d4986}{P\-Thread\-Trace\-Exception} (long Err\-Code, const char $\ast$File, int Line)
+\item 
+virtual \hyperlink{classPThreadTraceException_a6fd539fc33b8d2538d76445ad8ebc405}{$\sim$\-P\-Thread\-Trace\-Exception} ()  throw ()
+\item 
+virtual const char $\ast$ \hyperlink{classPThreadTraceException_a0f2cefad570dfca68455ac7b4a5dfbd4}{what} ()
+\item 
+void \hyperlink{classPThreadTraceException_ad875e2b4175057deaf2dfe4e24dce2e6}{add\-Trace\-Line} (const char $\ast$Message, const char $\ast$File, int Line)
+\item 
+void \hyperlink{classPThreadTraceException_a110da4a754734feb7def99ee01dcfc93}{add\-Trace\-Line} (long Err\-Code, const char $\ast$File, int Line)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::vector$<$ std\-::string $>$ \hyperlink{classPThreadTraceException_a15692bd7f36282499cf4aac7cfab13b9}{m\-\_\-\-Store}
+\item 
+std\-::string \hyperlink{classPThreadTraceException_a5bd236044d0ef73ac6db56add023427a}{repstr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPThreadTraceException_aaf5e0e3209a7dd3164f86391ecad9197}{\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}}
+\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!PThreadTraceException@{P\-Thread\-Trace\-Exception}}
+\subsubsection[{P\-Thread\-Trace\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}P\-Thread\-Trace\-Exception\-::\-P\-Thread\-Trace\-Exception (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{Message, }
+\item[{const char $\ast$}]{File, }
+\item[{int}]{Line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPThreadTraceException_aaf5e0e3209a7dd3164f86391ecad9197}
+\hypertarget{classPThreadTraceException_a7eed7176fca13dcee841b94dc56d4986}{\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}}
+\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!PThreadTraceException@{P\-Thread\-Trace\-Exception}}
+\subsubsection[{P\-Thread\-Trace\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}P\-Thread\-Trace\-Exception\-::\-P\-Thread\-Trace\-Exception (
+\begin{DoxyParamCaption}
+\item[{long}]{Err\-Code, }
+\item[{const char $\ast$}]{File, }
+\item[{int}]{Line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPThreadTraceException_a7eed7176fca13dcee841b94dc56d4986}
+\hypertarget{classPThreadTraceException_a6fd539fc33b8d2538d76445ad8ebc405}{\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!$\sim$\-P\-Thread\-Trace\-Exception@{$\sim$\-P\-Thread\-Trace\-Exception}}
+\index{$\sim$\-P\-Thread\-Trace\-Exception@{$\sim$\-P\-Thread\-Trace\-Exception}!PThreadTraceException@{P\-Thread\-Trace\-Exception}}
+\subsubsection[{$\sim$\-P\-Thread\-Trace\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}virtual P\-Thread\-Trace\-Exception\-::$\sim$\-P\-Thread\-Trace\-Exception (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throw  ) \hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classPThreadTraceException_a6fd539fc33b8d2538d76445ad8ebc405}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPThreadTraceException_ad875e2b4175057deaf2dfe4e24dce2e6}{\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!add\-Trace\-Line@{add\-Trace\-Line}}
+\index{add\-Trace\-Line@{add\-Trace\-Line}!PThreadTraceException@{P\-Thread\-Trace\-Exception}}
+\subsubsection[{add\-Trace\-Line}]{\setlength{\rightskip}{0pt plus 5cm}void P\-Thread\-Trace\-Exception\-::add\-Trace\-Line (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{Message, }
+\item[{const char $\ast$}]{File, }
+\item[{int}]{Line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPThreadTraceException_ad875e2b4175057deaf2dfe4e24dce2e6}
+\hypertarget{classPThreadTraceException_a110da4a754734feb7def99ee01dcfc93}{\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!add\-Trace\-Line@{add\-Trace\-Line}}
+\index{add\-Trace\-Line@{add\-Trace\-Line}!PThreadTraceException@{P\-Thread\-Trace\-Exception}}
+\subsubsection[{add\-Trace\-Line}]{\setlength{\rightskip}{0pt plus 5cm}void P\-Thread\-Trace\-Exception\-::add\-Trace\-Line (
+\begin{DoxyParamCaption}
+\item[{long}]{Err\-Code, }
+\item[{const char $\ast$}]{File, }
+\item[{int}]{Line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPThreadTraceException_a110da4a754734feb7def99ee01dcfc93}
+\hypertarget{classPThreadTraceException_a0f2cefad570dfca68455ac7b4a5dfbd4}{\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!what@{what}}
+\index{what@{what}!PThreadTraceException@{P\-Thread\-Trace\-Exception}}
+\subsubsection[{what}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ P\-Thread\-Trace\-Exception\-::what (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classPThreadTraceException_a0f2cefad570dfca68455ac7b4a5dfbd4}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classPThreadTraceException_a15692bd7f36282499cf4aac7cfab13b9}{\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!m\-\_\-\-Store@{m\-\_\-\-Store}}
+\index{m\-\_\-\-Store@{m\-\_\-\-Store}!PThreadTraceException@{P\-Thread\-Trace\-Exception}}
+\subsubsection[{m\-\_\-\-Store}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ std\-::string $>$ P\-Thread\-Trace\-Exception\-::m\-\_\-\-Store\hspace{0.3cm}{\ttfamily [protected]}}}\label{classPThreadTraceException_a15692bd7f36282499cf4aac7cfab13b9}
+\hypertarget{classPThreadTraceException_a5bd236044d0ef73ac6db56add023427a}{\index{P\-Thread\-Trace\-Exception@{P\-Thread\-Trace\-Exception}!repstr@{repstr}}
+\index{repstr@{repstr}!PThreadTraceException@{P\-Thread\-Trace\-Exception}}
+\subsubsection[{repstr}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string P\-Thread\-Trace\-Exception\-::repstr\hspace{0.3cm}{\ttfamily [protected]}}}\label{classPThreadTraceException_a5bd236044d0ef73ac6db56add023427a}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PThreadTraceException_8h}{P\-Thread\-Trace\-Exception.\-h}\end{DoxyCompactItemize}

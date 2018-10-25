@@ -1,0 +1,9 @@
+<map id="MulticastBound" name="MulticastBound">
+<area shape="rect" id="node2" href="$classBoundSocketV4.html" title="Socket bounded to particular port and IPv4 address (end&#45;point). " alt="" coords="5,1086,149,1266"/>
+<area shape="rect" id="node3" href="$classInternetSocketV4.html" title="{InternetSocketV4\n||+ InternetSocketV4()\l+ ~InternetSocketV4()\l+ setIpLevelOpt()\l+ getIpLevelOpt()\l# InternetSocketV4()\l}" alt="" coords="86,623,237,759"/>
+<area shape="rect" id="node8" href="$classConnectedSocketV4.html" title="Socket that can connect to another. " alt="" coords="153,807,316,1031"/>
+<area shape="rect" id="node4" href="$classInternetSocket.html" title="{InternetSocket\n||+ InternetSocket()\l+ ~InternetSocket()\l# InternetSocket()\l}" alt="" coords="94,468,229,575"/>
+<area shape="rect" id="node5" href="$classSocketClass.html" title="{SocketClass\n|# m_Sock\l# m_Domain\l# m_Type\l# m_Protocol\l# m_Flags\l# m_Connected\l|+ SocketClass()\l+ setDomain()\l+ getDomain()\l+ setType()\l+ getType()\l+ setProtocol()\l+ getProtocol()\l+ getSock()\l+ setNonBlockMode()\l+ setSockLevelOpt()\l+ getSockLevelOpt()\l+ send()\l+ receive()\l+ isConnected()\l+ setConnected()\l# SocketClass()\l# ~SocketClass()\l# create()\l# close()\l}" alt="" coords="87,5,236,420"/>
+<area shape="rect" id="node6" href="$classMulticastSocket.html" title="IPv4 datagram socket capable to send multicast datagrams. " alt="" coords="163,1321,299,1501"/>
+<area shape="rect" id="node7" href="$classDatagramSocket.html" title="Class for UDP sockets. " alt="" coords="174,1079,322,1273"/>
+</map>

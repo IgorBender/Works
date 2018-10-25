@@ -1,0 +1,457 @@
+\hypertarget{classSocketClass}{}\section{Socket\+Class Class Reference}
+\label{classSocketClass}\index{Socket\+Class@{Socket\+Class}}
+
+
+{\ttfamily \#include $<$Socket\+Class.\+h$>$}
+
+
+
+Inheritance diagram for Socket\+Class\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSocketClass__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain} \{ \newline
+\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6aa9ec2a4d642c47813fe90f362603f1c4}{N\+O\+\_\+\+D\+O\+M\+A\+IN} = A\+F\+\_\+\+U\+N\+S\+P\+EC, 
+\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6ab92d1dfedf24d12d2b9f58b8d3a85be5}{U\+N\+I\+X\+\_\+\+D\+O\+M\+A\+IN} = A\+F\+\_\+\+U\+N\+IX, 
+\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6a2cc4ca83a7b48c990a3454120b6af0b4}{I\+N\+T\+E\+R\+N\+E\+T\+\_\+\+D\+O\+M\+A\+IN} = A\+F\+\_\+\+I\+N\+ET, 
+\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6a8b4768bb03b79d7cd9b73eb5e75584d4}{I\+P\+X\+\_\+\+D\+O\+M\+A\+IN} = A\+F\+\_\+\+I\+PX, 
+\newline
+\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6a531a739bc633378bafd6b248f2d21567}{R\+O\+U\+T\+I\+N\+G\+\_\+\+D\+O\+M\+A\+IN} = A\+F\+\_\+\+R\+O\+U\+TE, 
+\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6abe0484126572a8667d5290faba923bf3}{I\+N\+E\+T6\+\_\+\+D\+O\+M\+A\+IN} = A\+F\+\_\+\+I\+N\+E\+T6
+ \}
+\item 
+enum \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} \{ \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE} = -\/1, 
+\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a804fd19ca5ff4bfaf2564830bb3ea82b}{U\+D\+P\+\_\+\+S\+O\+CK} = S\+O\+C\+K\+\_\+\+D\+G\+R\+AM, 
+\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a76163824c40569e670cd455185cf46e9}{T\+C\+P\+\_\+\+S\+O\+CK} = S\+O\+C\+K\+\_\+\+S\+T\+R\+E\+AM, 
+\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a2e14668dd087d168ed5f5f837c1b2ff1}{R\+A\+W\+\_\+\+S\+O\+CK} = S\+O\+C\+K\+\_\+\+R\+AW
+ \}\begin{DoxyCompactList}\small\item\em Socket type enumeration. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSocketClass_a6a12a3d812e5063bf9f432fdf81ad059}{Socket\+Class} (\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain} domain=\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6aa9ec2a4d642c47813fe90f362603f1c4}{N\+O\+\_\+\+D\+O\+M\+A\+IN}, \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} type=\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE}, int protocol=0)
+\item 
+void \hyperlink{classSocketClass_af1b60fc7b1b9fb0ce1ec999f65ca2bf0}{set\+Domain} (\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain} Domain)
+\item 
+\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain} \hyperlink{classSocketClass_a688a08cbfa372250ee43af869c75965e}{get\+Domain} ()
+\item 
+void \hyperlink{classSocketClass_aac96804301f30f4df5b999ac7526c0a9}{set\+Type} (\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} Type)
+\item 
+\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} \hyperlink{classSocketClass_a077cfe52ecf67e96b1e896b0b5d69482}{get\+Type} ()
+\item 
+void \hyperlink{classSocketClass_a2e0eb914abb3afe3b52ae674b4d26efb}{set\+Protocol} (int Protocol)
+\item 
+int \hyperlink{classSocketClass_ad325d4555d76b15490d3f336bbe7c420}{get\+Protocol} ()
+\item 
+\hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET} \hyperlink{classSocketClass_a15c1b7310583c7d671c6800ebb3c87e6}{get\+Sock} ()
+\item 
+void \hyperlink{classSocketClass_ab05fc77da53f984aa44a4f7c48511e41}{set\+Non\+Block\+Mode} (bool On)
+\item 
+void \hyperlink{classSocketClass_abf34df090cb8e94a46e7dc782171d44a}{set\+Sock\+Level\+Opt} (int Opt, const char $\ast$Value, unsigned int Opt\+Len)
+\item 
+void \hyperlink{classSocketClass_a9f04bb6b5155b4845fca34805bd4c773}{get\+Sock\+Level\+Opt} (int Opt, char $\ast$Value, unsigned int $\ast$Opt\+Len)
+\item 
+virtual int \hyperlink{classSocketClass_a5fed2b2487ea2b82077ce15158e0674c}{send} (const void $\ast$Buffer, size\+\_\+t Length, int Flags=0)
+\item 
+virtual int \hyperlink{classSocketClass_a065cdcd833f0688b6d6bdca6ed92e27b}{receive} (void $\ast$Buffer, size\+\_\+t Length, int Flags=0)
+\item 
+bool \hyperlink{classSocketClass_a00d9b8d98e62c1c239fe35fb15f35fda}{is\+Connected} ()
+\item 
+void \hyperlink{classSocketClass_af8eab885f8e9d845424d7819a5653591}{set\+Connected} (bool On)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSocketClass_ac291e571738e1778010c2fd1731eb659}{Socket\+Class} (int sock, \hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain} domain=\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6aa9ec2a4d642c47813fe90f362603f1c4}{N\+O\+\_\+\+D\+O\+M\+A\+IN}, \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} type=\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE}, int protocol=0)
+\item 
+virtual \hyperlink{classSocketClass_a14830bd93e1befaf276625e8b28181b9}{$\sim$\+Socket\+Class} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classSocketClass_a4d4f7b6c50741127bc1ad82f43fc625c}{create} ()
+\item 
+virtual void \hyperlink{classSocketClass_a92c8c1b22b98f0231932cbd84cdc4cfe}{close} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET} \hyperlink{classSocketClass_a77d848dafefa82afa5defbf2d82f7290}{m\+\_\+\+Sock}
+\begin{DoxyCompactList}\small\item\em Socket file descriptor/handle. \end{DoxyCompactList}\item 
+\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain} \hyperlink{classSocketClass_a42a3afe9243529dce5144b8cc5ebf82c}{m\+\_\+\+Domain}
+\begin{DoxyCompactList}\small\item\em Defined socket domain (Address Family). \end{DoxyCompactList}\item 
+\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} \hyperlink{classSocketClass_af838a669bfdae0c7b87be6504ec1b0dc}{m\+\_\+\+Type}
+\begin{DoxyCompactList}\small\item\em Defined socket type. \end{DoxyCompactList}\item 
+int \hyperlink{classSocketClass_ac22407bcd7ecf8b439d7f3b543e9db38}{m\+\_\+\+Protocol}
+\item 
+int \hyperlink{classSocketClass_aba4d44a061616e2f56d2797418af510c}{m\+\_\+\+Flags}
+\begin{DoxyCompactList}\small\item\em Socket flags to be saved (for non-\/blocking mode switch). \end{DoxyCompactList}\item 
+bool \hyperlink{classSocketClass_aad81b86c88c024b5ccc77d89cbaea8e8}{m\+\_\+\+Connected}
+\begin{DoxyCompactList}\small\item\em Connected state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base abstract class for all types of sockets. This class defines abstract socket, that cannot be instantiated. 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classSocketClass_ac940413abaa7328db8518a9f121babb6}\label{classSocketClass_ac940413abaa7328db8518a9f121babb6}} 
+\index{Socket\+Class@{Socket\+Class}!Sock\+Domain@{Sock\+Domain}}
+\index{Sock\+Domain@{Sock\+Domain}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{Sock\+Domain}{SockDomain}}
+{\footnotesize\ttfamily enum \hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Socket\+Class\+::\+Sock\+Domain}}
+
+Domain enumeration, actually there are much more domains (address families), but we are interested in these domains only. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+\_\+\+D\+O\+M\+A\+IN@{N\+O\+\_\+\+D\+O\+M\+A\+IN}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!N\+O\+\_\+\+D\+O\+M\+A\+IN@{N\+O\+\_\+\+D\+O\+M\+A\+IN}}}\mbox{\Hypertarget{classSocketClass_ac940413abaa7328db8518a9f121babb6aa9ec2a4d642c47813fe90f362603f1c4}\label{classSocketClass_ac940413abaa7328db8518a9f121babb6aa9ec2a4d642c47813fe90f362603f1c4}} 
+N\+O\+\_\+\+D\+O\+M\+A\+IN&No-\/specified domain, should not be used. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+N\+I\+X\+\_\+\+D\+O\+M\+A\+IN@{U\+N\+I\+X\+\_\+\+D\+O\+M\+A\+IN}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!U\+N\+I\+X\+\_\+\+D\+O\+M\+A\+IN@{U\+N\+I\+X\+\_\+\+D\+O\+M\+A\+IN}}}\mbox{\Hypertarget{classSocketClass_ac940413abaa7328db8518a9f121babb6ab92d1dfedf24d12d2b9f58b8d3a85be5}\label{classSocketClass_ac940413abaa7328db8518a9f121babb6ab92d1dfedf24d12d2b9f58b8d3a85be5}} 
+U\+N\+I\+X\+\_\+\+D\+O\+M\+A\+IN&U\+N\+IX domain. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+E\+T\+\_\+\+D\+O\+M\+A\+IN@{I\+N\+T\+E\+R\+N\+E\+T\+\_\+\+D\+O\+M\+A\+IN}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!I\+N\+T\+E\+R\+N\+E\+T\+\_\+\+D\+O\+M\+A\+IN@{I\+N\+T\+E\+R\+N\+E\+T\+\_\+\+D\+O\+M\+A\+IN}}}\mbox{\Hypertarget{classSocketClass_ac940413abaa7328db8518a9f121babb6a2cc4ca83a7b48c990a3454120b6af0b4}\label{classSocketClass_ac940413abaa7328db8518a9f121babb6a2cc4ca83a7b48c990a3454120b6af0b4}} 
+I\+N\+T\+E\+R\+N\+E\+T\+\_\+\+D\+O\+M\+A\+IN&I\+Pv4. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+P\+X\+\_\+\+D\+O\+M\+A\+IN@{I\+P\+X\+\_\+\+D\+O\+M\+A\+IN}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!I\+P\+X\+\_\+\+D\+O\+M\+A\+IN@{I\+P\+X\+\_\+\+D\+O\+M\+A\+IN}}}\mbox{\Hypertarget{classSocketClass_ac940413abaa7328db8518a9f121babb6a8b4768bb03b79d7cd9b73eb5e75584d4}\label{classSocketClass_ac940413abaa7328db8518a9f121babb6a8b4768bb03b79d7cd9b73eb5e75584d4}} 
+I\+P\+X\+\_\+\+D\+O\+M\+A\+IN&I\+PX. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+O\+U\+T\+I\+N\+G\+\_\+\+D\+O\+M\+A\+IN@{R\+O\+U\+T\+I\+N\+G\+\_\+\+D\+O\+M\+A\+IN}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!R\+O\+U\+T\+I\+N\+G\+\_\+\+D\+O\+M\+A\+IN@{R\+O\+U\+T\+I\+N\+G\+\_\+\+D\+O\+M\+A\+IN}}}\mbox{\Hypertarget{classSocketClass_ac940413abaa7328db8518a9f121babb6a531a739bc633378bafd6b248f2d21567}\label{classSocketClass_ac940413abaa7328db8518a9f121babb6a531a739bc633378bafd6b248f2d21567}} 
+R\+O\+U\+T\+I\+N\+G\+\_\+\+D\+O\+M\+A\+IN&Routing. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+E\+T6\+\_\+\+D\+O\+M\+A\+IN@{I\+N\+E\+T6\+\_\+\+D\+O\+M\+A\+IN}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!I\+N\+E\+T6\+\_\+\+D\+O\+M\+A\+IN@{I\+N\+E\+T6\+\_\+\+D\+O\+M\+A\+IN}}}\mbox{\Hypertarget{classSocketClass_ac940413abaa7328db8518a9f121babb6abe0484126572a8667d5290faba923bf3}\label{classSocketClass_ac940413abaa7328db8518a9f121babb6abe0484126572a8667d5290faba923bf3}} 
+I\+N\+E\+T6\+\_\+\+D\+O\+M\+A\+IN&I\+Pv6. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}\label{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}} 
+\index{Socket\+Class@{Socket\+Class}!Sock\+Type@{Sock\+Type}}
+\index{Sock\+Type@{Sock\+Type}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{Sock\+Type}{SockType}}
+{\footnotesize\ttfamily enum \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Socket\+Class\+::\+Sock\+Type}}
+
+
+
+Socket type enumeration. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+\_\+\+T\+Y\+PE@{N\+O\+\_\+\+T\+Y\+PE}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!N\+O\+\_\+\+T\+Y\+PE@{N\+O\+\_\+\+T\+Y\+PE}}}\mbox{\Hypertarget{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}\label{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}} 
+N\+O\+\_\+\+T\+Y\+PE&No type sentinel. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+D\+P\+\_\+\+S\+O\+CK@{U\+D\+P\+\_\+\+S\+O\+CK}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!U\+D\+P\+\_\+\+S\+O\+CK@{U\+D\+P\+\_\+\+S\+O\+CK}}}\mbox{\Hypertarget{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a804fd19ca5ff4bfaf2564830bb3ea82b}\label{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a804fd19ca5ff4bfaf2564830bb3ea82b}} 
+U\+D\+P\+\_\+\+S\+O\+CK&Datagram sockets (U\+DP) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+C\+P\+\_\+\+S\+O\+CK@{T\+C\+P\+\_\+\+S\+O\+CK}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!T\+C\+P\+\_\+\+S\+O\+CK@{T\+C\+P\+\_\+\+S\+O\+CK}}}\mbox{\Hypertarget{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a76163824c40569e670cd455185cf46e9}\label{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a76163824c40569e670cd455185cf46e9}} 
+T\+C\+P\+\_\+\+S\+O\+CK&Stream sockets (T\+CP, S\+C\+TP) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+A\+W\+\_\+\+S\+O\+CK@{R\+A\+W\+\_\+\+S\+O\+CK}!Socket\+Class@{Socket\+Class}}\index{Socket\+Class@{Socket\+Class}!R\+A\+W\+\_\+\+S\+O\+CK@{R\+A\+W\+\_\+\+S\+O\+CK}}}\mbox{\Hypertarget{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a2e14668dd087d168ed5f5f837c1b2ff1}\label{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a2e14668dd087d168ed5f5f837c1b2ff1}} 
+R\+A\+W\+\_\+\+S\+O\+CK&Raw sockets. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSocketClass_a6a12a3d812e5063bf9f432fdf81ad059}\label{classSocketClass_a6a12a3d812e5063bf9f432fdf81ad059}} 
+\index{Socket\+Class@{Socket\+Class}!Socket\+Class@{Socket\+Class}}
+\index{Socket\+Class@{Socket\+Class}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{Socket\+Class()}{SocketClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Socket\+Class\+::\+Socket\+Class (\begin{DoxyParamCaption}\item[{\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain}}]{domain = {\ttfamily \hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6aa9ec2a4d642c47813fe90f362603f1c4}{N\+O\+\_\+\+D\+O\+M\+A\+IN}},  }\item[{\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type}}]{type = {\ttfamily \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE}},  }\item[{int}]{protocol = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor.
+
+Default constructor. \mbox{\Hypertarget{classSocketClass_ac291e571738e1778010c2fd1731eb659}\label{classSocketClass_ac291e571738e1778010c2fd1731eb659}} 
+\index{Socket\+Class@{Socket\+Class}!Socket\+Class@{Socket\+Class}}
+\index{Socket\+Class@{Socket\+Class}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{Socket\+Class()}{SocketClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Socket\+Class\+::\+Socket\+Class (\begin{DoxyParamCaption}\item[{int}]{sock,  }\item[{\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain}}]{domain = {\ttfamily \hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6aa9ec2a4d642c47813fe90f362603f1c4}{N\+O\+\_\+\+D\+O\+M\+A\+IN}},  }\item[{\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type}}]{type = {\ttfamily \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595a8c7f955ea5b71498ff1d469345d813ad}{N\+O\+\_\+\+T\+Y\+PE}},  }\item[{int}]{protocol = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Constructor. Constructor based on socket file descriptor/handle. \mbox{\Hypertarget{classSocketClass_a14830bd93e1befaf276625e8b28181b9}\label{classSocketClass_a14830bd93e1befaf276625e8b28181b9}} 
+\index{Socket\+Class@{Socket\+Class}!````~Socket\+Class@{$\sim$\+Socket\+Class}}
+\index{````~Socket\+Class@{$\sim$\+Socket\+Class}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Socket\+Class()}{~SocketClass()}}
+{\footnotesize\ttfamily virtual Socket\+Class\+::$\sim$\+Socket\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSocketClass_a92c8c1b22b98f0231932cbd84cdc4cfe}\label{classSocketClass_a92c8c1b22b98f0231932cbd84cdc4cfe}} 
+\index{Socket\+Class@{Socket\+Class}!close@{close}}
+\index{close@{close}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily virtual void Socket\+Class\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+Closes the socket. \label{classSocketClass_close}%
+\Hypertarget{classSocketClass_close}%
+ 
+
+Implemented in \hyperlink{classStreamSocket_a9dc930d6a0f7d6a8b96631348297bce2}{Stream\+Socket}, \hyperlink{classDatagramSocketV6_ad002933c38f60f789a5a425921d9ca4d}{Datagram\+Socket\+V6}, and \hyperlink{classDatagramSocket_a5c926c1d93a9e1b2e19d73170c4984cb}{Datagram\+Socket}.
+
+\mbox{\Hypertarget{classSocketClass_a4d4f7b6c50741127bc1ad82f43fc625c}\label{classSocketClass_a4d4f7b6c50741127bc1ad82f43fc625c}} 
+\index{Socket\+Class@{Socket\+Class}!create@{create}}
+\index{create@{create}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily void Socket\+Class\+::create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Creates socket. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classSocketClass_a688a08cbfa372250ee43af869c75965e}\label{classSocketClass_a688a08cbfa372250ee43af869c75965e}} 
+\index{Socket\+Class@{Socket\+Class}!get\+Domain@{get\+Domain}}
+\index{get\+Domain@{get\+Domain}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{get\+Domain()}{getDomain()}}
+{\footnotesize\ttfamily \hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain} Socket\+Class\+::get\+Domain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers defined socket domain. \begin{DoxyReturn}{Returns}
+Defined socket domain. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSocketClass_ad325d4555d76b15490d3f336bbe7c420}\label{classSocketClass_ad325d4555d76b15490d3f336bbe7c420}} 
+\index{Socket\+Class@{Socket\+Class}!get\+Protocol@{get\+Protocol}}
+\index{get\+Protocol@{get\+Protocol}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{get\+Protocol()}{getProtocol()}}
+{\footnotesize\ttfamily int Socket\+Class\+::get\+Protocol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers defined protocol. \begin{DoxyReturn}{Returns}
+defined protocol. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSocketClass_a15c1b7310583c7d671c6800ebb3c87e6}\label{classSocketClass_a15c1b7310583c7d671c6800ebb3c87e6}} 
+\index{Socket\+Class@{Socket\+Class}!get\+Sock@{get\+Sock}}
+\index{get\+Sock@{get\+Sock}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{get\+Sock()}{getSock()}}
+{\footnotesize\ttfamily \hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET} Socket\+Class\+::get\+Sock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers socket file descriptor/handle. \begin{DoxyReturn}{Returns}
+socket file descriptor/handle. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSocketClass_a9f04bb6b5155b4845fca34805bd4c773}\label{classSocketClass_a9f04bb6b5155b4845fca34805bd4c773}} 
+\index{Socket\+Class@{Socket\+Class}!get\+Sock\+Level\+Opt@{get\+Sock\+Level\+Opt}}
+\index{get\+Sock\+Level\+Opt@{get\+Sock\+Level\+Opt}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{get\+Sock\+Level\+Opt()}{getSockLevelOpt()}}
+{\footnotesize\ttfamily void Socket\+Class\+::get\+Sock\+Level\+Opt (\begin{DoxyParamCaption}\item[{int}]{Opt,  }\item[{char $\ast$}]{Value,  }\item[{unsigned int $\ast$}]{Opt\+Len }\end{DoxyParamCaption})}
+
+Deliver socket level option. 
+\begin{DoxyParams}{Parameters}
+{\em Opt} & \+: option type. \\
+\hline
+{\em Value} & \+: option value. \\
+\hline
+{\em Opt\+Len} & \+: option value length. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classSocketClass_a077cfe52ecf67e96b1e896b0b5d69482}\label{classSocketClass_a077cfe52ecf67e96b1e896b0b5d69482}} 
+\index{Socket\+Class@{Socket\+Class}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
+{\footnotesize\ttfamily \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} Socket\+Class\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Delivers defined socket type. \begin{DoxyReturn}{Returns}
+defined socket type. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSocketClass_a00d9b8d98e62c1c239fe35fb15f35fda}\label{classSocketClass_a00d9b8d98e62c1c239fe35fb15f35fda}} 
+\index{Socket\+Class@{Socket\+Class}!is\+Connected@{is\+Connected}}
+\index{is\+Connected@{is\+Connected}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{is\+Connected()}{isConnected()}}
+{\footnotesize\ttfamily bool Socket\+Class\+::is\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Deliver connected state. \begin{DoxyReturn}{Returns}
+connected state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSocketClass_a065cdcd833f0688b6d6bdca6ed92e27b}\label{classSocketClass_a065cdcd833f0688b6d6bdca6ed92e27b}} 
+\index{Socket\+Class@{Socket\+Class}!receive@{receive}}
+\index{receive@{receive}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily int Socket\+Class\+::receive (\begin{DoxyParamCaption}\item[{void $\ast$}]{Buffer,  }\item[{size\+\_\+t}]{Length,  }\item[{int}]{Flags = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Receive data from socket 
+\begin{DoxyParams}{Parameters}
+{\em Buffer} & \+: data buffer for received data. \\
+\hline
+{\em Length} & \+: amount of data potentially to be received. \\
+\hline
+{\em Flags} & \+: receiving flags. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classSocketClass_a5fed2b2487ea2b82077ce15158e0674c}\label{classSocketClass_a5fed2b2487ea2b82077ce15158e0674c}} 
+\index{Socket\+Class@{Socket\+Class}!send@{send}}
+\index{send@{send}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily int Socket\+Class\+::send (\begin{DoxyParamCaption}\item[{const void $\ast$}]{Buffer,  }\item[{size\+\_\+t}]{Length,  }\item[{int}]{Flags = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Send data via socket 
+\begin{DoxyParams}{Parameters}
+{\em Buffer} & \+: data buffer. \\
+\hline
+{\em Length} & \+: data size. \\
+\hline
+{\em Flags} & \+: sending flags. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classSocketClass_af8eab885f8e9d845424d7819a5653591}\label{classSocketClass_af8eab885f8e9d845424d7819a5653591}} 
+\index{Socket\+Class@{Socket\+Class}!set\+Connected@{set\+Connected}}
+\index{set\+Connected@{set\+Connected}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{set\+Connected()}{setConnected()}}
+{\footnotesize\ttfamily void Socket\+Class\+::set\+Connected (\begin{DoxyParamCaption}\item[{bool}]{On }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set connected state. 
+\begin{DoxyParams}{Parameters}
+{\em On} & \+: connected state on/off. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSocketClass_af1b60fc7b1b9fb0ce1ec999f65ca2bf0}\label{classSocketClass_af1b60fc7b1b9fb0ce1ec999f65ca2bf0}} 
+\index{Socket\+Class@{Socket\+Class}!set\+Domain@{set\+Domain}}
+\index{set\+Domain@{set\+Domain}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{set\+Domain()}{setDomain()}}
+{\footnotesize\ttfamily void Socket\+Class\+::set\+Domain (\begin{DoxyParamCaption}\item[{\hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain}}]{Domain }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets desired socket domain. 
+\begin{DoxyParams}{Parameters}
+{\em Domain} & \+: desired socket domain (Address Family). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSocketClass_ab05fc77da53f984aa44a4f7c48511e41}\label{classSocketClass_ab05fc77da53f984aa44a4f7c48511e41}} 
+\index{Socket\+Class@{Socket\+Class}!set\+Non\+Block\+Mode@{set\+Non\+Block\+Mode}}
+\index{set\+Non\+Block\+Mode@{set\+Non\+Block\+Mode}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{set\+Non\+Block\+Mode()}{setNonBlockMode()}}
+{\footnotesize\ttfamily void Socket\+Class\+::set\+Non\+Block\+Mode (\begin{DoxyParamCaption}\item[{bool}]{On }\end{DoxyParamCaption})}
+
+Sets non-\/blocking mode of the socket on/off 
+\begin{DoxyParams}{Parameters}
+{\em On} & \+: non-\/blocking mode. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSocketClass_a2e0eb914abb3afe3b52ae674b4d26efb}\label{classSocketClass_a2e0eb914abb3afe3b52ae674b4d26efb}} 
+\index{Socket\+Class@{Socket\+Class}!set\+Protocol@{set\+Protocol}}
+\index{set\+Protocol@{set\+Protocol}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{set\+Protocol()}{setProtocol()}}
+{\footnotesize\ttfamily void Socket\+Class\+::set\+Protocol (\begin{DoxyParamCaption}\item[{int}]{Protocol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets desired socket protocol. It is convinient to set socket protocol other than 0 (default) in case of R\+AW socket or S\+T\+R\+E\+AM socket if S\+C\+TP end-\/point is required. 
+\begin{DoxyParams}{Parameters}
+{\em Protocol} & \+: specific protocol or 0 for default. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSocketClass_abf34df090cb8e94a46e7dc782171d44a}\label{classSocketClass_abf34df090cb8e94a46e7dc782171d44a}} 
+\index{Socket\+Class@{Socket\+Class}!set\+Sock\+Level\+Opt@{set\+Sock\+Level\+Opt}}
+\index{set\+Sock\+Level\+Opt@{set\+Sock\+Level\+Opt}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{set\+Sock\+Level\+Opt()}{setSockLevelOpt()}}
+{\footnotesize\ttfamily void Socket\+Class\+::set\+Sock\+Level\+Opt (\begin{DoxyParamCaption}\item[{int}]{Opt,  }\item[{const char $\ast$}]{Value,  }\item[{unsigned int}]{Opt\+Len }\end{DoxyParamCaption})}
+
+Set socket level option. 
+\begin{DoxyParams}{Parameters}
+{\em Opt} & \+: option type. \\
+\hline
+{\em Value} & \+: option value. \\
+\hline
+{\em Opt\+Len} & \+: option value length. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classSocketClass_aac96804301f30f4df5b999ac7526c0a9}\label{classSocketClass_aac96804301f30f4df5b999ac7526c0a9}} 
+\index{Socket\+Class@{Socket\+Class}!set\+Type@{set\+Type}}
+\index{set\+Type@{set\+Type}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{set\+Type()}{setType()}}
+{\footnotesize\ttfamily void Socket\+Class\+::set\+Type (\begin{DoxyParamCaption}\item[{\hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type}}]{Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets socket type (Datagram, Stream or Raw). 
+\begin{DoxyParams}{Parameters}
+{\em Type} & \+: desired socket type \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classSocketClass_aad81b86c88c024b5ccc77d89cbaea8e8}\label{classSocketClass_aad81b86c88c024b5ccc77d89cbaea8e8}} 
+\index{Socket\+Class@{Socket\+Class}!m\+\_\+\+Connected@{m\+\_\+\+Connected}}
+\index{m\+\_\+\+Connected@{m\+\_\+\+Connected}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Connected}{m\_Connected}}
+{\footnotesize\ttfamily bool Socket\+Class\+::m\+\_\+\+Connected\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Connected state. 
+
+\mbox{\Hypertarget{classSocketClass_a42a3afe9243529dce5144b8cc5ebf82c}\label{classSocketClass_a42a3afe9243529dce5144b8cc5ebf82c}} 
+\index{Socket\+Class@{Socket\+Class}!m\+\_\+\+Domain@{m\+\_\+\+Domain}}
+\index{m\+\_\+\+Domain@{m\+\_\+\+Domain}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Domain}{m\_Domain}}
+{\footnotesize\ttfamily \hyperlink{classSocketClass_ac940413abaa7328db8518a9f121babb6}{Sock\+Domain} Socket\+Class\+::m\+\_\+\+Domain\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Defined socket domain (Address Family). 
+
+\mbox{\Hypertarget{classSocketClass_aba4d44a061616e2f56d2797418af510c}\label{classSocketClass_aba4d44a061616e2f56d2797418af510c}} 
+\index{Socket\+Class@{Socket\+Class}!m\+\_\+\+Flags@{m\+\_\+\+Flags}}
+\index{m\+\_\+\+Flags@{m\+\_\+\+Flags}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Flags}{m\_Flags}}
+{\footnotesize\ttfamily int Socket\+Class\+::m\+\_\+\+Flags\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Socket flags to be saved (for non-\/blocking mode switch). 
+
+\mbox{\Hypertarget{classSocketClass_ac22407bcd7ecf8b439d7f3b543e9db38}\label{classSocketClass_ac22407bcd7ecf8b439d7f3b543e9db38}} 
+\index{Socket\+Class@{Socket\+Class}!m\+\_\+\+Protocol@{m\+\_\+\+Protocol}}
+\index{m\+\_\+\+Protocol@{m\+\_\+\+Protocol}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Protocol}{m\_Protocol}}
+{\footnotesize\ttfamily int Socket\+Class\+::m\+\_\+\+Protocol\hspace{0.3cm}{\ttfamily [protected]}}
+
+Defined socket Protocol \mbox{\Hypertarget{classSocketClass_a77d848dafefa82afa5defbf2d82f7290}\label{classSocketClass_a77d848dafefa82afa5defbf2d82f7290}} 
+\index{Socket\+Class@{Socket\+Class}!m\+\_\+\+Sock@{m\+\_\+\+Sock}}
+\index{m\+\_\+\+Sock@{m\+\_\+\+Sock}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Sock}{m\_Sock}}
+{\footnotesize\ttfamily \hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET} Socket\+Class\+::m\+\_\+\+Sock\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Socket file descriptor/handle. 
+
+\mbox{\Hypertarget{classSocketClass_af838a669bfdae0c7b87be6504ec1b0dc}\label{classSocketClass_af838a669bfdae0c7b87be6504ec1b0dc}} 
+\index{Socket\+Class@{Socket\+Class}!m\+\_\+\+Type@{m\+\_\+\+Type}}
+\index{m\+\_\+\+Type@{m\+\_\+\+Type}!Socket\+Class@{Socket\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Type}{m\_Type}}
+{\footnotesize\ttfamily \hyperlink{classSocketClass_a2182dd9fee09459fabb99e6ae717f595}{Sock\+Type} Socket\+Class\+::m\+\_\+\+Type\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Defined socket type. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SocketClass_8h}{Socket\+Class.\+h}\item 
+\hyperlink{SocketClass_8cpp}{Socket\+Class.\+cpp}\end{DoxyCompactItemize}

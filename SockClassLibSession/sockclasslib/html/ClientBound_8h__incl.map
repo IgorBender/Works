@@ -1,0 +1,14 @@
+<map id="ClientBound.h" name="ClientBound.h">
+<area shape="rect" id="node2" href="$ClientSimple_8h.html" title="ClientSimple.h" alt="" coords="283,80,390,107"/>
+<area shape="rect" id="node25" href="$BoundSocketV4_8h.html" title="BoundSocketV4.h" alt="" coords="132,80,259,107"/>
+<area shape="rect" id="node3" href="$StreamSocketV4_8h.html" title="StreamSocketV4.h" alt="" coords="233,155,365,181"/>
+<area shape="rect" id="node24" href="$ConnectedSocketV4_8h.html" title="ConnectedSocketV4.h" alt="" coords="389,155,543,181"/>
+<area shape="rect" id="node4" href="$StreamSocket_8h.html" title="StreamSocket.h" alt="" coords="292,229,408,256"/>
+<area shape="rect" id="node23" href="$InternetSocketV4_8h.html" title="InternetSocketV4.h" alt="" coords="133,229,268,256"/>
+<area shape="rect" id="node5" href="$InternetSocket_8h.html" title="InternetSocket.h" alt="" coords="152,304,271,331"/>
+<area shape="rect" id="node11" href="$DisconnectException_8h.html" title="DisconnectException.h" alt="" coords="375,453,533,480"/>
+<area shape="rect" id="node6" href="$SocketClass_8h.html" title="SocketClass.h" alt="" coords="157,379,265,405"/>
+<area shape="rect" id="node13" href="$sockclasslib_8h.html" title="sockclasslib.h" alt="" coords="313,677,419,704"/>
+<area shape="rect" id="node12" href="$SockException_8h.html" title="SockException.h" alt="" coords="397,528,519,555"/>
+<area shape="rect" id="node16" href="$BaseException_8h.html" title="BaseException.h" alt="" coords="415,603,536,629"/>
+</map>

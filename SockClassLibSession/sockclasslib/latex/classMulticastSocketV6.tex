@@ -1,0 +1,204 @@
+\hypertarget{classMulticastSocketV6}{}\section{Multicast\+Socket\+V6 Class Reference}
+\label{classMulticastSocketV6}\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+
+
+I\+Pv6 datagram socket capable to send multicast datagrams.  
+
+
+
+
+{\ttfamily \#include $<$Multicast\+Socket\+V6.\+h$>$}
+
+
+
+Inheritance diagram for Multicast\+Socket\+V6\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMulticastSocketV6__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMulticastSocketV6_ad99bb6fa0274bc92f4a342c004b395a2}{Multicast\+Socket\+V6} ()
+\item 
+void \hyperlink{classMulticastSocketV6_af33892d079526e17dfe7cac4128bc0d1}{set\+T\+TL} (unsigned char ttl)
+\item 
+void \hyperlink{classMulticastSocketV6_a79e2bd2544a73c01cc7e8c8b998da4e1}{set\+Default\+If} (in6\+\_\+addr Address)
+\item 
+void \hyperlink{classMulticastSocketV6_ad7534d71b628f9be4af98161cd35bdf9}{set\+Default\+If} (const char $\ast$Address)
+\item 
+void \hyperlink{classMulticastSocketV6_a04dea92292a94e6f395de06edf063711}{set\+Loop\+Back} (bool On=true)
+\item 
+virtual void \hyperlink{classMulticastSocketV6_a81b62a13aff687c5b94b8f8a946c58ed}{connect} ()
+\item 
+unsigned int \hyperlink{classMulticastSocketV6_a6f8366a51c3bb4c9403ec29f84432db0}{get\+Index} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{classMulticastSocketV6_a97955011956119b7e551c3070f521f93}{m\+\_\+\+Index}
+\begin{DoxyCompactList}\small\item\em I\+Pv6 interface index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMulticastSocketV6_a2a28ad5ec5326ce88700f6518eba6699}{Multicast\+Socket\+V6} (\hyperlink{classMulticastSocketV6}{Multicast\+Socket\+V6} \&s)
+\item 
+\hyperlink{classMulticastSocketV6}{Multicast\+Socket\+V6} \& \hyperlink{classMulticastSocketV6_a12383da396c4492f43fc9c0dfeb511b6}{operator=} (\hyperlink{classMulticastSocketV6}{Multicast\+Socket\+V6} \&)
+\item 
+void \hyperlink{classMulticastSocketV6_a4e211b18653d1a8ce29651068293960b}{set\+Default\+If} (unsigned int Index)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+I\+Pv6 datagram socket capable to send multicast datagrams. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMulticastSocketV6_ad99bb6fa0274bc92f4a342c004b395a2}\label{classMulticastSocketV6_ad99bb6fa0274bc92f4a342c004b395a2}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Multicast\+Socket\+V6()}{MulticastSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Multicast\+Socket\+V6\+::\+Multicast\+Socket\+V6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocketV6_a2a28ad5ec5326ce88700f6518eba6699}\label{classMulticastSocketV6_a2a28ad5ec5326ce88700f6518eba6699}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{Multicast\+Socket\+V6()}{MulticastSocketV6()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Multicast\+Socket\+V6\+::\+Multicast\+Socket\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{classMulticastSocketV6}{Multicast\+Socket\+V6} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMulticastSocketV6_a81b62a13aff687c5b94b8f8a946c58ed}\label{classMulticastSocketV6_a81b62a13aff687c5b94b8f8a946c58ed}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!connect@{connect}}
+\index{connect@{connect}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily virtual void Multicast\+Socket\+V6\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Connect the socket. Implements pure virtual function of base class. Has no meaning for this particular class. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Reimplemented from \hyperlink{classConnectedSocketV6_ad08bcbb9f35ac5c5693e352d1bbc5460}{Connected\+Socket\+V6}.
+
+\mbox{\Hypertarget{classMulticastSocketV6_a6f8366a51c3bb4c9403ec29f84432db0}\label{classMulticastSocketV6_a6f8366a51c3bb4c9403ec29f84432db0}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!get\+Index@{get\+Index}}
+\index{get\+Index@{get\+Index}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{get\+Index()}{getIndex()}}
+{\footnotesize\ttfamily unsigned int Multicast\+Socket\+V6\+::get\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classMulticastSocketV6_a12383da396c4492f43fc9c0dfeb511b6}\label{classMulticastSocketV6_a12383da396c4492f43fc9c0dfeb511b6}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!operator=@{operator=}}
+\index{operator=@{operator=}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classMulticastSocketV6}{Multicast\+Socket\+V6}\& Multicast\+Socket\+V6\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classMulticastSocketV6}{Multicast\+Socket\+V6} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. \mbox{\Hypertarget{classMulticastSocketV6_a79e2bd2544a73c01cc7e8c8b998da4e1}\label{classMulticastSocketV6_a79e2bd2544a73c01cc7e8c8b998da4e1}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!set\+Default\+If@{set\+Default\+If}}
+\index{set\+Default\+If@{set\+Default\+If}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{set\+Default\+If()}{setDefaultIf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Multicast\+Socket\+V6\+::set\+Default\+If (\begin{DoxyParamCaption}\item[{in6\+\_\+addr}]{Address }\end{DoxyParamCaption})}
+
+Set default network interface. 
+\begin{DoxyParams}{Parameters}
+{\em Address} & \+: I\+Pv6 address of default network interface. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocketV6_ad7534d71b628f9be4af98161cd35bdf9}\label{classMulticastSocketV6_ad7534d71b628f9be4af98161cd35bdf9}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!set\+Default\+If@{set\+Default\+If}}
+\index{set\+Default\+If@{set\+Default\+If}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{set\+Default\+If()}{setDefaultIf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Multicast\+Socket\+V6\+::set\+Default\+If (\begin{DoxyParamCaption}\item[{const char $\ast$}]{Address }\end{DoxyParamCaption})}
+
+Set default network interface. 
+\begin{DoxyParams}{Parameters}
+{\em Index} & \+: address of default network interface in textual dot notation. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocketV6_a4e211b18653d1a8ce29651068293960b}\label{classMulticastSocketV6_a4e211b18653d1a8ce29651068293960b}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!set\+Default\+If@{set\+Default\+If}}
+\index{set\+Default\+If@{set\+Default\+If}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{set\+Default\+If()}{setDefaultIf()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Multicast\+Socket\+V6\+::set\+Default\+If (\begin{DoxyParamCaption}\item[{unsigned int}]{Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Set default network interface. 
+\begin{DoxyParams}{Parameters}
+{\em Index} & \+: index of default network interface. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocketV6_a04dea92292a94e6f395de06edf063711}\label{classMulticastSocketV6_a04dea92292a94e6f395de06edf063711}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!set\+Loop\+Back@{set\+Loop\+Back}}
+\index{set\+Loop\+Back@{set\+Loop\+Back}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{set\+Loop\+Back()}{setLoopBack()}}
+{\footnotesize\ttfamily void Multicast\+Socket\+V6\+::set\+Loop\+Back (\begin{DoxyParamCaption}\item[{bool}]{On = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Switch on or off loppback for sent multicasts. 
+\begin{DoxyParams}{Parameters}
+{\em On} & \+: lopback on/off. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classMulticastSocketV6_af33892d079526e17dfe7cac4128bc0d1}\label{classMulticastSocketV6_af33892d079526e17dfe7cac4128bc0d1}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!set\+T\+TL@{set\+T\+TL}}
+\index{set\+T\+TL@{set\+T\+TL}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{set\+T\+T\+L()}{setTTL()}}
+{\footnotesize\ttfamily void Multicast\+Socket\+V6\+::set\+T\+TL (\begin{DoxyParamCaption}\item[{unsigned char}]{ttl }\end{DoxyParamCaption})}
+
+Set Time-\/\+To-\/\+Live for sent multicasts. 
+\begin{DoxyParams}{Parameters}
+{\em ttl} & \+: T\+TL number. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classMulticastSocketV6_a97955011956119b7e551c3070f521f93}\label{classMulticastSocketV6_a97955011956119b7e551c3070f521f93}} 
+\index{Multicast\+Socket\+V6@{Multicast\+Socket\+V6}!m\+\_\+\+Index@{m\+\_\+\+Index}}
+\index{m\+\_\+\+Index@{m\+\_\+\+Index}!Multicast\+Socket\+V6@{Multicast\+Socket\+V6}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Index}{m\_Index}}
+{\footnotesize\ttfamily unsigned int Multicast\+Socket\+V6\+::m\+\_\+\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+I\+Pv6 interface index. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{MulticastSocketV6_8h}{Multicast\+Socket\+V6.\+h}\item 
+\hyperlink{MulticastSocketV6_8cpp}{Multicast\+Socket\+V6.\+cpp}\end{DoxyCompactItemize}

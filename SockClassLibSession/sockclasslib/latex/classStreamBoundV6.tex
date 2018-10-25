@@ -1,0 +1,102 @@
+\hypertarget{classStreamBoundV6}{}\section{Stream\+Bound\+V6 Class Reference}
+\label{classStreamBoundV6}\index{Stream\+Bound\+V6@{Stream\+Bound\+V6}}
+
+
+T\+CP socket bound to specified port and address.  
+
+
+
+
+{\ttfamily \#include $<$Stream\+Bound\+V6.\+h$>$}
+
+
+
+Inheritance diagram for Stream\+Bound\+V6\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classStreamBoundV6__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStreamBoundV6_a81d2ecafcbb417fe6e319daa8335be18}{Stream\+Bound\+V6} (short Port, in6\+\_\+addr Address=in6addr\+\_\+any, bool Late\+Bind=false)
+\item 
+\hyperlink{classStreamBoundV6_a2408b1863d8043ea8fc5a2f460e98fb5}{Stream\+Bound\+V6} (short Port, const char $\ast$Address, bool Late\+Bind=false)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStreamBoundV6_a90747cdecae8ad1ef744cad16e7d9ae1}{Stream\+Bound\+V6} (\hyperlink{classStreamBoundV6}{Stream\+Bound\+V6} \&s)
+\item 
+\hyperlink{classStreamBoundV6}{Stream\+Bound\+V6} \& \hyperlink{classStreamBoundV6_ad5f53565b680b46896fe8ab713d658f9}{operator=} (\hyperlink{classStreamBoundV6}{Stream\+Bound\+V6} \&s)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\+CP socket bound to specified port and address. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStreamBoundV6_a81d2ecafcbb417fe6e319daa8335be18}\label{classStreamBoundV6_a81d2ecafcbb417fe6e319daa8335be18}} 
+\index{Stream\+Bound\+V6@{Stream\+Bound\+V6}!Stream\+Bound\+V6@{Stream\+Bound\+V6}}
+\index{Stream\+Bound\+V6@{Stream\+Bound\+V6}!Stream\+Bound\+V6@{Stream\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Stream\+Bound\+V6()}{StreamBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Stream\+Bound\+V6\+::\+Stream\+Bound\+V6 (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{in6\+\_\+addr}]{Address = {\ttfamily in6addr\+\_\+any},  }\item[{bool}]{Late\+Bind = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: I\+Pv6 address for bind. \\
+\hline
+{\em Late\+Bind} & \+: do bind now or later according to bind method call. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classStreamBoundV6_a2408b1863d8043ea8fc5a2f460e98fb5}\label{classStreamBoundV6_a2408b1863d8043ea8fc5a2f460e98fb5}} 
+\index{Stream\+Bound\+V6@{Stream\+Bound\+V6}!Stream\+Bound\+V6@{Stream\+Bound\+V6}}
+\index{Stream\+Bound\+V6@{Stream\+Bound\+V6}!Stream\+Bound\+V6@{Stream\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Stream\+Bound\+V6()}{StreamBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Stream\+Bound\+V6\+::\+Stream\+Bound\+V6 (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{const char $\ast$}]{Address,  }\item[{bool}]{Late\+Bind = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: I\+Pv6 address for bind in textual notation. \\
+\hline
+{\em Late\+Bind} & \+: do bind now or later according to bind method call. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classStreamBoundV6_a90747cdecae8ad1ef744cad16e7d9ae1}\label{classStreamBoundV6_a90747cdecae8ad1ef744cad16e7d9ae1}} 
+\index{Stream\+Bound\+V6@{Stream\+Bound\+V6}!Stream\+Bound\+V6@{Stream\+Bound\+V6}}
+\index{Stream\+Bound\+V6@{Stream\+Bound\+V6}!Stream\+Bound\+V6@{Stream\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Stream\+Bound\+V6()}{StreamBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Stream\+Bound\+V6\+::\+Stream\+Bound\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{classStreamBoundV6}{Stream\+Bound\+V6} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStreamBoundV6_ad5f53565b680b46896fe8ab713d658f9}\label{classStreamBoundV6_ad5f53565b680b46896fe8ab713d658f9}} 
+\index{Stream\+Bound\+V6@{Stream\+Bound\+V6}!operator=@{operator=}}
+\index{operator=@{operator=}!Stream\+Bound\+V6@{Stream\+Bound\+V6}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classStreamBoundV6}{Stream\+Bound\+V6}\& Stream\+Bound\+V6\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classStreamBoundV6}{Stream\+Bound\+V6} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{StreamBoundV6_8h}{Stream\+Bound\+V6.\+h}\item 
+\hyperlink{StreamBoundV6_8cpp}{Stream\+Bound\+V6.\+cpp}\end{DoxyCompactItemize}

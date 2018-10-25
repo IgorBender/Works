@@ -1,0 +1,4 @@
+<map id="BaseException" name="BaseException">
+<area shape="rect" id="node2" href="$classSockException.html" title="{SockException\n|# m_ErrCode\l# lpMsgBuf\l# m_Message\l|+ SockException()\l+ SockException()\l+ ~SockException()\l+ what()\l+ formatMessage()\l+ getErrCode()\l+ getMessage()\l+ formatMessage()\l+ getErrNum()\l+ setErrNum()\l}" alt="" coords="19,233,158,472"/>
+<area shape="rect" id="node3" href="$classDisconnectException.html" title="{DisconnectException\n||+ DisconnectException()\l+ DisconnectException()\l}" alt="" coords="5,520,172,612"/>
+</map>

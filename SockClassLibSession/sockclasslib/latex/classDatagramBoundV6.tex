@@ -1,0 +1,98 @@
+\hypertarget{classDatagramBoundV6}{}\section{Datagram\+Bound\+V6 Class Reference}
+\label{classDatagramBoundV6}\index{Datagram\+Bound\+V6@{Datagram\+Bound\+V6}}
+
+
+U\+DP socket bound to specified port and address (aka U\+DP server) for I\+Pv6.  
+
+
+
+
+{\ttfamily \#include $<$Datagram\+Bound\+V6.\+h$>$}
+
+
+
+Inheritance diagram for Datagram\+Bound\+V6\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classDatagramBoundV6__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDatagramBoundV6_a2ea297627599924828a2ba5f3841f5b6}{Datagram\+Bound\+V6} (short Port, in6\+\_\+addr Address=in6addr\+\_\+any)
+\item 
+\hyperlink{classDatagramBoundV6_a10466ff587a48113bafaedfd6fe7b0be}{Datagram\+Bound\+V6} (short Port, const char $\ast$Address)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDatagramBoundV6_ac392602b5e9fa32a4ef137e97ddc0842}{Datagram\+Bound\+V6} (\hyperlink{classDatagramBoundV6}{Datagram\+Bound\+V6} \&d)
+\item 
+\hyperlink{classDatagramBoundV6}{Datagram\+Bound\+V6} \& \hyperlink{classDatagramBoundV6_ad4e4d9bf21708ecb03786df5230bd769}{operator=} (\hyperlink{classDatagramBoundV6}{Datagram\+Bound\+V6} \&d)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+U\+DP socket bound to specified port and address (aka U\+DP server) for I\+Pv6. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDatagramBoundV6_a2ea297627599924828a2ba5f3841f5b6}\label{classDatagramBoundV6_a2ea297627599924828a2ba5f3841f5b6}} 
+\index{Datagram\+Bound\+V6@{Datagram\+Bound\+V6}!Datagram\+Bound\+V6@{Datagram\+Bound\+V6}}
+\index{Datagram\+Bound\+V6@{Datagram\+Bound\+V6}!Datagram\+Bound\+V6@{Datagram\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Datagram\+Bound\+V6()}{DatagramBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Datagram\+Bound\+V6\+::\+Datagram\+Bound\+V6 (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{in6\+\_\+addr}]{Address = {\ttfamily in6addr\+\_\+any} }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: I\+Pv6 address for bind in network byte order. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classDatagramBoundV6_a10466ff587a48113bafaedfd6fe7b0be}\label{classDatagramBoundV6_a10466ff587a48113bafaedfd6fe7b0be}} 
+\index{Datagram\+Bound\+V6@{Datagram\+Bound\+V6}!Datagram\+Bound\+V6@{Datagram\+Bound\+V6}}
+\index{Datagram\+Bound\+V6@{Datagram\+Bound\+V6}!Datagram\+Bound\+V6@{Datagram\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Datagram\+Bound\+V6()}{DatagramBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Datagram\+Bound\+V6\+::\+Datagram\+Bound\+V6 (\begin{DoxyParamCaption}\item[{short}]{Port,  }\item[{const char $\ast$}]{Address }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em Port} & \+: port number for bind in network byte order. \\
+\hline
+{\em Address} & \+: I\+Pv6 address for bind in textual notation. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classDatagramBoundV6_ac392602b5e9fa32a4ef137e97ddc0842}\label{classDatagramBoundV6_ac392602b5e9fa32a4ef137e97ddc0842}} 
+\index{Datagram\+Bound\+V6@{Datagram\+Bound\+V6}!Datagram\+Bound\+V6@{Datagram\+Bound\+V6}}
+\index{Datagram\+Bound\+V6@{Datagram\+Bound\+V6}!Datagram\+Bound\+V6@{Datagram\+Bound\+V6}}
+\subsubsection{\texorpdfstring{Datagram\+Bound\+V6()}{DatagramBoundV6()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Datagram\+Bound\+V6\+::\+Datagram\+Bound\+V6 (\begin{DoxyParamCaption}\item[{\hyperlink{classDatagramBoundV6}{Datagram\+Bound\+V6} \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDatagramBoundV6_ad4e4d9bf21708ecb03786df5230bd769}\label{classDatagramBoundV6_ad4e4d9bf21708ecb03786df5230bd769}} 
+\index{Datagram\+Bound\+V6@{Datagram\+Bound\+V6}!operator=@{operator=}}
+\index{operator=@{operator=}!Datagram\+Bound\+V6@{Datagram\+Bound\+V6}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classDatagramBoundV6}{Datagram\+Bound\+V6}\& Datagram\+Bound\+V6\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classDatagramBoundV6}{Datagram\+Bound\+V6} \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{DatagramBoundV6_8h}{Datagram\+Bound\+V6.\+h}\item 
+\hyperlink{DatagramBoundV6_8cpp}{Datagram\+Bound\+V6.\+cpp}\end{DoxyCompactItemize}

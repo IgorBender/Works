@@ -1,0 +1,8 @@
+<map id="BroadcastSocket" name="BroadcastSocket">
+<area shape="rect" id="node7" href="$classBroadcastBound.html" title="Bounded socket with broadcast capabilities. " alt="" coords="21,1520,160,1641"/>
+<area shape="rect" id="node2" href="$classDatagramSocket.html" title="Class for UDP sockets. " alt="" coords="17,1079,165,1273"/>
+<area shape="rect" id="node3" href="$classConnectedSocketV4.html" title="Socket that can connect to another. " alt="" coords="9,807,172,1031"/>
+<area shape="rect" id="node4" href="$classInternetSocketV4.html" title="{InternetSocketV4\n||+ InternetSocketV4()\l+ ~InternetSocketV4()\l+ setIpLevelOpt()\l+ getIpLevelOpt()\l# InternetSocketV4()\l}" alt="" coords="15,623,166,759"/>
+<area shape="rect" id="node5" href="$classInternetSocket.html" title="{InternetSocket\n||+ InternetSocket()\l+ ~InternetSocket()\l# InternetSocket()\l}" alt="" coords="23,468,158,575"/>
+<area shape="rect" id="node6" href="$classSocketClass.html" title="{SocketClass\n|# m_Sock\l# m_Domain\l# m_Type\l# m_Protocol\l# m_Flags\l# m_Connected\l|+ SocketClass()\l+ setDomain()\l+ getDomain()\l+ setType()\l+ getType()\l+ setProtocol()\l+ getProtocol()\l+ getSock()\l+ setNonBlockMode()\l+ setSockLevelOpt()\l+ getSockLevelOpt()\l+ send()\l+ receive()\l+ isConnected()\l+ setConnected()\l# SocketClass()\l# ~SocketClass()\l# create()\l# close()\l}" alt="" coords="16,5,165,420"/>
+</map>

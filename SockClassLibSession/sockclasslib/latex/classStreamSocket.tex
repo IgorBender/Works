@@ -1,0 +1,287 @@
+\hypertarget{classStreamSocket}{}\section{Stream\+Socket Class Reference}
+\label{classStreamSocket}\index{Stream\+Socket@{Stream\+Socket}}
+
+
+{\ttfamily \#include $<$Stream\+Socket.\+h$>$}
+
+
+
+Inheritance diagram for Stream\+Socket\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classStreamSocket__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStreamSocket_a5b84a10f7bece6175c0d885c3568aa4f}{Stream\+Socket} (\hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET} sock)
+\item 
+virtual \hyperlink{classStreamSocket_ad19381c15cf7390ea3751d930b16c45e}{$\sim$\+Stream\+Socket} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+sockaddr\+\_\+in \& \hyperlink{classStreamSocket_ab634d93813e97a292ae8b29fd9d39bcd}{get\+Sock\+Name} ()
+\item 
+sockaddr\+\_\+in \& \hyperlink{classStreamSocket_ab9065328673e08e0fb5df8eefda3604d}{get\+Peer\+Name} ()
+\item 
+void \hyperlink{classStreamSocket_a644c75a180ea636ab4373a903062a4ad}{set\+Sock} (int i)
+\item 
+void \hyperlink{classStreamSocket_a776cd788e6f324f41febfb71b03e8cc7}{set\+Tcp\+Level\+Opt} (int Opt, const char $\ast$Value, int Opt\+Len)
+\item 
+void \hyperlink{classStreamSocket_a5ad690e49784bbfa352232724529ae4c}{get\+Tcp\+Level\+Opt} (int Opt, char $\ast$Value, int $\ast$Opt\+Len)
+\item 
+void \hyperlink{classStreamSocket_a01cd43dea5b792a72d741288f840b08b}{disconnect} (long Timeout=0)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStreamSocket_a005683fb7badf43a1d0a30b9ad09649e}{Stream\+Socket} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classStreamSocket_a9dc930d6a0f7d6a8b96631348297bce2}{close} ()
+\begin{DoxyCompactList}\small\item\em Close the socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sockaddr\+\_\+in \hyperlink{classStreamSocket_a3d9ba37dc44b6ebcbb836f1aeb90ec74}{m\+\_\+\+Sock\+Name}
+\begin{DoxyCompactList}\small\item\em Bound endpoint properties. \end{DoxyCompactList}\item 
+bool \hyperlink{classStreamSocket_a4f019df008ee69c34332f0e08c68d746}{m\+\_\+\+Got\+Sock\+Name}
+\begin{DoxyCompactList}\small\item\em Bound endpoint properties are filled. \end{DoxyCompactList}\item 
+sockaddr\+\_\+in \hyperlink{classStreamSocket_a4ab3bf06cf2d7866f36091258d3bd20a}{m\+\_\+\+Peer\+Name}
+\begin{DoxyCompactList}\small\item\em Destination endpoint properties. \end{DoxyCompactList}\item 
+bool \hyperlink{classStreamSocket_a14305f0d399b0b4bab1b8e1b8fa99844}{m\+\_\+\+Got\+Peer\+Name}
+\begin{DoxyCompactList}\small\item\em Destination endpoint properties are filled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStreamSocket_a11756527c7644ee85bc2debfd8aef576}{Stream\+Socket} (\hyperlink{classStreamSocket}{Stream\+Socket} \&s)
+\item 
+\hyperlink{classStreamSocket}{Stream\+Socket} \& \hyperlink{classStreamSocket_a4b78db9579afcfe387af3335c632ba49}{operator=} (\hyperlink{classStreamSocket}{Stream\+Socket} \&s)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classStreamSocket_afa2b19845876e6ba2e47d2393147ff4b}{Server\+Simple}
+\item 
+class \hyperlink{classStreamSocket_ad693c1bdff496f6dc8b4268108014bf2}{Server\+Simple\+V6}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Stream socket class. The base class for all stream-\/oriented sockets. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStreamSocket_a5b84a10f7bece6175c0d885c3568aa4f}\label{classStreamSocket_a5b84a10f7bece6175c0d885c3568aa4f}} 
+\index{Stream\+Socket@{Stream\+Socket}!Stream\+Socket@{Stream\+Socket}}
+\index{Stream\+Socket@{Stream\+Socket}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{Stream\+Socket()}{StreamSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Stream\+Socket\+::\+Stream\+Socket (\begin{DoxyParamCaption}\item[{\hyperlink{sockclasslib_8h_a8dc8083897335125630f1af5dafd5831}{S\+O\+C\+K\+ET}}]{sock }\end{DoxyParamCaption})}
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em sock} & \+: socket file descriptor/handle. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStreamSocket_ad19381c15cf7390ea3751d930b16c45e}\label{classStreamSocket_ad19381c15cf7390ea3751d930b16c45e}} 
+\index{Stream\+Socket@{Stream\+Socket}!````~Stream\+Socket@{$\sim$\+Stream\+Socket}}
+\index{````~Stream\+Socket@{$\sim$\+Stream\+Socket}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{$\sim$\+Stream\+Socket()}{~StreamSocket()}}
+{\footnotesize\ttfamily virtual Stream\+Socket\+::$\sim$\+Stream\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+\mbox{\Hypertarget{classStreamSocket_a005683fb7badf43a1d0a30b9ad09649e}\label{classStreamSocket_a005683fb7badf43a1d0a30b9ad09649e}} 
+\index{Stream\+Socket@{Stream\+Socket}!Stream\+Socket@{Stream\+Socket}}
+\index{Stream\+Socket@{Stream\+Socket}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{Stream\+Socket()}{StreamSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Stream\+Socket\+::\+Stream\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{classStreamSocket_a11756527c7644ee85bc2debfd8aef576}\label{classStreamSocket_a11756527c7644ee85bc2debfd8aef576}} 
+\index{Stream\+Socket@{Stream\+Socket}!Stream\+Socket@{Stream\+Socket}}
+\index{Stream\+Socket@{Stream\+Socket}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{Stream\+Socket()}{StreamSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Stream\+Socket\+::\+Stream\+Socket (\begin{DoxyParamCaption}\item[{\hyperlink{classStreamSocket}{Stream\+Socket} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Constructor. Copy constructor. Makes the class uncopyable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStreamSocket_a9dc930d6a0f7d6a8b96631348297bce2}\label{classStreamSocket_a9dc930d6a0f7d6a8b96631348297bce2}} 
+\index{Stream\+Socket@{Stream\+Socket}!close@{close}}
+\index{close@{close}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily virtual void Stream\+Socket\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Close the socket. 
+
+
+
+Implements \hyperlink{classSocketClass_a92c8c1b22b98f0231932cbd84cdc4cfe}{Socket\+Class}.
+
+\mbox{\Hypertarget{classStreamSocket_a01cd43dea5b792a72d741288f840b08b}\label{classStreamSocket_a01cd43dea5b792a72d741288f840b08b}} 
+\index{Stream\+Socket@{Stream\+Socket}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily void Stream\+Socket\+::disconnect (\begin{DoxyParamCaption}\item[{long}]{Timeout = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Disconnect endpoint. 
+\begin{DoxyParams}{Parameters}
+{\em Timeout} & \+: Time to wait for orderly close the socket in milliseconds. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStreamSocket_ab9065328673e08e0fb5df8eefda3604d}\label{classStreamSocket_ab9065328673e08e0fb5df8eefda3604d}} 
+\index{Stream\+Socket@{Stream\+Socket}!get\+Peer\+Name@{get\+Peer\+Name}}
+\index{get\+Peer\+Name@{get\+Peer\+Name}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{get\+Peer\+Name()}{getPeerName()}}
+{\footnotesize\ttfamily sockaddr\+\_\+in \& Stream\+Socket\+::get\+Peer\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Deliver connected endpoint properties. \begin{DoxyReturn}{Returns}
+sockaddr\+\_\+in structure filled with connected endpoint properties. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classStreamSocket_ab634d93813e97a292ae8b29fd9d39bcd}\label{classStreamSocket_ab634d93813e97a292ae8b29fd9d39bcd}} 
+\index{Stream\+Socket@{Stream\+Socket}!get\+Sock\+Name@{get\+Sock\+Name}}
+\index{get\+Sock\+Name@{get\+Sock\+Name}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{get\+Sock\+Name()}{getSockName()}}
+{\footnotesize\ttfamily sockaddr\+\_\+in \& Stream\+Socket\+::get\+Sock\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Deliver bound endpoint properties. \begin{DoxyReturn}{Returns}
+sockaddr\+\_\+in structure filled with bound endpoint properties. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Sock\+Exception.} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classStreamSocket_a5ad690e49784bbfa352232724529ae4c}\label{classStreamSocket_a5ad690e49784bbfa352232724529ae4c}} 
+\index{Stream\+Socket@{Stream\+Socket}!get\+Tcp\+Level\+Opt@{get\+Tcp\+Level\+Opt}}
+\index{get\+Tcp\+Level\+Opt@{get\+Tcp\+Level\+Opt}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{get\+Tcp\+Level\+Opt()}{getTcpLevelOpt()}}
+{\footnotesize\ttfamily void Stream\+Socket\+::get\+Tcp\+Level\+Opt (\begin{DoxyParamCaption}\item[{int}]{Opt,  }\item[{char $\ast$}]{Value,  }\item[{int $\ast$}]{Opt\+Len }\end{DoxyParamCaption})}
+
+Deliver T\+CP level option. 
+\begin{DoxyParams}{Parameters}
+{\em Opt} & \+: option type. \\
+\hline
+{\em Value} & \+: option value. \\
+\hline
+{\em Opt\+Len} & \+: option value length. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classStreamSocket_a4b78db9579afcfe387af3335c632ba49}\label{classStreamSocket_a4b78db9579afcfe387af3335c632ba49}} 
+\index{Stream\+Socket@{Stream\+Socket}!operator=@{operator=}}
+\index{operator=@{operator=}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classStreamSocket}{Stream\+Socket}\& Stream\+Socket\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classStreamSocket}{Stream\+Socket} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Operator assign. Makes the class uncopyable. \mbox{\Hypertarget{classStreamSocket_a644c75a180ea636ab4373a903062a4ad}\label{classStreamSocket_a644c75a180ea636ab4373a903062a4ad}} 
+\index{Stream\+Socket@{Stream\+Socket}!set\+Sock@{set\+Sock}}
+\index{set\+Sock@{set\+Sock}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{set\+Sock()}{setSock()}}
+{\footnotesize\ttfamily void Stream\+Socket\+::set\+Sock (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set socket file descriptor/handle. 
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: socket file descriptor/handle. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStreamSocket_a776cd788e6f324f41febfb71b03e8cc7}\label{classStreamSocket_a776cd788e6f324f41febfb71b03e8cc7}} 
+\index{Stream\+Socket@{Stream\+Socket}!set\+Tcp\+Level\+Opt@{set\+Tcp\+Level\+Opt}}
+\index{set\+Tcp\+Level\+Opt@{set\+Tcp\+Level\+Opt}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{set\+Tcp\+Level\+Opt()}{setTcpLevelOpt()}}
+{\footnotesize\ttfamily void Stream\+Socket\+::set\+Tcp\+Level\+Opt (\begin{DoxyParamCaption}\item[{int}]{Opt,  }\item[{const char $\ast$}]{Value,  }\item[{int}]{Opt\+Len }\end{DoxyParamCaption})}
+
+Set T\+CP level option. 
+\begin{DoxyParams}{Parameters}
+{\em Opt} & \+: option type. \\
+\hline
+{\em Value} & \+: option value. \\
+\hline
+{\em Opt\+Len} & \+: option value length. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classSockException}{Sock\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classStreamSocket_afa2b19845876e6ba2e47d2393147ff4b}\label{classStreamSocket_afa2b19845876e6ba2e47d2393147ff4b}} 
+\index{Stream\+Socket@{Stream\+Socket}!Server\+Simple@{Server\+Simple}}
+\index{Server\+Simple@{Server\+Simple}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{Server\+Simple}{ServerSimple}}
+{\footnotesize\ttfamily friend class \hyperlink{classServerSimple}{Server\+Simple}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classStreamSocket_ad693c1bdff496f6dc8b4268108014bf2}\label{classStreamSocket_ad693c1bdff496f6dc8b4268108014bf2}} 
+\index{Stream\+Socket@{Stream\+Socket}!Server\+Simple\+V6@{Server\+Simple\+V6}}
+\index{Server\+Simple\+V6@{Server\+Simple\+V6}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{Server\+Simple\+V6}{ServerSimpleV6}}
+{\footnotesize\ttfamily friend class \hyperlink{classServerSimpleV6}{Server\+Simple\+V6}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classStreamSocket_a14305f0d399b0b4bab1b8e1b8fa99844}\label{classStreamSocket_a14305f0d399b0b4bab1b8e1b8fa99844}} 
+\index{Stream\+Socket@{Stream\+Socket}!m\+\_\+\+Got\+Peer\+Name@{m\+\_\+\+Got\+Peer\+Name}}
+\index{m\+\_\+\+Got\+Peer\+Name@{m\+\_\+\+Got\+Peer\+Name}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Got\+Peer\+Name}{m\_GotPeerName}}
+{\footnotesize\ttfamily bool Stream\+Socket\+::m\+\_\+\+Got\+Peer\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Destination endpoint properties are filled. 
+
+\mbox{\Hypertarget{classStreamSocket_a4f019df008ee69c34332f0e08c68d746}\label{classStreamSocket_a4f019df008ee69c34332f0e08c68d746}} 
+\index{Stream\+Socket@{Stream\+Socket}!m\+\_\+\+Got\+Sock\+Name@{m\+\_\+\+Got\+Sock\+Name}}
+\index{m\+\_\+\+Got\+Sock\+Name@{m\+\_\+\+Got\+Sock\+Name}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Got\+Sock\+Name}{m\_GotSockName}}
+{\footnotesize\ttfamily bool Stream\+Socket\+::m\+\_\+\+Got\+Sock\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Bound endpoint properties are filled. 
+
+\mbox{\Hypertarget{classStreamSocket_a4ab3bf06cf2d7866f36091258d3bd20a}\label{classStreamSocket_a4ab3bf06cf2d7866f36091258d3bd20a}} 
+\index{Stream\+Socket@{Stream\+Socket}!m\+\_\+\+Peer\+Name@{m\+\_\+\+Peer\+Name}}
+\index{m\+\_\+\+Peer\+Name@{m\+\_\+\+Peer\+Name}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Peer\+Name}{m\_PeerName}}
+{\footnotesize\ttfamily sockaddr\+\_\+in Stream\+Socket\+::m\+\_\+\+Peer\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Destination endpoint properties. 
+
+\mbox{\Hypertarget{classStreamSocket_a3d9ba37dc44b6ebcbb836f1aeb90ec74}\label{classStreamSocket_a3d9ba37dc44b6ebcbb836f1aeb90ec74}} 
+\index{Stream\+Socket@{Stream\+Socket}!m\+\_\+\+Sock\+Name@{m\+\_\+\+Sock\+Name}}
+\index{m\+\_\+\+Sock\+Name@{m\+\_\+\+Sock\+Name}!Stream\+Socket@{Stream\+Socket}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Sock\+Name}{m\_SockName}}
+{\footnotesize\ttfamily sockaddr\+\_\+in Stream\+Socket\+::m\+\_\+\+Sock\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Bound endpoint properties. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{StreamSocket_8h}{Stream\+Socket.\+h}\item 
+\hyperlink{StreamSocket_8cpp}{Stream\+Socket.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,150 @@
+\hypertarget{classPRWLockClass}{}\section{P\+R\+W\+Lock\+Class Class Reference}
+\label{classPRWLockClass}\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+
+
+{\ttfamily \#include $<$P\+R\+W\+Lock\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPRWLockClass_ac59b2064213975c386238642138d1b6b}{P\+R\+W\+Lock\+Class} () noexcept(false)
+\item 
+virtual \hyperlink{classPRWLockClass_a88c4b20ab74e7169502b150c21ddcb7b}{$\sim$\+P\+R\+W\+Lock\+Class} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classPRWLockClass_a46653617ca027a5c1606cbe15024beda}{lock\+Read} ()
+\item 
+int \hyperlink{classPRWLockClass_a20f4dadadb861f8d3784e42ed79c5644}{try\+Lock\+Read} ()
+\item 
+int \hyperlink{classPRWLockClass_aea260fd7b6edbed8f3e4ed45c5f2dd10}{timed\+Lock\+Read} (unsigned long Timeout=\hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE})
+\item 
+int \hyperlink{classPRWLockClass_a685bacbde4d64ec46d2107c69707ff6a}{lock\+Write} ()
+\item 
+int \hyperlink{classPRWLockClass_aad1a8144616e233d02a12437a5f5d74f}{try\+Lock\+Write} ()
+\item 
+int \hyperlink{classPRWLockClass_a4b4571cc739699bfcc7b62543c173dec}{timed\+Lock\+Write} (unsigned long Timeout=\hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE})
+\item 
+int \hyperlink{classPRWLockClass_a4b3f36ee6e3d4996e7b43ea6e4819144}{un\+Lock} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+rwlock\+\_\+t \hyperlink{classPRWLockClass_aaa565eaea0c0e07a70fd6bdbb8f5693e}{m\+\_\+\+R\+W\+Lock}
+\begin{DoxyCompactList}\small\item\em P\+O\+S\+IX read-\/write lock;. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper on P\+O\+S\+IX read-\/write lock. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPRWLockClass_ac59b2064213975c386238642138d1b6b}\label{classPRWLockClass_ac59b2064213975c386238642138d1b6b}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{P\+R\+W\+Lock\+Class()}{PRWLockClass()}}
+{\footnotesize\ttfamily P\+R\+W\+Lock\+Class\+::\+P\+R\+W\+Lock\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Constructor. 
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classThreadException}{Thread\+Exception}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPRWLockClass_a88c4b20ab74e7169502b150c21ddcb7b}\label{classPRWLockClass_a88c4b20ab74e7169502b150c21ddcb7b}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!````~P\+R\+W\+Lock\+Class@{$\sim$\+P\+R\+W\+Lock\+Class}}
+\index{````~P\+R\+W\+Lock\+Class@{$\sim$\+P\+R\+W\+Lock\+Class}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+P\+R\+W\+Lock\+Class()}{~PRWLockClass()}}
+{\footnotesize\ttfamily P\+R\+W\+Lock\+Class\+::$\sim$\+P\+R\+W\+Lock\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPRWLockClass_a46653617ca027a5c1606cbe15024beda}\label{classPRWLockClass_a46653617ca027a5c1606cbe15024beda}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!lock\+Read@{lock\+Read}}
+\index{lock\+Read@{lock\+Read}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{lock\+Read()}{lockRead()}}
+{\footnotesize\ttfamily int P\+R\+W\+Lock\+Class\+::lock\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Lock for read. \begin{DoxyReturn}{Returns}
+result of lock operation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPRWLockClass_a685bacbde4d64ec46d2107c69707ff6a}\label{classPRWLockClass_a685bacbde4d64ec46d2107c69707ff6a}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!lock\+Write@{lock\+Write}}
+\index{lock\+Write@{lock\+Write}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{lock\+Write()}{lockWrite()}}
+{\footnotesize\ttfamily int P\+R\+W\+Lock\+Class\+::lock\+Write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Lock for write. \begin{DoxyReturn}{Returns}
+result of lock operation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPRWLockClass_aea260fd7b6edbed8f3e4ed45c5f2dd10}\label{classPRWLockClass_aea260fd7b6edbed8f3e4ed45c5f2dd10}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!timed\+Lock\+Read@{timed\+Lock\+Read}}
+\index{timed\+Lock\+Read@{timed\+Lock\+Read}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{timed\+Lock\+Read()}{timedLockRead()}}
+{\footnotesize\ttfamily int P\+R\+W\+Lock\+Class\+::timed\+Lock\+Read (\begin{DoxyParamCaption}\item[{unsigned long}]{Timeout = {\ttfamily \hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE}} }\end{DoxyParamCaption})}
+
+Try to lock for read with timeout. \begin{DoxyReturn}{Returns}
+result of lock operation \+:~\newline
+ 0 -\/ success. ~\newline
+ E\+T\+I\+M\+E\+D\+O\+UT -\/ timeout expired.~\newline
+ other -\/ error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPRWLockClass_a4b4571cc739699bfcc7b62543c173dec}\label{classPRWLockClass_a4b4571cc739699bfcc7b62543c173dec}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!timed\+Lock\+Write@{timed\+Lock\+Write}}
+\index{timed\+Lock\+Write@{timed\+Lock\+Write}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{timed\+Lock\+Write()}{timedLockWrite()}}
+{\footnotesize\ttfamily int P\+R\+W\+Lock\+Class\+::timed\+Lock\+Write (\begin{DoxyParamCaption}\item[{unsigned long}]{Timeout = {\ttfamily \hyperlink{PThreadClassLib_8h_a9d2d74d73cb5d069fbfcbcfebf42bd6e}{P\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+F\+I\+N\+I\+TE}} }\end{DoxyParamCaption})}
+
+Try to lock for write with timeout. \begin{DoxyReturn}{Returns}
+result of lock operation \+:~\newline
+ 0 -\/ success. ~\newline
+ E\+T\+I\+M\+E\+D\+O\+UT -\/ timeout expired.~\newline
+ other -\/ error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPRWLockClass_a20f4dadadb861f8d3784e42ed79c5644}\label{classPRWLockClass_a20f4dadadb861f8d3784e42ed79c5644}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!try\+Lock\+Read@{try\+Lock\+Read}}
+\index{try\+Lock\+Read@{try\+Lock\+Read}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{try\+Lock\+Read()}{tryLockRead()}}
+{\footnotesize\ttfamily int P\+R\+W\+Lock\+Class\+::try\+Lock\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to lock for read. \begin{DoxyReturn}{Returns}
+result of lock operation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPRWLockClass_aad1a8144616e233d02a12437a5f5d74f}\label{classPRWLockClass_aad1a8144616e233d02a12437a5f5d74f}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!try\+Lock\+Write@{try\+Lock\+Write}}
+\index{try\+Lock\+Write@{try\+Lock\+Write}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{try\+Lock\+Write()}{tryLockWrite()}}
+{\footnotesize\ttfamily int P\+R\+W\+Lock\+Class\+::try\+Lock\+Write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to lock for write. \begin{DoxyReturn}{Returns}
+result of lock operation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPRWLockClass_a4b3f36ee6e3d4996e7b43ea6e4819144}\label{classPRWLockClass_a4b3f36ee6e3d4996e7b43ea6e4819144}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!un\+Lock@{un\+Lock}}
+\index{un\+Lock@{un\+Lock}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{un\+Lock()}{unLock()}}
+{\footnotesize\ttfamily int P\+R\+W\+Lock\+Class\+::un\+Lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Unlock . \begin{DoxyReturn}{Returns}
+result of lock operation (0 -\/ success). 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classPRWLockClass_aaa565eaea0c0e07a70fd6bdbb8f5693e}\label{classPRWLockClass_aaa565eaea0c0e07a70fd6bdbb8f5693e}} 
+\index{P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}!m\+\_\+\+R\+W\+Lock@{m\+\_\+\+R\+W\+Lock}}
+\index{m\+\_\+\+R\+W\+Lock@{m\+\_\+\+R\+W\+Lock}!P\+R\+W\+Lock\+Class@{P\+R\+W\+Lock\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+R\+W\+Lock}{m\_RWLock}}
+{\footnotesize\ttfamily pthread\+\_\+rwlock\+\_\+t P\+R\+W\+Lock\+Class\+::m\+\_\+\+R\+W\+Lock\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+P\+O\+S\+IX read-\/write lock;. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PRWLockClass_8h}{P\+R\+W\+Lock\+Class.\+h}\item 
+\hyperlink{PRWLockClass_8cpp}{P\+R\+W\+Lock\+Class.\+cpp}\end{DoxyCompactItemize}

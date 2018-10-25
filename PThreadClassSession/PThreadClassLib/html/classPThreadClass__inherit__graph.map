@@ -1,0 +1,3 @@
+<map id="PThreadClass" name="PThreadClass">
+<area shape="rect" id="node2" href="$classPThreadExtended.html" title="{PThreadExtended\n|&#45; m_Name\l&#45; m_StopNotificationFunc\l&#45; m_StopNotificationFuncArg\l|+ PThreadExtended()\l+ nameThread()\l+ threadName()\l+ registerStopNotificationFunc()\l&#45; threadLoop()\l}" alt="" coords="5,717,212,883"/>
+</map>
