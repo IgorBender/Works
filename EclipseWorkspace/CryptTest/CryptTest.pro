@@ -3,23 +3,16 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-CONF_VAR = $$(CONFIG_NAME)
+QMAKE_CXXFLAGS += -Wno-unused-parameter
 
-contains(CONF_VAR, DebugConf) {
-    DESTDIR = ../CryptTest/Debug
+CONFIG(debug, debug|release) {
+    DESTDIR = ../../Debug
 }
-contains(CONF_VAR, ReleaseConf) {
-    DESTDIR = ../CryptTest/Release
-}
-
-contains(CONF_VAR, DebugClang) {
-    DESTDIR = ../CryptTest/DebugClang
-}
-contains(CONF_VAR, ReleaseClang) {
-    DESTDIR = ../CryptTest/ReleaseClang
+CONFIG(release, debug|release) {
+    DESTDIR = ../../Release
 }
 
 SOURCES += \
     CryptTest.cpp
 
-QMAKE_CLEAN += $$DESTDIR/$$TARGET*
+QMAKE_CLEAN += $$TARGET

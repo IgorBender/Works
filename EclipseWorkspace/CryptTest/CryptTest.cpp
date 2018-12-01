@@ -1,5 +1,5 @@
 /*
- *  CryptTest.cpp
+ * CryptTest.cpp
  *
  *  Created on: Oct 4, 2016
  *      Author: igor
@@ -37,7 +37,7 @@ int main(void)
         exit(1);
     }
     // Discover real file size
-    size_t FileSize = In.seekg(0, In.end).tellg();
+    streamoff FileSize = In.seekg(0, In.end).tellg();
     In.seekg(0, In.beg);
 
     char Buffer[8];
@@ -47,13 +47,13 @@ int main(void)
     Out.write(reinterpret_cast<char*>(&FileSize), sizeof(FileSize));
 //    Store.write(reinterpret_cast<char*>(&FileSize), sizeof(FileSize));
     // Encode and write encoded data into file with portions of 8 bytes (may be any amount equal to multiplies of 8).
-    for(size_t i = 0; i < FileSize / 8 + (FileSize % 8 ? 1 : 0); ++i)
+    for(streamoff i = 0; i < FileSize / 8 + (FileSize % 8 ? 1 : 0); ++i)
     {
         In.read(Buffer, 8);
         if(!In)
         {
             // If last portion of data is less than 8 bytes padd with zeroes.
-            bzero(&Buffer[In.gcount()], 8 - In.gcount());
+            bzero(&Buffer[size_t(In.gcount())], 8 - size_t(In.gcount()));
         }
         int Result = ecb_crypt(key, Buffer, 8, DES_ENCRYPT | DES_SW);
         if(DES_FAILED(Result))
@@ -79,7 +79,7 @@ int main(void)
     In.read(reinterpret_cast<char*>(&FileSize), sizeof(FileSize));
 
     Out.open("test2.txt", ios::binary);
-    for(size_t i = 0; i < FileSize / 8 + (FileSize % 8 ? 1 : 0); ++i)
+    for(streamoff i = 0; i < FileSize / 8 + (FileSize % 8 ? 1 : 0); ++i)
     {
         In.read(Buffer, 8);
 //        Store.read(Buffer, 8);
