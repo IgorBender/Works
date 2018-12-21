@@ -36,7 +36,7 @@
 
 namespace ThreadClassLib
 {
-CondVarClass::CondVarClass(int PredNum) : m_PredNum(PredNum)
+CondVarClass::CondVarClass(uint32_t PredNum) : m_PredNum(PredNum)
 {
     if(PredNum > MAX_NUM_OF_PREDS)
     {
@@ -44,6 +44,10 @@ CondVarClass::CondVarClass(int PredNum) : m_PredNum(PredNum)
     }
     m_Predicates = 0U;
 }
+
+// Define virtual constructor to be out-of-line to provide persistent vtable.
+CondVarClass::~CondVarClass()
+{}
 
 CondVarClass::PredicateIdType CondVarClass::addPredicate(bool PredicateValue)
 {

@@ -20,7 +20,7 @@
 
 #include <ConnectedSocketV4.h>
 
-void ConnectedSocketV4::setDestination(in_addr_t Address, short Port)
+void ConnectedSocketV4::setDestination(in_addr_t Address, uint16_t Port)
 {
     m_Destination.sin_family = INTERNET_DOMAIN;
     m_Destination.sin_addr.s_addr = Address;
@@ -28,9 +28,9 @@ void ConnectedSocketV4::setDestination(in_addr_t Address, short Port)
 }
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-void ConnectedSocketV4::setDestination(const char* Address, short Port)
+void ConnectedSocketV4::setDestination(const char* Address, uint16_t Port)
 #else
-int ConnectedSocketV4::setDestination(const char* Address, short Port)
+int ConnectedSocketV4::setDestination(const char* Address, uint16_t Port)
 #endif
 {
     in_addr_t  Addr = inet_addr(const_cast < char* > (Address));

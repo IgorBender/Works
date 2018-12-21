@@ -39,12 +39,12 @@ public:
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv6 address for bind in network byte order.
     /// \throw SockException.
-    DatagramBoundV6(short Port, in6_addr Address = in6addr_any);
+    DatagramBoundV6(uint16_t Port, in6_addr Address = in6addr_any);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv6 address for bind in textual notation.
     /// \throw SockException.
-    DatagramBoundV6(short Port, const char* Address);
+    DatagramBoundV6(uint16_t Port, const char* Address);
 
 private:
     /// Copy constructor.

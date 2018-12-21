@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _BOUNDSOCKETV4_H
-#define _BOUNDSOCKETV4_H
+#ifndef BOUNDSOCKETV4_H
+#define BOUNDSOCKETV4_H
 
 #include <InternetSocketV4.h>
 
@@ -61,15 +61,15 @@ public:
     /// Set endpoint for bind the socket.
     /// \param Address : IPv4 address in network byte order.
     /// \param Port : port number in network byte order.
-    virtual void setEndPoint(in_addr_t Address, short Port);
+    virtual void setEndPoint(in_addr_t Address, uint16_t Port);
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 
     /// Set endpoint for bind the socket.
     /// \param Address : IPv4 address in decimal dot notation.
     /// \param Port : port number in network byte order.
-    virtual void setEndPoint(const char* Address, short Port);
+    virtual void setEndPoint(const char* Address, uint16_t Port);
 #else
-    virtual int setEndPoint(const char* Address, short Port);
+    virtual int setEndPoint(const char* Address, uint16_t Port);
 #endif
     /// Is the socket bound already?
     /// \return Bound status.

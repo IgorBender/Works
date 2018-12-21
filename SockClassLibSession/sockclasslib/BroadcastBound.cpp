@@ -20,7 +20,7 @@
 
 #include <BroadcastBound.h>
 
-BroadcastBound::BroadcastBound(short Port, in_addr_t Address)
+BroadcastBound::BroadcastBound(uint16_t Port, in_addr_t Address)
 {
     if(!isBound())
     {
@@ -30,7 +30,7 @@ BroadcastBound::BroadcastBound(short Port, in_addr_t Address)
 }
 
 
-BroadcastBound::BroadcastBound(short Port, const char* Address)
+BroadcastBound::BroadcastBound(uint16_t Port, const char* Address)
 {
     if(!isBound())
     {

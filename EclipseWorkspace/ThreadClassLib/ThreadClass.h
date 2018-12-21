@@ -42,7 +42,7 @@ namespace ThreadClassLib
 ///
 /// \{
 /// Timeout duration zero constant.
-const std::chrono::steady_clock::duration THREAD_IMMEDIATE = std::chrono::steady_clock::duration::zero();
+constexpr std::chrono::steady_clock::duration THREAD_IMMEDIATE(std::chrono::steady_clock::duration::zero());
 /// \}
 
 ///
@@ -58,6 +58,8 @@ public:
     /// Thread routine base type (abstract).
 	struct ThreadRoutineType : public std::unary_function<void, void>
 	{
+        ThreadRoutineType(ThreadClass* pThread) : m_pThread(pThread) {}
+        ThreadRoutineType() : m_pThread(nullptr) {}
 		virtual void operator()() = 0;
 		ThreadClass* m_pThread; ///< For debug purposes
 		/// Set running thread pointer for debug purposes
@@ -70,7 +72,7 @@ public:
 	struct ThreadStopNotificatonType : public std::unary_function<void*, void>
 	{
 	    virtual void operator()(void*) = 0;
-        virtual ~ThreadStopNotificatonType() {}
+        virtual ~ThreadStopNotificatonType();
 	};
 
     /// Constructor
@@ -94,21 +96,7 @@ public:
     /// Initialize and run thread, make it ready to execute thread routine.
     /// @throw ThreadException
     /// @returns false if thread cannot be created, true on success
-    virtual bool run()
-    {
-    	if(!m_pThread)
-        {
-//            m_pThread = new std::thread(ThreadClass::m_StaticInternalThreadRoutine, this);
-            m_pThread = new std::thread(this->m_InternalThreadRoutine);
-    	}
-    	if(!m_pThread)
-    	{
-            throw(ThreadException(__FILE__, __LINE__, "Cannot create C++ thread."));
-            return false;
-    	}
-    	m_pThreadRoutine->setThread(this);
-    	return true;
-    }
+    virtual bool run();
 
     /// Start execution of thread routine.
     /// \throw ThreadException
@@ -251,8 +239,8 @@ protected:
     /// Internal Thread routine type derivation from abstract ThreadRoutineType.
     struct InternalThreadRoutineType : public ThreadRoutineType
     {
-        ThreadClass* m_pThread = nullptr;
-        InternalThreadRoutineType(ThreadClass* Thread) : m_pThread(Thread) {}
+        InternalThreadRoutineType(ThreadClass* Thread) : ThreadRoutineType(Thread) {}
+        virtual ~InternalThreadRoutineType();
         virtual void operator()()
         {
             if(m_pThread)

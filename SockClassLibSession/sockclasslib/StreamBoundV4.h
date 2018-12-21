@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _STREAMBOUNDV4_H
-#define _STREAMBOUNDV4_H
+#ifndef STREAMBOUNDV4_H
+#define STREAMBOUNDV4_H
 
 #include <StreamSocketV4.h>
 #include <BoundSocketV4.h>
@@ -38,13 +38,13 @@ public:
     /// \param Address : IPv4 address for bind in network byte order.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    StreamBoundV4(short Port, in_addr_t Address = INADDR_ANY, bool LateBind = false);
+    StreamBoundV4(uint16_t Port, in_addr_t Address = INADDR_ANY, bool LateBind = false);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv4 address for bind in decimal dot notation.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    StreamBoundV4(short Port, const char* Address, bool LateBind = false);
+    StreamBoundV4(uint16_t Port, const char* Address, bool LateBind = false);
 
 private:
     /// Copy constructor.
@@ -55,5 +55,5 @@ private:
     StreamBoundV4& operator=(StreamBoundV4& s);
 };
 
-#endif /* _STREAMBOUNDV4_H */
+#endif /* STREAMBOUNDV4_H */
 

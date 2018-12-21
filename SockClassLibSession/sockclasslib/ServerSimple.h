@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef _SIMPLESERVER_H
-#define _SIMPLESERVER_H
+#ifndef SIMPLESERVER_H
+#define SIMPLESERVER_H
 
 #include <StreamBoundV4.h>
 
@@ -36,7 +36,7 @@ public:
     /// \param Address : address for bind in network byte order.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ServerSimple(short Port, in_addr_t Address = INADDR_ANY,
+    ServerSimple(uint16_t Port, in_addr_t Address = INADDR_ANY,
                  bool LateBind = false) : StreamBoundV4(Port, Address, LateBind)
     {
     }
@@ -45,7 +45,7 @@ public:
     /// \param Address : IPv4 address for bind in decimal dot notation.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ServerSimple(short Port, const char* Address, bool LateBind = false) : StreamBoundV4(Port, Address, LateBind)
+    ServerSimple(uint16_t Port, const char* Address, bool LateBind = false) : StreamBoundV4(Port, Address, LateBind)
     {
     }
 
@@ -73,5 +73,5 @@ private:
     ServerSimple& operator=(ServerSimple& s);
 };
 
-#endif /* _SIMPLESERVER_H */
+#endif /* SIMPLESERVER_H */
 

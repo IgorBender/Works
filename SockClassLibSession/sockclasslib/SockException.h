@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef _SOCKEXCEPTION_H
-#define _SOCKEXCEPTION_H
+#ifndef SOCKEXCEPTION_H
+#define SOCKEXCEPTION_H
 
 #include <sockclasslib.h>
 #include <BaseException.h>
@@ -128,7 +128,7 @@ public:
     SockException(const char* FileName, int LineNum, const char* Message);
     /// Destructor
     /// \details Intentionally empty
-    virtual ~SockException() throw ()
+    virtual ~SockException()
     {
     }
 

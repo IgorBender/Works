@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _MULTICASTSOCKET_H
-#define _MULTICASTSOCKET_H
+#ifndef MULTICASTSOCKET_H
+#define MULTICASTSOCKET_H
 
 #include <DatagramSocket.h>
 
@@ -36,8 +36,8 @@ public:
     /// Constructor.
     /// \throw SockException.
     MulticastSocket()
-    {
-    }
+    {}
+    virtual ~MulticastSocket();
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Set Time-To-Live for sent multicasts.
@@ -89,4 +89,4 @@ private:
     MulticastSocket& operator=(MulticastSocket&);
 };
 
-#endif /* _MULTICASTSOCKET_H */
+#endif /* MULTICASTSOCKET_H */

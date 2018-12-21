@@ -24,7 +24,7 @@ using namespace std;
 
 #define forever for(;;)
 
-const short SERV_PORT = 15000;
+const uint16_t SERV_PORT = 15000;
 const int MAX_BUF_SIZE = 4096;
 
 #ifndef _NO_IPV6

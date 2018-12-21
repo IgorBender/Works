@@ -54,14 +54,14 @@ public:
     /// Set connection destination endpoint.
     /// \param Address : IPv6 address structure.
     /// \param Port : port number in network byte order.
-    void setDestination(in6_addr Address, short Port);
+    void setDestination(in6_addr Address, uint16_t Port);
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Set connection destination endpoint.
     /// \param Address : IPv6 address in textual notation.
     /// \param Port : port number in network byte order.
-    void setDestination(const char* Address, short Port);
+    void setDestination(const char* Address, uint16_t Port);
 #else
-    int setDestination(const char* Address, short Port);
+    int setDestination(const char* Address, uint16_t Port);
 #endif
     /// Deliver destination endpoint properties.
     /// \return sockaddr_in structure filled with endpoint properties.
@@ -78,7 +78,7 @@ public:
     /// \param Address : IPv6 address structure.
     /// \param Port : port number in network byte order.
     /// \throw SockException.
-    void connect(in6_addr Address, short Port)
+    void connect(in6_addr Address, uint16_t Port)
     {
         setDestination(Address, Port);
         connect();
@@ -87,7 +87,7 @@ public:
     /// \param Address : IPv6 address in textual notation.
     /// \param Port : port number in network byte order.
     /// \throw SockException.
-    void connect(const char* Address, short Port)
+    void connect(const char* Address, uint16_t Port)
     {
         setDestination(Address, Port);
         connect();
@@ -102,12 +102,12 @@ public:
     }
 #else // _WITHOUT_SOCK_EXCEPTIONS
     virtual int connect();
-    int connect(in6_addr Address, short Port)
+    int connect(in6_addr Address, uint16_t Port)
     {
         setDestination(Address, Port);
         return connect();
     }
-    int connect(const char* Address, short Port)
+    int connect(const char* Address, uint16_t Port)
     {
         if(setDestination(Address, Port) == SOCKET_ERROR)
         {

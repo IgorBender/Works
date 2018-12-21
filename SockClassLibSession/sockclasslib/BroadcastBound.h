@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _BROADCASTBOUND_H
-#define _BROADCASTBOUND_H
+#ifndef BROADCASTBOUND_H
+#define BROADCASTBOUND_H
 
 #include <BroadcastSocket.h>
 #include <BoundSocketV4.h>
@@ -37,12 +37,12 @@ public:
     /// \param Port : port number for bind in network byte order.
     /// \param Address : address for bind in network byte order.
     /// \throw SockException.
-    BroadcastBound(short Port, in_addr_t Address = INADDR_ANY);
+    BroadcastBound(uint16_t Port, in_addr_t Address = INADDR_ANY);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : address for bind in decimal dot notation.
     /// \throw SockException.
-    BroadcastBound(short Port, const char* Address);
+    BroadcastBound(uint16_t Port, const char* Address);
 
 private:
     /// Copy constructor.

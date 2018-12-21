@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _DATAGRANBOUND_H
-#define _DATAGRANBOUND_H
+#ifndef DATAGRANBOUND_H
+#define DATAGRANBOUND_H
 
 #include <DatagramSocket.h>
 #include <BoundSocketV4.h>
@@ -37,12 +37,12 @@ public:
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv4 address for bind in network byte order.
     /// \throw SockException.
-    DatagramBound(short Port, in_addr_t Address = INADDR_ANY);
+    DatagramBound(uint16_t Port, in_addr_t Address = INADDR_ANY);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv4 address for bind in decimal dot notation.
     /// \throw SockException.
-    DatagramBound(short Port, const char* Address);
+    DatagramBound(uint16_t Port, const char* Address);
 
 private:
     /// Copy constructor.

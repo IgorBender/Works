@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef _THREADEXCEPTION_H
-#define _THREADEXCEPTION_H
+#ifndef THREADEXCEPTION_H
+#define THREADEXCEPTION_H
 
 #include "ThreadClassLib.h"
 
@@ -137,7 +137,7 @@ public:
     }
     /// Destructor
     /// @details Intentionally empty
-    virtual ~ThreadException() throw ()
+    virtual ~ThreadException()
     {
     }
 
@@ -183,4 +183,4 @@ protected:
 };
 } // end of ThreadClassLib namespace
 
-#endif // _THREADEXCEPTION_H
+#endif // THREADEXCEPTION_H

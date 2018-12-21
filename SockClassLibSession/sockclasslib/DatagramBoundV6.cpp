@@ -22,7 +22,7 @@
 
 #include <DatagramBoundV6.h>
 
-DatagramBoundV6::DatagramBoundV6(short Port, in6_addr Address)
+DatagramBoundV6::DatagramBoundV6(uint16_t Port, in6_addr Address)
 {
     if(!isBound())
     {
@@ -32,7 +32,7 @@ DatagramBoundV6::DatagramBoundV6(short Port, in6_addr Address)
 }
 
 
-DatagramBoundV6::DatagramBoundV6(short Port, const char* Address)
+DatagramBoundV6::DatagramBoundV6(uint16_t Port, const char* Address)
 {
     if(!isBound())
     {

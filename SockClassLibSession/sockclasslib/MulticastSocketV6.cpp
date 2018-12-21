@@ -39,6 +39,8 @@
 #endif
 #endif
 
+MulticastSocketV6::~MulticastSocketV6()
+{}
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 void MulticastSocketV6::setTTL(unsigned char ttl)
@@ -89,7 +91,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
     }
     ifaddrs* pTempAddr;
     pTempAddr = pAddrs;
-    while(NULL != pTempAddr)
+    while(nullptr != pTempAddr)
     {
     	if(AF_INET6 == pTempAddr->ifa_addr->sa_family)
     	{
@@ -107,7 +109,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
     	}
     	pTempAddr = pTempAddr->ifa_next;
     }
-    if(NULL == pTempAddr)
+    if(nullptr == pTempAddr)
     {
     	freeifaddrs(pAddrs);
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
@@ -125,7 +127,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
         return SOCKET_ERROR;
 #endif
     }
-    m_Index = Request.ifr_ifindex;
+    m_Index = static_cast<uint32_t>(Request.ifr_ifindex);
 #endif
 #ifdef _WIN32
 	PIP_ADAPTER_ADDRESSES pAddresses = NULL;
@@ -234,9 +236,9 @@ int  MulticastSocketV6::setDefaultIf(const char* Address)
     }
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-    setDefaultIf(ConvertResult);
+    setDefaultIf(static_cast<uint32_t>(ConvertResult));
 #else
-    return setDefaultIf(ConvertResult);
+    return setDefaultIf(static_cast<uint32_t>(ConvertResult));
 #endif
 #else
 #ifndef _WITHOUT_SOCK_EXCEPTIONS

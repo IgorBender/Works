@@ -22,7 +22,7 @@
 
 #include <StreamBoundV6.h>
 
-StreamBoundV6::StreamBoundV6(short Port, in6_addr Address, bool LateBind)
+StreamBoundV6::StreamBoundV6(uint16_t Port, in6_addr Address, bool LateBind)
 {
     if(!isBound())
     {
@@ -34,7 +34,7 @@ StreamBoundV6::StreamBoundV6(short Port, in6_addr Address, bool LateBind)
     }
 }
 
-StreamBoundV6::StreamBoundV6(short Port, const char* Address, bool LateBind)
+StreamBoundV6::StreamBoundV6(uint16_t Port, const char* Address, bool LateBind)
 {
     if(!isBound())
     {

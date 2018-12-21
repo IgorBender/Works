@@ -22,11 +22,11 @@
  * distribution.
  */
 
-#ifndef _STREAMSOCKET_H
-#define _STREAMSOCKET_H
+#ifndef STREAMSOCKET_H
+#define STREAMSOCKET_H
 
 
-#include <InternetSocket.h>
+#include <SocketClass.h>
 #include <DisconnectException.h>
 #ifndef _WIN32
 #if (__QNX__ || __VXWORKS__ || __linux__)
@@ -42,7 +42,7 @@ class ServerSimpleV6;
 
 /// Stream socket class.
 /// The base class for all stream-oriented sockets.
-class SOCKLIB_API StreamSocket : virtual public InternetSocket
+class SOCKLIB_API StreamSocket : virtual public SocketClass
 {
 public:
     /// Constructor.
@@ -50,24 +50,21 @@ public:
     StreamSocket(SOCKET sock);
 
     /// Destructor.
-    virtual ~StreamSocket()
-    {
-        close();
-    }
+    virtual ~StreamSocket();
 
-#ifndef _WITHOUT_SOCK_EXCEPTIONS
-    /// Deliver bound endpoint properties.
-    /// \return sockaddr_in structure filled with bound endpoint properties.
-    /// \throw SockException.
-    sockaddr_in& getSockName();
-    /// Deliver connected endpoint properties.
-    /// \return sockaddr_in structure filled with connected endpoint properties.
-    /// \throw SockException.
-    sockaddr_in& getPeerName();
-#else
-    int getSockName(sockaddr_in* SockAddr);
-    int getPeerName(sockaddr_in* PeerAddr);
-#endif
+//#ifndef _WITHOUT_SOCK_EXCEPTIONS
+//    /// Deliver bound endpoint properties.
+//    /// \return sockaddr_in structure filled with bound endpoint properties.
+//    /// \throw SockException.
+//    sockaddr_in& getSockName();
+//    /// Deliver connected endpoint properties.
+//    /// \return sockaddr_in structure filled with connected endpoint properties.
+//    /// \throw SockException.
+//    sockaddr_in& getPeerName();
+//#else
+//    int getSockName(sockaddr_in* SockAddr);
+//    int getPeerName(sockaddr_in* PeerAddr);
+//#endif
     /// Set socket file descriptor/handle.
     /// \param i : socket file descriptor/handle.
     void setSock(int i)
@@ -80,25 +77,25 @@ public:
     /// \param Value : option value.
     /// \param OptLen : option value length.
     /// \throw SockException
-    void setTcpLevelOpt(int Opt, const char* Value, int OptLen);
+    void setTcpLevelOpt(int Opt, const char* Value, socklen_type OptLen);
     /// Deliver TCP level option.
     /// \param Opt : option type.
     /// \param Value : option value.
     /// \param OptLen : option value length.
     /// \throw SockException
-    void getTcpLevelOpt(int Opt, char* Value, int* OptLen);
+    void getTcpLevelOpt(int Opt, char* Value, socklen_type* OptLen);
 #else
-    int setTcpLevelOpt(int Opt, const char* Value, int OptLen);
-    int getTcpLevelOpt(int Opt, char* Value, int* OptLen);
+    int setTcpLevelOpt(int Opt, const char* Value, socklen_type OptLen);
+    int getTcpLevelOpt(int Opt, char* Value, socklen_type* OptLen);
 #endif
     /// Disconnect endpoint.
     /// \param Timeout : Time to wait for orderly close the socket in milliseconds.
     void disconnect(long Timeout = 0);
 
 protected:
-    sockaddr_in m_SockName; ///< Bound endpoint properties.
+//    sockaddr_in m_SockName; ///< Bound endpoint properties.
     bool m_GotSockName; ///< Bound endpoint properties are filled.
-    sockaddr_in m_PeerName; ///< Destination endpoint properties.
+//    sockaddr_in m_PeerName; ///< Destination endpoint properties.
     bool m_GotPeerName; ///< Destination endpoint properties are filled.
     friend class ServerSimple;
     friend class ServerSimpleV6;

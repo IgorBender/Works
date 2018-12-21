@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef SERVERSIMPLEV6_H_
-#define SERVERSIMPLEV6_H_
+#ifndef SERVERSIMPLEV6_H
+#define SERVERSIMPLEV6_H
 
 #ifndef _NO_IPV6
 
@@ -38,7 +38,7 @@ public:
     /// \param Address : IPv6 address for bind in network byte order.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ServerSimpleV6(short Port, in6_addr Address = in6addr_any,
+    ServerSimpleV6(uint16_t Port, in6_addr Address = in6addr_any,
                  bool LateBind = false) : StreamBoundV6(Port, Address, LateBind)
     {
     }
@@ -47,7 +47,7 @@ public:
     /// \param Address : IPv6 address for bind in textual notation.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ServerSimpleV6(short Port, const char* Address, bool LateBind = false) : StreamBoundV6(Port, Address, LateBind)
+    ServerSimpleV6(uint16_t Port, const char* Address, bool LateBind = false) : StreamBoundV6(Port, Address, LateBind)
     {
     }
 

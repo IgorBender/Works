@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _BROADCASTSOCKET_H
-#define _BROADCASTSOCKET_H
+#ifndef BROADCASTSOCKET_H
+#define BROADCASTSOCKET_H
 
 #include <DatagramSocket.h>
 
@@ -48,11 +48,11 @@ public:
     /// \param Length : amount of the data.
     /// \param Flags : flags, default value - 0.
     /// \throw SockException.
-    int sendBroadcast(short Port, const void* Buffer, size_t Length,
+    int sendBroadcast(uint16_t Port, const void* Buffer, size_t Length,
                       int Flags = 0)
 #else
 
-    int sendBroadcast(short Port, const void* Buffer, size_t Length,
+    int sendBroadcast(uint16_t Port, const void* Buffer, size_t Length,
                       int Flags = 0)
 #endif
     {
@@ -67,11 +67,11 @@ public:
     /// \param Length : amount of the data.
     /// \param Flags : flags, default value - 0.
     /// \throw SockException.
-    int sendSubnetBroadcast(in_addr_t Addr, short Port, const void* Buffer, size_t Length,
+    int sendSubnetBroadcast(in_addr_t Addr, uint16_t Port, const void* Buffer, size_t Length,
                             int Flags = 0)
 #else
 
-    int sendSubnetBroadcast(in_addr_t Addr, short Port, const void* Buffer, size_t Length,
+    int sendSubnetBroadcast(in_addr_t Addr, uint16_t Port, const void* Buffer, size_t Length,
                             int Flags = 0)
 #endif
     {

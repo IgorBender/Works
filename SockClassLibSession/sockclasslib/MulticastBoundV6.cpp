@@ -31,7 +31,7 @@
 #include <algorithm>
 using namespace std;
 
-MulticastBoundV6::MulticastBoundV6(short Port, in6_addr Address) : Addr(Address)
+MulticastBoundV6::MulticastBoundV6(uint16_t Port, in6_addr Address) : Addr(Address)
 {
     int Opt = 1;
     setSockLevelOpt(SO_REUSEADDR, reinterpret_cast < const char* > (&Opt),
@@ -48,7 +48,7 @@ MulticastBoundV6::MulticastBoundV6(short Port, in6_addr Address) : Addr(Address)
     }
 }
 
-MulticastBoundV6::MulticastBoundV6(short Port, const char* Address)
+MulticastBoundV6::MulticastBoundV6(uint16_t Port, const char* Address)
 {
     if(!isBound())
     {
@@ -130,7 +130,8 @@ int MulticastBoundV6::leaveGroup(in6_addr Group)
 #endif
                              sizeof(rReq));
 #ifdef _WITHOUT_SOCK_EXCEPTIONS
-    return iResult;
+    if(0 != iResult)
+        return iResult;
 #endif
     GroupsList.remove(Group);
 #ifdef _WITHOUT_SOCK_EXCEPTIONS

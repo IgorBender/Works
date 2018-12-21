@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef _CONVARCLASS_H
-#define _CONVARCLASS_H
+#ifndef CONVARCLASS_H
+#define CONVARCLASS_H
 
 #include <cstdint>
 #include <condition_variable>
@@ -47,16 +47,16 @@ namespace ThreadClassLib
 class THREADCLASSLIB_API CondVarClass {
 public:
 /// \typedef Predicate type
-typedef unsigned int PredicateIdType;
+typedef uint32_t PredicateIdType;
 
 /// \define 
 #define MAX_NUM_OF_PREDS 32
 
     /// Constructor.
     /// \param PredNum : number of predicates (up to 32).
-    CondVarClass(int PredNum);
+    CondVarClass(uint32_t PredNum);
     /// Destructor
-    virtual ~CondVarClass() {}
+    virtual ~CondVarClass();
 
     /// Add predicate to predicates set.
     /// \returns Number of added predicate.
@@ -159,5 +159,5 @@ protected:
 };
 } // end of ThreadClassLib namespace
 
-#endif // _CONVARCLASS_H
+#endif // CONVARCLASS_H
 

@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _DATAGRAMSOCKET_H
-#define _DATAGRAMSOCKET_H
+#ifndef DATAGRAMSOCKET_H
+#define DATAGRAMSOCKET_H
 
 #include <ConnectedSocketV4.h>
 
@@ -43,10 +43,7 @@ public:
 #endif
 
     ///  Destructor.
-    virtual ~DatagramSocket()
-    {
-        close();
-    }
+    virtual ~DatagramSocket();
 
     /// Delivers source of the last received datagram.
     /// \return sockaddr_in structure field with source of the last received datagram.

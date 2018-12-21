@@ -1,4 +1,0 @@
-<map id="DisconnectException" name="DisconnectException">
-<area shape="rect" id="node2" href="$classSockException.html" title="{SockException\n|# m_ErrCode\l# lpMsgBuf\l# m_Message\l|+ SockException()\l+ SockException()\l+ ~SockException()\l+ what()\l+ formatMessage()\l+ getErrCode()\l+ getMessage()\l+ formatMessage()\l+ getErrNum()\l+ setErrNum()\l}" alt="" coords="19,233,158,472"/>
-<area shape="rect" id="node3" href="$classBaseException.html" title="{BaseException\n|# m_FileName\l# m_LineNum\l# repstr\l|+ BaseException()\l+ BaseException()\l+ ~BaseException()\l+ what()\l+ getFileName()\l+ getLineNum()\l}" alt="" coords="19,5,158,185"/>
-</map>

@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef STREAMBOUNDV6_H_
-#define STREAMBOUNDV6_H_
+#ifndef STREAMBOUNDV6_H
+#define STREAMBOUNDV6_H
 
 #ifndef _NO_IPV6
 
@@ -40,13 +40,13 @@ public:
     /// \param Address : IPv6 address for bind.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    StreamBoundV6(short Port, in6_addr Address = in6addr_any, bool LateBind = false);
+    StreamBoundV6(uint16_t Port, in6_addr Address = in6addr_any, bool LateBind = false);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv6 address for bind in textual notation.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    StreamBoundV6(short Port, const char* Address, bool LateBind = false);
+    StreamBoundV6(uint16_t Port, const char* Address, bool LateBind = false);
 
 private:
     /// Copy constructor.

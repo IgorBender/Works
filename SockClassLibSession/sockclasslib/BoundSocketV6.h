@@ -63,14 +63,14 @@ public:
     /// Set endpoint for bind the socket.
     /// \param Address : IPv6 address in network byte order.
     /// \param Port : port number in network byte order.
-    virtual void setEndPoint(in6_addr Address, short Port);
+    virtual void setEndPoint(in6_addr Address, uint16_t Port);
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Set endpoint for bind the socket.
     /// \param Address : IPv6 address textual notation.
     /// \param Port : port number in network byte order.
-    virtual void setEndPoint(const char* Address, short Port);
+    virtual void setEndPoint(const char* Address, uint16_t Port);
 #else
-    virtual int setEndPoint(const char* Address, short Port);
+    virtual int setEndPoint(const char* Address, uint16_t Port);
 #endif
     /// Is the socket bound already?
     /// \return Bound status.

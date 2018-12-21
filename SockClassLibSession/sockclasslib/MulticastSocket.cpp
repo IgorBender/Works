@@ -24,6 +24,8 @@
 #include <ws2tcpip.h>
 #endif
 
+MulticastSocket::~MulticastSocket()
+{}
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 void MulticastSocket::setTTL(unsigned char ttl)

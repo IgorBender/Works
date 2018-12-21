@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _CLIENTBOUND_H
-#define _CLIENTBOUND_H
+#ifndef CLIENTBOUND_H
+#define CLIENTBOUND_H
 
 
 #include <ClientSimple.h>
@@ -40,7 +40,7 @@ public:
     /// \param Address : IPv4 address for bind in network byte order.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ClientBound(short Port, in_addr_t Address = INADDR_ANY, bool LateBind = false) throw(SockException)
+    ClientBound(uint16_t Port, in_addr_t Address = INADDR_ANY, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -57,7 +57,7 @@ public:
     /// \param Address : IPv4 address for bind in decimal dot notation.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ClientBound(short Port, const char* Address, bool LateBind = false) throw(SockException)
+    ClientBound(uint16_t Port, const char* Address, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -69,7 +69,7 @@ public:
         }
     }
 #else
-    ClientBound(short Port, in_addr_t Address = INADDR_ANY, bool LateBind = false)
+    ClientBound(uint16_t Port, in_addr_t Address = INADDR_ANY, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -81,7 +81,7 @@ public:
         }
     }
 
-    ClientBound(short Port, const char* Address, bool LateBind = false)
+    ClientBound(uint16_t Port, const char* Address, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -103,5 +103,5 @@ private:
     ClientBound& operator= (ClientBound& s);
 };
 
-#endif /* _CLIENTBOUND_H */
+#endif /* CLIENTBOUND_H */
 

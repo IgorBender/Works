@@ -20,7 +20,7 @@
 
 #include <DatagramBound.h>
 
-DatagramBound::DatagramBound(short Port, in_addr_t Address)
+DatagramBound::DatagramBound(uint16_t Port, in_addr_t Address)
 {
     if(!isBound())
     {
@@ -30,7 +30,7 @@ DatagramBound::DatagramBound(short Port, in_addr_t Address)
 }
 
 
-DatagramBound::DatagramBound(short Port, const char* Address)
+DatagramBound::DatagramBound(uint16_t Port, const char* Address)
 {
     if(!isBound())
     {

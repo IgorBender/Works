@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _BASEEXCEPTION_H
-#define _BASEEXCEPTION_H
+#ifndef BASEEXCEPTION_H
+#define BASEEXCEPTION_H
 
 #ifdef _WIN32
 #pragma warning(disable : 4786)
@@ -129,4 +129,4 @@ protected:
 };
 
 
-#endif /* _BASEEXCEPTION_H */
+#endif /* BASEEXCEPTION_H */

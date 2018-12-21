@@ -27,12 +27,15 @@
 
 #include <InternetSocketV6.h>
 
+InternetSocketV6::~InternetSocketV6()
+{}
+
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 void InternetSocketV6::setIpLevelOpt(int Opt, const char* Value,
-                                     int OptLen)
+                                     socklen_type OptLen)
 #else
 int InternetSocketV6::setIpLevelOpt(int Opt, const char* Value,
-                                    int OptLen)
+                                    socklen_type OptLen)
 #endif
 {
     if(setsockopt(m_Sock, IPPROTO_IPV6, Opt,
@@ -59,10 +62,10 @@ int InternetSocketV6::setIpLevelOpt(int Opt, const char* Value,
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 void InternetSocketV6::getIpLevelOpt(int Opt, char* Value,
-                                     int* OptLen)
+                                     socklen_type* OptLen)
 #else
 int InternetSocketV6::getIpLevelOpt(int Opt, char* Value,
-                                    int* OptLen)
+                                    socklen_type* OptLen)
 #endif
 {
     if(getsockopt(m_Sock, IPPROTO_IPV6, Opt,
@@ -71,7 +74,7 @@ int InternetSocketV6::getIpLevelOpt(int Opt, char* Value,
 #else
                   const_cast <char*> (Value),
 #endif
-                  (socklen_type*)OptLen) == SOCKET_ERROR)
+                  OptLen) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
         SOCK_EXCEPT_THROW(WSAGetLastError());

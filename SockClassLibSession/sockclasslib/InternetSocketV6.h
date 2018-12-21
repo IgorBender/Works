@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _INTERNETSOCKETV6_H
-#define _INTERNETSOCKETV6_H
+#ifndef INTERNETSOCKETV6_H
+#define INTERNETSOCKETV6_H
 
 #ifdef _WIN32
 #pragma warning( disable : 4290 )
@@ -34,18 +34,17 @@
 
 #ifndef _NO_IPV6
 
-#include <InternetSocket.h>
+#include <SocketClass.h>
 #include <DisconnectException.h>
 
 /// IPv6 base abstract class.
 /// Is base for all kinds of IPv6 sockets.
-class SOCKLIB_API InternetSocketV6 : virtual public InternetSocket
+class SOCKLIB_API InternetSocketV6 : virtual public SocketClass
 {
 public:
     /// Constructor.
     /// Default constructor.
-    InternetSocketV6(SockType type = NO_TYPE, int protocol = 0) :
-    	InternetSocket(INET6_DOMAIN, type, protocol)
+    InternetSocketV6(SockType type = NO_TYPE, int protocol = 0)
     {
 #ifndef _NO_IPV6
     	m_Domain = INET6_DOMAIN;
@@ -62,8 +61,7 @@ public:
 #endif
     }
 
-    virtual ~InternetSocketV6()
-    {}
+    virtual ~InternetSocketV6();
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Set IPv6 level option.
@@ -71,16 +69,16 @@ public:
     /// \param Value : option value.
     /// \param OptLen : option value length.
     /// \throw SockException
-    void setIpLevelOpt(int Opt, const char* Value, int OptLen);
+    void setIpLevelOpt(int Opt, const char* Value, socklen_type OptLen);
     /// Deliver IPv6 level option.
     /// \param Opt : option type.
     /// \param Value : option value.
     /// \param OptLen : option value length.
     /// \throw SockException
-    void getIpLevelOpt(int Opt, char* Value, int* OptLen);
+    void getIpLevelOpt(int Opt, char* Value, socklen_type* OptLen);
 #else
-    int setIpLevelOpt(int Opt, const char* Value, int OptLen);
-    int getIpLevelOpt(int Opt, char* Value, int* OptLen);
+    int setIpLevelOpt(int Opt, const char* Value, socklen_type OptLen);
+    int getIpLevelOpt(int Opt, char* Value, socklen_type* OptLen);
 #endif
 
 protected:
@@ -89,8 +87,7 @@ protected:
     /// \param sock : socket file descriptor/handle.
     /// \param type : socket type.
     /// \param protocol : socket protocol.
-    InternetSocketV6(int sock, SockType type = NO_TYPE, int protocol = 0) :
-    	InternetSocket(sock, INET6_DOMAIN, type, protocol)
+    InternetSocketV6(int sock, SockType type = NO_TYPE, int protocol = 0)
     {
         m_Sock = sock;
         m_Domain = INET6_DOMAIN;
@@ -100,4 +97,4 @@ protected:
 };
 
 #endif /* _NO_IPV6 */
-#endif /* _INTERNETSOCKETV6_H */
+#endif /* INTERNETSOCKETV6_H */

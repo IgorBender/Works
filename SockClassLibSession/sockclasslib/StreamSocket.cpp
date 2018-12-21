@@ -32,8 +32,8 @@ StreamSocket::StreamSocket()
 {
     m_GotSockName = false;
     m_GotPeerName = false;
-    memset(&m_SockName, 0, sizeof m_SockName);
-    memset(&m_PeerName, 0, sizeof m_PeerName);
+//    memset(&m_SockName, 0, sizeof m_SockName);
+//    memset(&m_PeerName, 0, sizeof m_PeerName);
     m_Type = TCP_SOCK;
     m_Protocol = 0;
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
@@ -48,45 +48,50 @@ StreamSocket::StreamSocket()
 
 StreamSocket::StreamSocket(SOCKET sock)
 {
-    m_GotSockName = false;
-    m_GotPeerName = false;
     m_Type = TCP_SOCK;
     m_Protocol = 0;
     m_Sock = sock;
+    m_GotSockName = false;
+    m_GotPeerName = false;
+}
+
+StreamSocket::~StreamSocket()
+{
+    close();
 }
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-sockaddr_in& StreamSocket::getSockName()
-{
-    if(!m_GotSockName)
-    {
-        socklen_type Len = sizeof m_SockName;
-        if(getsockname(m_Sock, reinterpret_cast <sockaddr*> (&m_SockName),
-                       &Len) == SOCKET_ERROR)
-        {
-            SOCK_EXCEPT_THROW(WSAGetLastError());
-        }
-        m_GotSockName = true;
-    }
-    return m_SockName;
-}
+//sockaddr_in& StreamSocket::getSockName()
+//{
+//    if(!m_GotSockName)
+//    {
+//        socklen_type Len = sizeof m_SockName;
+//        if(getsockname(m_Sock, reinterpret_cast <sockaddr*> (&m_SockName),
+//                       &Len) == SOCKET_ERROR)
+//        {
+//            SOCK_EXCEPT_THROW(WSAGetLastError());
+//        }
+//        m_GotSockName = true;
+//    }
+//    return m_SockName;
+//}
 
-sockaddr_in& StreamSocket::getPeerName()
-{
-    if(!m_GotPeerName)
-    {
-        socklen_type Len = sizeof m_PeerName;
-        if(getpeername(m_Sock, reinterpret_cast <sockaddr*> (&m_PeerName),
-                       &Len) == SOCKET_ERROR)
-        {
-            SOCK_EXCEPT_THROW(WSAGetLastError());
-        }
-        m_GotPeerName = true;
-    }
-    return m_PeerName;
-}
+//sockaddr_in& StreamSocket::getPeerName()
+//{
+//    if(!m_GotPeerName)
+//    {
+//        socklen_type Len = sizeof m_PeerName;
+//        if(getpeername(m_Sock, reinterpret_cast <sockaddr*> (&m_PeerName),
+//                       &Len) == SOCKET_ERROR)
+//        {
+//            SOCK_EXCEPT_THROW(WSAGetLastError());
+//        }
+//        m_GotPeerName = true;
+//    }
+//    return m_PeerName;
+//}
 
-void StreamSocket::setTcpLevelOpt(int Opt, const char* Value, int OptLen)
+void StreamSocket::setTcpLevelOpt(int Opt, const char* Value, socklen_type OptLen)
 {
 #ifndef __VXWORKS__
     if(setsockopt(m_Sock, IPPROTO_TCP, Opt, Value, OptLen) == SOCKET_ERROR)
@@ -100,52 +105,52 @@ void StreamSocket::setTcpLevelOpt(int Opt, const char* Value, int OptLen)
 }
 
 
-void StreamSocket::getTcpLevelOpt(int Opt, char* Value, int* OptLen)
+void StreamSocket::getTcpLevelOpt(int Opt, char* Value, socklen_type* OptLen)
 {
 #ifndef __VXWORKS__
-    if(getsockopt(m_Sock, IPPROTO_TCP, Opt, Value, (socklen_type*)OptLen) == SOCKET_ERROR)
+    if(getsockopt(m_Sock, IPPROTO_TCP, Opt, Value, OptLen) == SOCKET_ERROR)
     {
 #else
-    if(getsockopt(m_Sock, IPPROTO_TCP, Opt, const_cast <char*> (Value), (socklen_type*)OptLen) == SOCKET_ERROR)
+    if(getsockopt(m_Sock, IPPROTO_TCP, Opt, const_cast <char*> (Value), OptLen) == SOCKET_ERROR)
     {
 #endif
         SOCK_EXCEPT_THROW(WSAGetLastError());
     }
 }
 #else // _WITHOUT_SOCK_EXCEPTIONS
-int StreamSocket::getSockName(sockaddr_in* SockAddr)
-{
-    if(!m_GotSockName)
-    {
-        socklen_type Len = sizeof m_SockName;
-        if(getsockname(m_Sock, reinterpret_cast <sockaddr*> (&m_SockName),
-                       &Len) == SOCKET_ERROR)
-        {
-            return SOCKET_ERROR;
-        }
-        m_GotSockName = true;
-    }
-    *SockAddr = m_SockName;
-    return 0;
-}
+//int StreamSocket::getSockName(sockaddr_in* SockAddr)
+//{
+//    if(!m_GotSockName)
+//    {
+//        socklen_type Len = sizeof m_SockName;
+//        if(getsockname(m_Sock, reinterpret_cast <sockaddr*> (&m_SockName),
+//                       &Len) == SOCKET_ERROR)
+//        {
+//            return SOCKET_ERROR;
+//        }
+//        m_GotSockName = true;
+//    }
+//    *SockAddr = m_SockName;
+//    return 0;
+//}
 
-int StreamSocket::getPeerName(sockaddr_in* PeerAddr)
-{
-    if(!m_GotPeerName)
-    {
-        socklen_type Len = sizeof m_PeerName;
-        if(getpeername(m_Sock, reinterpret_cast <sockaddr*> (&m_PeerName),
-                       &Len) == SOCKET_ERROR)
-        {
-            return SOCKET_ERROR;
-        }
-        m_GotPeerName = true;
-    }
-    *PeerAddr = m_PeerName;
-    return 0;
-}
+//int StreamSocket::getPeerName(sockaddr_in* PeerAddr)
+//{
+//    if(!m_GotPeerName)
+//    {
+//        socklen_type Len = sizeof m_PeerName;
+//        if(getpeername(m_Sock, reinterpret_cast <sockaddr*> (&m_PeerName),
+//                       &Len) == SOCKET_ERROR)
+//        {
+//            return SOCKET_ERROR;
+//        }
+//        m_GotPeerName = true;
+//    }
+//    *PeerAddr = m_PeerName;
+//    return 0;
+//}
 
-int StreamSocket::setTcpLevelOpt(int Opt, const char* Value, int OptLen)
+int StreamSocket::setTcpLevelOpt(int Opt, const char* Value, socklen_type OptLen)
 {
 #ifndef __VXWORKS__
     return setsockopt(m_Sock, IPPROTO_TCP, Opt, Value, OptLen);
@@ -155,12 +160,12 @@ int StreamSocket::setTcpLevelOpt(int Opt, const char* Value, int OptLen)
 }
 
 
-int StreamSocket::getTcpLevelOpt(int Opt, char* Value, int* OptLen)
+int StreamSocket::getTcpLevelOpt(int Opt, char* Value, socklen_type* OptLen)
 {
 #ifndef __VXWORKS__
-    return getsockopt(m_Sock, IPPROTO_TCP, Opt, Value, (socklen_type*)OptLen);
+    return getsockopt(m_Sock, IPPROTO_TCP, Opt, Value, OptLen);
 #else
-    return getsockopt(m_Sock, IPPROTO_TCP, Opt, const_cast <char*> (Value), (socklen_type*)OptLen);
+    return getsockopt(m_Sock, IPPROTO_TCP, Opt, const_cast <char*> (Value), OptLen);
 #endif
 }
 
@@ -178,7 +183,7 @@ void StreamSocket::disconnect(long Timeout)
     timeval Time;
     Time.tv_sec = Timeout / 1000;
     Time.tv_usec = (Timeout - Time.tv_sec * 1000) * 1000;
-    int SelRes = select(static_cast < int > (m_Sock) + 1, &RdSet, NULL, &ErrSet, &Time);
+    int SelRes = select(static_cast < int > (m_Sock) + 1, &RdSet, nullptr, &ErrSet, &Time);
     if(SelRes > 0 && (FD_ISSET(m_Sock, &RdSet) || FD_ISSET(m_Sock, &ErrSet)))
     {
         char TmpBuf[16 * 1024];

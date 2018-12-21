@@ -1,8 +1,0 @@
-<map id="MulticastSocketV6" name="MulticastSocketV6">
-<area shape="rect" id="node7" href="$classMulticastBoundV6.html" title="IPv4 socket capable to receive multicast datagrams. " alt="" coords="13,1579,161,1773"/>
-<area shape="rect" id="node2" href="$classDatagramSocketV6.html" title="Class for UDP sockets IPv6. " alt="" coords="5,1079,169,1273"/>
-<area shape="rect" id="node3" href="$classConnectedSocketV6.html" title="Socket that can connect to another. " alt="" coords="6,807,169,1031"/>
-<area shape="rect" id="node4" href="$classInternetSocketV6.html" title="{InternetSocketV6\n||+ InternetSocketV6()\l+ ~InternetSocketV6()\l+ setIpLevelOpt()\l+ getIpLevelOpt()\l# InternetSocketV6()\l}" alt="" coords="12,623,163,759"/>
-<area shape="rect" id="node5" href="$classInternetSocket.html" title="{InternetSocket\n||+ InternetSocket()\l+ ~InternetSocket()\l# InternetSocket()\l}" alt="" coords="20,468,155,575"/>
-<area shape="rect" id="node6" href="$classSocketClass.html" title="{SocketClass\n|# m_Sock\l# m_Domain\l# m_Type\l# m_Protocol\l# m_Flags\l# m_Connected\l|+ SocketClass()\l+ setDomain()\l+ getDomain()\l+ setType()\l+ getType()\l+ setProtocol()\l+ getProtocol()\l+ getSock()\l+ setNonBlockMode()\l+ setSockLevelOpt()\l+ getSockLevelOpt()\l+ send()\l+ receive()\l+ isConnected()\l+ setConnected()\l# SocketClass()\l# ~SocketClass()\l# create()\l# close()\l}" alt="" coords="13,5,162,420"/>
-</map>

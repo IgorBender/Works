@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef STREAMSOCKETV4_H_
-#define STREAMSOCKETV4_H_
+#ifndef STREAMSOCKETV4_H
+#define STREAMSOCKETV4_H
 
 #include <StreamSocket.h>
 #include <InternetSocketV4.h>
@@ -38,10 +38,7 @@ public:
     StreamSocketV4(SOCKET sock);
 
     /// Destructor.
-    virtual ~StreamSocketV4()
-    {
-        close();
-    }
+    virtual ~StreamSocketV4();
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Deliver bound endpoint properties.
@@ -74,4 +71,4 @@ private:
     StreamSocketV4& operator=(StreamSocketV4& s);
 };
 
-#endif /* STREAMSOCKETV4_H_ */
+#endif /* STREAMSOCKETV4_H */

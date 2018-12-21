@@ -18,8 +18,9 @@ CONFIG(release, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
     DESTDIR = ../../Release
 }
 
-QMAKE_CXXFLAGS += -std=c++0x -I. -I../../sockclasslib -Wno-unused-parameter -Wno-undef
+INCLUDEPATH += ../sockclasslib
 
+QMAKE_CXXFLAGS += -std=c++0x -I. -I../../sockclasslib -Wno-unused-parameter -Wno-undef
 QMAKE_LFLAGS += -L$$DESTDIR -Xlinker -rpath=.
 
 QMAKE_CLEAN += $$DESTDIR/$$TARGET

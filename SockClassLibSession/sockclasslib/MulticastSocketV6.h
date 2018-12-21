@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef MULTICASTSOCKETV6_H_
-#define MULTICASTSOCKETV6_H_
+#ifndef MULTICASTSOCKETV6_H
+#define MULTICASTSOCKETV6_H
 
 #ifndef _NO_IPV6
 
@@ -38,8 +38,8 @@ public:
     /// Constructor.
     /// \throw SockException.
     MulticastSocketV6() : m_Index(0U)
-    {
-    }
+    {}
+    virtual ~MulticastSocketV6();
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Set Time-To-Live for sent multicasts.
@@ -106,4 +106,4 @@ private:
 };
 
 #endif /* _NO_IPV6 */
-#endif /* MULTICASTSOCKETV6_H_ */
+#endif /* MULTICASTSOCKETV6_H */

@@ -20,7 +20,7 @@
 
 #include <ServerReuse.h>
 
-ServerReuse::ServerReuse(short Port, in_addr_t Address) : ServerSimple(Port, Address, true)
+ServerReuse::ServerReuse(uint16_t Port, in_addr_t Address) : ServerSimple(Port, Address, true)
 {
     struct linger Linger;
     Linger.l_onoff = 1;
@@ -38,7 +38,7 @@ ServerReuse::ServerReuse(short Port, in_addr_t Address) : ServerSimple(Port, Add
     }
 }
 
-ServerReuse::ServerReuse(short Port, const char* Address) : ServerSimple(Port, Address, true)
+ServerReuse::ServerReuse(uint16_t Port, const char* Address) : ServerSimple(Port, Address, true)
 {
     struct linger Linger;
     Linger.l_onoff = 1;

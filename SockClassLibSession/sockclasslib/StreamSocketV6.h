@@ -40,10 +40,7 @@ public:
 	StreamSocketV6(SOCKET sock);
 
 	/// Destructor.
-	virtual ~StreamSocketV6()
-    {
-        close();
-    }
+    virtual ~StreamSocketV6();
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Deliver bound endpoint properties.
@@ -60,8 +57,8 @@ public:
 #endif
 
 protected:
-	sockaddr_in6 m_SockName; ///< Bound endpoint properties.
-	sockaddr_in6 m_PeerName; ///< Destination endpoint properties.
+    sockaddr_in6 m_SockName; ///< Bound endpoint properties.
+    sockaddr_in6 m_PeerName; ///< Destination endpoint properties.
 
     /// Constructor.
     StreamSocketV6();

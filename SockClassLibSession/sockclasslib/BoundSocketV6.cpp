@@ -28,7 +28,7 @@ BoundSocketV6::BoundSocketV6()
     m_Bound = false;
 }
 
-void BoundSocketV6::setEndPoint(in6_addr Address, short Port)
+void BoundSocketV6::setEndPoint(in6_addr Address, uint16_t Port)
 {
     m_EndPoint.sin6_family = INET6_DOMAIN;
     memcpy(&m_EndPoint.sin6_addr, &Address, sizeof(in6_addr));
@@ -36,9 +36,9 @@ void BoundSocketV6::setEndPoint(in6_addr Address, short Port)
 }
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-void BoundSocketV6::setEndPoint(const char* Address, short Port)
+void BoundSocketV6::setEndPoint(const char* Address, uint16_t Port)
 #else
-int BoundSocketV6::setEndPoint(const char* Address, short Port)
+int BoundSocketV6::setEndPoint(const char* Address, uint16_t Port)
 #endif
 {
 #ifndef _NO_IPV6
@@ -78,7 +78,7 @@ int BoundSocketV6::bind()
         SOCK_EXCEPT_THROW("Wrong socket domain");
     }
 #endif
-    if(::bind(m_Sock, (struct sockaddr*)&m_EndPoint, sizeof m_EndPoint) == SOCKET_ERROR)
+    if(::bind(m_Sock, reinterpret_cast<struct sockaddr*>(&m_EndPoint), sizeof m_EndPoint) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
         SOCK_EXCEPT_THROW(WSAGetLastError());

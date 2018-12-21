@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _MULTICASTBOUND_H
-#define _MULTICASTBOUND_H
+#ifndef MULTICASTBOUND_H
+#define MULTICASTBOUND_H
 
 #ifdef _WIN32
 #pragma warning ( disable : 4251 )
@@ -46,12 +46,12 @@ public:
     /// \param Port : port number for bind in network byte order.
     /// \param Address : address for bind in network byte order.
     /// \throw SockException.
-    MulticastBound(short Port, in_addr_t Address = INADDR_ANY);
+    MulticastBound(uint16_t Port, in_addr_t Address = INADDR_ANY);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : address for bind in decimal dot notation.
     /// \throw SockException.
-    MulticastBound(short Port, const char* Address);
+    MulticastBound(uint16_t Port, const char* Address);
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Join multicast group.
@@ -89,4 +89,4 @@ private:
     MulticastBound& operator=(MulticastBound&);
 };
 
-#endif /* _MULTICASTBOUND_H */
+#endif /* MULTICASTBOUND_H */

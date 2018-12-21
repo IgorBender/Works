@@ -18,8 +18,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef MULTICASTBOUNDV6_H_
-#define MULTICASTBOUNDV6_H_
+#ifndef MULTICASTBOUNDV6_H
+#define MULTICASTBOUNDV6_H
 
 #ifdef _WIN32
 #pragma warning ( disable : 4251 )
@@ -48,12 +48,12 @@ public:
     /// \param Port : port number for bind in network byte order.
     /// \param Address : address for bind in network byte order.
     /// \throw SockException.
-    MulticastBoundV6(short Port, in6_addr Address = in6addr_any);
+    MulticastBoundV6(uint16_t Port, in6_addr Address = in6addr_any);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : address for bind in textual notation.
     /// \throw SockException.
-    MulticastBoundV6(short Port, const char* Address);
+    MulticastBoundV6(uint16_t Port, const char* Address);
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Join multicast group.
@@ -92,4 +92,4 @@ private:
 };
 
 #endif /* _NO_IPV6 */
-#endif /* MULTICASTBOUNDV6_H_ */
+#endif /* MULTICASTBOUNDV6_H */

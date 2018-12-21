@@ -57,6 +57,11 @@ StreamSocketV6::StreamSocketV6(SOCKET sock)
     m_Sock = sock;
 }
 
+StreamSocketV6::~StreamSocketV6()
+{
+    close();
+}
+
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 sockaddr_in6& StreamSocketV6::getSockName()
 {

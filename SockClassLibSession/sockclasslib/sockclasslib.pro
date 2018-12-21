@@ -31,7 +31,7 @@ QMAKE_CXXFLAGS += -std=c++0x -I. -Wno-unused-parameter -Wno-undef
 
 QMAKE_CLEAN += $$DESTDIR/lib$$TARGET*
 
-VERSION = 3.0.4
+VERSION = 3.0.6
 
 SOURCES += \
     BoundSocketV4.cpp \
@@ -80,7 +80,6 @@ HEADERS +=\
     DatagramSocket.h \
     DatagramSocketV6.h \
     DisconnectException.h \
-    InternetSocket.h \
     InternetSocketV4.h \
     InternetSocketV6.h \
     MulticastBound.h \

@@ -41,8 +41,8 @@
  * 
  */
 
-#ifndef _SOCKLIB_H
-#define _SOCKLIB_H
+#ifndef SOCKLIB_H
+#define SOCKLIB_H
 
 #ifdef _WIN32
 
@@ -147,7 +147,7 @@ namespace SockClassLib
     {
         Versions.Major = 3;
         Versions.Minor = 0;
-        Versions.SubMinor = 4;
+        Versions.SubMinor = 6;
     }
 /// \}
 }

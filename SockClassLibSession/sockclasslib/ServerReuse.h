@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef _REUSESERVER_H
-#define _REUSESERVER_H
+#ifndef REUSESERVER_H
+#define REUSESERVER_H
 
 #include <ServerSimple.h>
 
@@ -35,12 +35,12 @@ public:
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv4 address for bind in network byte order.
     /// \throw SockException.
-    ServerReuse(short Port, in_addr_t Address = INADDR_ANY);
+    ServerReuse(uint16_t Port, in_addr_t Address = INADDR_ANY);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv4 address for bind in decimal dot notation.
     /// \throw SockException.
-    ServerReuse(short Port, const char* Address);
+    ServerReuse(uint16_t Port, const char* Address);
 
 private:
     /// Copy constructor.
@@ -51,5 +51,5 @@ private:
     ServerReuse& operator=(ServerReuse& s);
 };
 
-#endif /* _REUSESERVER_H */
+#endif /* REUSESERVER_H */
 

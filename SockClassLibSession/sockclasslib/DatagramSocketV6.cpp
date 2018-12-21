@@ -43,6 +43,11 @@ DatagramSocketV6::DatagramSocketV6(int protocol)
 #endif
 }
 
+DatagramSocketV6::~DatagramSocketV6()
+{
+    close();
+}
+
 int DatagramSocketV6::sendTo(const void* Buffer, size_t Length, int Flags)
 {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
@@ -56,15 +61,19 @@ int DatagramSocketV6::sendTo(const void* Buffer, size_t Length, int Flags)
 
     int Result;
 
-    if((Result = sendto(m_Sock,
+    if((Result = static_cast<int>(sendto(m_Sock,
 #ifndef __VXWORKS__
                         reinterpret_cast < const char* > (Buffer),
 #else
                         const_cast < char* > (reinterpret_cast < const char* > (Buffer)),
 #endif
-                        static_cast < int > (Length), Flags,
-                        reinterpret_cast < struct sockaddr* > (&m_Destination),
-                        sizeof m_Destination)) == SOCKET_ERROR)
+#ifndef _WIN32
+                        Length,
+#else
+                        static_cast < int > (Length),
+#endif
+                        Flags, reinterpret_cast < struct sockaddr* > (&m_Destination),
+                        sizeof m_Destination))) == SOCKET_ERROR)
 
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
@@ -83,9 +92,14 @@ int DatagramSocketV6::receiveFrom(void* Buffer, size_t Length, int Flags)
     int Result;
     socklen_type Size = sizeof(struct sockaddr_in6);
     memset(&m_Source, '\0', Size);
-    if((Result = recvfrom(m_Sock, reinterpret_cast < char* > (Buffer), static_cast < int > (Length), Flags,
-                          reinterpret_cast <struct sockaddr*> (&m_Source),
-                          &Size)) == SOCKET_ERROR)
+    if((Result = static_cast<int>(recvfrom(m_Sock, reinterpret_cast < char* > (Buffer),
+#ifndef _WIN32
+                          Length,
+#else
+                          static_cast < int > (Length),
+#endif
+                          Flags, reinterpret_cast <struct sockaddr*> (&m_Source),
+                          &Size))) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
         SOCK_EXCEPT_THROW(WSAGetLastError());

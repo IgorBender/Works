@@ -22,7 +22,7 @@
 
 #include <ServerReuseV6.h>
 
-ServerReuseV6::ServerReuseV6(short Port, in6_addr Address) : ServerSimpleV6(Port, Address, true)
+ServerReuseV6::ServerReuseV6(uint16_t Port, in6_addr Address) : ServerSimpleV6(Port, Address, true)
 {
     struct linger Linger;
     Linger.l_onoff = 1;
@@ -40,7 +40,7 @@ ServerReuseV6::ServerReuseV6(short Port, in6_addr Address) : ServerSimpleV6(Port
     }
 }
 
-ServerReuseV6::ServerReuseV6(short Port, const char* Address) : ServerSimpleV6(Port, Address, true)
+ServerReuseV6::ServerReuseV6(uint16_t Port, const char* Address) : ServerSimpleV6(Port, Address, true)
 {
     struct linger Linger;
     Linger.l_onoff = 1;

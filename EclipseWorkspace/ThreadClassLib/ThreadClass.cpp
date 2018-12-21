@@ -37,6 +37,26 @@ void ThreadClass::ThreadRoutineType::setThread(ThreadClass* p)
     m_pThread = p;
 }
 
+ThreadClass::ThreadStopNotificatonType::~ThreadStopNotificatonType()
+{}
+
+ThreadClass::InternalThreadRoutineType::~InternalThreadRoutineType()
+{}
+
+bool ThreadClass::run()
+{
+    if(!m_pThread)
+    {
+        m_pThread = new std::thread(this->m_InternalThreadRoutine);
+    }
+    if(!m_pThread)
+    {
+        throw(ThreadException(__FILE__, __LINE__, "Cannot create C++ thread."));
+    }
+    m_pThreadRoutine->setThread(this);
+    return true;
+}
+
 void ThreadClass::operator()()
 {
     while(1)
@@ -95,7 +115,7 @@ void ThreadClass::operator()()
         }
         if(Lock.owns_lock())
             Lock.unlock();
-        int WaitResult = m_ControlCondVar.wait();
+        uint32_t WaitResult = m_ControlCondVar.wait();
         if(WaitResult != 0)
         {
             if(Lock.owns_lock())

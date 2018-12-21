@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef DATAGRAMSOCKETV6_H_
-#define DATAGRAMSOCKETV6_H_
+#ifndef DATAGRAMSOCKETV6_H
+#define DATAGRAMSOCKETV6_H
 
 #ifndef _NO_IPV6
 
@@ -45,10 +45,7 @@ public:
 #endif
 
     ///  Destructor.
-    virtual ~DatagramSocketV6()
-    {
-        close();
-    }
+    virtual ~DatagramSocketV6();
 
     /// Delivers source of the last received datagram.
     /// \return sockaddr_in6 structure field with source of the last received datagram.
@@ -119,4 +116,4 @@ private:
 };
 
 #endif /* _NO_IPV6 */
-#endif /* DATAGRAMSOCKETV6_H_ */
+#endif /* DATAGRAMSOCKETV6_H */

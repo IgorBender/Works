@@ -23,28 +23,26 @@
  * distribution.
  */
 
-#ifndef INTERNETSOCKETV4_H_
-#define INTERNETSOCKETV4_H_
+#ifndef INTERNETSOCKETV4_H
+#define INTERNETSOCKETV4_H
 
-#include <InternetSocket.h>
+#include <SocketClass.h>
 
 /// IPv4 base abstract class.
 /// Is base for all kinds of IPv4 sockets.
-class SOCKLIB_API InternetSocketV4 : virtual public InternetSocket
+class SOCKLIB_API InternetSocketV4 : virtual public SocketClass
 {
 public:
     /// Constructor.
     /// Default constructor.
-    InternetSocketV4(SockType type = NO_TYPE, int protocol = 0) :
-    	InternetSocket(INTERNET_DOMAIN, type, protocol)
+    InternetSocketV4(SockType type = NO_TYPE, int protocol = 0)
     {
         m_Domain = INTERNET_DOMAIN;
         m_Type = type;
         m_Protocol = protocol;
     }
 
-	virtual ~InternetSocketV4()
-	{}
+    virtual ~InternetSocketV4();
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Set IPv4 level option.
@@ -52,16 +50,16 @@ public:
     /// \param Value : option value.
     /// \param OptLen : option value length.
     /// \throw SockException
-    void setIpLevelOpt(int Opt, const char* Value, int OptLen);
+    void setIpLevelOpt(int Opt, const char* Value, socklen_type OptLen);
     /// Deliver IPv4 level option.
     /// \param Opt : option type.
     /// \param Value : option value.
     /// \param OptLen : option value length.
     /// \throw SockException
-    void getIpLevelOpt(int Opt, char* Value, int* OptLen);
+    void getIpLevelOpt(int Opt, char* Value, socklen_type* OptLen);
 #else
-    int setIpLevelOpt(int Opt, const char* Value, int OptLen);
-    int getIpLevelOpt(int Opt, char* Value, int* OptLen);
+    int setIpLevelOpt(int Opt, const char* Value, socklen_type OptLen);
+    int getIpLevelOpt(int Opt, char* Value, socklen_type* OptLen);
 #endif
 
 protected:
@@ -70,8 +68,7 @@ protected:
     /// \param sock : socket file descriptor/handle.
     /// \param type : socket type.
     /// \param protocol : socket protocol.
-    InternetSocketV4(int sock, SockType type = NO_TYPE, int protocol = 0) :
-    	InternetSocket(sock, INTERNET_DOMAIN, type, protocol)
+    InternetSocketV4(int sock, SockType type = NO_TYPE, int protocol = 0)
     {
         m_Sock = sock;
         m_Domain = INTERNET_DOMAIN;

@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _CLIENTBOUNDV6_H
-#define _CLIENTBOUNDV6_H
+#ifndef CLIENTBOUNDV6_H
+#define CLIENTBOUNDV6_H
 
 #ifndef _NO_IPV6
 
@@ -41,7 +41,7 @@ public:
     /// \param Address : IPv6 address for bind in network byte order.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ClientBoundV6(short Port, in6_addr Address = in6addr_any, bool LateBind = false) throw(SockException)
+    ClientBoundV6(uint16_t Port, in6_addr Address = in6addr_any, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -58,7 +58,7 @@ public:
     /// \param Address : IPv6 address for bind in textual notation.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ClientBoundV6(short Port, const char* Address, bool LateBind = false) throw(SockException)
+    ClientBoundV6(uint16_t Port, const char* Address, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -70,7 +70,7 @@ public:
         }
     }
 #else
-    ClientBoundV6(short Port, in6_addr Address = in6addr_any, bool LateBind = false)
+    ClientBoundV6(uint16_t Port, in6_addr Address = in6addr_any, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -82,7 +82,7 @@ public:
         }
     }
 
-    ClientBoundV6(short Port, const char* Address, bool LateBind = false)
+    ClientBoundV6(uint16_t Port, const char* Address, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -105,5 +105,5 @@ private:
 };
 
 #endif /* _NO_IPV6 */
-#endif /* _CLIENTBOUNDV6_H */
+#endif /* CLIENTBOUNDV6_H */
 

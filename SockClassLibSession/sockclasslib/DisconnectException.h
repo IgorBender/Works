@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _DISCONNECTEXCEPTION_H
-#define _DISCONNECTEXCEPTION_H
+#ifndef DISCONNECTEXCEPTION_H
+#define DISCONNECTEXCEPTION_H
 
 #include <SockException.h>
 

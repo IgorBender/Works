@@ -67,8 +67,9 @@ int SocketClass::create()
 #if ((!_WIN32) && (!__VXWORKS__))
     m_Flags = fcntl(m_Sock, F_GETFL, 0);
     return m_Flags;
-#endif
+#else
     return 0;
+#endif
 }
 #endif // _WITHOUT_SOCK_EXCEPTIONS
 
@@ -217,7 +218,13 @@ int SocketClass::send(const void* Buffer, size_t Length, int Flags)
     if(Length == 0)
         return 0;
 
-    int Result = ::send(m_Sock, reinterpret_cast < const char* > (Buffer), static_cast < int > (Length), Flags);
+    int Result = static_cast<int>(::send(m_Sock, reinterpret_cast < const char* > (Buffer),
+#ifdef _WIN32
+                        static_cast < int > (Length),
+#else
+                        Length,
+#endif
+                        Flags));
     if(Result == SOCKET_ERROR && WSAGetLastError() != SENDCONNRESET)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
@@ -260,7 +267,13 @@ int SocketClass::receive(void* Buffer, size_t Length, int Flags)
     if(Length == 0)
         return 0;
 
-    int Result = recv(m_Sock, reinterpret_cast < char* > (Buffer), static_cast < int > (Length), Flags);
+    int Result = static_cast<int>(recv(m_Sock, reinterpret_cast < char* > (Buffer),
+#ifdef _WIN32
+                                       static_cast < int > (Length),
+#else
+                                       Length,
+#endif
+                                       Flags));
 
     if(Result == SOCKET_ERROR && WSAGetLastError() != RECVCONNRESET)
     {

@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _CLIENTSIMPLE_H
-#define _CLIENTSIMPLE_H
+#ifndef CLIENTSIMPLE_H
+#define CLIENTSIMPLE_H
 
 
 #include <StreamSocketV4.h>
@@ -37,8 +37,7 @@ public:
     /// Constructor.
     /// Default constructor.
     ClientSimple()
-    {
-    }
+    {}
 	virtual ~ClientSimple()
 	{}
 
@@ -51,5 +50,5 @@ private:
     ClientSimple& operator=(ClientSimple& s);
 };
 
-#endif /* _CLIENTSIMPLE_H */
+#endif /* CLIENTSIMPLE_H */
 

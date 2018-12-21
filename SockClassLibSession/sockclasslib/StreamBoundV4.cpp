@@ -20,7 +20,7 @@
 
 #include <StreamBoundV4.h>
 
-StreamBoundV4::StreamBoundV4(short Port, in_addr_t Address, bool LateBind)
+StreamBoundV4::StreamBoundV4(uint16_t Port, in_addr_t Address, bool LateBind)
 {
     if(!isBound())
     {
@@ -32,7 +32,7 @@ StreamBoundV4::StreamBoundV4(short Port, in_addr_t Address, bool LateBind)
     }
 }
 
-StreamBoundV4::StreamBoundV4(short Port, const char* Address, bool LateBind)
+StreamBoundV4::StreamBoundV4(uint16_t Port, const char* Address, bool LateBind)
 {
     if(!isBound())
     {

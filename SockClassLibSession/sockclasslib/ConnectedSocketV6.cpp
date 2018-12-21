@@ -27,7 +27,7 @@
 
 #include "ConnectedSocketV6.h"
 
-void ConnectedSocketV6::setDestination(in6_addr Address, short Port)
+void ConnectedSocketV6::setDestination(in6_addr Address, uint16_t Port)
 {
     m_Destination.sin6_family = INET6_DOMAIN;
     memcpy(&m_Destination.sin6_addr, &Address, sizeof(in6_addr));
@@ -35,9 +35,9 @@ void ConnectedSocketV6::setDestination(in6_addr Address, short Port)
 }
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-void ConnectedSocketV6::setDestination(const char* Address, short Port)
+void ConnectedSocketV6::setDestination(const char* Address, uint16_t Port)
 #else
-int ConnectedSocketV6::setDestination(const char* Address, short Port)
+int ConnectedSocketV6::setDestination(const char* Address, uint16_t Port)
 #endif
 {
 #ifndef _NO_IPV6

@@ -20,14 +20,14 @@
 
 #include <BoundSocketV4.h>
 
-BoundSocketV4::BoundSocketV4() : InternetSocketV4()
+BoundSocketV4::BoundSocketV4()
 {
     memset(&m_EndPoint, 0, sizeof m_EndPoint);
     m_EndPoint.sin_family = NO_DOMAIN;
     m_Bound = false;
 }
 
-void BoundSocketV4::setEndPoint(in_addr_t Address, short Port)
+void BoundSocketV4::setEndPoint(in_addr_t Address, uint16_t Port)
 {
     m_EndPoint.sin_family = INTERNET_DOMAIN;
     m_EndPoint.sin_addr.s_addr = Address;
@@ -35,9 +35,9 @@ void BoundSocketV4::setEndPoint(in_addr_t Address, short Port)
 }
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-void BoundSocketV4::setEndPoint(const char* Address, short Port)
+void BoundSocketV4::setEndPoint(const char* Address, uint16_t Port)
 #else
-int BoundSocketV4::setEndPoint(const char* Address, short Port)
+int BoundSocketV4::setEndPoint(const char* Address, uint16_t Port)
 #endif
 {
     in_addr_t Addr = inet_addr(const_cast < char* > (Address));
@@ -68,7 +68,7 @@ int BoundSocketV4::bind()
         SOCK_EXCEPT_THROW("Wrong socket domain");
     }
 #endif
-    if(::bind(m_Sock, (struct sockaddr*)&m_EndPoint, sizeof m_EndPoint) == SOCKET_ERROR)
+    if(::bind(m_Sock, reinterpret_cast<struct sockaddr*>(&m_EndPoint), sizeof m_EndPoint) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
         SOCK_EXCEPT_THROW(WSAGetLastError());

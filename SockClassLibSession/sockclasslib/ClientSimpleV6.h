@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef _CLIENTSIMPLEV6_H
-#define _CLIENTSIMPLEV6_H
+#ifndef CLIENTSIMPLEV6_H
+#define CLIENTSIMPLEV6_H
 
 #ifndef _NO_IPV6
 
@@ -51,5 +51,5 @@ private:
 };
 
 #endif /* _NO_IPV6 */
-#endif /* _CLIENTSIMPLEV6_H */
+#endif /* CLIENTSIMPLEV6_H */
 

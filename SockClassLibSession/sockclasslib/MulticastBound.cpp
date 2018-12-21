@@ -29,7 +29,7 @@
 #include <algorithm>
 using namespace std;
 
-MulticastBound::MulticastBound(short Port, in_addr_t Address) : Addr(Address)
+MulticastBound::MulticastBound(uint16_t Port, in_addr_t Address) : Addr(Address)
 {
     int Opt = 1;
     setSockLevelOpt(SO_REUSEADDR, reinterpret_cast < const char* > (&Opt),
@@ -46,7 +46,7 @@ MulticastBound::MulticastBound(short Port, in_addr_t Address) : Addr(Address)
     }
 }
 
-MulticastBound::MulticastBound(short Port, const char* Address)
+MulticastBound::MulticastBound(uint16_t Port, const char* Address)
 {
     if(!isBound())
     {

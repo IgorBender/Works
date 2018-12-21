@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef SERVERREUSEV6_H_
-#define SERVERREUSEV6_H_
+#ifndef SERVERREUSEV6_H
+#define SERVERREUSEV6_H
 
 #ifndef _NO_IPV6
 
@@ -37,12 +37,12 @@ public:
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv6 address for bind in network byte order.
     /// \throw SockException.
-    ServerReuseV6(short Port, in6_addr Address = in6addr_any);
+    ServerReuseV6(uint16_t Port, in6_addr Address = in6addr_any);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv6 address for bind in textual notation.
     /// \throw SockException.
-    ServerReuseV6(short Port, const char* Address);
+    ServerReuseV6(uint16_t Port, const char* Address);
 
 private:
     /// Copy constructor.
@@ -54,4 +54,4 @@ private:
 };
 
 #endif /* _NO_IPV6 */
-#endif /* SERVERREUSEV6_H_ */
+#endif /* SERVERREUSEV6_H */
