@@ -146,10 +146,10 @@ int SocketClass::setNonBlockMode(bool On)
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 void SocketClass::setSockLevelOpt(int Opt, const char* Value,
-                                     unsigned int  OptLen)
+                                     socklen_type  OptLen)
 #else
 int SocketClass::setSockLevelOpt(int Opt, const char* Value,
-                                    unsigned int  OptLen)
+                                    socklen_type  OptLen)
 #endif
 {
     if(setsockopt(m_Sock, SOL_SOCKET, Opt,
@@ -175,10 +175,10 @@ int SocketClass::setSockLevelOpt(int Opt, const char* Value,
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 void SocketClass::getSockLevelOpt(int Opt, char* Value,
-                                     unsigned int* OptLen)
+                                     socklen_type* OptLen)
 #else
 int SocketClass::getSockLevelOpt(int Opt, char* Value,
-                                    unsigned int* OptLen)
+                                    socklen_type* OptLen)
 #endif
 {
     if(getsockopt(m_Sock, SOL_SOCKET, Opt,

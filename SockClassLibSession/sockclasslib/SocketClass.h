@@ -153,13 +153,13 @@ public:
     /// \param Value : option value.
     /// \param OptLen : option value length.
     /// \throw SockException
-    void setSockLevelOpt(int Opt, const char* Value, unsigned int OptLen);
+    void setSockLevelOpt(int Opt, const char* Value, socklen_type OptLen);
     /// Deliver socket level option.
     /// \param Opt : option type.
     /// \param Value : option value.
     /// \param OptLen : option value length.
     /// \throw SockException
-    void getSockLevelOpt(int Opt, char* Value, unsigned int* OptLen);
+    void getSockLevelOpt(int Opt, char* Value, socklen_type* OptLen);
     /// Send data via socket
     /// \param Buffer : data buffer.
     /// \param Length : data size.
@@ -178,8 +178,8 @@ public:
     virtual int receive(void* Buffer, size_t Length, int Flags = 0);
 #else
     int setNonBlockMode(bool On);
-    int setSockLevelOpt(int Opt, const char* Value, unsigned int  OptLen);
-    int getSockLevelOpt(int Opt, char* Value, unsigned int* OptLen);
+    int setSockLevelOpt(int Opt, const char* Value, socklen_type  OptLen);
+    int getSockLevelOpt(int Opt, char* Value, socklen_type* OptLen);
 #ifndef __linux__
     virtual int send(const void* Buffer, size_t Length, int Flags = 0);
 #else
