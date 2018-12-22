@@ -218,7 +218,7 @@ int main(int argc, char* argv[])
 #endif
 #ifdef _WITHOUT_SOCK_EXCEPTIONS
 #ifdef _WIN32
-        int Res = Sock.sendSubnetBroadcast(InterfBroad, htons(SERV_PORT), Buf,
+        Res = Sock.sendSubnetBroadcast(InterfBroad, htons(SERV_PORT), Buf,
                                        strlen("Hello"));
 #else
 
