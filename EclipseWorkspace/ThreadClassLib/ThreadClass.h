@@ -42,7 +42,11 @@ namespace ThreadClassLib
 ///
 /// \{
 /// Timeout duration zero constant.
+#ifndef _WIN32
 constexpr std::chrono::steady_clock::duration THREAD_IMMEDIATE(std::chrono::steady_clock::duration::zero());
+#else
+const std::chrono::steady_clock::duration THREAD_IMMEDIATE = std::chrono::steady_clock::duration::zero();
+#endif
 /// \}
 
 ///
@@ -56,7 +60,7 @@ class THREADCLASSLIB_API ThreadClass
 public:
     /// @struct ThreadRoutineType
     /// Thread routine base type (abstract).
-	struct ThreadRoutineType : public std::unary_function<void, void>
+    struct THREADCLASSLIB_API ThreadRoutineType : public std::unary_function<void, void>
 	{
         ThreadRoutineType(ThreadClass* pThread) : m_pThread(pThread) {}
         ThreadRoutineType() : m_pThread(nullptr) {}
@@ -69,7 +73,7 @@ public:
 
     /// @struct ThreadRoutineType
 	/// Thread stop notification base type (abstract).
-	struct ThreadStopNotificatonType : public std::unary_function<void*, void>
+    struct THREADCLASSLIB_API ThreadStopNotificatonType : public std::unary_function<void*, void>
 	{
 	    virtual void operator()(void*) = 0;
         virtual ~ThreadStopNotificatonType();

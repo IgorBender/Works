@@ -60,6 +60,7 @@
 #include <Ws2ipdef.h>
 #endif /* _NO_IPV6 */
 #include <WS2tcpip.h>
+#include <stdint.h>
 
 #define SENDCONNRESET WSAECONNRESET
 #define RECVCONNRESET WSAECONNRESET
