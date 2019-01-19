@@ -36,7 +36,7 @@
 
 namespace ThreadClassLib
 {
-CondVarClass::CondVarClass(int PredNum) throw(ThreadException) : m_PredNum(PredNum)
+CondVarClass::CondVarClass(uint32_t PredNum) : m_PredNum(PredNum)
 {
     if(PredNum > MAX_NUM_OF_PREDS)
     {
@@ -45,7 +45,11 @@ CondVarClass::CondVarClass(int PredNum) throw(ThreadException) : m_PredNum(PredN
     m_Predicates = 0U;
 }
 
-CondVarClass::PredicateIdType CondVarClass::addPredicate(bool PredicateValue) throw(ThreadException)
+// Define virtual constructor to be out-of-line to provide persistent vtable.
+CondVarClass::~CondVarClass()
+{}
+
+CondVarClass::PredicateIdType CondVarClass::addPredicate(bool PredicateValue)
 {
     if(m_PredNum >= MAX_NUM_OF_PREDS)
     {
@@ -55,7 +59,7 @@ CondVarClass::PredicateIdType CondVarClass::addPredicate(bool PredicateValue) th
     return m_PredNum - 1;
 }
 
-bool CondVarClass::getPredicate(PredicateIdType PredNum) throw(ThreadException)
+bool CondVarClass::getPredicate(PredicateIdType PredNum)
 {
     if(m_PredNum <= PredNum)
     {
@@ -65,7 +69,7 @@ bool CondVarClass::getPredicate(PredicateIdType PredNum) throw(ThreadException)
     return 0 == (m_Predicates & Mask) ? false : true;
 }
 
-void CondVarClass::setPredicate(PredicateIdType PredNum, bool PredicateValue) throw(ThreadException)
+void CondVarClass::setPredicate(PredicateIdType PredNum, bool PredicateValue)
 {
     if(m_PredNum <= PredNum)
     {
@@ -110,7 +114,7 @@ uint32_t CondVarClass::wait(std::chrono::steady_clock::duration Timeout)
     return 0;
 }
 
-SpecificCondition::SpecificCondition(CondVarClass& Cond, CondVarClass::PredicateIdType Index) throw(ThreadException)
+SpecificCondition::SpecificCondition(CondVarClass& Cond, CondVarClass::PredicateIdType Index)
         : m_CondVarCl(Cond), m_Index(Index)
 {
     if(Cond.getPredNum() <= Index)

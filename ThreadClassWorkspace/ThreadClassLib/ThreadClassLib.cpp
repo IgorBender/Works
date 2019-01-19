@@ -51,6 +51,6 @@ BOOL APIENTRY DllMain( HANDLE hModule,
 void THREADCLASSLIB_API ThreadClassLib::getVersion(ThreadClassLib::VersionTriple& Versions)
 {
     Versions.Major = 0;
-    Versions.Minor = 0;
-    Versions.SubMinor = 1;
+    Versions.Minor = 1;
+    Versions.SubMinor = 0;
 }

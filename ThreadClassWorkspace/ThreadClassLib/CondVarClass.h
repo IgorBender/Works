@@ -22,8 +22,8 @@
  * distribution.
  */
 
-#ifndef _CONVARCLASS_H
-#define _CONVARCLASS_H
+#ifndef CONVARCLASS_H
+#define CONVARCLASS_H
 
 #include <cstdint>
 #include <condition_variable>
@@ -47,32 +47,32 @@ namespace ThreadClassLib
 class THREADCLASSLIB_API CondVarClass {
 public:
 /// \typedef Predicate type
-typedef unsigned int PredicateIdType;
+typedef uint32_t PredicateIdType;
 
 /// \define 
 #define MAX_NUM_OF_PREDS 32
 
     /// Constructor.
     /// \param PredNum : number of predicates (up to 32).
-    CondVarClass(int PredNum) throw(ThreadException);
+    CondVarClass(uint32_t PredNum);
     /// Destructor
-    virtual ~CondVarClass() {}
+    virtual ~CondVarClass();
 
     /// Add predicate to predicates set.
     /// \returns Number of added predicate.
     /// \param PredicateValue : value of predicate to add.
     /// \throw ThreadException
-    PredicateIdType addPredicate(bool PredicateValue) throw(ThreadException);
+    PredicateIdType addPredicate(bool PredicateValue);
     /// Get value of the specified predicate.
     /// \returns Predicate value.
     /// \param PredNum : predicate number.
     /// \throw ThreadException
-    bool getPredicate(PredicateIdType PredNum) throw(ThreadException);
+    bool getPredicate(PredicateIdType PredNum);
     /// Set value of the specified predicate.
     /// \param PredNum : predicate number.
     /// \param PredicateValue : predicate value.
     /// \throw ThreadException
-    void setPredicate(PredicateIdType PredNum, bool PredicateValue) throw(ThreadException);
+    void setPredicate(PredicateIdType PredNum, bool PredicateValue);
 
     /// Signal condition variable .
     void signal();
@@ -113,19 +113,19 @@ public:
     /// Constructor
     /// \param Cond : condition variable object reference.
     /// \param Index : number of specific predicate.
-    SpecificCondition(CondVarClass& Cond, CondVarClass::PredicateIdType Index) throw(ThreadException);
+    SpecificCondition(CondVarClass& Cond, CondVarClass::PredicateIdType Index);
 
     /// Get value of the specified predicate.
     /// \return Predicate value.
     /// \throw ThreadException
-    bool getPredicate() throw(ThreadException)
+    bool getPredicate()
     {
         return m_CondVarCl.getPredicate(m_Index);
     }
     /// Set value of the specified predicate.
     /// \param PredicateValue : predicate value.
     /// \throw ThreadException
-    void setPredicate(bool PredicateValue) throw(ThreadException)
+    void setPredicate(bool PredicateValue)
     {
         m_CondVarCl.setPredicate(m_Index, PredicateValue);
     }
@@ -159,5 +159,5 @@ protected:
 };
 } // end of ThreadClassLib namespace
 
-#endif // _CONVARCLASS_H
+#endif // CONVARCLASS_H
 
