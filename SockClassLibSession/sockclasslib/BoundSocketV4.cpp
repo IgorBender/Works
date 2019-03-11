@@ -44,7 +44,7 @@ int BoundSocketV4::setEndPoint(const char* Address, uint16_t Port)
     if(Addr == INADDR_NONE)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW("Wrong address");
+        SOCK_EXCEPT_THROW("Wrong address", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -65,13 +65,13 @@ int BoundSocketV4::bind()
 
     if(m_EndPoint.sin_family != INTERNET_DOMAIN)
     {
-        SOCK_EXCEPT_THROW("Wrong socket domain");
+        SOCK_EXCEPT_THROW("Wrong socket domain", m_Sock);
     }
 #endif
     if(::bind(m_Sock, reinterpret_cast<struct sockaddr*>(&m_EndPoint), sizeof m_EndPoint) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return SOCKET_ERROR;
 #endif

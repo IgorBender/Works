@@ -84,7 +84,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
     if(0 > Result)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW("Error in getting addresses.");
+        SOCK_EXCEPT_THROW("Error in getting addresses.", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -113,7 +113,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
     {
     	freeifaddrs(pAddrs);
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-    	SOCK_EXCEPT_THROW("Wrong address.");
+        SOCK_EXCEPT_THROW("Wrong address.", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -122,7 +122,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
     if(0 > Result)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-    	SOCK_EXCEPT_THROW("ioctl error.");
+        SOCK_EXCEPT_THROW("ioctl error.", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -229,7 +229,7 @@ int  MulticastSocketV6::setDefaultIf(const char* Address)
     if(0 >= ConvertResult)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW("Wrong address");
+        SOCK_EXCEPT_THROW("Wrong address", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif

@@ -41,8 +41,8 @@ using namespace std;
 /// \{
 
 /// Throw socket exception.
-#define SOCK_EXCEPT_THROW(x) \
-    SockException SOCK_EXCEPT(EXCEPTION_PARAMS, x); \
+#define SOCK_EXCEPT_THROW(x, s) \
+    SockException SOCK_EXCEPT(EXCEPTION_PARAMS, x, s); \
     throw(SOCK_EXCEPT)
 
 /// Catch and re-throw socket exception.
@@ -119,13 +119,13 @@ public:
     /// \param FileName : name of source file.
     /// \param LineNum : number of code line.
     /// \param errcode : error numeric code.
-    SockException(const char* FileName, int LineNum, int errcode);
+    SockException(const char* FileName, int LineNum, int errcode, SOCKET Sock);
     /// Constructor
     /// \details Constructs exception object with filename, line number and text message
     /// \param FileName : name of source file.
     /// \param LineNum : number of code line.
     /// \param Message : user message.
-    SockException(const char* FileName, int LineNum, const char* Message);
+    SockException(const char* FileName, int LineNum, const char* Message, SOCKET Sock);
     /// Destructor
     /// \details Intentionally empty
     virtual ~SockException()
@@ -169,10 +169,20 @@ public:
         WSASetLastError(Num);
     }
 
+    ///
+    /// \brief getSock
+    /// \return - file descriptor of the socket made exception.
+    ///
+    SOCKET getSock()
+    {
+        return m_Sock;
+    }
+
 protected:
     int m_ErrCode; ///< Error code.
     char lpMsgBuf[256]; ///< Error message buffer.
     char m_Message[256]; ///< UserMessage buffer.
+    SOCKET m_Sock; ///< Socket that coused exception.
 };
 
 #endif

@@ -35,12 +35,12 @@
 /// \{
 
 /// Throw disconnect exception.
-#define DISCONN_EXCEPT_THROW(x) \
+#define DISCONN_EXCEPT_THROW(x, s) \
     if(x) { \
-        DisconnectException EXCEPT(EXCEPTION_PARAMS, x); \
+        DisconnectException EXCEPT(EXCEPTION_PARAMS, x, s); \
         throw(EXCEPT); \
     } else { \
-        DisconnectException EXCEPT(EXCEPTION_PARAMS); \
+        DisconnectException EXCEPT(EXCEPTION_PARAMS, s); \
         throw(EXCEPT); \
     } \
 
@@ -115,7 +115,7 @@ public:
     /// \param LineNum : number of code line.
     /// \param errcode : error numeric code, default value CONNRESET.
     DisconnectException(const char* FileName, int LineNum,
-                        int errcode = WSAECONNRESET) : SockException(FileName, LineNum, errcode)
+                        int errcode = WSAECONNRESET, SOCKET Sock = -1) : SockException(FileName, LineNum, errcode, Sock)
     {
     }
     /// Constructor
@@ -124,7 +124,7 @@ public:
     /// \param LineNum : number of code line.
     /// \param Msg : user message.
     DisconnectException(const char* FileName, int LineNum,
-                        const char* Msg) : SockException(FileName, LineNum, Msg)
+                        const char* Msg, SOCKET Sock) : SockException(FileName, LineNum, Msg, Sock)
     {
     }
 };

@@ -85,7 +85,7 @@ public:
     /// \throw SockException.
     virtual void connect()
     {
-        SOCK_EXCEPT_THROW("Wrong operation");
+        SOCK_EXCEPT_THROW("Wrong operation", m_Sock);
     }
 #else
 

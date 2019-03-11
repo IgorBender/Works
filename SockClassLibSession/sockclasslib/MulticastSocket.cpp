@@ -91,7 +91,7 @@ int  MulticastSocket::setDefaultIf(const char* Address)
     if(Addr == INADDR_NONE)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW("Wrong address");
+        SOCK_EXCEPT_THROW("Wrong address", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif

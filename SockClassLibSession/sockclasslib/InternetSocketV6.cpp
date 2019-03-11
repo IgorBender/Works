@@ -47,7 +47,7 @@ int InternetSocketV6::setIpLevelOpt(int Opt, const char* Value,
                   OptLen) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -77,7 +77,7 @@ int InternetSocketV6::getIpLevelOpt(int Opt, char* Value,
                   OptLen) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return SOCKET_ERROR;
 #endif

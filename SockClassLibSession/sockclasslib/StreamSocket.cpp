@@ -100,7 +100,7 @@ void StreamSocket::setTcpLevelOpt(int Opt, const char* Value, socklen_type OptLe
     if(setsockopt(m_Sock, IPPROTO_TCP, Opt, const_cast <char*> (Value), OptLen) == SOCKET_ERROR)
     {
 #endif
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
     }
 }
 
@@ -114,7 +114,7 @@ void StreamSocket::getTcpLevelOpt(int Opt, char* Value, socklen_type* OptLen)
     if(getsockopt(m_Sock, IPPROTO_TCP, Opt, const_cast <char*> (Value), OptLen) == SOCKET_ERROR)
     {
 #endif
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
     }
 }
 #else // _WITHOUT_SOCK_EXCEPTIONS

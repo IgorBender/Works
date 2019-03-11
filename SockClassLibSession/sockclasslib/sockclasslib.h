@@ -67,7 +67,7 @@
 
 typedef int size_type;
 typedef int socklen_type;
-typedef int in_addr_t;
+typedef uint32_t in_addr_t;
 //typedef SOCKADDR_IN6 sockaddr_in6;
 
 extern HANDLE hLibMod;
@@ -148,7 +148,7 @@ namespace SockClassLib
     {
         Versions.Major = 3;
         Versions.Minor = 0;
-        Versions.SubMinor = 6;
+        Versions.SubMinor = 7;
     }
 /// \}
 }

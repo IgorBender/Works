@@ -39,17 +39,17 @@ void SocketClass::create()
 {
     if(m_Domain == NO_DOMAIN)
     {
-        SOCK_EXCEPT_THROW("Wrong domain");
+        SOCK_EXCEPT_THROW("Wrong domain", -1);
     }
 
     if(m_Type == NO_TYPE)
     {
-        SOCK_EXCEPT_THROW("Wrong type");
+        SOCK_EXCEPT_THROW("Wrong type", -1);
     }
 
     if((m_Sock = socket(m_Domain, m_Type, m_Protocol)) == INVALID_SOCKET)
     {
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), -1);
     }
 
 #if ((!_WIN32) && (!__VXWORKS__))
@@ -85,7 +85,7 @@ void SocketClass::setNonBlockMode(bool On)
         m_Flags = fcntl(m_Sock, F_GETFL, 0);
         if(m_Flags < 0)
         {
-            SOCK_EXCEPT_THROW(WSAGetLastError());
+            SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
         }
         Result = fcntl(m_Sock, F_SETFL, m_Flags | O_NONBLOCK);
 #else
@@ -98,7 +98,7 @@ void SocketClass::setNonBlockMode(bool On)
         m_Flags = fcntl(m_Sock, F_GETFL, 0);
         if(m_Flags < 0)
         {
-            SOCK_EXCEPT_THROW(WSAGetLastError());
+            SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
         }
         Result = fcntl(m_Sock, F_SETFL, m_Flags & ~O_NONBLOCK);
 #else
@@ -107,14 +107,14 @@ void SocketClass::setNonBlockMode(bool On)
     }
     if(Result < 0)
     {
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
     }
 #else
     m_Flags = On;
     Result = ioctlsocket(m_Sock, FIONBIO,&m_Flags);
     if(Result == SOCKET_ERROR)
     {
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
     }
 #endif
 }
@@ -161,7 +161,7 @@ int SocketClass::setSockLevelOpt(int Opt, const char* Value,
                   OptLen) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -190,7 +190,7 @@ int SocketClass::getSockLevelOpt(int Opt, char* Value,
                   OptLen) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -210,7 +210,7 @@ int SocketClass::send(const void* Buffer, size_t Length, int Flags)
     if(!m_Connected)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW("Not connected");
+        SOCK_EXCEPT_THROW("Not connected", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -228,7 +228,7 @@ int SocketClass::send(const void* Buffer, size_t Length, int Flags)
     if(Result == SOCKET_ERROR && WSAGetLastError() != SENDCONNRESET)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return Result;
 #endif
@@ -239,9 +239,9 @@ int SocketClass::send(const void* Buffer, size_t Length, int Flags)
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
 #ifdef _WIN32
 
-        DISCONN_EXCEPT_THROW(0);
+        DISCONN_EXCEPT_THROW(0, m_Sock);
 #else // _WIN32
-        DISCONN_EXCEPT_THROW(errno);
+        DISCONN_EXCEPT_THROW(errno, m_Sock);
 #endif // _WIN32
 #endif // _WITHOUT_SOCK_EXCEPTIONS
 
@@ -259,7 +259,7 @@ int SocketClass::receive(void* Buffer, size_t Length, int Flags)
     if(!m_Connected)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW("Not connected");
+        SOCK_EXCEPT_THROW("Not connected", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -278,7 +278,7 @@ int SocketClass::receive(void* Buffer, size_t Length, int Flags)
     if(Result == SOCKET_ERROR && WSAGetLastError() != RECVCONNRESET)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return Result;
 #endif
@@ -287,7 +287,7 @@ int SocketClass::receive(void* Buffer, size_t Length, int Flags)
     {
         m_Connected = false;
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        DISCONN_EXCEPT_THROW("Brocken connection");
+        DISCONN_EXCEPT_THROW("Brocken connection", m_Sock);
 #endif
     }
     return Result;

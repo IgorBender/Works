@@ -22,18 +22,20 @@
 
 
 SockException::SockException(const char* FileName, int LineNum,
-                             int errcode) : BaseException(FileName, LineNum)
+                             int errcode, SOCKET Sock) : BaseException(FileName, LineNum)
 	{
 		m_Message[0] = '\0';
 		m_ErrCode = errcode;
+        m_Sock = Sock;
 	}
 
 SockException::SockException(const char* FileName, int LineNum,
-                             const char* Message) : BaseException(FileName, LineNum)
+                             const char* Message, SOCKET Sock) : BaseException(FileName, LineNum)
 	{
 		::strcpy(m_Message, Message);
 		m_ErrCode = 0;
-	}
+        m_Sock = Sock;
+    }
 
 const char* SockException::what()
 {

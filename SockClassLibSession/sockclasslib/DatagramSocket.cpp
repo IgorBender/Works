@@ -51,7 +51,7 @@ int DatagramSocket::sendTo(const void* Buffer, size_t Length, int Flags)
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     if(m_Destination.sin_family == NO_DOMAIN)
     {
-        SOCK_EXCEPT_THROW("Wrong socket domain");
+        SOCK_EXCEPT_THROW("Wrong socket domain", m_Sock);
     }
 #endif
     if(Length == 0)
@@ -75,7 +75,7 @@ int DatagramSocket::sendTo(const void* Buffer, size_t Length, int Flags)
 
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #endif
 
     }
@@ -100,7 +100,7 @@ int DatagramSocket::receiveFrom(void* Buffer, size_t Length, int Flags)
                           &Size))) == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #endif
 
     }

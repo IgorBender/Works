@@ -56,7 +56,7 @@ sockaddr_in& StreamSocketV4::getSockName()
         if(getsockname(m_Sock, reinterpret_cast <sockaddr*> (&m_SockName),
                        &Len) == SOCKET_ERROR)
         {
-            SOCK_EXCEPT_THROW(WSAGetLastError());
+            SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
         }
         m_GotSockName = true;
     }
@@ -71,7 +71,7 @@ sockaddr_in& StreamSocketV4::getPeerName()
         if(getpeername(m_Sock, reinterpret_cast <sockaddr*> (&m_PeerName),
                        &Len) == SOCKET_ERROR)
         {
-            SOCK_EXCEPT_THROW(WSAGetLastError());
+            SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
         }
         m_GotPeerName = true;
     }

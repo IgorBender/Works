@@ -25,7 +25,7 @@ void ServerSimple::listen(int Backlog)
 {
     if(::listen(m_Sock, Backlog) == SOCKET_ERROR)
     {
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
     }
 }
 
@@ -36,7 +36,7 @@ StreamSocketV4* ServerSimple::accept()
                        reinterpret_cast <sockaddr*> (&m_PeerName), &Len);
     if(Res == INVALID_SOCKET)
     {
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
     }
     StreamSocketV4* RetSock = new StreamSocketV4(Res);
     RetSock->setConnected(true);

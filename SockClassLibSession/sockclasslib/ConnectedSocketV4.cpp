@@ -37,7 +37,7 @@ int ConnectedSocketV4::setDestination(const char* Address, uint16_t Port)
     if(Addr == INADDR_NONE)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW("Wrong address");
+        SOCK_EXCEPT_THROW("Wrong address", m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -56,7 +56,7 @@ void ConnectedSocketV4::connect()
         return;
     if(m_Destination.sin_family == NO_DOMAIN)
     {
-        SOCK_EXCEPT_THROW("Wrong socket domain");
+        SOCK_EXCEPT_THROW("Wrong socket domain", m_Sock);
     }
     int Result;
     if((Result = ::connect(m_Sock,
@@ -67,7 +67,7 @@ void ConnectedSocketV4::connect()
             m_Connected = true;
             return;
         }
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
     }
     m_Connected = true;
 }

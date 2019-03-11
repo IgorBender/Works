@@ -54,7 +54,7 @@ MulticastBound::MulticastBound(uint16_t Port, const char* Address)
         if(Addr == INADDR_NONE)
         {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-            SOCK_EXCEPT_THROW("Bad address");
+            SOCK_EXCEPT_THROW("Bad address", m_Sock);
 #else
             return;
 #endif
@@ -71,7 +71,7 @@ MulticastBound::MulticastBound(uint16_t Port, const char* Address)
     if(rAddr.s_addr == INADDR_NONE)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW("Bad address string");
+        SOCK_EXCEPT_THROW("Bad address string", m_Sock);
 #endif
 
     }
@@ -104,7 +104,7 @@ int MulticastBound::joinGroup(in_addr_t Group)
     if(iResult == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
@@ -142,7 +142,7 @@ int MulticastBound::leaveGroup(in_addr_t Group)
     if(iResult == SOCKET_ERROR)
     {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-        SOCK_EXCEPT_THROW(WSAGetLastError());
+        SOCK_EXCEPT_THROW(WSAGetLastError(), m_Sock);
 #else
         return SOCKET_ERROR;
 #endif
