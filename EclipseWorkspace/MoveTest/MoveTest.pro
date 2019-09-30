@@ -5,13 +5,32 @@ CONFIG -= qt
 
 QMAKE_CXXFLAGS += -Wno-unused-parameter
 
+contains(QMAKE_CXX, clang++) {
 CONFIG(debug, debug|release) {
-    DESTDIR = ../../Debug
+    DESTDIR = ../DebugClang
 }
 CONFIG(release, debug|release) {
-    DESTDIR = ../../Release
+    DESTDIR = ../ReleaseClang
+}
 }
 
+contains(QMAKE_CXX, g++) {
+CONFIG(debug, debug|release) {
+    DESTDIR = ../Debug
+}
+CONFIG(release, debug|release) {
+    DESTDIR = ../Release
+}
+}
+
+contains(QMAKE_CXX, icpc) {
+CONFIG(debug, debug|release) {
+    DESTDIR = ../DebugIntel
+}
+CONFIG(release, debug|release) {
+    DESTDIR = ../ReleaseIntel
+}
+}
 
 SOURCES += \
     MoveTest.cpp
