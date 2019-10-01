@@ -40,6 +40,7 @@ protected:
     uint32_t m_Int = 0;
 };
 
+// Wrapper of TestClass providing move semantic.
 class MoveTestClass
 {
 public:
