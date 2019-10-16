@@ -22,6 +22,7 @@ CONFIG(release, debug|release) {
 }
 
 contains(QMAKE_CXX, icpc) {
+QMAKE_RPATHDIR += /opt/intel/system_studio_2019/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin
 CONFIG(debug, debug|release) {
     DESTDIR = ../../DebugIntel
 }

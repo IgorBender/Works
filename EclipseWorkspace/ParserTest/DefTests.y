@@ -21,7 +21,7 @@ typedef void *yyscan_t;
 
  /* The code for DefTests.cpp. */
 %code {
-#include <ParserInterface.h>
+#include <BitParserInterface.h>
 #include "DefTestsLex.h"
 void yyerror(yyscan_t scanner, const char *s);
 }
