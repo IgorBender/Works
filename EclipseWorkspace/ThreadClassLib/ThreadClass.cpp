@@ -30,6 +30,36 @@
 #include <Windows.h>
 #endif
 
+#ifdef _WIN32
+void nameThreadWindows(DWORD t, const char* name)
+{
+#pragma pack(push,8)
+	typedef struct tagTHREADNAME_INFO
+	{
+		DWORD dwType; // Must be 0x1000.
+		LPCSTR szName; // Pointer to name (in user addr space).
+		DWORD dwThreadID; // Thread ID (-1=caller thread).
+		DWORD dwFlags; // Reserved for future use, must be zero.
+	} THREADNAME_INFO;
+#pragma pack(pop)
+
+	THREADNAME_INFO info;
+	info.dwType = 0x1000;
+	info.szName = (LPCSTR)name;
+	info.dwThreadID = t;
+	info.dwFlags = 0;
+	const DWORD MS_VC_EXCEPTION = 0x406D1388;
+	__try
+	{
+		RaiseException(MS_VC_EXCEPTION, 0, sizeof(info) / sizeof(ULONG_PTR), (ULONG_PTR*)&info);
+	}
+	__except (EXCEPTION_EXECUTE_HANDLER)
+	{
+	}
+
+}
+#endif
+
 namespace ThreadClassLib
 {
 void ThreadClass::ThreadRoutineType::setThread(ThreadClass* p)
@@ -48,6 +78,13 @@ bool ThreadClass::run()
     if(!m_pThread)
     {
         m_pThread = new std::thread(this->m_InternalThreadRoutine);
+        if("" != m_Name)
+#ifndef _WIN32
+            pthread_setname_np(m_pThread->native_handle(), m_Name.c_str());
+#else
+			nameThreadWindows(GetThreadId(m_pThread->native_handle()), m_Name.c_str());
+#endif
+
     }
     if(!m_pThread)
     {
@@ -152,6 +189,35 @@ bool ThreadClass::setPriority(int Prio)
     return false;
 }
 
+bool ThreadClass::setPriority(int Policy, int Prio)
+{
+    if(m_pThread)
+    {
+        std::thread::native_handle_type NativeHandle = m_pThread->native_handle();
+#ifndef WIN32
+#if (_POSIX_THREAD_PRIORITY_SCHEDULING >= 1)
+        sched_param Params;
+        bzero(reinterpret_cast < char* > (&Params), sizeof Params);
+        int TmpPolicy;
+        if(pthread_getschedparam(NativeHandle, &TmpPolicy, &Params) != 0)
+        {
+            return false;
+        }
+        TmpPolicy = Policy;
+        Params.sched_priority = Prio;
+        if(pthread_setschedparam(NativeHandle, TmpPolicy, &Params) == 0)
+            return true;
+        else
+            return false;
+#endif
+#else
+        return TRUE == SetThreadPriority(NativeHandle, Prio) ? true : false;
+#endif
+    }
+    return false;
+}
+
+
 int ThreadClass::getPriority()
 {
     if(m_pThread)
@@ -178,4 +244,48 @@ int ThreadClass::getPriority()
     }
     return -1;
 }
+
+bool ThreadClass::getPriority(int& Policy, int& Prio)
+{
+    if(m_pThread)
+    {
+        std::thread::native_handle_type NativeHandle = m_pThread->native_handle();
+#ifndef WIN32
+#if (_POSIX_THREAD_PRIORITY_SCHEDULING >= 1)
+        sched_param Params;
+        int TmpPolicy;
+        if(pthread_getschedparam(NativeHandle, &TmpPolicy, &Params) != 0)
+        {
+            return false;
+        }
+        Policy = TmpPolicy;
+        Prio = Params.sched_priority;
+        return true;
+#endif
+#else
+        int Prio;
+        if(THREAD_PRIORITY_ERROR_RETURN == (Prio = GetThreadPriority(NativeHandle)))
+        {
+            return -1;
+        }
+        return Prio;
+#endif
+    }
+    return false;
+}
+
+void ThreadClass::nameThread(std::string Name)
+{
+	m_Name = Name;
+	if (m_pThread)
+	{
+#ifndef _WIN32
+		pthread_setname_np(m_pThread->native_handle(), m_Name.c_str());
+#else
+		nameThreadWindows(GetThreadId(m_pThread->native_handle()), m_Name.c_str());
+#endif
+	}
+}
+
 } // end of ThreadClassLib namespace
+

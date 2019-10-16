@@ -21,7 +21,7 @@ std::vector<std::string> split(const string& input, const string& regex) {
     return {first, last};
 }
 
-int main(int argc, char* argv[])
+int main()
 {
     string Text = "       Dot    -12.44  1 1 2.3 2.4 # comment";
 
@@ -46,9 +46,6 @@ int main(int argc, char* argv[])
 //    cout << Al << Num << endl;
 //    string a = regex_replace(Text, All, Format, regex_constants::format_default);
 
-    vector<int> aaa;
-    aaa.push_back(2);
-    aaa.push_back(3);
     vector<string> Tokens = split(Text, Delimiters);
     for(auto s : Tokens)
         cout << s << endl;
@@ -80,15 +77,15 @@ int main(int argc, char* argv[])
 
     case Type::Dot:
     {
-        double Speed, StartAz, StartEl, EndAz, EndEl;
-        try
-        {
-            Speed = stod(Tokens.at(1));
-        }
-        catch(invalid_argument& e)
-        {
+//        double Speed;//, StartAz, StartEl, EndAz, EndEl;
+//        try
+//        {
+//            Speed = stod(Tokens.at(1));
+//        }
+//        catch(invalid_argument& e)
+//        {
 
-        }
+//        }
         break;
     }
 

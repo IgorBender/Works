@@ -22,13 +22,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+contains(QMAKE_CXX, clang++) {
+CONFIG(debug, debug|release) {
+    DESTDIR = ../../DebugClang
+}
+CONFIG(release, debug|release) {
+    DESTDIR = ../../ReleaseClang
+}
+}
+
+contains(QMAKE_CXX, g++) {
 CONFIG(debug, debug|release) {
     DESTDIR = ../../Debug
 }
 CONFIG(release, debug|release) {
     DESTDIR = ../../Release
 }
+}
 
+contains(QMAKE_CXX, icpc) {
+QMAKE_RPATHDIR += /opt/intel/system_studio_2019/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin
+CONFIG(debug, debug|release) {
+    DESTDIR = ../../DebugIntel
+}
+CONFIG(release, debug|release) {
+    DESTDIR = ../../ReleaseIntel
+}
+}
 
 SOURCES += \
         ThreadClassLib.cpp \

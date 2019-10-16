@@ -60,7 +60,7 @@ class THREADCLASSLIB_API ThreadClass
 public:
     /// @struct ThreadRoutineType
     /// Thread routine base type (abstract).
-    struct THREADCLASSLIB_API ThreadRoutineType : public std::unary_function<void, void>
+	struct THREADCLASSLIB_API ThreadRoutineType : public std::unary_function<void, void>
 	{
         ThreadRoutineType(ThreadClass* pThread) : m_pThread(pThread) {}
         ThreadRoutineType() : m_pThread(nullptr) {}
@@ -71,13 +71,13 @@ public:
         virtual ~ThreadRoutineType() {}
 	};
 
-    /// @struct ThreadRoutineType
+    /// @struct ThreadStopNotificatonType
 	/// Thread stop notification base type (abstract).
-    struct THREADCLASSLIB_API ThreadStopNotificatonType : public std::unary_function<void*, void>
+	struct THREADCLASSLIB_API ThreadStopNotificatonType : public std::unary_function<void*, void>
 	{
 	    virtual void operator()(void*) = 0;
         virtual ~ThreadStopNotificatonType();
-	};
+    };
 
     /// Constructor
 	/// @param pThreadRoutine : poiter to thread routine functor.
@@ -114,7 +114,7 @@ public:
     /// Stop cyclic execution of thread routine.
     virtual void stop()
     {
-        m_Cyclic = false;
+        m_Cyclic.store(false);
     }
 
     /// Destroy thread.
@@ -156,7 +156,7 @@ public:
     /// \param On : true or false.
     void setCyclic(bool On)
     {
-    	m_Cyclic = On;
+        m_Cyclic.store(On);
     }
 
     /// Is thread ready for execution?
@@ -169,7 +169,7 @@ public:
 
     /// Set cyclic period.
     /// \param TimeOutMs : cyclic period in milliseconds.
-    void setTimeOut(std::chrono::milliseconds TimeOutMs)
+    void setTimeOut(std::chrono::steady_clock::duration TimeOutMs)
     {
     	std::unique_lock<std::mutex> Lock(m_ControlCondVar.getMutex());
         m_TimeOut = TimeOutMs;
@@ -192,10 +192,7 @@ public:
 
     /// Name the thread.
     /// \param Name : thread name string.
-    void nameThread(std::string Name)
-    {
-        m_Name = Name;
-    }
+	void nameThread(std::string Name);
     /// Get thread name.
     /// \returns Thread name string.
     std::string threadName()
@@ -219,14 +216,41 @@ public:
     /// \param Prio : priority level.
     bool setPriority(int Prio);
 
+    /// Set thread policy and priority.
+    /// \details should be called after run().
+    /// \returns success or fail of the operation.
+    /// \param Policy : priority level.
+    /// \param Prio : priority level.
+    bool setPriority(int Policy, int Prio);
+
     /// Get priority level.
     /// \details should be called after run().
     /// \returns priority level or -1 on failure.
     int getPriority();
 
+    ///
+    /// \brief Get priority level.
+    /// \details should be called after run().
+    /// \param Policy - reference to receive current policy.
+    /// \param Prio - reference to receive current priority.
+    bool getPriority(int& Policy, int& Prio);
+
+    ///
+    /// \brief getThread - delivers internal STL thread.
+    /// \return - refernce to internal thread or reference to nothing.
+    ///
+    std::thread& getThread()
+    {
+        if(m_pThread)
+            return *m_pThread;
+        static std::thread Dummy ;
+        return Dummy;
+    }
+
 protected:
     CondVarClass m_ControlCondVar; ///< Internal condition variable.
-    volatile std::atomic<bool> m_Cyclic; ///< Cyclic state.
+    std::atomic<bool> m_Cyclic; ///< Cyclic state.
+//    volatile std::atomic<bool> m_Cyclic; ///< Cyclic state.
     bool m_Running; ///< Running state.
     std::chrono::steady_clock::duration m_TimeOut; ///< Cyclic period value.
     SpecificCondition m_ExitCondition; ///< Specified exit condition variable.
