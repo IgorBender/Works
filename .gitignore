@@ -1,18 +1,12 @@
 .metadata
 .settings
-Debug
-Release
-DebugClang
-ReleaseClang
-DebugCobalt
-ReleaseCobalt
-Debug_NO_EXCEPTIONS
-Release_NO_EXCEPTIONS
+Debug*
+Release*
 .dep.inc
 .make.state*
 pthreads
 build-*
-*pro.user*
+*pro.user?*
 /.project
 
 
