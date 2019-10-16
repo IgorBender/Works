@@ -8,5 +8,5 @@ pthreads
 build-*
 *pro.user?*
 /.project
-
+.vscode
 
