@@ -32,9 +32,6 @@ CONFIG(release, debug|release) {
 }
 
 SOURCES += \
-    InOutTest.cpp
+    ScenInputTest.cpp
 
-HEADERS += \
-    StringColorizer.h
-
-QMAKE_CLEAN += $$DESTDIR/$$TARGET*
+QMAKE_CLEAN += $$DESTDIR/$$TARGET

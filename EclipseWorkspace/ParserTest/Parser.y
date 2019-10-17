@@ -6,7 +6,7 @@
 %parse-param { yyscan_t scanner }
 
 %code requires {
-#include <ParserInterface.h>
+#include <BitParserInterface.h>
 #ifndef YY_TYPEDEF_YY_SCANNER_T
 #define YY_TYPEDEF_YY_SCANNER_T
 typedef void *yyscan_t;
@@ -14,7 +14,7 @@ typedef void *yyscan_t;
 }
 
 %code {
-#include <ParserInterface.h>
+#include <BitParserInterface.h>
 #include "ParserLex.h"
 void yyerror(yyscan_t scanner, const char *s);
 }
@@ -22,7 +22,7 @@ void yyerror(yyscan_t scanner, const char *s);
 %union {
 	char *IdString;
 	char OpSymbol;
-	ParserInterface::BitResultType NumType;
+    BitParserInterface::BitResultType NumType;
 	double RealType;
 }
 
@@ -47,7 +47,7 @@ exp: 	VAR { $$ = bitget_extra(scanner)->getTestValue($1);
 				} */
 			}
 	| comparison
-	| exp AND_OPER exp { $$ = bitget_extra(scanner)->andOperation(ParserInterface::BitResultType($1), ParserInterface::BitResultType($3)); }
+    | exp AND_OPER exp { $$ = bitget_extra(scanner)->andOperation(BitParserInterface::BitResultType($1), BitParserInterface::BitResultType($3)); }
 	| exp OR_OPER exp { $$ = bitget_extra(scanner)->orOperation($1, $3); }
 	| NOT_OPER exp { $$ = bitget_extra(scanner)->notOperation($2); }
 	| PAR_OPEN exp PAR_CLOSE { $$ = $2; }

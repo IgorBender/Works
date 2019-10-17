@@ -11,14 +11,14 @@
 %option prefix="def"
 
  /* Definition of extra parameter type. */
-%option extra-type="ParserInterface*"
+%option extra-type="BitParserInterface*"
 
 %{
 /*#include <io.h>*/
-#include <ParserInterface.h>
+#include <BitParserInterface.h>
 #include "DefTests.h"
 #define YYSTYPE         DEFSTYPE
-#define YY_EXTRA_TYPE ParserInterface*
+#define YY_EXTRA_TYPE BitParserInterface*
 %}
 
  /* Identifier may consist of exactly one 't' OR 'T' and any number of digits. */ 

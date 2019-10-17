@@ -3,26 +3,47 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-QMAKE_CXXFLAGS += -Wno-unused-parameter -Wno-sign-compare
+QMAKE_CXXFLAGS += -Wno-unused-parameter
 
+contains(QMAKE_CXX, clang++) {
 CONFIG(debug, debug|release) {
-    DESTDIR = ../Debug
+    DESTDIR = ../../DebugClang
 }
 CONFIG(release, debug|release) {
-    DESTDIR = ../Release
+    DESTDIR = ../../ReleaseClang
+}
+}
+
+contains(QMAKE_CXX, g++) {
+CONFIG(debug, debug|release) {
+    DESTDIR = ../../Debug
+}
+CONFIG(release, debug|release) {
+    DESTDIR = ../../Release
+}
+}
+
+contains(QMAKE_CXX, icpc) {
+QMAKE_RPATHDIR += /opt/intel/system_studio_2019/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin
+CONFIG(debug, debug|release) {
+    DESTDIR = ../../DebugIntel
+}
+CONFIG(release, debug|release) {
+    DESTDIR = ../../ReleaseIntel
+}
 }
 
 FLEXSOURCES = DefTests.l Parser.l
 BISONSOURCES = DefTests.y Parser.y
 
 SOURCES += \
-    ParserTest.cpp \
-    ParserInterface.cpp
+    BitParserInterface.cpp \
+    ParserTest.cpp
 
 QMAKE_CLEAN += $$DESTDIR/$$TARGET*
 
 HEADERS += \
-    ParserInterface.h
+    BitParserInterface.h
 
 flex.commands = flex ${QMAKE_FILE_IN}
 flex.input = FLEXSOURCES

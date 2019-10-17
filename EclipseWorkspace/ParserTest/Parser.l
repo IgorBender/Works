@@ -11,15 +11,15 @@
 %option prefix="bit"
 
  /* Definition of extra parameter type. */
-%option extra-type="ParserInterface*"
+%option extra-type="BitParserInterface*"
 
 %{
 #include <stdio.h>
 /*#include <io.h>*/
-#include <ParserInterface.h>
+#include <BitParserInterface.h>
 #include "Parser.h"
 #define YYSTYPE         BITSTYPE
-#define YY_EXTRA_TYPE ParserInterface*
+#define YY_EXTRA_TYPE BitParserInterface*
 %}
 
 TESTID     [tT][0-9]+

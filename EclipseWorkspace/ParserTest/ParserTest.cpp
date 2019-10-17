@@ -46,11 +46,11 @@
  *
  */
 #include <iostream>
-#include "ParserInterface.h"
+#include "BitParserInterface.h"
 
 using namespace std;
 
-int main(int argc, char *argv[])
+int main(/*int argc, char *argv[]*/)
 {
     // Perform following tests :
     //   - test t1
@@ -62,23 +62,58 @@ int main(int argc, char *argv[])
     // Values of not defined measurements will be set as 0.0
     std::string Definitions = "t1 t2 t3 m1 m2";
 
-    ParserInterface Parser;
+    BitParserInterface Parser;
 
-    if(!ParserInterface::parseDefinitionsString(Definitions, &Parser))
+    if(!BitParserInterface::parseDefinitionsString(Definitions, &Parser))
     {
         std::cout << "Wrong definitions." << std::endl;
         return 1;
     }
-    Parser.setTestResult("t1", ParserInterface::BitResultType::BitResultFailed);
-    Parser.setTestResult("t2", ParserInterface::BitResultType::BitResultFailed);
-    Parser.setTestResult("t3", ParserInterface::BitResultType::BitResultFailed);
-    Parser.setMesuredResult("m1", 2.45);
-    // Measure m5 is not set so its value will be 0.
+
+
+    BitParserInterface::TestResultsMapType& Tests = Parser.getTests();
+    BitParserInterface::MeasureResultsMapType& Measures = Parser.getMeasures();
+    cout << "Tests to be performed ";
+    for(auto t : Tests)
+        // Perform test procedure in accordance to test, for now print only.
+        cout << t.first << " ";
+    cout << endl;
+    cout << "Measures to be measured ";
+    for(auto m : Measures)
+        // Perform measure procedure in accordance to measure, for now print only.
+        cout << m.first << " ";
+    cout << endl;
+
+    // Set tests and measures results after performed procedures, for now set some values for test purposes.
+    bool SetResult = Parser.setTestResult("t1", BitParserInterface::BitResultType::BitResultFailed);
+    if(!SetResult)
+        cout << R"(Wrong test type "t1")" << endl;
+    SetResult = Parser.setTestResult("t2", BitParserInterface::BitResultType::BitResultFailed);
+    if(!SetResult)
+        cout << R"(Wrong test type "t2")" << endl;
+    SetResult = Parser.setTestResult("t3", BitParserInterface::BitResultType::BitResultFailed);
+    if(!SetResult)
+        cout << R"(Wrong test type "t3")" << endl;
+    SetResult = Parser.setMesuredResult("m1", 2.45);
+    if(!SetResult)
+        cout << R"(Wrong measure type "m1")" << endl;
+    // Measure m2 is not set so its value will be 0.
+
+    // Attempt to set not defined mesasure
+    SetResult = Parser.setMesuredResult("m5", 2.45);
+    if(!SetResult)
+        cout << R"(Wrong measure type "m5")" << endl;
+
+    for(auto t : Tests)
+        cout << t.first << " result : " << t.second << endl;
+    for(auto m : Measures)
+        cout << m.first << " value : " << m.second << endl;;
 
     // Failure is when t1 is OK and t2 is Failed or t3 is failed and m1 is less than or equal to 2.45.
     // Result should be Failed
     std::string Analysis = "~t1 & t2 | t3 & m1 <= 2.45";
-    if(ParserInterface::parseResultString(Analysis, &Parser))
+    cout << endl << "Result of ~t1 & t2 | t3 & m1 <= 2.45 : ";
+    if(BitParserInterface::parseResultString(Analysis, &Parser))
     {
         std::cout << Parser.getResult() << std::endl<< std::endl;
     }
@@ -90,7 +125,8 @@ int main(int argc, char *argv[])
     // Failure is when t1 is OK and t2 is Failed and t3 is failed and m1 is less than or equal to 2.45.
     // Result should be OK
     Analysis = "~t1 & t2 & t3 & m1 <= 2.45";
-    if(ParserInterface::parseResultString(Analysis, &Parser))
+    cout << "Result of ~t1 & t2 & t3 & m1 <= 2.45 : ";
+    if(BitParserInterface::parseResultString(Analysis, &Parser))
     {
         std::cout << Parser.getResult() << std::endl << std::endl;
     }

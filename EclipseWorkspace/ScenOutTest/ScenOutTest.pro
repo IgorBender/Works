@@ -31,10 +31,9 @@ CONFIG(release, debug|release) {
 }
 }
 
+LIBS += -lstdc++fs
+
 SOURCES += \
-    InOutTest.cpp
+        ScenOutTest.cpp
 
-HEADERS += \
-    StringColorizer.h
-
-QMAKE_CLEAN += $$DESTDIR/$$TARGET*
+QMAKE_CLEAN += $$DESTDIR/$$TARGET
