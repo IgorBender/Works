@@ -140,6 +140,21 @@ bool computeLeg(uint32_t Target, LegTypeEnum LegType, const std::vector<std::str
 
 using namespace std;
 
+// ------------------------------------------------------------------------------------
+// The program takes textual trajectory file and generates binary data file.
+//     Usage : ScenInputTest <target_number> <input_scenario_file> <output_bynary_file>
+//     target_number : 1 - 4, 0 for all 4 targets.
+// If output file exists with differerent target the programm will add new binary data, thus
+//    generation binary data for more than one target (accumulative behavior).
+// The scenario file can cisist of 5 kinds of legs:
+//    POLAR - defines polarization angle dynamic.
+//    SILENT - no target during some number of cycles.
+//    DOT - static target coordinates during some number of cycles.
+//    LINE - simple line trajectory.
+//    ARC - arc trajectory.
+//
+// -----------------------------------------------------------------------------
+
 int main(int argc, char* argv[])
 {
     if(4 > argc)

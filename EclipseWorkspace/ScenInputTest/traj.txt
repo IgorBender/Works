@@ -1,0 +1,28 @@
+# Comment
+         # More comment
+
+POLAR 0
+# Type   Speed    Start    Start    End     End    Center Center  Spin
+#                   Az       El      Az      El      Az     El
+Silent   3000
+Dot      3000     -6        7
+Line	 10,      -6        7       6       7;  # Horizontal line
+Arc      10        6.0      7       7       6        6      6      1 # 90 deg arc, radius 1, clockwize
+Line     10        7        6       7      -6
+Arc      10        7       -6       6      -7        6      -6     1
+Line     10        6       -7       -6     -7
+Arc      10        -6      -7       -7     -6       -6      -6     1
+Line     10        -7      -6       -7      6
+Arc      10        -7       6       -6      7        -6      6     1
+
+Silent   3000
+Dot      3000     -6        7
+Line	 10,      -6        7       6       7;  # Horizontal line
+Arc      10        6.0      7       7       6        6      6      1 # 90 deg arc, radius 1, clockwize
+Line     10        7        6       7      -6
+Arc      10        7       -6       6      -7        6      -6     1
+Line     10        6       -7       -6     -7
+Arc      10        -6      -7       -7     -6       -6      -6     1
+Line     10        -7      -6       -7      6
+Arc      10        -7       6       -6      7        -6      6     1
+
