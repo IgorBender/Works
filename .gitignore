@@ -9,4 +9,6 @@ build-*
 *pro.user?*
 /.project
 .vscode
+.suo
+.vs
 
