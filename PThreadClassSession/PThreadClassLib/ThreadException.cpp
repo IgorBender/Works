@@ -22,7 +22,7 @@
  * distribution.
  */
 
-#include <ThreadException.h>
+#include "ThreadException.h"
 
 
 ThreadException::ThreadException(const char* FileName, int LineNum,

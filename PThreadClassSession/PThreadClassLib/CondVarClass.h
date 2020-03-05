@@ -22,15 +22,14 @@
  * distribution.
  */
 
-#ifndef _CONVARCLASS_H
-#define _CONVARCLASS_H
+#ifndef CONVARCLASS_H
+#define CONVARCLASS_H
 
 #include <pthread.h>
 #include <errno.h>
 
-#include <ThreadException.h>
+#include "ThreadException.h"
 #include <bitset>
-using namespace std;
 
 #ifdef _WIN32
 #pragma warning ( disable : 4290 )
@@ -46,13 +45,13 @@ using namespace std;
 class PTHREADCLASSLIB_API CondVarClass {
 public:
 /// \typedef Predicate type
-typedef unsigned int PredicateIdType;
+typedef uint32_t PredicateIdType;
 /// \define 
 #define MAX_NUM_OF_PREDS 32
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
     /// Constructor.
     /// \param PredNum : number of predicates.
-    CondVarClass(int PredNum) noexcept(false);
+    CondVarClass(uint32_t PredNum) noexcept(false);
 
     /// Add predicate to predicates set.
     /// \param PredicateValue : value of adding predicate.
@@ -69,7 +68,7 @@ typedef unsigned int PredicateIdType;
     /// \throw ThreadException
     void setPredicate(PredicateIdType PredNum, bool PredicateValue) noexcept(false);
 #else
-    CondVarClass(int PredNum);
+    CondVarClass(PredicateIdType PredNum);
 
     PredicateIdType addPredicate(bool PredicateValue);
     bool getPredicate(PredicateIdType PredNum, bool& PredicateValue);

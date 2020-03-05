@@ -21,7 +21,7 @@
  * 3. This notice may not be removed or altered from any source
  * distribution.
  */
-#include <CondVarClass.h>
+#include "CondVarClass.h"
 #include <time.h>
 
 #ifndef _WIN32
@@ -36,7 +36,7 @@
 #endif
 
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
-CondVarClass::CondVarClass(int PredNum) noexcept(false) : m_PredNum(PredNum)
+CondVarClass::CondVarClass(uint32_t PredNum) noexcept(false) : m_PredNum(PredNum)
 {
     if(PredNum > MAX_NUM_OF_PREDS)
     {
@@ -71,7 +71,7 @@ CondVarClass::CondVarClass(int PredNum) noexcept(false) : m_PredNum(PredNum)
 #ifdef __VXWORKS__
     bzero(reinterpret_cast < char* > (&m_CondVar), sizeof m_CondVar);
 #endif
-    Result = pthread_cond_init(&m_CondVar, NULL);
+    Result = pthread_cond_init(&m_CondVar, nullptr);
     if(Result != 0)
     {
         THREAD_EXCEPT_THROW(Result);
@@ -107,7 +107,7 @@ CondVarClass::PredicateIdType CondVarClass::addPredicate(bool PredicateValue) no
     return m_PredNum - 1;
 }
 #else
-CondVarClass::CondVarClass(int PredNum) : m_PredNum(PredNum)
+CondVarClass::CondVarClass(PredicateIdType PredNum) : m_PredNum(PredNum)
 {
     if(PredNum > MAX_NUM_OF_PREDS)
     {
@@ -149,7 +149,7 @@ CondVarClass::CondVarClass(int PredNum) : m_PredNum(PredNum)
 #ifdef __VXWORKS__
     bzero(reinterpret_cast < char* > (&m_CondVar), sizeof m_CondVar);
 #endif
-    Result = pthread_cond_init(&m_CondVar, NULL);
+    Result = pthread_cond_init(&m_CondVar, nullptr);
     if(Result != 0)
     {
         Ok = false;
@@ -183,7 +183,7 @@ CondVarClass::PredicateIdType CondVarClass::addPredicate(bool PredicateValue)
 {
     if(m_PredNum >= MAX_NUM_OF_PREDS - 1)
     {
-        return -1;
+        return static_cast<uint32_t>(-1);
     }
     m_Predicates[m_PredNum++] = PredicateValue;
     return m_PredNum - 1;
@@ -250,7 +250,7 @@ int CondVarClass::wait(time_t Timeout)
             return EINVAL;
         }
     }
-    return 0;
+//    return 0;
 }
 
 

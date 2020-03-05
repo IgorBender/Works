@@ -22,7 +22,7 @@
  * distribution.
  */
 
-#include <PRWLockClass.h>
+#include "PRWLockClass.h"
 #include <time.h>
 #ifdef _WIN32
 #include <sys/timeb.h>
@@ -146,7 +146,7 @@ int PRWLockClass::timedLockRead(unsigned long Timeout)
             return EINVAL;
         }
     }
-    return 0;
+//    return 0;
 }
 
 int PRWLockClass::timedLockWrite(unsigned long Timeout)

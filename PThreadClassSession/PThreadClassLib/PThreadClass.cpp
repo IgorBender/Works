@@ -22,13 +22,13 @@
  * distribution.
  */
 
-#include <PThreadClass.h>
+#include "PThreadClass.h"
 #if (!defined(_WIN32) &&  !defined(__VXWORKS__))
 #include <strings.h>
 #include <signal.h>
 #endif
 
-PThreadClass::PThreadClass(Runnable Routine, unsigned long Time, bool CyclicThread, bool AttachedThread
+PThreadClass::PThreadClass(Runnable Routine, time_t Time, bool CyclicThread, bool AttachedThread
 #ifdef __SunOS
     , bool BoundThread
 #endif
@@ -46,9 +46,9 @@ noexcept(false)
         m_Bound(BoundThread),
 #endif
         m_TimeOut(Time),
-        m_pExitCondition(NULL),
-        m_pStartCondition(NULL),
-        m_pWaitCondition(NULL),
+        m_pExitCondition(nullptr),
+        m_pStartCondition(nullptr),
+        m_pWaitCondition(nullptr),
         m_CancelType(PTHREAD_CANCEL_DEFERRED)
 {
 #ifdef _WITHOUT_THREAD_EXCEPTIONS
@@ -111,17 +111,17 @@ PThreadClass::~PThreadClass()
     if(m_pWaitCondition)
     {
         delete m_pWaitCondition;
-        m_pWaitCondition = NULL;
+        m_pWaitCondition = nullptr;
     }
     if(m_pStartCondition)
     {
         delete m_pStartCondition;
-        m_pStartCondition = NULL;
+        m_pStartCondition = nullptr;
     }
     if(m_pExitCondition)
     {
         delete m_pExitCondition;
-        m_pExitCondition = NULL;
+        m_pExitCondition = nullptr;
     }
 }
 
@@ -160,7 +160,7 @@ void* PThreadClass::threadLoop()
             m_pExitCondition->setPredicate(false);
             m_ControlCondVar.unlockMutex();
             m_Running = false;
-            return NULL;
+            return nullptr;
         }
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
         if(m_pStartCondition->getPredicate())
@@ -208,7 +208,7 @@ void* PThreadClass::threadLoop()
 #endif
         {
             m_ControlCondVar.unlockMutex();
-            return NULL;
+            return nullptr;
         }
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
         if(m_pStartCondition->getPredicate())
@@ -227,8 +227,8 @@ void* PThreadClass::threadLoop()
         }
         m_ControlCondVar.unlockMutex();
     }
-    m_Running = false;
-    return NULL;
+//    m_Running = false;
+//    return nullptr;
 }
 
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
@@ -309,7 +309,7 @@ bool PThreadClass::join()
     if(m_Attached)
     {
         char* pChar;
-        return !pthread_join(m_ThreadId, (void**)&pChar);
+        return !pthread_join(m_ThreadId, reinterpret_cast<void**>(&pChar));
     }
     return true;
 }
@@ -355,9 +355,9 @@ bool PThreadClass::setPriority(int Prio)
             return true;
         else
             return false;
-    }        
+    }
 #endif
-    return true;
+//    return true;
 }
 
 int PThreadClass::getPriority()
@@ -384,8 +384,9 @@ int PThreadClass::getPriority()
         return -1;
     }
     return Params.sched_priority;
-#endif
+#else
     return -1;
+#endif
 }
 
 bool PThreadClass::setPolicy(int Pol)
@@ -429,7 +430,9 @@ bool PThreadClass::setPolicy(int Pol)
             return false;
     }        
 #endif
+#ifdef _WIN32
     return true;
+#endif
 }
 
 int PThreadClass::getPolicy()
@@ -456,8 +459,9 @@ int PThreadClass::getPolicy()
         return -1;
     }
     return Policy;
-#endif
+#else
     return -1;
+#endif
 }
 
 bool PThreadClass::setStackAddr(void* pStack)
@@ -489,7 +493,7 @@ bool PThreadClass::setStackAddr(void* pStack)
         return true;
     
 #endif
-    return true;
+//    return true;
 }
 
 void* PThreadClass::getStackAddr()
@@ -497,7 +501,7 @@ void* PThreadClass::getStackAddr()
 #if !( _POSIX_THREAD_ATTR_STACKADDR >= 1 )
     return false;
 #endif
-    void* TmpPtr = 0;
+    void* TmpPtr = nullptr;
 #ifdef _WIN32
     if(pthread_attr_getstackaddr(&m_ThreadAttribute, &TmpPtr) != 0)
         return NULL;
@@ -506,12 +510,12 @@ void* PThreadClass::getStackAddr()
 #else
     size_t Size;
     if(pthread_attr_getstack(&m_ThreadAttribute, &TmpPtr, &Size) != 0)
-        return  NULL;
+        return  nullptr;
     else
         return TmpPtr;
     
 #endif
-    return NULL;
+//    return nullptr;
 }
 
 bool PThreadClass::setStackSize(size_t StackSize)
@@ -531,7 +535,7 @@ bool PThreadClass::setStackSize(size_t StackSize)
         return false;
     else
         return true;
-    return true;
+//    return true;
 }
 
 size_t PThreadClass::getStackSize()
@@ -544,7 +548,7 @@ size_t PThreadClass::getStackSize()
         return static_cast < size_t > (-1);
     else
         return TmpSize;
-    return static_cast < size_t > (-1);
+//    return static_cast < size_t > (-1);
 }
 
 void PThreadClass::setCyclic(bool On)

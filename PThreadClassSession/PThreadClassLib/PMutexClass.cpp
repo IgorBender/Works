@@ -22,7 +22,7 @@
  * distribution.
  */
 
-#include <PMutexClass.h>
+#include "PMutexClass.h"
 #include <time.h>
 #ifdef _WIN32
 #include <sys/timeb.h>
@@ -161,5 +161,5 @@ int PMutexClass::timedLockMutex(unsigned long Timeout)
             return EINVAL;
         }
     }
-    return 0;
+//    return 0;
 }

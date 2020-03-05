@@ -25,7 +25,7 @@
 #ifndef PTHREADEXTENDED_H
 #define	PTHREADEXTENDED_H
 
-#include <PThreadClass.h>
+#include "PThreadClass.h"
 
 /// \file 
 ///
@@ -53,7 +53,7 @@ public:
     /// \param AttachedThread : attached (true) or unattached (false) thread.
     /// \param BoundThread : binding to LWP flag. Applicable only on supporting binding OSs.
     /// \throw ThreadException
-    PThreadExtended(Runnable Routine, unsigned long Time = PTHREAD_INFINITE, bool CyclicThread = false,
+    PThreadExtended(Runnable Routine, time_t Time = PTHREAD_INFINITE, bool CyclicThread = false,
 		bool AttachedThread = true
 #ifdef __SunOS
     , bool BoundThread = false
@@ -62,15 +62,19 @@ public:
 #ifdef __SunOS
     , BoundThread
 #endif
-        ), m_Name(""), m_StopNotificationFunc(NULL), m_StopNotificationFuncArg(NULL)
+        ), m_Name(""), m_StopNotificationFunc(nullptr), m_StopNotificationFuncArg(nullptr)
     {}
 
+    /// Initialize and run thread, make it ready to execute thread routine.
+    /// \throw ThreadException
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    virtual bool run() noexcept(false);
+#else
+    virtual int run();
+#endif
     /// Name the thread.
     /// \param Name : thread name string.
-    void nameThread(string Name)
-    {
-        m_Name = Name;
-    }
+    void nameThread(string Name);
     /// Get thread name.
     /// \return Thread name string.
     string threadName()
@@ -94,7 +98,8 @@ private:
     
     /// Internal thread loop.
     virtual void* threadLoop();
-
+    /// Name the thread.
+    void nameThread();
 };
 
 #endif	/* PTHREADEXTENDED_H */

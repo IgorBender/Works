@@ -22,13 +22,13 @@
  * distribution.
  */
 
-#ifndef _PBARRIERCLASS_H
-#define _PBARRIERCLASS_H
+#ifndef PBARRIERCLASS_H
+#define PBARRIERCLASS_H
 
 #include <pthread.h>
 #include <errno.h>
 
-#include <ThreadException.h>
+#include "ThreadException.h"
 
 #ifdef WIN32
 #pragma warning ( disable : 4290 )
@@ -45,7 +45,7 @@ public:
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
     /// Constructor.
     /// \throw ThreadException
-    PBarrierClass(int Counter) noexcept(false);
+    PBarrierClass(uint32_t Counter) noexcept(false);
 #else
     PBarrierClass(int Counter);
 

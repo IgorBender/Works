@@ -22,11 +22,11 @@
  * distribution.
  */
 
-#include <PBarrierClass.h>
+#include "PBarrierClass.h"
 
 
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
-PBarrierClass::PBarrierClass(int Counter) noexcept(false) : Ok(true)
+PBarrierClass::PBarrierClass(uint32_t Counter) noexcept(false) : Ok(true)
 #else
 PBarrierClass::PBarrierClass(int Counter) : Ok(true)
 #endif

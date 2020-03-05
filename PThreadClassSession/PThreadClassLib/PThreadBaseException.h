@@ -25,7 +25,7 @@
 #ifndef _PTHREADBASEEXCEPTION_H
 #define _PTHREADBASEEXCEPTION_H
 
-#include <PThreadClassLib.h>
+#include "PThreadClassLib.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4786)

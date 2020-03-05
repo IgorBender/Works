@@ -30,7 +30,7 @@
 #ifndef PTHREADCLASS_H
 #define PTHREADCLASS_H
 
-#include <CondVarClass.h>
+#include "CondVarClass.h"
 #include <sched.h>
 
 #ifndef _WIN32
@@ -67,7 +67,7 @@ struct PTHREADCLASSLIB_API Runnable
     /// \param p : pointer to thread routine context.
     /// \param cp : pointer to clean-up routine context.
     /// \param CleanUpExecute : clean-up handler execution flag.
-    Runnable(PThreadRoutineType pRoutine, PThreadCleanUpRoutineType pCleanUpRoutine = NULL, void* p = NULL, void* cp = NULL, int CleanUpExecute = 0) : pthreadRoutine(pRoutine),
+    Runnable(PThreadRoutineType pRoutine, PThreadCleanUpRoutineType pCleanUpRoutine = nullptr, void* p = nullptr, void* cp = nullptr, int CleanUpExecute = 0) : pthreadRoutine(pRoutine),
         cleanUpRoutine(pCleanUpRoutine), pContext(p), pCleanUpContext(cp), m_CleanUpExecute(CleanUpExecute)
     {}
     /// Cast to thread routine operator.
@@ -111,7 +111,7 @@ public:
     /// \param AttachedThread : attached (true) or unattached (false) thread.
     /// \param BoundThread : binding to LWP flag. Applicable only on supporting binding OSs.
     /// \throw ThreadException
-    PThreadClass(Runnable Routine, unsigned long Time = PTHREAD_INFINITE, bool CyclicThread = false,
+    PThreadClass(Runnable Routine, time_t Time = PTHREAD_INFINITE, bool CyclicThread = false,
 		bool AttachedThread = true
 #ifdef __SunOS
     , bool BoundThread = false
@@ -214,14 +214,14 @@ public:
     
     /// Set cyclic period.
     /// \param Time : cyclic period in milliseconds.
-    void setTimeOut(unsigned long Time)
+    void setTimeOut(time_t Time)
     {
         m_TimeOut = Time;
     }
     
     /// Get cyclic period value.
     /// \return cyclic period in milliseconds.
-    unsigned long getTimeOut()
+    time_t getTimeOut()
     {
         return m_TimeOut;
     }
@@ -294,7 +294,7 @@ protected:
     bool m_Bound; ///< Bound state.
 #endif
     bool m_Running; ///< Running state.
-    unsigned long m_TimeOut; ///< Cyclic period value.
+    time_t m_TimeOut; ///< Cyclic period value.
     SpecificCondition* m_pExitCondition; ///< Scpecified exit condipion variable.
     SpecificCondition* m_pStartCondition; ///< Scpecified start condipion variable.
     SpecificCondition* m_pWaitCondition; ///< Scpecified wait condipion variable.

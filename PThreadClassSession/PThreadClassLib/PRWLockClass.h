@@ -22,13 +22,13 @@
  * distribution.
  */
 
-#ifndef _PRWLOCKCLASS_H
-#define	_PRWLOCKCLASS_H
+#ifndef PRWLOCKCLASS_H
+#define	PRWLOCKCLASS_H
 
 #include <pthread.h>
 #include <errno.h>
 
-#include <ThreadException.h>
+#include "ThreadException.h"
 
 #ifdef WIN32
 #pragma warning ( disable : 4290 )
@@ -113,5 +113,5 @@ protected:
 #endif
 };
 
-#endif	/* _PRWLOCKCLASS_H */
+#endif	/* PRWLOCKCLASS_H */
 

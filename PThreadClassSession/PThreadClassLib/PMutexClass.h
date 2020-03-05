@@ -22,13 +22,13 @@
  * distribution.
  */
 
-#ifndef _PMUTEXCLASS_H
-#define _PMUTEXCLASS_H
+#ifndef PMUTEXCLASS_H
+#define PMUTEXCLASS_H
 
 #include <pthread.h>
 #include <errno.h>
 
-#include <ThreadException.h>
+#include "ThreadException.h"
 
 #ifdef WIN32
 #pragma warning ( disable : 4290 )
