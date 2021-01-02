@@ -5,10 +5,11 @@ Release*
 .dep.inc
 .make.state*
 pthreads
-build-*
+build*
 *pro.user*
 /.project
 .vscode
 .suo
 .vs
-
+*.cmake
+CMakeLists.txt.user
