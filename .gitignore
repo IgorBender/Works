@@ -13,3 +13,4 @@ build*
 .vs
 *.cmake
 CMakeLists.txt.user
+CMakeSettings.json
