@@ -6,10 +6,15 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
+#if (__GNUC__ && __GNUC__ >= 8) || (__clang_major__ > 7)
+#include <filesystem>
+namespace fs = std::filesystem;
+#else
 #include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#endif
 
 using namespace std;
-namespace fs = experimental::filesystem;
 
 const uint8_t CHANNEL_1_STATE = 0x01;
 const uint8_t CHANNEL_2_STATE = CHANNEL_1_STATE << 1;

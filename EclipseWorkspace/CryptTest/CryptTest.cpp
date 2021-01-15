@@ -5,31 +5,46 @@
  *      Author: igor
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <rpc/des_crypt.h>
 #include <fstream>
+#include <gcrypt.h>
 #include <iostream>
 #include <sstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 using namespace std;
 
-
 int main(void)
 {
-    // Define 8 bytes key.
-    char key[8];
-    memcpy(key, "Hello World", 8);
-    des_setparity(key);
+    // Iniialize GCRYPT library
+    if(!gcry_check_version("1.6.0"))
+    {
+        return 1;
+    }
+
+    /* Disable secure memory.  */
+    gcry_control(GCRYCTL_DISABLE_SECMEM, 0);
+
+    /* Tell Libgcrypt that initialization has completed. */
+    gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0);
 
     cout << "Encoding..." << endl;
 
-    /*
-     * To encode data the containing buffer should be aligned to 8 bytes.
-     * The file needs to padded to required amount of bites.
-     */
+    gcry_cipher_hd_t EncodeCfer;
+    gcry_error_t Result =
+        gcry_cipher_open(&EncodeCfer, GCRY_CIPHER_ARCFOUR, GCRY_CIPHER_MODE_STREAM, 0);
+    if(Result)
+    {
+        cerr << "GCrypt error " << gcry_strsource(Result) << gcry_strerror(Result) << endl;
+    }
+    Result = gcry_cipher_setkey(EncodeCfer, "Hello World", 12);
+    if(Result)
+    {
+        cerr << "GCrypt error " << gcry_strsource(Result) << gcry_strerror(Result) << endl;
+    }
+
     ifstream In("test.txt", ios::binary);
     if(!In)
     {
@@ -40,34 +55,46 @@ int main(void)
     streamoff FileSize = In.seekg(0, In.end).tellg();
     In.seekg(0, In.beg);
 
-    char Buffer[8];
-    ofstream Out("test.bin", ios::binary);
-//    stringstream Store;
-    // Write real file size to result encoded file to preserve for decoding.
-    Out.write(reinterpret_cast<char*>(&FileSize), sizeof(FileSize));
-//    Store.write(reinterpret_cast<char*>(&FileSize), sizeof(FileSize));
-    // Encode and write encoded data into file with portions of 8 bytes (may be any amount equal to multiplies of 8).
-    for(streamoff i = 0; i < FileSize / 8 + (FileSize % 8 ? 1 : 0); ++i)
+    char InBuffer[64];
+    char OutBuffer[sizeof(InBuffer)];
+    ofstream Out;
+    Out.open("test.bin", ios::binary);
+
+    streamsize ReadCount = 0;
+    for(streamoff i = 0;
+        i < FileSize / streamoff(sizeof(InBuffer)) + (FileSize % sizeof(InBuffer) ? 1 : 0); ++i)
     {
-        In.read(Buffer, 8);
+        In.read(InBuffer, sizeof(InBuffer));
         if(!In)
+            ReadCount = In.gcount();
+        else
+            ReadCount = sizeof(InBuffer);
+        Result = gcry_cipher_encrypt(EncodeCfer, OutBuffer, sizeof(OutBuffer), InBuffer, ReadCount);
+        if(Result)
         {
-            // If last portion of data is less than 8 bytes padd with zeroes.
-            bzero(&Buffer[size_t(In.gcount())], 8 - size_t(In.gcount()));
+            cerr << "GCrypt error " << gcry_strsource(Result) << gcry_strerror(Result) << endl;
         }
-        int Result = ecb_crypt(key, Buffer, 8, DES_ENCRYPT | DES_SW);
-        if(DES_FAILED(Result))
-        {
-            cout << "Encryption error" << endl;
-            exit(1);
-        }
-        Out.write(Buffer, 8);
-//        Store.write(Buffer, 8);
+        else
+            Out.write(OutBuffer, ReadCount);
     }
+
     Out.close();
     In.close();
+    gcry_cipher_close(EncodeCfer);
 
     cout << "Decoding..." << endl;
+
+    gcry_cipher_hd_t DecodeCfer;
+    Result = gcry_cipher_open(&DecodeCfer, GCRY_CIPHER_ARCFOUR, GCRY_CIPHER_MODE_STREAM, 0);
+    if(Result)
+    {
+        cerr << "GCrypt error " << gcry_strsource(Result) << gcry_strerror(Result) << endl;
+    }
+    Result = gcry_cipher_setkey(DecodeCfer, "Hello World", 12);
+    if(Result)
+    {
+        cerr << "GCrypt error " << gcry_strsource(Result) << gcry_strerror(Result) << endl;
+    }
 
     In.open("test.bin", ios::binary);
     if(!In)
@@ -75,33 +102,30 @@ int main(void)
         cout << "Errror open file test.bin" << endl;
         exit(1);
     }
-    // Read original file size from file.
-    In.read(reinterpret_cast<char*>(&FileSize), sizeof(FileSize));
+    FileSize = In.seekg(0, In.end).tellg();
+    In.seekg(0, In.beg);
 
     Out.open("test2.txt", ios::binary);
-    for(streamoff i = 0; i < FileSize / 8 + (FileSize % 8 ? 1 : 0); ++i)
+//    ReadCount = 0;
+    for(streamoff i = 0;
+        i < FileSize / streamoff(sizeof(InBuffer)) + (FileSize % sizeof(InBuffer) ? 1 : 0); ++i)
     {
-        In.read(Buffer, 8);
-//        Store.read(Buffer, 8);
+        In.read(InBuffer, sizeof(InBuffer));
         if(!In)
+            ReadCount = In.gcount();
+        else
+            ReadCount = sizeof(InBuffer);
+        Result = gcry_cipher_decrypt(DecodeCfer, OutBuffer, sizeof(OutBuffer), InBuffer, ReadCount);
+        if(Result)
         {
-            cout << "Corrupted encripted file" << endl;
-            exit(1);
+            cerr << "GCrypt error " << gcry_strsource(Result) << gcry_strerror(Result) << endl;
         }
-        int Result = ecb_crypt(key, Buffer, 8, DES_DECRYPT | DES_SW);
-        if(DES_FAILED(Result))
-        {
-            cout << "Decryption error" << endl;
-            exit(1);
-        }
-        Out.write(Buffer, ((FileSize - Out.tellp()) < 8 ? (FileSize - Out.tellp()) : 8));
+        else
+            Out.write(OutBuffer, ReadCount);
     }
     Out.close();
     In.close();
+    gcry_cipher_close(DecodeCfer);
 
     return 0;
 }
-
-
-
-

@@ -1,13 +1,9 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(ScenInputTest LANGUAGES CXX)
+project(CryptTest LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-if ( NOT (${UNIX}))
-    add_compile_definitions(_CRT_SECURE_NO_WARNINGS  _WINSOCK_DEPRECATED_NO_WARNINGS _USE_MATH_DEFINES)
-endif()
 
 IF("${CMAKE_CXX_COMPILER}" STREQUAL "/usr/bin/clang++")
     IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
@@ -36,9 +32,6 @@ IF("${CMAKE_CXX_COMPILER}" STREQUAL "/home/opt/intel/sw_dev_tools/bin/icpc")
     ENDIF()
 ENDIF()
 
-if(NOT (${UNIX}))
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/Debug)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/Release)
-endif()
+link_libraries(gcrypt)
 
-add_executable(ScenInputTest ScenInputTest.cpp)
+add_executable(CryptTest CryptTest.cpp)
