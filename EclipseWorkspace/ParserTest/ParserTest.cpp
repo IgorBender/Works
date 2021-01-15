@@ -11,7 +11,7 @@
  * ParserInterface is class wrapping two definitive languages :
  *  - definition language providing rules for build in tests execution,
  *  - analysis language providing rules for build in tests results analysis.
- *  Each language is implemented in as set of two files for lexical analyzer (flex)
+ *  Each language is implemented as a set of two files for lexical analyzer (flex)
  *  and parser (bison).
  *
  * Definition language defines naming for tests no be executed. Tests should be of
@@ -60,7 +60,8 @@ int main(/*int argc, char *argv[]*/)
     //   - measurement m2
     // Test results of not defined tests will be set as NOT TESTED
     // Values of not defined measurements will be set as 0.0
-    std::string Definitions = "t1 t2 t3 m1 m2";
+//    std::string Definitions = "t1 t2 t3 m1 m2";
+    std::string Definitions = "sleep 2000 set id_1 2 sleep 3000 m1" ;
 
     BitParserInterface Parser;
 

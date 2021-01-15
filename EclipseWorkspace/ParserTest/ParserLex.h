@@ -2,9 +2,9 @@
 #define bitHEADER_H 1
 #define bitIN_HEADER 1
 
-#line 6 "ParserLex.h"
+#line 6 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/ParserLex.h"
 
-#line 8 "ParserLex.h"
+#line 8 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/ParserLex.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -13,9 +13,231 @@
 #define FLEX_SCANNER
 #define YY_FLEX_MAJOR_VERSION 2
 #define YY_FLEX_MINOR_VERSION 6
-#define YY_FLEX_SUBMINOR_VERSION 0
+#define YY_FLEX_SUBMINOR_VERSION 4
 #if YY_FLEX_SUBMINOR_VERSION > 0
 #define FLEX_BETA
+#endif
+
+#ifdef yy_create_buffer
+#define bit_create_buffer_ALREADY_DEFINED
+#else
+#define yy_create_buffer bit_create_buffer
+#endif
+
+#ifdef yy_delete_buffer
+#define bit_delete_buffer_ALREADY_DEFINED
+#else
+#define yy_delete_buffer bit_delete_buffer
+#endif
+
+#ifdef yy_scan_buffer
+#define bit_scan_buffer_ALREADY_DEFINED
+#else
+#define yy_scan_buffer bit_scan_buffer
+#endif
+
+#ifdef yy_scan_string
+#define bit_scan_string_ALREADY_DEFINED
+#else
+#define yy_scan_string bit_scan_string
+#endif
+
+#ifdef yy_scan_bytes
+#define bit_scan_bytes_ALREADY_DEFINED
+#else
+#define yy_scan_bytes bit_scan_bytes
+#endif
+
+#ifdef yy_init_buffer
+#define bit_init_buffer_ALREADY_DEFINED
+#else
+#define yy_init_buffer bit_init_buffer
+#endif
+
+#ifdef yy_flush_buffer
+#define bit_flush_buffer_ALREADY_DEFINED
+#else
+#define yy_flush_buffer bit_flush_buffer
+#endif
+
+#ifdef yy_load_buffer_state
+#define bit_load_buffer_state_ALREADY_DEFINED
+#else
+#define yy_load_buffer_state bit_load_buffer_state
+#endif
+
+#ifdef yy_switch_to_buffer
+#define bit_switch_to_buffer_ALREADY_DEFINED
+#else
+#define yy_switch_to_buffer bit_switch_to_buffer
+#endif
+
+#ifdef yypush_buffer_state
+#define bitpush_buffer_state_ALREADY_DEFINED
+#else
+#define yypush_buffer_state bitpush_buffer_state
+#endif
+
+#ifdef yypop_buffer_state
+#define bitpop_buffer_state_ALREADY_DEFINED
+#else
+#define yypop_buffer_state bitpop_buffer_state
+#endif
+
+#ifdef yyensure_buffer_stack
+#define bitensure_buffer_stack_ALREADY_DEFINED
+#else
+#define yyensure_buffer_stack bitensure_buffer_stack
+#endif
+
+#ifdef yylex
+#define bitlex_ALREADY_DEFINED
+#else
+#define yylex bitlex
+#endif
+
+#ifdef yyrestart
+#define bitrestart_ALREADY_DEFINED
+#else
+#define yyrestart bitrestart
+#endif
+
+#ifdef yylex_init
+#define bitlex_init_ALREADY_DEFINED
+#else
+#define yylex_init bitlex_init
+#endif
+
+#ifdef yylex_init_extra
+#define bitlex_init_extra_ALREADY_DEFINED
+#else
+#define yylex_init_extra bitlex_init_extra
+#endif
+
+#ifdef yylex_destroy
+#define bitlex_destroy_ALREADY_DEFINED
+#else
+#define yylex_destroy bitlex_destroy
+#endif
+
+#ifdef yyget_debug
+#define bitget_debug_ALREADY_DEFINED
+#else
+#define yyget_debug bitget_debug
+#endif
+
+#ifdef yyset_debug
+#define bitset_debug_ALREADY_DEFINED
+#else
+#define yyset_debug bitset_debug
+#endif
+
+#ifdef yyget_extra
+#define bitget_extra_ALREADY_DEFINED
+#else
+#define yyget_extra bitget_extra
+#endif
+
+#ifdef yyset_extra
+#define bitset_extra_ALREADY_DEFINED
+#else
+#define yyset_extra bitset_extra
+#endif
+
+#ifdef yyget_in
+#define bitget_in_ALREADY_DEFINED
+#else
+#define yyget_in bitget_in
+#endif
+
+#ifdef yyset_in
+#define bitset_in_ALREADY_DEFINED
+#else
+#define yyset_in bitset_in
+#endif
+
+#ifdef yyget_out
+#define bitget_out_ALREADY_DEFINED
+#else
+#define yyget_out bitget_out
+#endif
+
+#ifdef yyset_out
+#define bitset_out_ALREADY_DEFINED
+#else
+#define yyset_out bitset_out
+#endif
+
+#ifdef yyget_leng
+#define bitget_leng_ALREADY_DEFINED
+#else
+#define yyget_leng bitget_leng
+#endif
+
+#ifdef yyget_text
+#define bitget_text_ALREADY_DEFINED
+#else
+#define yyget_text bitget_text
+#endif
+
+#ifdef yyget_lineno
+#define bitget_lineno_ALREADY_DEFINED
+#else
+#define yyget_lineno bitget_lineno
+#endif
+
+#ifdef yyset_lineno
+#define bitset_lineno_ALREADY_DEFINED
+#else
+#define yyset_lineno bitset_lineno
+#endif
+
+#ifdef yyget_column
+#define bitget_column_ALREADY_DEFINED
+#else
+#define yyget_column bitget_column
+#endif
+
+#ifdef yyset_column
+#define bitset_column_ALREADY_DEFINED
+#else
+#define yyset_column bitset_column
+#endif
+
+#ifdef yywrap
+#define bitwrap_ALREADY_DEFINED
+#else
+#define yywrap bitwrap
+#endif
+
+#ifdef yyget_lval
+#define bitget_lval_ALREADY_DEFINED
+#else
+#define yyget_lval bitget_lval
+#endif
+
+#ifdef yyset_lval
+#define bitset_lval_ALREADY_DEFINED
+#else
+#define yyset_lval bitset_lval
+#endif
+
+#ifdef yyalloc
+#define bitalloc_ALREADY_DEFINED
+#else
+#define yyalloc bitalloc
+#endif
+
+#ifdef yyrealloc
+#define bitrealloc_ALREADY_DEFINED
+#else
+#define yyrealloc bitrealloc
+#endif
+
+#ifdef yyfree
+#define bitfree_ALREADY_DEFINED
+#else
+#define yyfree bitfree
 #endif
 
 /* First, we deal with  platform-specific or compiler-specific issues. */
@@ -88,29 +310,23 @@ typedef unsigned int flex_uint32_t;
 #define UINT32_MAX             (4294967295U)
 #endif
 
+#ifndef SIZE_MAX
+#define SIZE_MAX               (~(size_t)0)
+#endif
+
 #endif /* ! C99 */
 
 #endif /* ! FLEXINT_H */
 
-#ifdef __cplusplus
+/* begin standard C++ headers. */
 
-/* The "const" storage-class-modifier is valid. */
-#define YY_USE_CONST
-
-#else	/* ! __cplusplus */
-
-/* C99 requires __STDC__ to be defined as 1. */
-#if defined (__STDC__)
-
-#define YY_USE_CONST
-
-#endif	/* defined (__STDC__) */
-#endif	/* ! __cplusplus */
-
-#ifdef YY_USE_CONST
+/* TODO: this is always defined, so inline it */
 #define yyconst const
+
+#if defined(__GNUC__) && __GNUC__ >= 3
+#define yynoreturn __attribute__((__noreturn__))
 #else
-#define yyconst
+#define yynoreturn
 #endif
 
 /* An opaque pointer. */
@@ -165,7 +381,7 @@ struct yy_buffer_state
 	/* Size of input buffer in bytes, not including room for EOB
 	 * characters.
 	 */
-	yy_size_t yy_buf_size;
+	int yy_buf_size;
 
 	/* Number of characters read into yy_ch_buf, not including EOB
 	 * characters.
@@ -193,7 +409,7 @@ struct yy_buffer_state
 
     int yy_bs_lineno; /**< The line count. */
     int yy_bs_column; /**< The column count. */
-    
+
 	/* Whether to try to fill the input buffer when we reach the
 	 * end of it.
 	 */
@@ -204,21 +420,21 @@ struct yy_buffer_state
 	};
 #endif /* !YY_STRUCT_YY_BUFFER_STATE */
 
-void bitrestart (FILE *input_file ,yyscan_t yyscanner );
-void bit_switch_to_buffer (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-YY_BUFFER_STATE bit_create_buffer (FILE *file,int size ,yyscan_t yyscanner );
-void bit_delete_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void bit_flush_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void bitpush_buffer_state (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-void bitpop_buffer_state (yyscan_t yyscanner );
+void yyrestart ( FILE *input_file , yyscan_t yyscanner );
+void yy_switch_to_buffer ( YY_BUFFER_STATE new_buffer , yyscan_t yyscanner );
+YY_BUFFER_STATE yy_create_buffer ( FILE *file, int size , yyscan_t yyscanner );
+void yy_delete_buffer ( YY_BUFFER_STATE b , yyscan_t yyscanner );
+void yy_flush_buffer ( YY_BUFFER_STATE b , yyscan_t yyscanner );
+void yypush_buffer_state ( YY_BUFFER_STATE new_buffer , yyscan_t yyscanner );
+void yypop_buffer_state ( yyscan_t yyscanner );
 
-YY_BUFFER_STATE bit_scan_buffer (char *base,yy_size_t size ,yyscan_t yyscanner );
-YY_BUFFER_STATE bit_scan_string (yyconst char *yy_str ,yyscan_t yyscanner );
-YY_BUFFER_STATE bit_scan_bytes (yyconst char *bytes,yy_size_t len ,yyscan_t yyscanner );
+YY_BUFFER_STATE yy_scan_buffer ( char *base, yy_size_t size , yyscan_t yyscanner );
+YY_BUFFER_STATE yy_scan_string ( const char *yy_str , yyscan_t yyscanner );
+YY_BUFFER_STATE yy_scan_bytes ( const char *bytes, int len , yyscan_t yyscanner );
 
-void *bitalloc (yy_size_t ,yyscan_t yyscanner );
-void *bitrealloc (void *,yy_size_t ,yyscan_t yyscanner );
-void bitfree (void * ,yyscan_t yyscanner );
+void *yyalloc ( yy_size_t , yyscan_t yyscanner );
+void *yyrealloc ( void *, yy_size_t , yyscan_t yyscanner );
+void yyfree ( void * , yyscan_t yyscanner );
 
 /* Begin user sect3 */
 
@@ -240,48 +456,48 @@ void bitfree (void * ,yyscan_t yyscanner );
 #include <unistd.h>
 #endif
 
-#define YY_EXTRA_TYPE ParserInterface*
+#define YY_EXTRA_TYPE BitParserInterface*
 
-int bitlex_init (yyscan_t* scanner);
+int yylex_init (yyscan_t* scanner);
 
-int bitlex_init_extra (YY_EXTRA_TYPE user_defined,yyscan_t* scanner);
+int yylex_init_extra ( YY_EXTRA_TYPE user_defined, yyscan_t* scanner);
 
 /* Accessor methods to globals.
    These are made visible to non-reentrant scanners for convenience. */
 
-int bitlex_destroy (yyscan_t yyscanner );
+int yylex_destroy ( yyscan_t yyscanner );
 
-int bitget_debug (yyscan_t yyscanner );
+int yyget_debug ( yyscan_t yyscanner );
 
-void bitset_debug (int debug_flag ,yyscan_t yyscanner );
+void yyset_debug ( int debug_flag , yyscan_t yyscanner );
 
-YY_EXTRA_TYPE bitget_extra (yyscan_t yyscanner );
+YY_EXTRA_TYPE yyget_extra ( yyscan_t yyscanner );
 
-void bitset_extra (YY_EXTRA_TYPE user_defined ,yyscan_t yyscanner );
+void yyset_extra ( YY_EXTRA_TYPE user_defined , yyscan_t yyscanner );
 
-FILE *bitget_in (yyscan_t yyscanner );
+FILE *yyget_in ( yyscan_t yyscanner );
 
-void bitset_in  (FILE * _in_str ,yyscan_t yyscanner );
+void yyset_in  ( FILE * _in_str , yyscan_t yyscanner );
 
-FILE *bitget_out (yyscan_t yyscanner );
+FILE *yyget_out ( yyscan_t yyscanner );
 
-void bitset_out  (FILE * _out_str ,yyscan_t yyscanner );
+void yyset_out  ( FILE * _out_str , yyscan_t yyscanner );
 
-yy_size_t bitget_leng (yyscan_t yyscanner );
+			int yyget_leng ( yyscan_t yyscanner );
 
-char *bitget_text (yyscan_t yyscanner );
+char *yyget_text ( yyscan_t yyscanner );
 
-int bitget_lineno (yyscan_t yyscanner );
+int yyget_lineno ( yyscan_t yyscanner );
 
-void bitset_lineno (int _line_number ,yyscan_t yyscanner );
+void yyset_lineno ( int _line_number , yyscan_t yyscanner );
 
-int bitget_column  (yyscan_t yyscanner );
+int yyget_column  ( yyscan_t yyscanner );
 
-void bitset_column (int _column_no ,yyscan_t yyscanner );
+void yyset_column ( int _column_no , yyscan_t yyscanner );
 
-YYSTYPE * bitget_lval (yyscan_t yyscanner );
+YYSTYPE * yyget_lval ( yyscan_t yyscanner );
 
-void bitset_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
+void yyset_lval ( YYSTYPE * yylval_param , yyscan_t yyscanner );
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -289,18 +505,18 @@ void bitset_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
 
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
-extern "C" int bitwrap (yyscan_t yyscanner );
+extern "C" int yywrap ( yyscan_t yyscanner );
 #else
-extern int bitwrap (yyscan_t yyscanner );
+extern int yywrap ( yyscan_t yyscanner );
 #endif
 #endif
 
 #ifndef yytext_ptr
-static void yy_flex_strncpy (char *,yyconst char *,int ,yyscan_t yyscanner);
+static void yy_flex_strncpy ( char *, const char *, int , yyscan_t yyscanner);
 #endif
 
 #ifdef YY_NEED_STRLEN
-static int yy_flex_strlen (yyconst char * ,yyscan_t yyscanner);
+static int yy_flex_strlen ( const char * , yyscan_t yyscanner);
 #endif
 
 #ifndef YY_NO_INPUT
@@ -328,10 +544,10 @@ static int yy_flex_strlen (yyconst char * ,yyscan_t yyscanner);
 #ifndef YY_DECL
 #define YY_DECL_IS_OURS 1
 
-extern int bitlex \
-               (YYSTYPE * yylval_param ,yyscan_t yyscanner);
+extern int yylex \
+               (YYSTYPE * yylval_param , yyscan_t yyscanner);
 
-#define YY_DECL int bitlex \
+#define YY_DECL int yylex \
                (YYSTYPE * yylval_param , yyscan_t yyscanner)
 #endif /* !YY_DECL */
 
@@ -349,9 +565,154 @@ extern int bitlex \
 #undef YY_DECL
 #endif
 
-#line 102 "Parser.l"
+#ifndef bit_create_buffer_ALREADY_DEFINED
+#undef yy_create_buffer
+#endif
+#ifndef bit_delete_buffer_ALREADY_DEFINED
+#undef yy_delete_buffer
+#endif
+#ifndef bit_scan_buffer_ALREADY_DEFINED
+#undef yy_scan_buffer
+#endif
+#ifndef bit_scan_string_ALREADY_DEFINED
+#undef yy_scan_string
+#endif
+#ifndef bit_scan_bytes_ALREADY_DEFINED
+#undef yy_scan_bytes
+#endif
+#ifndef bit_init_buffer_ALREADY_DEFINED
+#undef yy_init_buffer
+#endif
+#ifndef bit_flush_buffer_ALREADY_DEFINED
+#undef yy_flush_buffer
+#endif
+#ifndef bit_load_buffer_state_ALREADY_DEFINED
+#undef yy_load_buffer_state
+#endif
+#ifndef bit_switch_to_buffer_ALREADY_DEFINED
+#undef yy_switch_to_buffer
+#endif
+#ifndef bitpush_buffer_state_ALREADY_DEFINED
+#undef yypush_buffer_state
+#endif
+#ifndef bitpop_buffer_state_ALREADY_DEFINED
+#undef yypop_buffer_state
+#endif
+#ifndef bitensure_buffer_stack_ALREADY_DEFINED
+#undef yyensure_buffer_stack
+#endif
+#ifndef bitlex_ALREADY_DEFINED
+#undef yylex
+#endif
+#ifndef bitrestart_ALREADY_DEFINED
+#undef yyrestart
+#endif
+#ifndef bitlex_init_ALREADY_DEFINED
+#undef yylex_init
+#endif
+#ifndef bitlex_init_extra_ALREADY_DEFINED
+#undef yylex_init_extra
+#endif
+#ifndef bitlex_destroy_ALREADY_DEFINED
+#undef yylex_destroy
+#endif
+#ifndef bitget_debug_ALREADY_DEFINED
+#undef yyget_debug
+#endif
+#ifndef bitset_debug_ALREADY_DEFINED
+#undef yyset_debug
+#endif
+#ifndef bitget_extra_ALREADY_DEFINED
+#undef yyget_extra
+#endif
+#ifndef bitset_extra_ALREADY_DEFINED
+#undef yyset_extra
+#endif
+#ifndef bitget_in_ALREADY_DEFINED
+#undef yyget_in
+#endif
+#ifndef bitset_in_ALREADY_DEFINED
+#undef yyset_in
+#endif
+#ifndef bitget_out_ALREADY_DEFINED
+#undef yyget_out
+#endif
+#ifndef bitset_out_ALREADY_DEFINED
+#undef yyset_out
+#endif
+#ifndef bitget_leng_ALREADY_DEFINED
+#undef yyget_leng
+#endif
+#ifndef bitget_text_ALREADY_DEFINED
+#undef yyget_text
+#endif
+#ifndef bitget_lineno_ALREADY_DEFINED
+#undef yyget_lineno
+#endif
+#ifndef bitset_lineno_ALREADY_DEFINED
+#undef yyset_lineno
+#endif
+#ifndef bitget_column_ALREADY_DEFINED
+#undef yyget_column
+#endif
+#ifndef bitset_column_ALREADY_DEFINED
+#undef yyset_column
+#endif
+#ifndef bitwrap_ALREADY_DEFINED
+#undef yywrap
+#endif
+#ifndef bitget_lval_ALREADY_DEFINED
+#undef yyget_lval
+#endif
+#ifndef bitset_lval_ALREADY_DEFINED
+#undef yyset_lval
+#endif
+#ifndef bitget_lloc_ALREADY_DEFINED
+#undef yyget_lloc
+#endif
+#ifndef bitset_lloc_ALREADY_DEFINED
+#undef yyset_lloc
+#endif
+#ifndef bitalloc_ALREADY_DEFINED
+#undef yyalloc
+#endif
+#ifndef bitrealloc_ALREADY_DEFINED
+#undef yyrealloc
+#endif
+#ifndef bitfree_ALREADY_DEFINED
+#undef yyfree
+#endif
+#ifndef bittext_ALREADY_DEFINED
+#undef yytext
+#endif
+#ifndef bitleng_ALREADY_DEFINED
+#undef yyleng
+#endif
+#ifndef bitin_ALREADY_DEFINED
+#undef yyin
+#endif
+#ifndef bitout_ALREADY_DEFINED
+#undef yyout
+#endif
+#ifndef bit_flex_debug_ALREADY_DEFINED
+#undef yy_flex_debug
+#endif
+#ifndef bitlineno_ALREADY_DEFINED
+#undef yylineno
+#endif
+#ifndef bittables_fload_ALREADY_DEFINED
+#undef yytables_fload
+#endif
+#ifndef bittables_destroy_ALREADY_DEFINED
+#undef yytables_destroy
+#endif
+#ifndef bitTABLES_NAME_ALREADY_DEFINED
+#undef yyTABLES_NAME
+#endif
+
+#line 102 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/Parser.l"
 
 
-#line 356 "ParserLex.h"
+#line 717 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/ParserLex.h"
 #undef bitIN_HEADER
 #endif /* bitHEADER_H */

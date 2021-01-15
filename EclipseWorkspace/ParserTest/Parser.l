@@ -1,5 +1,5 @@
  /* Definition of output files. */
-%option outfile="ParserLex.cpp" header-file="ParserLex.h"
+/* %option outfile="ParserLex.cpp" header-file="ParserLex.h" */
 
  /* Options to generate reentrant code used in bison parser. */
 %option reentrant bison-bridge

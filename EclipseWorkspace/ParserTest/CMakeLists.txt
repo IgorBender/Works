@@ -1,13 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(TokensTest LANGUAGES CXX)
+project(ParserTest LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-if ( NOT (${UNIX}))
-    add_compile_definitions(_CRT_SECURE_NO_WARNINGS  _WINSOCK_DEPRECATED_NO_WARNINGS _USE_MATH_DEFINES)
-endif()
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 IF("${CMAKE_CXX_COMPILER}" STREQUAL "/usr/bin/clang++")
     IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
@@ -36,9 +33,27 @@ IF("${CMAKE_CXX_COMPILER}" STREQUAL "/home/opt/intel/sw_dev_tools/bin/icpc")
     ENDIF()
 ENDIF()
 
-if(NOT (${UNIX}))
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/Debug)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/Release)
-endif()
 
-add_executable(TokensTest TokensTest.cpp)
+find_package(BISON REQUIRED)
+find_package(FLEX REQUIRED)
+
+FLEX_TARGET(LexDefTests ${CMAKE_SOURCE_DIR}/DefTests.l ${CMAKE_SOURCE_DIR}/DefTestsLex.cpp
+    DEFINES_FILE ${CMAKE_SOURCE_DIR}/DefTestsLex.h)
+FLEX_TARGET(LexParser ${CMAKE_SOURCE_DIR}/Parser.l ${CMAKE_CURRENT_BINARY_DIR}/ParserLex.cpp
+    DEFINES_FILE ${CMAKE_SOURCE_DIR}/ParserLex.h)
+BISON_TARGET(BisonDefTests DefTests.y ${CMAKE_SOURCE_DIR}/DefTests.cpp
+    DEFINES_FILE ${CMAKE_SOURCE_DIR}/DefTests.h)
+BISON_TARGET(BisonParser Parser.y ${CMAKE_SOURCE_DIR}/Parser.cpp
+    DEFINES_FILE ${CMAKE_SOURCE_DIR}/Parser.h)
+
+ADD_FLEX_BISON_DEPENDENCY(LexDefTests BisonDefTests)
+ADD_FLEX_BISON_DEPENDENCY(LexParser BisonParser)
+
+add_executable(ParserTest ParserTest.cpp
+    ${BISON_BisonDefTests_OUTPUTS}
+    ${BISON_BisonParser_OUTPUTS}
+    ${FLEX_LexDefTests_OUTPUTS}
+    ${FLEX_LexParser_OUTPUTS}
+    BitParserInterface.cpp BitParserInterface.h)
+
+

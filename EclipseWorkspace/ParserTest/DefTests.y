@@ -1,6 +1,6 @@
  /* Definition of output files. */
-%output  "DefTests.cpp"
-%defines "DefTests.h"
+/*%output  "DefTests.cpp"
+%defines "DefTests.h"*/
 
  /* Make reentrant. */
 %define api.pure full
@@ -32,22 +32,31 @@ void yyerror(yyscan_t scanner, const char *s);
 }
 
 
-%token <IdString> TEST_VAR MEASURE_VAR
+%token <IdString> ID_VAR NUM_VAR SET_ID SLEEP_ID MEASURE_VAR TEST_VAR
 %token <IdString> DEFERROR
 %type <IdString> exp
 
 %%
-result: exp {}; 
-exp: 	TEST_VAR { defget_extra(scanner)->addTestVariable($1); }
-	| MEASURE_VAR { defget_extra(scanner)->addMeasureVariable($1); }
-	| exp TEST_VAR { defget_extra(scanner)->addTestVariable($2); }
-	| exp MEASURE_VAR { defget_extra(scanner)->addMeasureVariable($2); }
-	| DEFERROR { yyerror(scanner, "Forbidden symbol"); };
+result: exp {};
+exp: 	SET_ID ID_VAR NUM_VAR { if(!defget_extra(scanner)->performSetComand($2, $3))
+                                yyerror(scanner, "Forbidden symbol"); }
+    | SLEEP_ID NUM_VAR { if(!defget_extra(scanner)->performSleepComand($2))
+        yyerror(scanner, "Forbidden symbol"); }
+    | MEASURE_VAR { defget_extra(scanner)->addMeasureVariable($1); }
+    | exp SET_ID ID_VAR NUM_VAR { if(!defget_extra(scanner)->performSetComand($3, $4))
+        yyerror(scanner, "Forbidden symbol"); }
+    | exp SLEEP_ID NUM_VAR { if(!defget_extra(scanner)->performSleepComand($3))
+        yyerror(scanner, "Forbidden symbol"); }
+    | exp TEST_VAR { defget_extra(scanner)->addTestVariable($2); }
+    | exp MEASURE_VAR { defget_extra(scanner)->addMeasureVariable($2); }
+    | DEFERROR { yyerror(scanner, "Forbidden symbol"); };
 
 %%
 
-
+/* For warning elimination */
+static yyscan_t scan;
 void yyerror(yyscan_t scanner, const char *s) {
+    scan = scanner; /* To eliminate warning about unused variable. */
 	 printf("DEF, parse error!  Message: %s\n", s);
 }
 

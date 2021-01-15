@@ -1,8 +1,9 @@
-/* A Bison parser, made by GNU Bison 3.0.4.  */
+/* A Bison parser, made by GNU Bison 3.5.1.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,8 +31,11 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_BIT_PARSER_H_INCLUDED
-# define YY_BIT_PARSER_H_INCLUDED
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
+
+#ifndef YY_BIT_HOME_IGOR_GITHUB_WORKS_ECLIPSEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED
+# define YY_BIT_HOME_IGOR_GITHUB_WORKS_ECLIPSEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED
 /* Debug traces.  */
 #ifndef BITDEBUG
 # if defined YYDEBUG
@@ -48,15 +52,15 @@
 extern int bitdebug;
 #endif
 /* "%code requires" blocks.  */
-#line 8 "Parser.y" /* yacc.c:1909  */
+#line 8 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/Parser.y"
 
-#include <ParserInterface.h>
+#include <BitParserInterface.h>
 #ifndef YY_TYPEDEF_YY_SCANNER_T
 #define YY_TYPEDEF_YY_SCANNER_T
 typedef void *yyscan_t;
 #endif
 
-#line 60 "Parser.h" /* yacc.c:1909  */
+#line 64 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/Parser.h"
 
 /* Token type.  */
 #ifndef BITTOKENTYPE
@@ -83,19 +87,18 @@ typedef void *yyscan_t;
 
 /* Value type.  */
 #if ! defined BITSTYPE && ! defined BITSTYPE_IS_DECLARED
-
 union BITSTYPE
 {
-#line 22 "Parser.y" /* yacc.c:1909  */
+#line 22 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/Parser.y"
 
 	char *IdString;
 	char OpSymbol;
-	ParserInterface::BitResultType NumType;
+    BitParserInterface::BitResultType NumType;
 	double RealType;
 
-#line 97 "Parser.h" /* yacc.c:1909  */
-};
+#line 100 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/Parser.h"
 
+};
 typedef union BITSTYPE BITSTYPE;
 # define BITSTYPE_IS_TRIVIAL 1
 # define BITSTYPE_IS_DECLARED 1
@@ -105,4 +108,4 @@ typedef union BITSTYPE BITSTYPE;
 
 int bitparse (yyscan_t scanner);
 
-#endif /* !YY_BIT_PARSER_H_INCLUDED  */
+#endif /* !YY_BIT_HOME_IGOR_GITHUB_WORKS_ECLIPSEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED  */

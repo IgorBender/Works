@@ -1,8 +1,9 @@
-/* A Bison parser, made by GNU Bison 3.0.4.  */
+/* A Bison parser, made by GNU Bison 3.5.1.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,8 +31,11 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_DEF_DEFTESTS_H_INCLUDED
-# define YY_DEF_DEFTESTS_H_INCLUDED
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
+
+#ifndef YY_DEF_HOME_IGOR_GITHUB_WORKS_ECLIPSEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED
+# define YY_DEF_HOME_IGOR_GITHUB_WORKS_ECLIPSEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED
 /* Debug traces.  */
 #ifndef DEFDEBUG
 # if defined YYDEBUG
@@ -48,7 +52,7 @@
 extern int defdebug;
 #endif
 /* "%code requires" blocks.  */
-#line 14 "DefTests.y" /* yacc.c:1909  */
+#line 14 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/DefTests.y"
 
 #include <string>
 #ifndef YY_TYPEDEF_YY_SCANNER_T
@@ -56,32 +60,35 @@ extern int defdebug;
 typedef void *yyscan_t;
 #endif
 
-#line 60 "DefTests.h" /* yacc.c:1909  */
+#line 64 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/DefTests.h"
 
 /* Token type.  */
 #ifndef DEFTOKENTYPE
 # define DEFTOKENTYPE
   enum deftokentype
   {
-    TEST_VAR = 258,
-    MEASURE_VAR = 259,
-    DEFERROR = 260
+    ID_VAR = 258,
+    NUM_VAR = 259,
+    SET_ID = 260,
+    SLEEP_ID = 261,
+    MEASURE_VAR = 262,
+    TEST_VAR = 263,
+    DEFERROR = 264
   };
 #endif
 
 /* Value type.  */
 #if ! defined DEFSTYPE && ! defined DEFSTYPE_IS_DECLARED
-
 union DEFSTYPE
 {
-#line 29 "DefTests.y" /* yacc.c:1909  */
+#line 29 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/DefTests.y"
 
 	char* IdString;
 	char OpSymbol;
 
-#line 83 "DefTests.h" /* yacc.c:1909  */
-};
+#line 90 "/home/igor/GitHub/Works/EclipseWorkspace/ParserTest/DefTests.h"
 
+};
 typedef union DEFSTYPE DEFSTYPE;
 # define DEFSTYPE_IS_TRIVIAL 1
 # define DEFSTYPE_IS_DECLARED 1
@@ -91,4 +98,4 @@ typedef union DEFSTYPE DEFSTYPE;
 
 int defparse (yyscan_t scanner);
 
-#endif /* !YY_DEF_DEFTESTS_H_INCLUDED  */
+#endif /* !YY_DEF_HOME_IGOR_GITHUB_WORKS_ECLIPSEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED  */

@@ -1,5 +1,5 @@
-%output  "Parser.cpp"
-%defines "Parser.h"
+/*%output  "Parser.cpp"
+%defines "Parser.h" */
 %define api.pure full
 %define api.prefix {bit}
 %lex-param   { yyscan_t scanner }
@@ -67,7 +67,10 @@ real_val: REAL_VAL { std::stringstream ConvertStream;
 
 %%
 
+/* For warning elimination */
+static yyscan_t scan;
 void yyerror(yyscan_t scanner, const char *s) {
-	 printf("BIT, parse error!  Message: %s\n", s);
+    scan = scanner; /* To eliminate warning about unused variable. */
+     printf("BIT, parse error!  Message: %s\n", s);
 }
 
