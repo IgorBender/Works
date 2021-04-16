@@ -1,0 +1,39 @@
+cmake_minimum_required(VERSION 3.16)
+
+project(GLPolygonTest LANGUAGES C CXX)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+IF("${CMAKE_CXX_COMPILER}" STREQUAL "/usr/bin/clang++")
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/../DebugClang)
+    ENDIF()
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/../ReleaseClang)
+    ENDIF()
+ENDIF()
+
+IF("${CMAKE_CXX_COMPILER}" STREQUAL "/usr/bin/g++")
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/../Debug)
+    ENDIF()
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/../Release)
+    ENDIF()
+ENDIF()
+
+IF("${CMAKE_CXX_COMPILER}" STREQUAL "/home/opt/intel/sw_dev_tools/bin/icpc")
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/../DebugIntel)
+    ENDIF()
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/../ReleaseIntel)
+    ENDIF()
+ENDIF()
+
+link_libraries(glut GL)
+
+add_executable(GLPolygonTest GLPolygonTest.cc gpc.c gpc.h
+    GpcPolygon.cpp GpcPolygon.h)
