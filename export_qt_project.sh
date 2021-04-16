@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Deprecated script
+
 if [ $# -ne 1 ]; then
    echo "Usage : $0 <path>"
    exit 1
