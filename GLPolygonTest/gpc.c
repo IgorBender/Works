@@ -101,8 +101,8 @@ Copyright: (C) Advanced Interfaces Group,
                             do {(d)= (d)->next;} while (!(d)->outp[(p)]); \
                             (i)= (d)->bot.x + (d)->dx * ((j)-(d)->bot.y);}
 
-#define MALLOC(p, b, s, t) {if ((b) > 0) { \
-                            p= (t*)malloc(b); if (!(p)) { \
+#define MALLOC(p, b, s, t) {if (((unsigned long)b) > 0) { \
+                            p= (t*)malloc(((unsigned long)b)); if (!(p)) { \
                             fprintf(stderr, "gpc malloc failure: %s\n", s); \
                             exit(0);}} else p= NULL;}
 

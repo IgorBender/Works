@@ -28,6 +28,16 @@
 #include <signal.h>
 #endif
 
+#ifdef _WIN32
+int clock_gettime(int, struct timespec *spec)      //C-file part
+{  __int64 wintime; GetSystemTimeAsFileTime((FILETIME*)&wintime);
+   wintime      -=116444736000000000i64;  //1jan1601 to 1jan1970
+   spec->tv_sec  =wintime / 10000000i64;           //seconds
+   spec->tv_nsec =wintime % 10000000i64 *100;      //nano-seconds
+   return 0;
+}
+#endif
+
 PThreadClass::PThreadClass(Runnable Routine, time_t Time, bool CyclicThread, bool AttachedThread
 #ifdef __SunOS
     , bool BoundThread
@@ -172,7 +182,7 @@ void* PThreadClass::threadLoop()
         {
             m_pStartCondition->setPredicate(false);
             m_ControlCondVar.unlockMutex();
-            ftime(&m_StartTime);
+            clock_gettime(CLOCK_MONOTONIC, &m_StartTime);
             int Dummy;
             if(PTHREAD_CANCEL_ASYNCHRONOUS == m_CancelType)
             {
@@ -185,12 +195,12 @@ void* PThreadClass::threadLoop()
             }
             if(m_Cyclic)
             {
-                struct timeb TimeStruct;
-                ftime(&TimeStruct);
-                if(m_TimeOut && m_TimeOut > static_cast < unsigned > (((TimeStruct.time - m_StartTime.time) * 1000 + (TimeStruct.millitm - m_StartTime.millitm))))
+                struct timespec TimeStruct;
+                clock_gettime(CLOCK_MONOTONIC, &TimeStruct);
+                if(m_TimeOut && m_TimeOut > static_cast < unsigned > (((TimeStruct.tv_sec - m_StartTime.tv_sec) * 1000 + (TimeStruct.tv_nsec - m_StartTime.tv_nsec) / 1000 / 1000)))
                 {
                     m_pWaitCondition->lockMutex();
-                    m_pWaitCondition->wait(m_TimeOut - ((TimeStruct.time - m_StartTime.time) * 1000 + (TimeStruct.millitm - m_StartTime.millitm)));
+                    m_pWaitCondition->wait(m_TimeOut - ((TimeStruct.tv_sec - m_StartTime.tv_sec) * 1000 + (TimeStruct.tv_nsec - m_StartTime.tv_nsec) / 1000 / 1000));
                     m_pWaitCondition->unlockMutex();
                 }
                 m_pStartCondition->lockMutex();

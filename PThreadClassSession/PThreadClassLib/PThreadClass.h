@@ -41,6 +41,8 @@
 #endif
 #else
 #include <time.h>
+struct timespec { long tv_sec; long tv_nsec; };
+int clock_gettime(int, struct timespec *spec);
 #endif
 
 #include <sys/timeb.h>
@@ -299,7 +301,7 @@ protected:
     SpecificCondition* m_pStartCondition; ///< Scpecified start condipion variable.
     SpecificCondition* m_pWaitCondition; ///< Scpecified wait condipion variable.
     pthread_attr_t m_ThreadAttribute; ///< POSIX thread attributes.
-    struct timeb m_StartTime; ///< Start time of cycle.
+    struct timespec m_StartTime; ///< Start time of cycle.
 #ifdef _WITHOUT_THREAD_EXCEPTIONS
     bool m_Ok;
 #endif

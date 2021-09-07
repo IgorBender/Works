@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.5)
 
 project(ThreadTest LANGUAGES CXX)
 
-
 add_executable(ThreadTest ThreadTest.cpp)
 target_include_directories(ThreadTest PRIVATE ../ThreadClassLib)
 target_link_directories(ThreadTest PRIVATE ${LINKDIR} )

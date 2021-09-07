@@ -1,5 +1,0 @@
-*.dep.inc
-/.make.state.Debug
-/.make.state.Release
-/.make.state.Release_TRACE_EXC
-/Makefile

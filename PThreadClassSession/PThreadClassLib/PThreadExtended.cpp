@@ -91,16 +91,16 @@ void* PThreadExtended::threadLoop()
         {
             m_pStartCondition->setPredicate(false);
             m_ControlCondVar.unlockMutex();
-            ftime(&m_StartTime);
+            clock_gettime(CLOCK_MONOTONIC, &m_StartTime);
             m_ThreadRoutine();
             if(m_Cyclic)
             {
-                struct timeb TimeStruct;
-                ftime(&TimeStruct);
-                if(m_TimeOut && m_TimeOut > static_cast < unsigned > (((TimeStruct.time - m_StartTime.time) * 1000 + (TimeStruct.millitm - m_StartTime.millitm))))
+                struct timespec TimeStruct;
+                clock_gettime(CLOCK_MONOTONIC, &TimeStruct);
+                if(m_TimeOut && m_TimeOut > static_cast < unsigned > (((TimeStruct.tv_sec - m_StartTime.tv_sec) * 1000 + (TimeStruct.tv_nsec - m_StartTime.tv_nsec) / 1000 / 1000)))
                 {
                     m_pWaitCondition->lockMutex();
-                    m_pWaitCondition->wait(m_TimeOut - ((TimeStruct.time - m_StartTime.time) * 1000 + (TimeStruct.millitm - m_StartTime.millitm)));
+                    m_pWaitCondition->wait(m_TimeOut - ((TimeStruct.tv_sec - m_StartTime.tv_sec) * 1000 + (TimeStruct.tv_nsec - m_StartTime.tv_nsec) / 1000 / 1000));
                     m_pWaitCondition->unlockMutex();
                 }
                 m_pStartCondition->lockMutex();
