@@ -103,8 +103,8 @@
 
 /* Use api.header.include to #include this header
    instead of duplicating it here.  */
-#ifndef YY_BIT_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED
-# define YY_BIT_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED
+#ifndef YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED
+# define YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED
 /* Debug traces.  */
 #ifndef BITDEBUG
 # if defined YYDEBUG
@@ -121,7 +121,7 @@
 extern int bitdebug;
 #endif
 /* "%code requires" blocks.  */
-#line 8 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 8 "/home/igor/GitHub/Works/ParserTest/Parser.y"
 
 #include <BitParserInterface.h>
 #ifndef YY_TYPEDEF_YY_SCANNER_T
@@ -129,7 +129,7 @@ extern int bitdebug;
 typedef void *yyscan_t;
 #endif
 
-#line 133 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 133 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
 
 /* Token type.  */
 #ifndef BITTOKENTYPE
@@ -158,14 +158,14 @@ typedef void *yyscan_t;
 #if ! defined BITSTYPE && ! defined BITSTYPE_IS_DECLARED
 union BITSTYPE
 {
-#line 22 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 22 "/home/igor/GitHub/Works/ParserTest/Parser.y"
 
 	char *IdString;
 	char OpSymbol;
     BitParserInterface::BitResultType NumType;
 	double RealType;
 
-#line 169 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 169 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
 
 };
 typedef union BITSTYPE BITSTYPE;
@@ -177,17 +177,17 @@ typedef union BITSTYPE BITSTYPE;
 
 int bitparse (yyscan_t scanner);
 
-#endif /* !YY_BIT_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED  */
+#endif /* !YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED  */
 
 
 /* Unqualified %code blocks.  */
-#line 16 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 16 "/home/igor/GitHub/Works/ParserTest/Parser.y"
 
 #include <BitParserInterface.h>
 #include "ParserLex.h"
 void yyerror(yyscan_t scanner, const char *s);
 
-#line 191 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 191 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
 
 #ifdef short
 # undef short
@@ -1361,13 +1361,13 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 41 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 41 "/home/igor/GitHub/Works/ParserTest/Parser.y"
             { bitget_extra(scanner)->setResult((yyvsp[0].NumType)); }
-#line 1367 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1367 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 3:
-#line 42 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 42 "/home/igor/GitHub/Works/ParserTest/Parser.y"
             { (yyval.NumType) = bitget_extra(scanner)->getTestValue((yyvsp[0].IdString));
 /*				if(-1 == $$) 
 				{
@@ -1375,93 +1375,93 @@ yyreduce:
 					YYABORT;
 				} */
 			}
-#line 1379 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1379 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 5:
-#line 50 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 50 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                        { (yyval.NumType) = bitget_extra(scanner)->andOperation(BitParserInterface::BitResultType((yyvsp[-2].NumType)), BitParserInterface::BitResultType((yyvsp[0].NumType))); }
-#line 1385 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1385 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 6:
-#line 51 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 51 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                           { (yyval.NumType) = bitget_extra(scanner)->orOperation((yyvsp[-2].NumType), (yyvsp[0].NumType)); }
-#line 1391 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1391 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 7:
-#line 52 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 52 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                        { (yyval.NumType) = bitget_extra(scanner)->notOperation((yyvsp[0].NumType)); }
-#line 1397 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1397 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 8:
-#line 53 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 53 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                                  { (yyval.NumType) = (yyvsp[-1].NumType); }
-#line 1403 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1403 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 9:
-#line 54 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 54 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                 { yyerror(NULL, "Forbidden symbol"); }
-#line 1409 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1409 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 10:
-#line 55 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 55 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                                         { (yyval.NumType) = bitget_extra(scanner)->lessOperation((yyvsp[-2].RealType), (yyvsp[0].RealType)); }
-#line 1415 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1415 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 11:
-#line 56 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 56 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                                   { (yyval.NumType) = bitget_extra(scanner)->moreOperation((yyvsp[-2].RealType), (yyvsp[0].RealType)); }
-#line 1421 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1421 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 12:
-#line 57 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 57 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                                    { (yyval.NumType) = bitget_extra(scanner)->lessEqualOperation((yyvsp[-2].RealType), (yyvsp[0].RealType)); }
-#line 1427 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1427 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 13:
-#line 58 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 58 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                                    { (yyval.NumType) = bitget_extra(scanner)->moreEqualOperation((yyvsp[-2].RealType), (yyvsp[0].RealType)); }
-#line 1433 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1433 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 14:
-#line 59 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 59 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                                    { (yyval.NumType) = bitget_extra(scanner)->equalOperation((yyvsp[-2].RealType), (yyvsp[0].RealType)); }
-#line 1439 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1439 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 15:
-#line 60 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 60 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                                     { (yyval.NumType) = bitget_extra(scanner)->notEqualOperation((yyvsp[-2].RealType), (yyvsp[0].RealType)); }
-#line 1445 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1445 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 16:
-#line 61 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 61 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                    { std::stringstream ConvertStream;
 		ConvertStream << (yyvsp[0].IdString) << std::ends;
 		double d = 0.0;
 		ConvertStream >> d;
 		(yyval.RealType) = d; }
-#line 1455 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1455 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
   case 17:
-#line 66 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 66 "/home/igor/GitHub/Works/ParserTest/Parser.y"
                    { (yyval.RealType) = bitget_extra(scanner)->getMeasuredValue((yyvsp[0].IdString)); }
-#line 1461 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1461 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
     break;
 
 
-#line 1465 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.cpp"
+#line 1465 "/home/igor/GitHub/Works/ParserTest/Parser.cpp"
 
       default: break;
     }
@@ -1693,7 +1693,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 68 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 68 "/home/igor/GitHub/Works/ParserTest/Parser.y"
 
 
 /* For warning elimination */

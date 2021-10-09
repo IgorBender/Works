@@ -34,8 +34,8 @@
 /* Undocumented macros, especially those whose name start with YY_,
    are private implementation details.  Do not rely on them.  */
 
-#ifndef YY_BIT_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED
-# define YY_BIT_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED
+#ifndef YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED
+# define YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED
 /* Debug traces.  */
 #ifndef BITDEBUG
 # if defined YYDEBUG
@@ -52,7 +52,7 @@
 extern int bitdebug;
 #endif
 /* "%code requires" blocks.  */
-#line 8 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 8 "/home/igor/GitHub/Works/ParserTest/Parser.y"
 
 #include <BitParserInterface.h>
 #ifndef YY_TYPEDEF_YY_SCANNER_T
@@ -60,7 +60,7 @@ extern int bitdebug;
 typedef void *yyscan_t;
 #endif
 
-#line 64 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.h"
+#line 64 "/home/igor/GitHub/Works/ParserTest/Parser.h"
 
 /* Token type.  */
 #ifndef BITTOKENTYPE
@@ -89,14 +89,14 @@ typedef void *yyscan_t;
 #if ! defined BITSTYPE && ! defined BITSTYPE_IS_DECLARED
 union BITSTYPE
 {
-#line 22 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.y"
+#line 22 "/home/igor/GitHub/Works/ParserTest/Parser.y"
 
 	char *IdString;
 	char OpSymbol;
     BitParserInterface::BitResultType NumType;
 	double RealType;
 
-#line 100 "/home/igor/tests/CMakeWorkspace/ParserTest/Parser.h"
+#line 100 "/home/igor/GitHub/Works/ParserTest/Parser.h"
 
 };
 typedef union BITSTYPE BITSTYPE;
@@ -108,4 +108,4 @@ typedef union BITSTYPE BITSTYPE;
 
 int bitparse (yyscan_t scanner);
 
-#endif /* !YY_BIT_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_PARSER_H_INCLUDED  */
+#endif /* !YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED  */

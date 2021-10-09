@@ -2,9 +2,9 @@
 #define defHEADER_H 1
 #define defIN_HEADER 1
 
-#line 6 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.h"
+#line 6 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.h"
 
-#line 8 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.h"
+#line 8 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -710,9 +710,9 @@ extern int yylex \
 #undef yyTABLES_NAME
 #endif
 
-#line 62 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 62 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 
 
-#line 717 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.h"
+#line 717 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.h"
 #undef defIN_HEADER
 #endif /* defHEADER_H */

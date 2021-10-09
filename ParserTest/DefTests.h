@@ -34,8 +34,8 @@
 /* Undocumented macros, especially those whose name start with YY_,
    are private implementation details.  Do not rely on them.  */
 
-#ifndef YY_DEF_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED
-# define YY_DEF_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED
+#ifndef YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED
+# define YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED
 /* Debug traces.  */
 #ifndef DEFDEBUG
 # if defined YYDEBUG
@@ -52,7 +52,7 @@
 extern int defdebug;
 #endif
 /* "%code requires" blocks.  */
-#line 14 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 14 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
 
 #include <string>
 #ifndef YY_TYPEDEF_YY_SCANNER_T
@@ -60,7 +60,7 @@ extern int defdebug;
 typedef void *yyscan_t;
 #endif
 
-#line 64 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.h"
+#line 64 "/home/igor/GitHub/Works/ParserTest/DefTests.h"
 
 /* Token type.  */
 #ifndef DEFTOKENTYPE
@@ -81,12 +81,12 @@ typedef void *yyscan_t;
 #if ! defined DEFSTYPE && ! defined DEFSTYPE_IS_DECLARED
 union DEFSTYPE
 {
-#line 29 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 29 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
 
 	char* IdString;
 	char OpSymbol;
 
-#line 90 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.h"
+#line 90 "/home/igor/GitHub/Works/ParserTest/DefTests.h"
 
 };
 typedef union DEFSTYPE DEFSTYPE;
@@ -98,4 +98,4 @@ typedef union DEFSTYPE DEFSTYPE;
 
 int defparse (yyscan_t scanner);
 
-#endif /* !YY_DEF_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED  */
+#endif /* !YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED  */

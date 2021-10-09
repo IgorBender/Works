@@ -39,7 +39,7 @@ bool getAddresses(in6_addr& InterfaceAddr)
 	}
 	ifaddrs* pTempAddr;
 	pTempAddr = pAddrs;
-	while(NULL != pTempAddr)
+    while(nullptr != pTempAddr)
 	{
 		if(AF_INET6 == pTempAddr->ifa_addr->sa_family)
 		{
@@ -215,7 +215,7 @@ int main(int argc, char* argv[])
             		<< inet_ntop(AF_INET6, &Sock->getPeerName().sin6_addr, Tmp, 64) << "-" << ntohs(Sock->getPeerName().sin6_port)
             		<< endl;
 #else
-            if (Sock.get() == NULL)
+            if (Sock.get() == nullptr)
             {
                 cout << "Accept error" << endl;
                 Sock.reset();
@@ -245,7 +245,7 @@ int main(int argc, char* argv[])
                             Sock->disconnect(5000);
                             break;
                         }
-                        Sock->send(Buf, Res);
+                        Sock->send(Buf, static_cast<size_t>(Res));
                         cout << "Echo sent..." << endl;
                     }
 #ifdef _WITHOUT_SOCK_EXCEPTIONS

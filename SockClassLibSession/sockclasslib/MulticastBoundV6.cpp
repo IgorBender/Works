@@ -55,6 +55,7 @@ MulticastBoundV6::MulticastBoundV6(uint16_t Port, const char* Address)
 #ifdef _WIN32
         setEndPoint(Address, Port);
 #else
+        inet_pton(AF_INET6, Address, &Addr);
         setEndPoint(in6addr_any, Port);
 #endif
         bind();

@@ -39,7 +39,7 @@ bool getAddresses(in6_addr& InterfaceAddr)
 	}
 	ifaddrs* pTempAddr;
 	pTempAddr = pAddrs;
-	while(NULL != pTempAddr)
+    while(nullptr != pTempAddr)
 	{
 		if(AF_INET6 == pTempAddr->ifa_addr->sa_family)
 		{

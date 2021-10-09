@@ -20,6 +20,9 @@ const uint8_t POLAR_2_STATE = CHANNEL_1_STATE << 5;
 const uint8_t POLAR_3_STATE = CHANNEL_1_STATE << 6;
 const uint8_t POLAR_4_STATE = CHANNEL_1_STATE << 7;
 
+#ifdef _MSC_VER
+#pragma pack(push, 1)
+#endif
 struct BinaryData
 {
     uint8_t ActivityBits;
@@ -35,8 +38,13 @@ struct BinaryData
     int16_t Target4Azimuth;
     int16_t Target4Elevation;
     uint16_t Target4Polarization;
-} __attribute__ ((packed));
-
+}
+#ifdef __GNUC__
+__attribute__((packed));
+#else
+;
+#pragma pack(pop)
+#endif
 
 int main(int argc, char* argv[])
 {

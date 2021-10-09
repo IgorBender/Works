@@ -103,8 +103,8 @@
 
 /* Use api.header.include to #include this header
    instead of duplicating it here.  */
-#ifndef YY_DEF_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED
-# define YY_DEF_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED
+#ifndef YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED
+# define YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED
 /* Debug traces.  */
 #ifndef DEFDEBUG
 # if defined YYDEBUG
@@ -121,7 +121,7 @@
 extern int defdebug;
 #endif
 /* "%code requires" blocks.  */
-#line 14 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 14 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
 
 #include <string>
 #ifndef YY_TYPEDEF_YY_SCANNER_T
@@ -129,7 +129,7 @@ extern int defdebug;
 typedef void *yyscan_t;
 #endif
 
-#line 133 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 133 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
 
 /* Token type.  */
 #ifndef DEFTOKENTYPE
@@ -150,12 +150,12 @@ typedef void *yyscan_t;
 #if ! defined DEFSTYPE && ! defined DEFSTYPE_IS_DECLARED
 union DEFSTYPE
 {
-#line 29 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 29 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
 
 	char* IdString;
 	char OpSymbol;
 
-#line 159 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 159 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
 
 };
 typedef union DEFSTYPE DEFSTYPE;
@@ -167,17 +167,17 @@ typedef union DEFSTYPE DEFSTYPE;
 
 int defparse (yyscan_t scanner);
 
-#endif /* !YY_DEF_HOME_IGOR_TESTS_CMAKEWORKSPACE_PARSERTEST_DEFTESTS_H_INCLUDED  */
+#endif /* !YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED  */
 
 
 /* Unqualified %code blocks.  */
-#line 23 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 23 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
 
 #include <BitParserInterface.h>
 #include "DefTestsLex.h"
 void yyerror(yyscan_t scanner, const char *s);
 
-#line 181 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 181 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
 
 #ifdef short
 # undef short
@@ -1338,65 +1338,65 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 40 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 40 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
             {}
-#line 1344 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1344 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
   case 3:
-#line 41 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 41 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
                               { if(!defget_extra(scanner)->performSetComand((yyvsp[-1].IdString), (yyvsp[0].IdString)))
                                 yyerror(scanner, "Forbidden symbol"); }
-#line 1351 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1351 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
   case 4:
-#line 43 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 43 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
                        { if(!defget_extra(scanner)->performSleepComand((yyvsp[0].IdString)))
         yyerror(scanner, "Forbidden symbol"); }
-#line 1358 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1358 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
   case 5:
-#line 45 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 45 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
                   { defget_extra(scanner)->addMeasureVariable((yyvsp[0].IdString)); }
-#line 1364 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1364 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
   case 6:
-#line 46 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 46 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
                                 { if(!defget_extra(scanner)->performSetComand((yyvsp[-1].IdString), (yyvsp[0].IdString)))
         yyerror(scanner, "Forbidden symbol"); }
-#line 1371 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1371 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
   case 7:
-#line 48 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 48 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
                            { if(!defget_extra(scanner)->performSleepComand((yyvsp[0].IdString)))
         yyerror(scanner, "Forbidden symbol"); }
-#line 1378 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1378 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
   case 8:
-#line 50 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 50 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
                    { defget_extra(scanner)->addTestVariable((yyvsp[0].IdString)); }
-#line 1384 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1384 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
   case 9:
-#line 51 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 51 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
                       { defget_extra(scanner)->addMeasureVariable((yyvsp[0].IdString)); }
-#line 1390 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1390 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
   case 10:
-#line 52 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 52 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
                { yyerror(scanner, "Forbidden symbol"); }
-#line 1396 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1396 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
     break;
 
 
-#line 1400 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.cpp"
+#line 1400 "/home/igor/GitHub/Works/ParserTest/DefTests.cpp"
 
       default: break;
     }
@@ -1628,7 +1628,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 54 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.y"
+#line 54 "/home/igor/GitHub/Works/ParserTest/DefTests.y"
 
 
 /* For warning elimination */

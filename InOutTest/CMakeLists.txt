@@ -32,4 +32,4 @@ IF("${CMAKE_CXX_COMPILER}" STREQUAL "/home/opt/intel/sw_dev_tools/bin/icpc")
     ENDIF()
 ENDIF()
 
-add_executable(InOutTest InOutTest.cpp StringColorizer.h OutFormat.h)
+add_executable(InOutTest InOutTest.cpp StringColorizer.h )

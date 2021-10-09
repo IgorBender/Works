@@ -30,7 +30,7 @@ const size_type MAX_BUF_SIZE = 4096;
 bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& NetMask)
 {
     int Sock = socket(AF_INET, SOCK_DGRAM, 0);
-    int NumOfInterfaces;
+    uint32_t NumOfInterfaces;
     int IORes;
 #ifndef __linux__
     IORes = ioctl(Sock, SIOCGIFNUM, &NumOfInterfaces);
@@ -45,13 +45,13 @@ bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& Net
     lifreq *pReq = new lifreq[NumOfInterfaces];
 #else
     IfConfStruct.ifc_len = 32000;
-    IfConfStruct.ifc_buf = NULL;
+    IfConfStruct.ifc_buf = nullptr;
     IORes = ioctl(Sock, SIOCGIFCONF, &IfConfStruct);
-    NumOfInterfaces = IfConfStruct.ifc_len / sizeof(struct ifreq);
-    IfConfStruct.ifc_len = NumOfInterfaces * sizeof(struct ifreq);
+    NumOfInterfaces = static_cast<uint32_t>(static_cast<uint32_t>(IfConfStruct.ifc_len) / sizeof(struct ifreq));
+    IfConfStruct.ifc_len = static_cast<int32_t>(NumOfInterfaces * sizeof(struct ifreq));
     ifreq *pReq = new ifreq[NumOfInterfaces];
 #endif
-    IfConfStruct.ifc_buf = (caddr_t)pReq;
+    IfConfStruct.ifc_buf = reinterpret_cast<caddr_t>(pReq);
     IORes = ioctl(Sock, SIOCGIFCONF, &IfConfStruct);
     if(IORes < 0)
     {
@@ -59,8 +59,8 @@ bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& Net
         return false;
     }
     ifreq *IfReqStrPointer;
-    int i;
-    for(i = 0, IfReqStrPointer = (ifreq *)IfConfStruct.ifc_buf;
+    uint32_t i;
+    for(i = 0, IfReqStrPointer = reinterpret_cast<ifreq*>(IfConfStruct.ifc_buf);
             i < NumOfInterfaces;  i++, IfReqStrPointer++)
     {
         InterfaceAddr = BroadAddr = NetMask = 0;

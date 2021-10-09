@@ -140,7 +140,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
 		pAddresses = reinterpret_cast<IP_ADAPTER_ADDRESSES*>(new char[OutBufLen]);
 		if (pAddresses == NULL) {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-			SOCK_EXCEPT_THROW("Memory allocation failed for IP_ADAPTER_ADDRESSES struct.");
+			SOCK_EXCEPT_THROW("Memory allocation failed for IP_ADAPTER_ADDRESSES struct.", m_Sock);
 #else
 			return SOCKET_ERROR;
 #endif
@@ -193,7 +193,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
 		if (NULL == pCurrAddresses)
 		{
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-			SOCK_EXCEPT_THROW("Wrong address.");
+			SOCK_EXCEPT_THROW("Wrong address.", m_Sock);
 #else
 			return SOCKET_ERROR;
 #endif
@@ -203,7 +203,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
 	else
 	{
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-		SOCK_EXCEPT_THROW("Wrong address.");
+		SOCK_EXCEPT_THROW("Wrong address.", m_Sock);
 #else
 		return SOCKET_ERROR;
 #endif

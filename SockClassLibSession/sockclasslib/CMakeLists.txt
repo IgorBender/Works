@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(sockclasslib LANGUAGES CXX)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_library(sockclasslib SHARED
     BaseException.h        DatagramSocket.cpp     ServerSimple.cpp
@@ -27,3 +28,7 @@ add_library(sockclasslib SHARED
     DatagramBoundV6.h      ServerReuseV6.h
 )
 
+IF(NOT UNIX)
+    target_compile_definitions(sockclasslib PRIVATE SOCKCLASSLIB_EXPORTS _WINSOCK_DEPRECATED_NO_WARNINGS _CRT_SECURE_NO_WARNINGS)
+    target_link_libraries(sockclasslib ws2_32 Iphlpapi)
+ENDIF()

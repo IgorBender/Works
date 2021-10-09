@@ -7,7 +7,14 @@
 #include <regex>
 #include <fstream>
 #include <cmath>
+#ifdef _MSC_VER
+#define _USE_MATH_DEFINES
+#include <math.h>
+#endif
 #include <limits>
+#include <sstream>
+
+
 
 std::vector<std::string> tokens(const std::string& InputString, const std::string& Delimiters)
 {
@@ -27,6 +34,9 @@ const uint8_t POLAR_2_STATE = CHANNEL_1_STATE << 5;
 const uint8_t POLAR_3_STATE = CHANNEL_1_STATE << 6;
 const uint8_t POLAR_4_STATE = CHANNEL_1_STATE << 7;
 
+#ifdef _MSC_VER
+#pragma pack(push, 1)
+#endif
 struct BinaryData
 {
     uint8_t ActivityBits;
@@ -42,7 +52,13 @@ struct BinaryData
     int16_t Target4Azimuth;
     int16_t Target4Elevation;
     uint16_t Target4Polarization;
-} __attribute__ ((packed));
+}
+#ifdef __GNUC__
+__attribute__ ((packed));
+#else
+;
+#pragma pack(pop)
+#endif
 
 class PolarizationAngleComputer
 {
@@ -146,7 +162,7 @@ using namespace std;
 //     target_number : 1 - 4, 0 for all 4 targets.
 // If output file exists with differerent target the programm will add new binary data, thus
 //    generation binary data for more than one target (accumulative behavior).
-// The scenario file can cisist of 5 kinds of legs:
+// The scenario file can enlist of 5 kinds of legs:
 //    POLAR - defines polarization angle dynamic.
 //    SILENT - no target during some number of cycles.
 //    DOT - static target coordinates during some number of cycles.
@@ -174,17 +190,14 @@ int main(int argc, char* argv[])
     }
 
     BinaryData* pScenario = new BinaryData[MAX_NUM_OF_POINTS];
-#ifndef _WIN32
-    bzero(pScenario, sizeof (BinaryData) * MAX_NUM_OF_POINTS);
-#else
     memset(pScenario, 0, sizeof (BinaryData) * MAX_NUM_OF_POINTS);
-#endif
     LegTypeEnum LegType{LegTypeEnum::None};
 
     ifstream InFile(argv[2]);
     if(!InFile)
     {
         cerr << "No tragectory file " << argv[1] << endl;
+        delete [] pScenario;
         return 1;
     }
 

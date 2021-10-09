@@ -1,6 +1,6 @@
-#line 2 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.cpp"
+#line 2 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.cpp"
 
-#line 4 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.cpp"
+#line 4 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -654,8 +654,8 @@ static const flex_int16_t yy_chk[46] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
-#line 2 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 1 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
+#line 2 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
  /* Definition of output files. */
 /* %option outfile="DefTestsLex.cpp" header-file="DefTestsLex.h" */
  /* Options to generate reentrant code used in bison parser. */
@@ -668,9 +668,9 @@ static const flex_int16_t yy_chk[46] =
 #include "DefTests.h"
 #define YYSTYPE         DEFSTYPE
 #define YY_EXTRA_TYPE BitParserInterface*
-#line 672 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.cpp"
+#line 672 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.cpp"
 /* Space, EOL and TAB are considered as WhiteSpaces. */
-#line 674 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.cpp"
+#line 674 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.cpp"
 
 #define INITIAL 0
 
@@ -940,10 +940,10 @@ YY_DECL
 		}
 
 	{
-#line 33 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 33 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 
 
-#line 947 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.cpp"
+#line 947 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1002,7 +1002,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 35 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 35 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 {
         yylval->IdString = strdup(yytext);
         return NUM_VAR;
@@ -1010,7 +1010,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 39 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 39 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 {
         yylval->IdString = strdup(yytext);
         return ID_VAR;
@@ -1018,7 +1018,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 43 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 43 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 {
         yylval->IdString = strdup("SLEEP");
         return SLEEP_ID;
@@ -1026,7 +1026,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 47 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 47 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 {
        yylval->IdString = strdup("SET");
        return SET_ID;
@@ -1034,7 +1034,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 51 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 51 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 {
         yylval->IdString = strdup(yytext);
         return TEST_VAR;
@@ -1042,7 +1042,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 55 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 55 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 {
         yylval->IdString = strdup(yytext);
         return MEASURE_VAR;
@@ -1051,20 +1051,20 @@ YY_RULE_SETUP
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 59 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 59 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 {};
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 60 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 60 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 { return DEFERROR; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 62 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 62 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 ECHO;
 	YY_BREAK
-#line 1068 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTestsLex.cpp"
+#line 1068 "/home/igor/GitHub/Works/ParserTest/DefTestsLex.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2207,6 +2207,6 @@ void yyfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 62 "/home/igor/tests/CMakeWorkspace/ParserTest/DefTests.l"
+#line 62 "/home/igor/GitHub/Works/ParserTest/DefTests.l"
 
 

@@ -5,8 +5,12 @@ project(ScenInputTest LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+IF(${UNIX})
 set(CMAKE_CXX_FLAGS -fno-omit-frame-pointer)
 set(CMAKE_C_FLAGS -fno-omit-frame-pointer)
+ELSE()
+set(CMAKE_CXX_FLAGS /EHsc)
+ENDIF()
 
 IF("${CMAKE_CXX_COMPILER}" STREQUAL "/usr/bin/clang++")
     IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
