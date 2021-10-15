@@ -72,7 +72,7 @@ int main(int argc, char** argv)
         timespec Delay;
         Delay.tv_sec = 3;
         Delay.tv_nsec = 40 * 1000 * 1000;
-        nanosleep(&Delay, NULL);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
+        nanosleep(&Delay, nullptr);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
 #endif
         Thread.stop();  // Stop the thread, the thread is turned to be one shot
         cout << "---------------------------------------" << endl << flush;
@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 #else
         Delay.tv_sec = 0;
         Delay.tv_nsec = 10 * 1000 * 1000;
-        nanosleep(&Delay, NULL);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
+        nanosleep(&Delay, nullptr);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
 #endif
         cout << "---------------------------------------" << endl << flush;
         Thread.setCyclic(true);
@@ -92,7 +92,7 @@ int main(int argc, char** argv)
 #else
         Delay.tv_sec = 3;
         Delay.tv_nsec = 20 * 1000 * 1000;
-        nanosleep(&Delay, NULL);     // Four time more of "Hello World" (9 times)
+        nanosleep(&Delay, nullptr);     // Four time more of "Hello World" (9 times)
 #endif
         Thread.stop();  // Stop the thread
         cout << "---------------------------------------" << endl << flush;
@@ -108,7 +108,7 @@ int main(int argc, char** argv)
 #else
         Delay.tv_sec = 3;
         Delay.tv_nsec = 20 * 1000 * 1000;
-        nanosleep(&Delay, NULL);     // Four time more of "Hello World" (9 times)
+        nanosleep(&Delay, nullptr);     // Four time more of "Hello World" (9 times)
 #endif
         Thread.stop();  // Stop the thread
         cout << "---------------------------------------" << endl << flush;
@@ -118,7 +118,7 @@ int main(int argc, char** argv)
 
         cout << "---------------------------------------" << endl << flush;
         cout << "Thread cancellation test" << endl;
-        Runnable CancelRun(PThreadRoutineType(endless), PThreadCleanUpRoutineType(stopNotif), NULL, NULL, true);
+        Runnable CancelRun(PThreadRoutineType(endless), PThreadCleanUpRoutineType(stopNotif), nullptr, nullptr, true);
         PThreadClass CancelTest(CancelRun, PTHREAD_INFINITE, true);
         CancelTest.run();
         CancelTest.start();
@@ -127,7 +127,7 @@ int main(int argc, char** argv)
 #else
         Delay.tv_sec = 3;
         Delay.tv_nsec = 20 * 1000 * 1000;
-        nanosleep(&Delay, NULL);
+        nanosleep(&Delay, nullptr);
 #endif
 //        pthread_cancel(CancelTest.getThreadId());
         CancelTest.cancel();
@@ -140,8 +140,8 @@ int main(int argc, char** argv)
             reinterpret_cast < PThreadCleanUpRoutineType > (cleanCount));
 
         // Count = 0;
-        pReceiver = NULL;
-        pParser = NULL;
+        pReceiver = nullptr;
+        pParser = nullptr;
         pParser = new PThreadClass(MessagesRun, 0, false, true);
         cout << "Parser thread is running..." << endl;
         pReceiver = new PThreadClass(ReceiverRun, 1000, true, true);
@@ -175,9 +175,9 @@ int main(int argc, char** argv)
         pParser->join();
         cout << "End of \"Receiver-Parser\" test" << endl << flush;
         delete pReceiver;
-        pReceiver = NULL;
+        pReceiver = nullptr;
         delete pParser;
-        pParser = NULL;
+        pParser = nullptr;
         cout << "End of prog" << endl; 
 
         cout << "Test of ExtendedThread" << endl;
@@ -222,7 +222,7 @@ int main(int argc, char** argv)
     timespec Delay;
     Delay.tv_sec = 3;
     Delay.tv_nsec = 20 * 1000 * 1000;
-    nanosleep(&Delay, NULL);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
+    nanosleep(&Delay, nullptr);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
 #endif
     Thread.stop();  // Stop the thread, the thread is turned to be one shot
     cout << "---------------------------------------" << endl << flush;
@@ -232,7 +232,7 @@ int main(int argc, char** argv)
 #else
     Delay.tv_sec = 0;
     Delay.tv_nsec = 10 * 1000 * 1000;
-    nanosleep(&Delay, NULL);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
+    nanosleep(&Delay, nullptr);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
 #endif
     cout << "---------------------------------------" << endl << flush;
     Thread.setCyclic(true);
@@ -242,7 +242,7 @@ int main(int argc, char** argv)
 #else
     Delay.tv_sec = 3;
     Delay.tv_nsec = 20 * 1000 * 1000;
-    nanosleep(&Delay, NULL);     // Four time more of "Hello World" (9 times)
+    nanosleep(&Delay, nullptr);     // Four time more of "Hello World" (9 times)
 #endif
     Thread.stop();  // Stop the thread
     cout << "---------------------------------------" << endl << flush;
@@ -258,7 +258,7 @@ int main(int argc, char** argv)
 #else
     Delay.tv_sec = 3;
     Delay.tv_nsec = 20 * 1000 * 1000;
-    nanosleep(&Delay, NULL);     // Four time more of "Hello World" (9 times)
+    nanosleep(&Delay, nullptr);     // Four time more of "Hello World" (9 times)
 #endif
     Thread.stop();  // Stop the thread
     cout << "---------------------------------------" << endl << flush;
@@ -313,9 +313,9 @@ int main(int argc, char** argv)
     pParser->join();
     cout << "End of \"Receiver-Parser\" test" << endl << flush;
     delete pReceiver;
-    pReceiver = NULL;
+    pReceiver = nullptr;
     delete pParser;
-    pParser = NULL;
+    pParser = nullptr;
 
 	cout << "Test of ExtendedThread" << endl;
 	PThreadExtended ExtendefTrhread(Runnable(PThreadRoutineType(oneSecond)), 0, true);
@@ -341,11 +341,13 @@ int main(int argc, char** argv)
     return 0;
 }
 
-
+#ifdef __clang__
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#endif
 void* helloRoutine(void* pContext)
 {
     cout << "Hello World" << endl << flush;
-    return NULL;
+    return nullptr;
 }
 
 void* parseMessage(void* pContext)
@@ -354,7 +356,7 @@ void* parseMessage(void* pContext)
 	// Parse message here
     cout << "Message is parsed successfully" << endl << flush;
     Barrier.wait();
-    return NULL;
+    return nullptr;
 }
 
 void* receiveMessage(void* pContext)
@@ -363,12 +365,12 @@ void* receiveMessage(void* pContext)
     if(Count > 10)
     {
         pReceiver->exit();
-        return NULL;
+        return nullptr;
     }
     pParser->start();
     Barrier.wait();
     ++Count;
-    return NULL;
+    return nullptr;
 }
 
 void cleanCount(void* pContext)
@@ -385,7 +387,7 @@ void* oneSecond(void* pContext)
     sleep(1);
 #endif
     cout << "----" << endl;
-    return NULL;
+    return nullptr;
 }
 
 void stopNotif(void* p)
@@ -403,5 +405,5 @@ void* endless(void* p)
         double k = 3.54;
         d = m * k;
     }
-    return NULL;
+    return nullptr;
 }

@@ -11,13 +11,17 @@
 #ifdef __SunOS
 #include <priv.h>
 #else
-#define _USE_MATH_DEFINES 1
+//#define _USE_MATH_DEFINES 1
 #include <math.h>
 #endif
 
 #ifdef __linux__
 #include <time.h>
 #endif
+
+static double m0 = 0.0;
+static double m1 = 0.0;
+static double m2 = 0.0;
 
 void*
 job0(void* p)
@@ -35,6 +39,7 @@ job0(void* p)
         for(int i = 0; i < 400000; ++i)
         {
             double m = i * M_PI / 85.15 + sqrt(double(i^5));
+            m0 = m;
         }
 #ifdef __SunOS
     hrtime_t EndTime = gethrtime();
@@ -49,7 +54,7 @@ job0(void* p)
     clock_t EndTime = clock();
     cout << "Wall time of job " << *(reinterpret_cast<int*>(p)) << " " << fixed << double(EndTime - StartTime) / CLOCKS_PER_SEC * 1000.0 << " miliseconds." << endl;
 #endif
-    return NULL;
+    return nullptr;
 }
 
 void*
@@ -68,6 +73,7 @@ job1(void* p)
         for(int i = 0; i < 4000000; ++i)
         {
             double m = i * M_PI / 85.15 + sqrt(double(i^5));
+            m1 = m;
         }
 #ifdef __SunOS
     hrtime_t EndTime = gethrtime();
@@ -82,7 +88,7 @@ job1(void* p)
     clock_t EndTime = clock();
     cout << "Wall time of job " << *(reinterpret_cast<int*>(p)) << " " << fixed << double(EndTime - StartTime) / CLOCKS_PER_SEC * 1000.0 << " miliseconds." << endl;
 #endif
-    return NULL;
+    return nullptr;
 }
 
 void*
@@ -98,6 +104,7 @@ jobToBeCanceled(void* p)
         for(int i = 0; i < 4000000; ++i)
         {
             double m = i * M_PI / 85.15 + sqrt(double(i^5));
+            m2 = m;
         }
 #ifndef WIN32
     //    hrtime_t EndTime = gethrtime();
@@ -107,7 +114,7 @@ jobToBeCanceled(void* p)
     clock_t EndTime = clock();
     cout << "Wall time of job " << *(reinterpret_cast<int*>(p)) << " " << fixed << double(EndTime - StartTime) / CLOCKS_PER_SEC * 1000.0 << " miliseconds." << endl;
 #endif
-    return NULL;
+    return nullptr;
     }
 
 void
@@ -157,8 +164,8 @@ int main(int argc, char** argv)
     int Job4Id = 4;
     int Job5Id = 5;
     int Job6Id = 6;
-    int Job7Id = 7;
-    int Job8Id = 8;
+//    int Job7Id = 7;
+//    int Job8Id = 8;
     int Job9Id = 9;
     int Job10Id = 10;
 
@@ -191,7 +198,7 @@ int main(int argc, char** argv)
     timespec Delay;
     Delay.tv_sec = 0;
     Delay.tv_nsec = 100 * 1000 * 1000;
-    nanosleep(&Delay, NULL);
+    nanosleep(&Delay, nullptr);
 #else
     Sleep(100);
 #endif
@@ -214,7 +221,7 @@ int main(int argc, char** argv)
 #ifndef WIN32
     Delay.tv_sec = 0;
     Delay.tv_nsec = 100 * 1000 * 1000;
-    nanosleep(&Delay, NULL);
+    nanosleep(&Delay, nullptr);
 #else
     Sleep(100);
 #endif
@@ -237,7 +244,7 @@ int main(int argc, char** argv)
 #ifndef WIN32
     Delay.tv_sec = 0;
     Delay.tv_nsec = 200 * 1000 * 1000;
-    nanosleep(&Delay, NULL);
+    nanosleep(&Delay, nullptr);
 #else
     Sleep(100);
 #endif
@@ -260,7 +267,7 @@ int main(int argc, char** argv)
 #ifndef WIN32
     Delay.tv_sec = 0;
     Delay.tv_nsec = 100 * 1000 * 1000;
-    nanosleep(&Delay, NULL);
+    nanosleep(&Delay, nullptr);
 #else
     Sleep(100);
 #endif

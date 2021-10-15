@@ -9,7 +9,7 @@ ThreadClass.cpp ThreadClass.h
 ThreadException.cpp ThreadException.h
 )
 
-if( NOT (${UNIX}))
+if( NOT UNIX)
     target_compile_definitions(ThreadClassLib PRIVATE THREADCLASSLIB_EXPORTS)
 endif()
 

@@ -25,9 +25,9 @@ PoolThread::PoolThread(unsigned int Id) : PThreadClass(Runnable(PThreadRoutineTy
 #ifdef __SunOS
                                                        m_LwpId(-1),
 #elif __linux__
-                                                       m_ThreadPid(-1),
+                                                       m_ThreadPid(static_cast<uint32_t>(-1)),
 #endif
-                                                       m_pRoutine(NULL), m_pArgument(NULL), m_pCleanUpRoutine(NULL), m_pCleanUpArg(NULL), m_Id(Id), m_LastCpuTime(0), m_OverallCpuTime(0),
+                                                       m_pRoutine(nullptr), m_pArgument(nullptr), m_pCleanUpRoutine(nullptr), m_pCleanUpArg(nullptr), m_Id(Id), m_LastCpuTime(0), m_OverallCpuTime(0),
                                                        m_LastPriorityLevel(0), m_Working(false)
 {
 #ifdef __SunOS
@@ -42,7 +42,7 @@ PoolThread::PoolThread(unsigned int Id) : PThreadClass(Runnable(PThreadRoutineTy
     {
         THREAD_EXCEPT_THROW(Result);
     }
-    m_TicksInSecond = sysconf(_SC_CLK_TCK);
+    m_TicksInSecond = uint32_t(sysconf(_SC_CLK_TCK));
 #endif
 #endif
 }
@@ -62,7 +62,7 @@ void* PoolThread::threadMainRoutine()
         return ReturnValue;
     }
     m_Working = false;
-	return NULL;
+    return nullptr;
 }
 
 void PoolThread::cleanUpRoutine()
@@ -153,32 +153,32 @@ u_int64_t PoolThread::getOverallRunCpuTime()
     int fd = open(m_ProcessName, O_RDONLY);
     if(0 > fd)
     {
-        return -1;
+        return static_cast<uint32_t>(-1);
     }
     char readBuffer[256];
-    int n;
+    ssize_t n;
     n = read(fd, readBuffer, 256);
     if(0 < n)
         readBuffer[n - 1] = '\0';
     close(fd);
     char* str = readBuffer;
     char* savePtr;
-    for(int i = 0; i < UTIME_ENTRY - 1; ++i, str = NULL)
+    for(int i = 0; i < UTIME_ENTRY - 1; ++i, str = nullptr)
     {
         char* token = strtok_r(str, " ", &savePtr);
-        if(token == NULL)
+        if(token == nullptr)
         {
-            return -1;
+            return static_cast<uint32_t>(-1);
         }
     }
     char* token = strtok_r(str, " ", &savePtr);
-    u_int64_t utime = atoi(token);
+    uint64_t utime = uint64_t(atoi(token));
     token = strtok_r(str, " ", &savePtr);
-    u_int64_t stime = atoi(token);
+    uint64_t stime = uint64_t(atoi(token));
 
-    if(token == NULL)
+    if(token == nullptr)
     {
-        return -1;
+        return static_cast<uint32_t>(-1);
     }
     m_OverallCpuTime = ((utime + stime)  * 1000 * 1000 * 1000) / m_TicksInSecond;
     return m_OverallCpuTime;
@@ -201,6 +201,7 @@ u_int64_t PoolThread::getLastRunCpuTime()
     }
     u_int64_t ResultTime = TmpTime - m_LastCpuTime;
     return ResultTime;
-#endif
+#else
     return getOverallRunCpuTime() - m_LastCpuTime;
+#endif
 }
