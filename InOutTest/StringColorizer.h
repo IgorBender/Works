@@ -23,7 +23,6 @@ class StringColorizer
     /// Forground color enumeration.
 	enum class Forground
 	{
-//#ifndef _WIN32
 		None = 0,
 		Black = 30,
 		Red = 31,
@@ -33,17 +32,6 @@ class StringColorizer
 		Magenta = 35,
 		Cyan = 36,
 		White = 37
-//#else
-//		None = -1,
-//		Black = 0,
-//		Red = FOREGROUND_RED | FOREGROUND_INTENSITY,
-//		Green = FOREGROUND_GREEN | FOREGROUND_INTENSITY,
-//		Yellow = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY,
-//		Blue = FOREGROUND_BLUE | FOREGROUND_INTENSITY,
-//		Magenta = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
-//		Cyan = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
-//		White = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY
-//#endif
     };
 
     ///
@@ -51,7 +39,6 @@ class StringColorizer
     /// Background color enumeration.
     enum class Background
     {
-//#ifndef _WIN32
         None = 0,
         Black = 40,
         Red = 41,
@@ -61,17 +48,6 @@ class StringColorizer
         Magenta = 45,
         Cyan = 46,
         White = 47
-//#else
-//		None = -1,
-//		Black = 0,
-//		Red = BACKGROUND_RED | BACKGROUND_INTENSITY,
-//		Green = BACKGROUND_GREEN | BACKGROUND_INTENSITY,
-//		Yellow = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_INTENSITY,
-//		Blue = BACKGROUND_BLUE | BACKGROUND_INTENSITY,
-//		Magenta = BACKGROUND_RED | BACKGROUND_BLUE | BACKGROUND_INTENSITY,
-//		Cyan = BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY,
-//		White = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY
-//#endif
 	};
 
     enum class Font
@@ -96,6 +72,52 @@ class StringColorizer
                       Font FontAttribute = Font::None)
             : m_FgColor(FgColor), m_BgColor(BgColor), m_FontAttribute(FontAttribute)
         {
+        }
+
+        std::string colorize()
+        {
+            if(StringColorizer::Forground::None == m_FgColor &&
+               StringColorizer::Background::None == m_BgColor &&
+               StringColorizer::Font::None == m_FontAttribute)
+                return std::string("");
+            std::string Out = "\033[";
+            std::stringstream Number;
+            bool PutSemicolon = false;
+            if(StringColorizer::Forground::None != m_FgColor)
+            {
+                Number << static_cast<uint32_t>(m_FgColor) << std::ends;
+                Out += Number.str().substr(0, Number.str().length() - 1);
+                PutSemicolon = true;
+                Number.seekp(0);
+                Number.seekg(0);
+                Number.str("");
+                Number.clear();
+            }
+            if(StringColorizer::Background::None != m_BgColor)
+            {
+                if(PutSemicolon)
+                    Out += ";";
+                Number << static_cast<uint32_t>(m_BgColor) << std::ends;
+                Out += Number.str().substr(0, Number.str().length() - 1);
+                PutSemicolon = true;
+                Number.seekp(0);
+                Number.seekg(0);
+                Number.str("");
+                Number.clear();
+            }
+            if(StringColorizer::Font::None != m_FontAttribute)
+            {
+                if(PutSemicolon)
+                    Out += ";";
+                Number << static_cast<uint32_t>(m_FontAttribute) << std::ends;
+                std::string Tmp = Number.str();
+                Tmp = Tmp.substr(0, Tmp.length() - 1);
+                Out += Number.str().substr(0, Number.str().length() - 1);
+            }
+
+            Out += "m";
+
+            return Out;
         }
 
         Forground m_FgColor = Forground::None; ///< Forground color.
