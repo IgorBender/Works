@@ -65,6 +65,7 @@ int main(int argc, char** argv)
 //        {
 //        	cout << "Wrong policy." << endl;
 //        }
+        cout << "Print 4 times from cyclic thread" << endl;
         Thread.start(); // Start the thread, see "Hello World" of first cycle
 #ifdef WIN32
         Sleep(3100);    // Wait for 3 seconds and see "Hello World" three times more (4 times)
@@ -76,6 +77,7 @@ int main(int argc, char** argv)
 #endif
         Thread.stop();  // Stop the thread, the thread is turned to be one shot
         cout << "---------------------------------------" << endl << flush;
+        cout << "Print one more time from one-shot thread" << endl;
         Thread.start(); // Print "Hello World" more one time (5 times)
 #ifdef WIN32
         Sleep(10);    // Wait for 3 seconds and see "Hello World" three times more (4 times)
@@ -85,6 +87,7 @@ int main(int argc, char** argv)
         nanosleep(&Delay, nullptr);    // Wait for 3 seconds + 20 mili and see "Hello World" three times more (4 times)
 #endif
         cout << "---------------------------------------" << endl << flush;
+        cout << "Print 4 times from cyclic thread" << endl;
         Thread.setCyclic(true);
         Thread.start();
 #ifdef WIN32
@@ -102,6 +105,7 @@ int main(int argc, char** argv)
         cout << "Reuse thread" << endl;
         Thread.run();
         Thread.setCyclic(true);
+        cout << "Print 4 times from cyclic thread" << endl;
         Thread.start();
 #ifdef WIN32
         Sleep(3100);    // Four time more of "Hello World" (9 times)

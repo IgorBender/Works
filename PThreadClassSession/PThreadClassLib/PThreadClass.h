@@ -33,7 +33,7 @@
 #include "CondVarClass.h"
 #include <sched.h>
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 #ifdef __VXWORKS__
 #include <sys/times.h>
 #else
@@ -41,11 +41,28 @@
 #endif
 #else
 #include <time.h>
-struct timespec { long tv_sec; long tv_nsec; };
-int clock_gettime(int, struct timespec *spec);
 #endif
 
 #include <sys/timeb.h>
+
+#ifdef _MSC_VER
+#define MS_PER_SEC      1000ULL     // MS = milliseconds
+#define US_PER_MS       1000ULL     // US = microseconds
+#define HNS_PER_US      10ULL       // HNS = hundred-nanoseconds (e.g., 1 hns = 100 ns)
+#define NS_PER_US       1000ULL
+
+#define HNS_PER_SEC     (MS_PER_SEC * US_PER_MS * HNS_PER_US)
+#define NS_PER_HNS      (100ULL)    // NS = nanoseconds
+#define NS_PER_SEC      (MS_PER_SEC * US_PER_MS * NS_PER_US)
+
+#define CLOCK_MONOTONIC 0
+#define CLOCK_REALTIME 1
+typedef int clockid_t;
+
+int clock_gettime_monotonic(struct timespec* tv);
+int clock_gettime_realtime(struct timespec* tv);
+int clock_gettime(clockid_t type, struct timespec* tp);
+#endif
 
 /// \file 
 ///

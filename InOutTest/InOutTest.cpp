@@ -23,9 +23,6 @@ int main()
     cin.unsetf(ios::hex);
     cin.unsetf(ios::dec);
     cin.unsetf(ios::oct);
-    cout.unsetf(ios::hex);
-    cout.unsetf(ios::dec);
-    cout.unsetf(ios::oct);
 
     cout << "Enter number of any base --> ";
     uint32_t InVal = 0;

@@ -23,14 +23,14 @@
  */
 
 #include "PThreadExtended.h"
-#ifndef WIN32
+#ifndef _MSC_VER
 #include <unistd.h>
 #include <pthread.h>
 #else
 #include <Windows.h>
 #endif
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 void nameThreadWindows(DWORD t, const char* name)
 {
 #pragma pack(push,8)
