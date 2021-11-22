@@ -10,7 +10,7 @@ PBarrierClass.cpp  PThreadBaseException.h  PThreadExtended.h
 PBarrierClass.h    PThreadClass.cpp        ThreadException.cpp
 PMutexClass.cpp    PThreadClass.h          ThreadException.h
 PMutexClass.h      PThreadClassLib.cpp     CondVarCountedClass.h
-CondVarCountedClass.cpp
+CondVarCountedClass.cpp SemaphoreClass.h SemaphoreClass.cpp
 )
 
 if(NOT UNIX)

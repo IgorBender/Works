@@ -7,8 +7,9 @@
 #include <PRWLockClass.h>
 #include <PBarrierClass.h>
 #include <CondVarCountedClass.h>
-using namespace std;
+#include <SemaphoreClass.h>
 
+using namespace std;
 
 
 void* helloRoutine(void* pContext);
@@ -20,6 +21,8 @@ void stopNotif(void* p);
 void* endless(void* p);
 void* producerRoutine(void*);
 void* consumerRoutine(void*);
+void* semTestProducerRoutine(void*);
+void* semTestConsumerRoutine(void*);
 
 // Globals
 PThreadClass* pReceiver;
@@ -30,6 +33,7 @@ double d;
 CondVarCountedClass TestCondVar;
 PThreadExtended* pProducer;
 PThreadExtended* pConsumer;
+SemaphoreClass* pSemaphore;
 
 
 int main(int argc, char** argv)
@@ -229,6 +233,43 @@ int main(int argc, char** argv)
         pConsumer->join();
         delete pConsumer;
         delete pProducer;
+
+        cout << "---------------------------------------" << endl << flush;
+        cout << "Semaphore test" << endl;
+        pSemaphore = new SemaphoreClass;
+        THREAD_TRY
+        {
+            pSemaphore->post();
+            cout << "Using of un-initialized semaphore." << endl;
+            return 1;
+        }
+        THREAD_EXCEPT_CATCH_BEGIN_NOREP
+        THREAD_EXCEPT_CATCH_END;
+        pSemaphore->init();
+        THREAD_TRY
+        {
+            pSemaphore->init();
+            cout << "Double-init of semaphore." << endl;
+            return 1;
+        }
+        THREAD_EXCEPT_CATCH_BEGIN_NOREP
+        THREAD_EXCEPT_CATCH_END;
+
+        Count = 0;
+        pProducer = new PThreadExtended(Runnable(semTestProducerRoutine), 1000, true);
+        pConsumer = new PThreadExtended(Runnable(semTestConsumerRoutine), PTHREAD_INFINITE, true);
+        pProducer->run();
+        pConsumer->run();
+        pProducer->nameThread("Producer");
+        pConsumer->nameThread("Consumer");
+        pConsumer->start();
+        pProducer->start();
+        pProducer->join();
+        pConsumer->stop();
+        pConsumer->exit();
+        pConsumer->join();
+        delete pConsumer;
+        delete pProducer;
     }
     THREAD_EXCEPT_CATCH_BEGIN(cout)
     THREAD_EXCEPT_CATCH_END;
@@ -409,6 +450,38 @@ int main(int argc, char** argv)
     delete pConsumer;
     delete pProducer;
 
+    cout << "---------------------------------------" << endl << flush;
+    cout << "Semaphore test" << endl;
+    pSemaphore = new SemaphoreClass;
+    int32_t SemResult = pSemaphore->post();
+    if(0 == SemResult)
+    {
+        cout << "Using of un-initialized semaphore." << endl;
+        return 1;
+    }
+    pSemaphore->init();
+    if(pSemaphore->init())
+    {
+        cout << "Double-init of semaphore." << endl;
+        return 1;
+    }
+
+    Count = 0;
+    pProducer = new PThreadExtended(Runnable(semTestProducerRoutine), 1000, true);
+    pConsumer = new PThreadExtended(Runnable(semTestConsumerRoutine), PTHREAD_INFINITE, true);
+    pProducer->run();
+    pConsumer->run();
+    pProducer->nameThread("Producer");
+    pConsumer->nameThread("Consumer");
+    pConsumer->start();
+    pProducer->start();
+    pProducer->join();
+    pConsumer->stop();
+    pConsumer->exit();
+    pConsumer->join();
+    delete pConsumer;
+    delete pProducer;
+
 #endif // _WITHOUT_THREAD_EXCEPTIONS
     cout << "End of test programm" << endl << flush;
     return 0;
@@ -427,14 +500,27 @@ void* parseMessage(void* pContext)
 {
 	// Assume that pContext points to message buffer
 	// Parse message here
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    THREAD_TRY
+    {
+#endif
     cout << "Message is parsed successfully" << endl << flush;
     Barrier.wait();
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    }
+    THREAD_EXCEPT_CATCH_BEGIN(cout)
+    THREAD_EXCEPT_CATCH_END
+#endif
     return nullptr;
 }
 
 void* receiveMessage(void* pContext)
 {
 	// Receve messages and signal parser
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    THREAD_TRY
+    {
+#endif
     if(Count >= 10)
     {
         pReceiver->exit();
@@ -443,6 +529,11 @@ void* receiveMessage(void* pContext)
     pParser->start();
     Barrier.wait();
     ++Count;
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    }
+    THREAD_EXCEPT_CATCH_BEGIN(cout)
+    THREAD_EXCEPT_CATCH_END
+#endif
     return nullptr;
 }
 
@@ -483,6 +574,10 @@ void* endless(void* p)
 
 void* producerRoutine(void* p)
 {
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    THREAD_TRY
+    {
+#endif
     if(Count >= 10)
     {
         pProducer->exit();
@@ -493,11 +588,20 @@ void* producerRoutine(void* p)
     TestCondVar.signal();
     TestCondVar.unlockMutex();
     ++Count;
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    }
+    THREAD_EXCEPT_CATCH_BEGIN(cout)
+    THREAD_EXCEPT_CATCH_END
+#endif
     return nullptr;
 }
 
 void* consumerRoutine(void* p)
 {
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    THREAD_TRY
+    {
+#endif
     int32_t ConditionVariableCounter;
     TestCondVar.lockMutex();
     ConditionVariableCounter = TestCondVar.getConter();
@@ -534,5 +638,65 @@ void* consumerRoutine(void* p)
         TestCondVar.unlockMutex();
         cout << "Triggered by producer " << endl;
     }
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    }
+    THREAD_EXCEPT_CATCH_BEGIN(cout)
+    THREAD_EXCEPT_CATCH_END
+#endif
+    return nullptr;
+}
+
+void* semTestProducerRoutine(void*)
+{
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    THREAD_TRY
+    {
+#endif
+    if(Count >= 10)
+    {
+        pProducer->exit();
+        return nullptr;
+    }
+    pSemaphore->post();
+    ++Count;
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    }
+    THREAD_EXCEPT_CATCH_BEGIN(cout)
+    THREAD_EXCEPT_CATCH_END
+#endif
+    return nullptr;
+}
+
+void* semTestConsumerRoutine(void*)
+{
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    THREAD_TRY
+    {
+#endif
+    if(0 < pSemaphore->getvalue())
+    {
+        pSemaphore->wait();
+        cout << "Triggered by producer " << endl;
+        return nullptr;
+    }
+    else
+    {
+        int32_t WaitResult = pSemaphore->wait(1000);
+        {
+            if(ETIMEDOUT == WaitResult)
+                return nullptr;
+        }
+        cout << "Triggered by producer " << endl;
+#ifndef _MSC_VER
+        sleep(2);
+#else
+        Sleep(1900);
+#endif
+    }
+#ifndef _WITHOUT_THREAD_EXCEPTIONS
+    }
+    THREAD_EXCEPT_CATCH_BEGIN(cout)
+    THREAD_EXCEPT_CATCH_END
+#endif
     return nullptr;
 }

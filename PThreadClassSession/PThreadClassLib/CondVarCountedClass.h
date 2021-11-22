@@ -42,7 +42,7 @@ class PTHREADCLASSLIB_API CondVarCountedClass
 public:
     /// Constructor.
 #ifndef _WITHOUT_THREAD_EXCEPTIONS
-    CondVarCountedClass() noexcept(false);;
+    CondVarCountedClass() noexcept(false);
 #else
     CondVarCountedClass();
 

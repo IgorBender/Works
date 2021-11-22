@@ -60,6 +60,8 @@ set(CMAKE_SKIP_RPATH false)
 #    set(CMAKE_BUILD_RPATH "/opt/intel/oneapi/compiler/latest/linux/lib/intel64")
 #endif()
 
+#add_compile_definitions( _WITHOUT_THREAD_EXCEPTIONS)
+
 if(NOT UNIX)
     add_subdirectory(pthreads4w)
 endif()
