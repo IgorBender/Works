@@ -17,12 +17,81 @@
 
 using namespace std;
 
+#ifdef _MSC_VER
+// Some old MinGW/CYGWIN distributions don't define this:
+#ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
+#define ENABLE_VIRTUAL_TERMINAL_PROCESSING  0x0004
+#endif
+
+static HANDLE stdoutHandle;
+static DWORD outModeInit;
+
+void setupConsole(void)
+{
+    DWORD outMode = 0;
+    stdoutHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    
+    if(stdoutHandle == INVALID_HANDLE_VALUE)
+    {
+      	exit(GetLastError());
+    }
+    
+    if(!GetConsoleMode(stdoutHandle, &outMode))
+    {
+        exit(GetLastError());
+    }
+    
+    outModeInit = outMode;
+    
+    // Enable ANSI escape codes
+    outMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    
+    if(!SetConsoleMode(stdoutHandle, outMode))
+    {
+        exit(GetLastError());
+    }
+}
+
+void restoreConsole(void)
+{
+    // Reset console mode
+    if(!SetConsoleMode(stdoutHandle, outModeInit))
+    {
+        exit(GetLastError());
+    }
+}
+#else
+void setupConsole(void) {}
+
+void restoreConsole(void)
+{
+    // Reset colors
+    printf("\x1b[0m");
+}
+#endif
+
+//#define format_hex(num, width) showbase << setw(0 == num ? width - 2 : width) << (0 == num ? "0x" : "") \
+//    << setfill('0') << internal
+
+//ostream& operator << (ostream& o, uint32_t Num, uint32_t Width)
+//{
+//    if(Num)
+//        o << hex << "0x" << setw(Width - 2) << setfill('0') << Num;
+//    else
+//        o << hex << internal << setw(Width) << setfill('0') << showbase << Num;
+//    return o;
+//}
+
 int main()
 {
+    setupConsole();
     // Instruct cin deduct input automaticly.
     cin.unsetf(ios::hex);
     cin.unsetf(ios::dec);
     cin.unsetf(ios::oct);
+    cout.unsetf(ios::hex);
+    cout.unsetf(ios::dec);
+    cout.unsetf(ios::oct);
 
     cout << "Enter number of any base --> ";
     uint32_t InVal = 0;
@@ -91,6 +160,7 @@ int main()
                                           StringColorizer::Font::Bold)
         << "***" << StringColorizer::EndColorize() << ends;
     cout << Out.str() << endl;
+    restoreConsole();
 
     return 0;
 }
