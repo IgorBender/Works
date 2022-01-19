@@ -11,6 +11,9 @@
 #include "StateMachine.h"
 #include <string>
 
+/*
+ * Example of state machine based on strings for states and transitions.
+ */
 class StringStateMachineTestClass
 {
 public:

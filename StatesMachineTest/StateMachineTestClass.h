@@ -11,6 +11,9 @@
 #include "StateMachine.h"
 #include "TestDefinitions.h"
 
+/*
+ * Example of state machine based on enumeration types for states and transitions.
+ */
 class StateMachineTestClass
 {
 public:

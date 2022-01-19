@@ -117,10 +117,19 @@ public:
 //    {
 //        return m_Next;
 //    }
+
+    ///
+    /// \brief isInTransit - delivers in state transit status
+    /// \return - in transit status
+    ///
     bool isInTransit()
     {
         return m_InTransit;
     }
+
+    ///
+    /// \brief clean - cleans internal data structures
+    ///
     void clean()
     {
         for(std::pair<const StateIdType, SystemStatePtr>& p : m_States)
@@ -129,6 +138,11 @@ public:
                 delete p.second;
         }
     }
+
+    ///
+    /// \brief transitAllowed - checks if transit from current to the next state is allowed.
+    /// \return
+    ///
     virtual bool transitAllowed()
     {
         return true;
@@ -142,29 +156,49 @@ protected:
     bool m_InTransit;
 };
 
+///
+/// \brief The StateMachineThreadSafe class - thread-safe version of state-nachine
+///
 template <typename StateIdType, typename TransitionType> class StateMachineThreadSafe : public StateMachine <StateIdType, TransitionType>
 {
 public:
+    ///
+    /// \brief StateMachineThreadSafe constructor
+    /// \param InitialState - initial state for state machine.
+    ///
     StateMachineThreadSafe(StateIdType InitialState) : StateMachine <StateIdType, TransitionType>(InitialState)
     {}
     virtual ~StateMachineThreadSafe() {}
 
+    ///
+    /// \brief transit - transit between states.
+    /// \param Transition - transition type.
+    /// \return - true if the transition is possible, otherwise false.
+    ///
     bool transit(TransitionType Transition)
     {
         std::lock_guard<std::mutex> Guard(m_Mutex);
         return StateMachine <StateIdType, TransitionType>::transit(Transition);
     }
+
+    ///
+    /// \brief lockTransition
+    ///
     void lockTransition()
     {
         m_Mutex.lock();
     }
+
+    ///
+    /// \brief unlockTransition
+    ///
     void unlockTransition()
     {
         m_Mutex.unlock();
     }
 
 protected:
-    std::mutex m_Mutex;
+    std::mutex m_Mutex; ///> Transition mutex
 };
 
 #endif /*STATEMACHINE_H*/
