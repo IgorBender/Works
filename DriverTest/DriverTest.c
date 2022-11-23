@@ -53,7 +53,7 @@ int main(int32_t argc, char** argv)
     OperationResult = ioctl(TestFd, TESTDRV_GET_DRIVER_VERSION, &ModuleVersion);
     if(0 != OperationResult)
     {
-        sprintf(ErrStr, "ioctl TESTDRD_GET_DRIVER_VERSION %s ", DeviceName);
+        sprintf(ErrStr, "ioctl TESTDRV_GET_DRIVER_VERSION %s ", DeviceName);
         perror(ErrStr);
         close(TestFd);
         return 1;
@@ -132,7 +132,7 @@ int main(int32_t argc, char** argv)
     OperationResult = ioctl(TestFd, TESTDRV_ZERO_MEMORY);
     if(0 != OperationResult)
     {
-        sprintf(ErrStr, "ioctl TESTDRD_ZERO_MEMORY %s ", DeviceName);
+        sprintf(ErrStr, "ioctl TESTDRV_ZERO_MEMORY %s ", DeviceName);
         perror(ErrStr);
         close(TestFd);
         return 1;
@@ -162,7 +162,7 @@ int main(int32_t argc, char** argv)
     OperationResult = ioctl(TestFd, TESTDRV_FILL_MEMORY, 0x55);
     if(0 != OperationResult)
     {
-        sprintf(ErrStr, "ioctl TESTDRD_FILL_MEMORY %s ", DeviceName);
+        sprintf(ErrStr, "ioctl TESTDRV_FILL_MEMORY %s ", DeviceName);
         perror(ErrStr);
         close(TestFd);
         return 1;
@@ -203,7 +203,7 @@ int main(int32_t argc, char** argv)
     OperationResult = ioctl(TestFd, TESTDRV_ZERO_MEMORY);
     if(0 != OperationResult)
     {
-        sprintf(ErrStr, "ioctl TESTDRD_ZERO_MEMORY %s ", DeviceName);
+        sprintf(ErrStr, "ioctl TESTDRV_ZERO_MEMORY %s ", DeviceName);
         perror(ErrStr);
         close(TestFd);
         return 1;
