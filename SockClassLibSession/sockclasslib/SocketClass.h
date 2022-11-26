@@ -26,20 +26,20 @@
 #ifndef SOCKETCLASS_H
 #define SOCKETCLASS_H
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#else /* _WIN32 */
+#else /* _MSC_VER */
 
 #pragma warning( disable : 4290 )
 #pragma warning( disable : 4250 )
 
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0600
+#ifndef _MSC_VER_WINNT
+#define _MSC_VER_WINNT 0x0600
 #endif
 
 #if !(_MSC_VER >= 1300)
@@ -51,7 +51,7 @@
 //#include <windows.h>
 #endif
 
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 
 #include <DisconnectException.h>
 #include <sockclasslib.h>
@@ -73,10 +73,10 @@ public:
         UNIX_DOMAIN = AF_UNIX, ///< UNIX domain
         INTERNET_DOMAIN = AF_INET, ///< IPv4
         IPX_DOMAIN = AF_IPX ///< IPX
-#ifndef _WIN32
+#ifndef _MSC_VER
         ,
         ROUTING_DOMAIN = AF_ROUTE ///< Routing
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 #ifndef __VXWORKS__
         ,
         INET6_DOMAIN = AF_INET6 ///< IPv6
@@ -229,7 +229,7 @@ protected:
     SockType m_Type; ///< Defined socket type.
     int m_Protocol; ///< Defined socket Protocol
     /// Socket flags to be saved (for non-blocking mode switch).
-#ifndef _WIN32
+#ifndef _MSC_VER
     int m_Flags;
 #else
     unsigned long m_Flags;

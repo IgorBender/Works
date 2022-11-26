@@ -42,7 +42,7 @@ namespace ThreadClassLib
 ///
 /// \{
 /// Timeout duration zero constant.
-#ifndef _WIN32
+#ifndef _MSC_VER
 constexpr std::chrono::steady_clock::duration THREAD_IMMEDIATE(std::chrono::steady_clock::duration::zero());
 #else
 const std::chrono::steady_clock::duration THREAD_IMMEDIATE = std::chrono::steady_clock::duration::zero();

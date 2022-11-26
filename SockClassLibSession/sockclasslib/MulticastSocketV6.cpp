@@ -27,7 +27,7 @@
 
 #include "MulticastSocketV6.h"
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 #else
@@ -129,7 +129,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
     }
     m_Index = static_cast<uint32_t>(Request.ifr_ifindex);
 #endif
-#ifdef _WIN32
+#ifdef _MSC_VER
 	PIP_ADAPTER_ADDRESSES pAddresses = NULL;
 	unsigned long OutBufLen = 16 * 1024;
 	const int MAX_TRIES = 3;

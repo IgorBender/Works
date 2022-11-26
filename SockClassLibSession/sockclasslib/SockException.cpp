@@ -60,7 +60,7 @@ const char* SockException::what()
 
 char* SockException::formatMessage()
 {
-#ifdef _WIN32
+#ifdef _MSC_VER
 	DWORD FormRes = FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM |
 		FORMAT_MESSAGE_IGNORE_INSERTS,
 		NULL,
@@ -79,10 +79,10 @@ char* SockException::formatMessage()
 	{
 		return m_Message;
 	}
-#else /* _WIN32 */
+#else /* _MSC_VER */
 	::strcpy(lpMsgBuf, strerror(m_ErrCode));
 	strcat(lpMsgBuf, "\n");
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 	
 	return reinterpret_cast < char* >(lpMsgBuf);
 }
@@ -91,7 +91,7 @@ bool SockException::formatMessage(char(*MsgBuf)[256])
 {
 	if (0 == getErrNum())
 		return false;
-#ifdef _WIN32
+#ifdef _MSC_VER
 	DWORD FormRes = FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM |
 		FORMAT_MESSAGE_IGNORE_INSERTS,
 		NULL,
@@ -110,10 +110,10 @@ bool SockException::formatMessage(char(*MsgBuf)[256])
 	{
 		return false;
 	}
-#else /* _WIN32 */
+#else /* _MSC_VER */
 	
 	::strcpy(*MsgBuf, strerror(getErrNum()));
 	strcat(*MsgBuf, "\n");
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 	return true;
 }

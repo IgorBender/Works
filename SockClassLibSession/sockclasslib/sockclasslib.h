@@ -44,7 +44,7 @@
 #ifndef SOCKLIB_H
 #define SOCKLIB_H
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 
 #ifdef SOCKCLASSLIB_EXPORTS
 #define SOCKLIB_API __declspec(dllexport)
@@ -72,7 +72,7 @@ typedef uint32_t in_addr_t;
 
 extern HANDLE hLibMod;
 
-#else /* _WIN32 */
+#else /* _MSC_VER */
 
 typedef int SOCKET;
 
@@ -124,7 +124,7 @@ typedef size_t size_type;
 
 #define SOCKLIB_API // Intentionally empty
 
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 
 
 namespace SockClassLib

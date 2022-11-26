@@ -9,7 +9,7 @@ using namespace std;
 
 #include <cstdlib>
 #include <cstdio>
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <Ws2tcpip.h>
 #else
 #include <strings.h>
@@ -24,7 +24,7 @@ using namespace std;
 #endif
 
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& NetMask)
 {
     int Sock = socket(AF_INET, SOCK_DGRAM, 0);
@@ -103,8 +103,7 @@ int main(int argc, char* argv[])
     in_addr_t InterfAddr = 0;
     in_addr_t InterfMask = 0;
     in_addr_t InterfBroad = 0;
-#ifdef _WIN32
-
+#ifdef _MSC_VER
     WORD wVersionRequested;
     WSADATA wsaData;
     int err;
@@ -155,7 +154,6 @@ int main(int argc, char* argv[])
     InterfBroad = ((sockaddr_in*)(& (AddrBuf[i].iiBroadcastAddress)))->sin_addr.s_addr;
     closesocket(Sock);
 #else
-
     if(!getAddresses(InterfAddr, InterfBroad, InterfMask))
         InterfAddr = InterfBroad = InterfMask = INADDR_ANY;
 #endif
@@ -177,7 +175,6 @@ int main(int argc, char* argv[])
         Serv.setLoopBack(true);
         Serv.joinGroup(htonl(INADDR_ALLHOSTS_GROUP + 0x100));
 #else
-
         int JoinRes = Serv.joinGroup(htonl(INADDR_ALLHOSTS_GROUP + 0x100));
         if(JoinRes == SOCKET_ERROR)
         {
@@ -191,10 +188,9 @@ int main(int argc, char* argv[])
         char Buf[256];
         int Num = Serv.receiveFrom(Buf, 256, 0);
 #ifdef _WITHOUT_SOCK_EXCEPTIONS
-
         if(Num == SOCKET_ERROR)
-    {
-        char Msg[256];
+        {
+            char Msg[256];
             SockException::formatMessage(&Msg);
             cout << Msg;
             exit(1);
@@ -221,7 +217,7 @@ int main(int argc, char* argv[])
     SOCK_EXCEPT_CATCH_ALL(cout)
     SOCK_EXCEPT_CATCH_END
 
-#ifdef _WIN32
+#ifdef _MSC_VER
     WSACleanup();
 #endif
 

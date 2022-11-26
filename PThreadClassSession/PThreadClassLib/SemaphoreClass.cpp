@@ -22,9 +22,7 @@
  * distribution.
  */
 #include "SemaphoreClass.h"
-#ifdef _MSC_VER
-#include "PThreadClass.h"
-#endif
+#include "ThreadException.h"
 
 inline void addTimeMs(timespec& time, uint32_t time_addition)
 {

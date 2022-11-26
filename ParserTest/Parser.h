@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.5.1.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,8 +31,9 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
 
 #ifndef YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED
 # define YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED
@@ -60,29 +61,34 @@ extern int bitdebug;
 typedef void *yyscan_t;
 #endif
 
-#line 64 "/home/igor/GitHub/Works/ParserTest/Parser.h"
+#line 65 "/home/igor/GitHub/Works/ParserTest/Parser.h"
 
-/* Token type.  */
+/* Token kinds.  */
 #ifndef BITTOKENTYPE
 # define BITTOKENTYPE
   enum bittokentype
   {
-    VAR = 258,
-    LESS_EQUAL = 259,
-    MORE_EQUAL = 260,
-    EQUAL_OPER = 261,
-    NOT_EQ_OPER = 262,
-    REAL_VAL = 263,
-    REAL_VAR = 264,
-    NOT_OPER = 265,
-    AND_OPER = 266,
-    OR_OPER = 267,
-    PAR_OPEN = 268,
-    PAR_CLOSE = 269,
-    ERROR = 270,
-    LESS_OPER = 271,
-    MORE_OPER = 272
+    BITEMPTY = -2,
+    BITEOF = 0,                    /* "end of file"  */
+    BITerror = 256,                /* error  */
+    BITUNDEF = 257,                /* "invalid token"  */
+    VAR = 258,                     /* VAR  */
+    LESS_EQUAL = 259,              /* LESS_EQUAL  */
+    MORE_EQUAL = 260,              /* MORE_EQUAL  */
+    EQUAL_OPER = 261,              /* EQUAL_OPER  */
+    NOT_EQ_OPER = 262,             /* NOT_EQ_OPER  */
+    REAL_VAL = 263,                /* REAL_VAL  */
+    REAL_VAR = 264,                /* REAL_VAR  */
+    NOT_OPER = 265,                /* NOT_OPER  */
+    AND_OPER = 266,                /* AND_OPER  */
+    OR_OPER = 267,                 /* OR_OPER  */
+    PAR_OPEN = 268,                /* PAR_OPEN  */
+    PAR_CLOSE = 269,               /* PAR_CLOSE  */
+    ERROR = 270,                   /* ERROR  */
+    LESS_OPER = 271,               /* LESS_OPER  */
+    MORE_OPER = 272                /* MORE_OPER  */
   };
+  typedef enum bittokentype bittoken_kind_t;
 #endif
 
 /* Value type.  */
@@ -96,7 +102,7 @@ union BITSTYPE
     BitParserInterface::BitResultType NumType;
 	double RealType;
 
-#line 100 "/home/igor/GitHub/Works/ParserTest/Parser.h"
+#line 106 "/home/igor/GitHub/Works/ParserTest/Parser.h"
 
 };
 typedef union BITSTYPE BITSTYPE;
@@ -106,6 +112,8 @@ typedef union BITSTYPE BITSTYPE;
 
 
 
+
 int bitparse (yyscan_t scanner);
+
 
 #endif /* !YY_BIT_HOME_IGOR_GITHUB_WORKS_PARSERTEST_PARSER_H_INCLUDED  */

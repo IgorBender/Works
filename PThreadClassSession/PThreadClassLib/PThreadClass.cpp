@@ -23,7 +23,7 @@
  */
 
 #include "PThreadClass.h"
-#if (!defined(_WIN32) &&  !defined(__VXWORKS__))
+#if (!defined(_MSC_VER) &&  !defined(__VXWORKS__))
 #include <strings.h>
 #include <signal.h>
 #endif
@@ -57,7 +57,7 @@ noexcept(false)
 #ifdef __VXWORKS__
     TaskId = 0;
 #endif
-#ifndef _WIN32
+#ifndef _MSC_VER
     bzero(reinterpret_cast < char* > (&m_ThreadId), sizeof m_ThreadId);
 #else
     memset(&m_ThreadId, 0, sizeof m_ThreadId);
@@ -316,9 +316,9 @@ bool PThreadClass::join()
 
 bool PThreadClass::setPriority(int Prio)
 {
-#if ( _POSIX_THREAD_PRIORITY_SCHEDULING  >= 1 ) || defined(_WIN32)
+#if ( _POSIX_THREAD_PRIORITY_SCHEDULING  >= 1 ) || defined(_MSC_VER)
     sched_param Params;
-#ifndef _WIN32
+#ifndef _MSC_VER
     bzero(reinterpret_cast < char* > (&Params), sizeof Params);
 #else
     memset(&Params, 0, sizeof Params);
@@ -372,12 +372,12 @@ int PThreadClass::getPriority()
         return -1;
     
     sched_param Params;
-#ifndef _WIN32
+#ifndef _MSC_VER
     bzero(reinterpret_cast < char* > (&Params), sizeof Params);
 #else
     memset(&Params, 0, sizeof Params);
 #endif
-#if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 ) || defined(_WIN32)
+#if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 ) || defined(_MSC_VER)
     int TmpPolicy;
     if(pthread_getschedparam(m_ThreadId, &TmpPolicy, &Params) != 0)
     {
@@ -413,7 +413,7 @@ bool PThreadClass::setPolicy(int Pol)
     else
     {
         sched_param Params;
-#ifndef _WIN32
+#ifndef _MSC_VER
         bzero(reinterpret_cast < char* > (&Params), sizeof Params);
 #else
         memset(&Params, 0, sizeof Params);
@@ -430,7 +430,7 @@ bool PThreadClass::setPolicy(int Pol)
             return false;
     }        
 #endif
-#ifdef _WIN32
+#ifdef _MSC_VER
     return true;
 #endif
 }
@@ -447,7 +447,7 @@ int PThreadClass::getPolicy()
         return -1;
     
     sched_param Params;
-#ifndef _WIN32
+#ifndef _MSC_VER
     bzero(reinterpret_cast < char* > (&Params), sizeof Params);
 #else
     memset(&Params, 0, sizeof Params);
@@ -477,7 +477,7 @@ bool PThreadClass::setStackAddr(void* pStack)
     if(pthread_kill(m_ThreadId, 0) == 0)
 #endif
         return false;
-#ifdef _WIN32
+#ifdef _MSC_VER
     if(pthread_attr_setstackaddr(&m_ThreadAttribute, pStack) != 0)
         return false;
     else
@@ -502,7 +502,7 @@ void* PThreadClass::getStackAddr()
     return false;
 #endif
     void* TmpPtr = nullptr;
-#ifdef _WIN32
+#ifdef _MSC_VER
     if(pthread_attr_getstackaddr(&m_ThreadAttribute, &TmpPtr) != 0)
         return NULL;
     else

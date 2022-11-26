@@ -25,7 +25,7 @@
 #include <syscall.h>
 #define UTIME_ENTRY 14
 #endif
-#ifdef _WIN32
+#ifdef _MSC_VER
 typedef __int64 u_int64_t;
 #endif
 
@@ -136,7 +136,7 @@ public:
         cancel();
         m_Working = false;
         m_Running = false;
-#ifndef _WIN32
+#ifndef _MSC_VER
         bzero(m_ProcessName, sizeof(m_ProcessName));
 #endif
     }

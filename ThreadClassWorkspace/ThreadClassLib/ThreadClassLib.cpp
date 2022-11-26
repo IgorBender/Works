@@ -22,12 +22,12 @@
  * distribution.
  */
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <windows.h>
-#endif // _WIN32
+#endif // _MSC_VER
 #include "ThreadClassLib.h"
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 BOOL APIENTRY DllMain( HANDLE hModule,
                        DWORD  ul_reason_for_call,
                        LPVOID lpReserved
@@ -44,7 +44,7 @@ BOOL APIENTRY DllMain( HANDLE hModule,
     return TRUE;
 }
 
-#endif // _WIN32
+#endif // _MSC_VER
 
 /// Get thread class library version.
 /// @param Versions : VersionTriple structure to be filled with versions.

@@ -7,6 +7,7 @@ ThreadClassLib.cpp ThreadClassLib.h
 CondVarClass.cpp   CondVarClass.h
 ThreadClass.cpp ThreadClass.h
 ThreadException.cpp ThreadException.h
+CondVarCountedClass.cpp CondVarCountedClass.h
 )
 
 if( NOT UNIX)

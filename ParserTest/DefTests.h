@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.5.1.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,8 +31,9 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
 
 #ifndef YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED
 # define YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED
@@ -60,21 +61,26 @@ extern int defdebug;
 typedef void *yyscan_t;
 #endif
 
-#line 64 "/home/igor/GitHub/Works/ParserTest/DefTests.h"
+#line 65 "/home/igor/GitHub/Works/ParserTest/DefTests.h"
 
-/* Token type.  */
+/* Token kinds.  */
 #ifndef DEFTOKENTYPE
 # define DEFTOKENTYPE
   enum deftokentype
   {
-    ID_VAR = 258,
-    NUM_VAR = 259,
-    SET_ID = 260,
-    SLEEP_ID = 261,
-    MEASURE_VAR = 262,
-    TEST_VAR = 263,
-    DEFERROR = 264
+    DEFEMPTY = -2,
+    DEFEOF = 0,                    /* "end of file"  */
+    DEFerror = 256,                /* error  */
+    DEFUNDEF = 257,                /* "invalid token"  */
+    ID_VAR = 258,                  /* ID_VAR  */
+    NUM_VAR = 259,                 /* NUM_VAR  */
+    SET_ID = 260,                  /* SET_ID  */
+    SLEEP_ID = 261,                /* SLEEP_ID  */
+    MEASURE_VAR = 262,             /* MEASURE_VAR  */
+    TEST_VAR = 263,                /* TEST_VAR  */
+    DEFERROR = 264                 /* DEFERROR  */
   };
+  typedef enum deftokentype deftoken_kind_t;
 #endif
 
 /* Value type.  */
@@ -86,7 +92,7 @@ union DEFSTYPE
 	char* IdString;
 	char OpSymbol;
 
-#line 90 "/home/igor/GitHub/Works/ParserTest/DefTests.h"
+#line 96 "/home/igor/GitHub/Works/ParserTest/DefTests.h"
 
 };
 typedef union DEFSTYPE DEFSTYPE;
@@ -96,6 +102,8 @@ typedef union DEFSTYPE DEFSTYPE;
 
 
 
+
 int defparse (yyscan_t scanner);
+
 
 #endif /* !YY_DEF_HOME_IGOR_GITHUB_WORKS_PARSERTEST_DEFTESTS_H_INCLUDED  */

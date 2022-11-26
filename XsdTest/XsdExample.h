@@ -458,13 +458,23 @@ namespace XsdExample
     // country
     //
     typedef ::xml_schema::nmtoken country_type;
+    typedef ::xsd::cxx::tree::optional< country_type > country_optional;
     typedef ::xsd::cxx::tree::traits< country_type, char > country_traits;
 
-    const country_type&
+    const country_optional&
     country () const;
 
-    static const country_type&
-    country_default_value ();
+    country_optional&
+    country ();
+
+    void
+    country (const country_type& x);
+
+    void
+    country (const country_optional& x);
+
+    void
+    country (::std::unique_ptr< country_type > p);
 
     // Constructors.
     //
@@ -505,8 +515,7 @@ namespace XsdExample
     ::xsd::cxx::tree::one< city_type > city_;
     ::xsd::cxx::tree::one< state_type > state_;
     ::xsd::cxx::tree::one< zip_type > zip_;
-    ::xsd::cxx::tree::one< country_type > country_;
-    static const country_type country_default_value_;
+    country_optional country_;
   };
 }
 

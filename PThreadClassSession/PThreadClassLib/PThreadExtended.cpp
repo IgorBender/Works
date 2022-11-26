@@ -172,7 +172,7 @@ void PThreadExtended::nameThread(string Name)
     if(m_Running)
     {
         if("" != m_Name)
-#ifndef _WIN32
+#ifndef _MSC_VER
             pthread_setname_np(m_ThreadId, m_Name.c_str());
 #else
             nameThreadWindows(GetThreadId(pthread_getw32threadhandle_np(m_ThreadId)), m_Name.c_str());
@@ -185,7 +185,7 @@ void PThreadExtended::nameThread()
     if(m_Running)
     {
         if("" != m_Name)
-#ifndef _WIN32
+#ifndef _MSC_VER
             pthread_setname_np(m_ThreadId, m_Name.c_str());
 #else
             nameThreadWindows(GetThreadId(pthread_getw32threadhandle_np(m_ThreadId)), m_Name.c_str());

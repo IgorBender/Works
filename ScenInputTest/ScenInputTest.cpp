@@ -14,16 +14,62 @@
 #include <limits>
 #include <sstream>
 
+//inline void stringToUpper(std::string& Str)
+//{
+//    std::transform(Str.begin(), Str.end(), Str.begin(), [](char c){ return std::toupper(c); });
+//}
+#define stringToUpper(Str) for_each(Str.begin(), Str.end(), [](char& c) { c = static_cast<char>(toupper(c)); })
 
 
-std::vector<std::string> tokens(const std::string& InputString, const std::string& Delimiters)
+//inline std::vector<std::string> tokens(const std::string& InputString, const std::string& Delimiters)
+//{
+//    std::regex DelimRegex(Delimiters);
+//    std::sregex_token_iterator First{InputString.begin(), InputString.end(), DelimRegex, -1}, Last;
+//    while(First != Last && 0 == First->length())
+//        ++First;
+//    return {First, Last};
+//}
+
+class Tokenizer
 {
-    std::regex DelimRegex(Delimiters);
-    std::sregex_token_iterator First{InputString.begin(), InputString.end(), DelimRegex, -1}, Last;
-    while(First != Last && 0 == First->length())
-        ++First;
-    return {First, Last};
-}
+public:
+    Tokenizer(const std::string& InputString, const std::string& Delimiters) : m_DelimRegex(Delimiters)
+    {
+        std::sregex_token_iterator First{InputString.begin(), InputString.end(), m_DelimRegex, -1};
+        while(First != m_Last && 0 == First->length())
+            ++First;
+        m_Current = First;
+    }
+    Tokenizer() {}
+    virtual ~Tokenizer() {}
+    void initialize(const std::string& InputString, const std::string& Delimiters)
+    {
+        m_DelimRegex = std::regex(Delimiters);
+        std::sregex_token_iterator First{InputString.begin(), InputString.end(), m_DelimRegex, -1};
+        while(First != m_Last && 0 == First->length())
+            ++First;
+        m_Current = First;
+    }
+
+    std::string getToken() // Deleivers next token of empty string after last.
+    {
+        if(m_Current == m_Last)
+            return std::string("");
+        std::sregex_token_iterator Itr{m_Current};
+        ++m_Current;
+        return *Itr;
+    }
+    void getTokens(std::vector<std::string>& Tokens)
+    {
+        std::vector<std::string> Results({m_Current, m_Last});
+        Tokens = Results;
+    }
+
+protected:
+    std::sregex_token_iterator m_Current;
+    std::sregex_token_iterator m_Last;
+    std::regex m_DelimRegex;
+};
 
 const uint8_t CHANNEL_1_STATE = 0x01;
 const uint8_t CHANNEL_2_STATE = CHANNEL_1_STATE << 1;
@@ -60,6 +106,9 @@ __attribute__ ((packed));
 #pragma pack(pop)
 #endif
 
+/*
+ * Auxiliary class for polarization angle computing.
+ */
 class PolarizationAngleComputer
 {
 public:
@@ -115,6 +164,7 @@ protected:
 };
 
 
+// Sanitiy check function for trajectory parameters.
 bool polarizationSanityCheck(const std::vector<std::string>& Tokens, uint32_t LineNum, bool& Active, PolarizationAngleComputer::PolarizationType& Type,
                              double& StartAngle, double& AngleRate, bool& Clockwise, double& MinAngle, double& MaxAngle);
 bool silenceSanityCheck(const std::vector<std::string>& Tokens, uint32_t LineNum, int32_t& Cycles);
@@ -123,6 +173,8 @@ bool lineSanityCheck(const std::vector<std::string>& Tokens, uint32_t LineNum, d
                      double& EndAz, double& EndEl);
 bool arcSanityCheck(const std::vector<std::string>& Tokens, uint32_t LineNum, double& Velocity, double& StartAz, double& StartEl,
                     double& EndAz, double& EndEl, double& CenterAz, double& CenterEl, bool& Clockwise);
+
+// Trajectory computational functions
 bool computeDotLeg(uint32_t Target, BinaryData* pScenario, uint32_t& Index,
                    double Azimuth, double Elevation, int32_t Cycles, bool PolarizationActive,
                    PolarizationAngleComputer* pPolar = nullptr);
@@ -140,7 +192,7 @@ bool computeLineLeg(uint32_t Target, BinaryData* pScenario, uint32_t& Index,
 bool silentCycles(uint32_t Target, BinaryData* pScenario, uint32_t& Index, int32_t SilentCycles);
 
 
-const uint32_t MAX_NUM_OF_POINTS = 10000000;
+const uint32_t MAX_NUM_OF_POINTS = 10000000; // Equivalent to 10000 seconds of simulation.
 
 enum class LegTypeEnum
 {
@@ -175,7 +227,7 @@ int main(int argc, char* argv[])
 {
     if(4 > argc)
     {
-        cout << "Usage : " << argv[0] << " target_number  trajectory file scenario_binary_file" << endl
+        cout << "Usage : " << argv[0] << " target_number  trajectory_file scenario_binary_file" << endl
              << "target_number: 1 - 4 or 0 for all targets." << endl;
         return 1;
     }
@@ -211,12 +263,17 @@ int main(int argc, char* argv[])
         InFile.getline(Buffer, sizeof (Buffer));
         if(!InFile)
             break;
-        vector<string> Tokens = tokens(Buffer, Delims);
+//        vector<string> Tokens = tokens(Buffer, Delims);
+        vector<string> Tokens;
+        {
+            Tokenizer Tok(Buffer, Delims);
+            Tok.getTokens(Tokens);
+        }
         if(0  >= Tokens.size())
             continue;
         if('#' == Tokens.at(0).at(0))
             continue;
-        transform(Tokens.at(0).begin(), Tokens.at(0).end(), Tokens.at(0).begin(), [](char c){ return toupper(c); });
+        stringToUpper(Tokens.at(0));
         if("POLAR" == Tokens.at(0))
             LegType = LegTypeEnum::Polarization;
         else if("SILENT" == Tokens.at(0))

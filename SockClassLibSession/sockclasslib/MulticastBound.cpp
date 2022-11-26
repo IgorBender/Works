@@ -20,7 +20,7 @@
 
 #include <MulticastBound.h>
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <ws2tcpip.h>
 #endif
 
@@ -37,7 +37,7 @@ MulticastBound::MulticastBound(uint16_t Port, in_addr_t Address) : Addr(Address)
 
     if(!isBound())
     {
-#ifdef _WIN32
+#ifdef _MSC_VER
         setEndPoint(static_cast < in_addr_t > (Addr), Port);
 #else
         setEndPoint(static_cast < in_addr_t > (INADDR_ANY), Port);
@@ -59,7 +59,7 @@ MulticastBound::MulticastBound(uint16_t Port, const char* Address)
             return;
 #endif
         }
-#ifdef _WIN32
+#ifdef _MSC_VER
         setEndPoint(static_cast < in_addr_t > (Addr), Port);
 #else
         setEndPoint(static_cast < in_addr_t > (INADDR_ANY), Port);

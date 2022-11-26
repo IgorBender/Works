@@ -45,8 +45,7 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/XsdExample.cpp ${CMAKE_CUR
     COMMENT "Generating XSD mapping..."
     VERBATIM)
 
-link_libraries(xerces-c)
-
 add_executable(XsdTest XsdTest.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/XsdExample.cpp ${CMAKE_CURRENT_SOURCE_DIR}/XsdExample.h)
 
+target_link_libraries(XsdTest PUBLIC xerces-c)

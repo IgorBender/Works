@@ -24,7 +24,7 @@
 
 #include "PMutexClass.h"
 #include <time.h>
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <sys/timeb.h>
 #endif
 

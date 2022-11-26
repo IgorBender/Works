@@ -2,7 +2,7 @@
 
 #include <fcntl.h>
 #include <sstream>
-#ifndef _WIN32
+#ifndef _MSC_VER
 #include <strings.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -71,7 +71,7 @@ void PoolThread::cleanUpRoutine()
     {
         m_pCleanUpRoutine(m_pCleanUpArg);
         m_Working = false;
-#ifndef _WIN32
+#ifndef _MSC_VER
 		bzero(m_ProcessName, sizeof(m_ProcessName));
 #endif
     }
@@ -127,7 +127,7 @@ u_int64_t PoolThread::getOverallRunCpuTime()
     m_OverallCpuTime = LwpTime;
     return (LwpTime);
 #endif // __SunOS
-#ifdef _WIN32
+#ifdef _MSC_VER
 	FILETIME m_StartTime;
 	FILETIME ExitTime;
 	FILETIME KernelCpuTime;

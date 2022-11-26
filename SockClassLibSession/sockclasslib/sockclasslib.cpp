@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 
 #include "sockclasslib.h"
 #include <ws2tcpip.h>
@@ -41,5 +41,5 @@ BOOL APIENTRY DllMain(HANDLE hModule,
     return TRUE;
 }
 
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 

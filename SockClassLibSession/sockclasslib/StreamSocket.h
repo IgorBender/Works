@@ -28,7 +28,7 @@
 
 #include <SocketClass.h>
 #include <DisconnectException.h>
-#ifndef _WIN32
+#ifndef _MSC_VER
 #if (__QNX__ || __VXWORKS__ || __linux__)
 #include <netinet/tcp.h>
 #else

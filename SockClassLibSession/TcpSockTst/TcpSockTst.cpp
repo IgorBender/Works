@@ -1,4 +1,4 @@
-#ifndef _WIN32
+#ifndef _MSC_VER
 #include <strings.h>
 #endif
 #include <cstdlib>
@@ -7,7 +7,7 @@
 #include <ClientSimple.h>
 #include <signal.h>
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <Ws2tcpip.h>
 #else
 #include <strings.h>
@@ -26,7 +26,7 @@
 const unsigned short SERV_PORT = 15000;
 const size_type MAX_BUF_SIZE = 4096;
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& NetMask)
 {
     int Sock = socket(AF_INET, SOCK_DGRAM, 0);
@@ -105,7 +105,7 @@ int main(int argc, char* argv[])
     in_addr_t InterfAddr = 0;
     in_addr_t InterfMask = 0;
     in_addr_t InterfBroad = 0;
-#ifdef _WIN32
+#ifdef _MSC_VER
 
     WORD wVersionRequested;
     WSADATA wsaData;
@@ -180,14 +180,14 @@ int main(int argc, char* argv[])
             }
             SOCK_EXCEPT_CATCH_BEGIN(cout)
             //SOCK_EXCEPT_CATCH_BEGIN_NOREP
-#if !(_WIN32 || __linux__)
+#if !(_MSC_VER || __linux__)
                 Sock.reset();
 #endif
 
                 shared_ptr < ClientSimple > SockTmp(new ClientSimple);
                 Sock = SockTmp;
                 //SockTmp.release();
-#ifndef _WIN32
+#ifndef _MSC_VER
 
                 sleep(1);
 #else
@@ -208,7 +208,7 @@ int main(int argc, char* argv[])
                     cout << "Error : " << SockException::getErrNum() << " - " << MsgStr << endl;
                 else
                     cout << "Connection refused" << endl;
-#ifndef _WIN32
+#ifndef _MSC_VER
 
                 Sock.reset();
 #endif
@@ -216,7 +216,7 @@ int main(int argc, char* argv[])
                 shared_ptr < ClientSimple > SockTmp(new ClientSimple);
                 Sock = SockTmp;
 //                SockTmp.release();
-#ifndef _WIN32
+#ifndef _MSC_VER
 
                 sleep(1);
 #else
@@ -245,7 +245,7 @@ int main(int argc, char* argv[])
         forever
         {
             char StrBuf[MAX_BUF_SIZE];
-#ifndef _WIN32
+#ifndef _MSC_VER
             bzero(StrBuf, MAX_BUF_SIZE);
 #else
             memset(StrBuf, 0, MAX_BUF_SIZE);
@@ -272,7 +272,7 @@ int main(int argc, char* argv[])
 #endif
             if(strcmp(StrBuf, "END"))
             {
-#ifndef _WIN32
+#ifndef _MSC_VER
                 bzero(Buf, MAX_BUF_SIZE);
 #else
                 memset(Buf, 0, MAX_BUF_SIZE);
@@ -307,7 +307,7 @@ int main(int argc, char* argv[])
     SOCK_EXCEPT_CATCH_BEGIN(cout)
 //    SOCK_EXCEPT_CATCH_BEGIN_NOREP;
     SOCK_EXCEPT_CATCH_END
-#ifdef _WIN32
+#ifdef _MSC_VER
     WSACleanup();
 #endif
 

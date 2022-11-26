@@ -33,7 +33,15 @@ IF("${CMAKE_CXX_COMPILER}" STREQUAL "/home/opt/intel/sw_dev_tools/bin/icpc")
     ENDIF()
 ENDIF()
 
-link_libraries(glut GL)
+
+find_package(GLUT REQUIRED)
+find_package(OpenGL REQUIRED)
 
 add_executable(GLPolygonTest GLPolygonTest.cc gpc.c gpc.h
     GpcPolygon.cpp GpcPolygon.h)
+
+list(APPEND INCLUDE_DIRS ${GLUT_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR})
+list(APPEND LIBRARIES ${GLUT_LIBRARIES} OpenGL::GL)
+
+target_include_directories(GLPolygonTest PUBLIC ${INCLUDE_DIRS})
+target_link_libraries(GLPolygonTest PUBLIC ${LIBRARIES})

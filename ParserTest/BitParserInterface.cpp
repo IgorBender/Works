@@ -24,19 +24,11 @@ extern void bit_delete_buffer(yy_buffer_state* buffer, yyscan_t ptr_yy_globals);
 extern int bitlex_init_extra(YY_EXTRA_TYPE user_defined,yyscan_t* scanner);
 extern int bitlex_destroy(yyscan_t yyscanner);
 
-
-//void BitParserInterface::printString(std::string s)
-//{
-//    cout << s;
-//}
-
-//void BitParserInterface::printChar(char c)
-//{
-//    cout << c;
-//}
+#define toUpperCase(str) std::transform(str.begin(), str.end(), str.begin(), [](char c) { return toupper(c); })
 
 double BitParserInterface::getMeasuredValue(std::string s)
 {
+    toUpperCase(s);
     MeasureResultsMapType::iterator i = m_MeasureResultsMap.find(s);
     if(m_MeasureResultsMap.end() == i)
         return std::numeric_limits<double>::min();
@@ -45,6 +37,7 @@ double BitParserInterface::getMeasuredValue(std::string s)
 
 BitParserInterface::BitResultType BitParserInterface::getTestValue(std::string s)
 {
+    toUpperCase(s);
     TestResultsMapType::iterator i = m_TestResultsMap.find(s);
     if(m_TestResultsMap.end() == i)
         return BitParserInterface::BitResultType::BitResultNotTested;
@@ -53,20 +46,16 @@ BitParserInterface::BitResultType BitParserInterface::getTestValue(std::string s
 
 BitParserInterface::BitResultType BitParserInterface::andOperation(BitParserInterface::BitResultType a, BitParserInterface::BitResultType b)
 {
-    if(BitParserInterface::BitResultType::BitResultNotTested == a || BitParserInterface::BitResultType::BitResultNotTested == b)
-        return BitParserInterface::BitResultType::BitResultNotTested;
-    if(BitParserInterface::BitResultType::BitResultFailed == a && BitParserInterface::BitResultType::BitResultFailed == b)
-        return BitParserInterface::BitResultType::BitResultFailed;
-    return BitParserInterface::BitResultType::BitResultOk;
+    if(BitParserInterface::BitResultType::BitResultOk == a && BitParserInterface::BitResultType::BitResultOk == b)
+        return BitParserInterface::BitResultType::BitResultOk;
+    return BitParserInterface::BitResultType::BitResultFailed;
 }
 
 BitParserInterface::BitResultType BitParserInterface::orOperation(BitParserInterface::BitResultType a, BitParserInterface::BitResultType b)
 {
-    if(BitParserInterface::BitResultType::BitResultNotTested == a || BitParserInterface::BitResultType::BitResultNotTested == b)
-        return BitParserInterface::BitResultType::BitResultNotTested;
-    if(BitParserInterface::BitResultType::BitResultFailed == a || BitParserInterface::BitResultType::BitResultFailed == b)
-        return BitParserInterface::BitResultType::BitResultFailed;
-    return BitParserInterface::BitResultType::BitResultOk;
+    if(BitParserInterface::BitResultType::BitResultOk == a || BitParserInterface::BitResultType::BitResultOk == b)
+        return BitParserInterface::BitResultType::BitResultOk;
+    return BitParserInterface::BitResultType::BitResultFailed;
 }
 
 BitParserInterface::BitResultType BitParserInterface::notOperation(BitParserInterface::BitResultType a)
@@ -75,6 +64,8 @@ BitParserInterface::BitResultType BitParserInterface::notOperation(BitParserInte
         return BitParserInterface::BitResultType::BitResultNotTested;
     if(BitParserInterface::BitResultType::BitResultOk == a)
         return BitParserInterface::BitResultType::BitResultFailed;
+    if(BitParserInterface::BitResultType::BitResultFailed == a)
+        return BitParserInterface::BitResultType::BitResultOk;
     return BitParserInterface::BitResultType::BitResultOk;
 }
 
@@ -85,7 +76,7 @@ BitParserInterface::BitResultType BitParserInterface::lessOperation(double Value
     {
         return BitParserInterface::BitResultType::BitResultNotTested;
     }
-    return Value1 < Value2 ? BitParserInterface::BitResultType::BitResultFailed : BitParserInterface::BitResultType::BitResultOk;
+    return Value1 < Value2 ? BitParserInterface::BitResultType::BitResultOk : BitParserInterface::BitResultType::BitResultFailed;
 }
 
 BitParserInterface::BitResultType BitParserInterface::moreOperation(double Value1, double Value2)
@@ -95,7 +86,7 @@ BitParserInterface::BitResultType BitParserInterface::moreOperation(double Value
     {
         return BitParserInterface::BitResultType::BitResultNotTested;
     }
-    return Value1 > Value2 ? BitParserInterface::BitResultType::BitResultFailed : BitParserInterface::BitResultType::BitResultOk;
+    return Value1 > Value2 ? BitParserInterface::BitResultType::BitResultOk : BitParserInterface::BitResultType::BitResultFailed;
 }
 
 BitParserInterface::BitResultType BitParserInterface::lessEqualOperation(double Value1, double Value2)
@@ -105,7 +96,7 @@ BitParserInterface::BitResultType BitParserInterface::lessEqualOperation(double 
     {
         return BitParserInterface::BitResultType::BitResultNotTested;
     }
-    return Value1 <= Value2 ? BitParserInterface::BitResultType::BitResultFailed : BitParserInterface::BitResultType::BitResultOk;
+    return Value1 <= Value2 ? BitParserInterface::BitResultType::BitResultOk : BitParserInterface::BitResultType::BitResultFailed;
 }
 
 BitParserInterface::BitResultType BitParserInterface::moreEqualOperation(double Value1, double Value2)
@@ -115,7 +106,7 @@ BitParserInterface::BitResultType BitParserInterface::moreEqualOperation(double 
     {
         return BitParserInterface::BitResultType::BitResultNotTested;
     }
-    return Value1 >= Value2 ? BitParserInterface::BitResultType::BitResultFailed : BitParserInterface::BitResultType::BitResultOk;
+    return Value1 >= Value2 ? BitParserInterface::BitResultType::BitResultOk : BitParserInterface::BitResultType::BitResultFailed;
 }
 
 BitParserInterface::BitResultType BitParserInterface::equalOperation(double Value1, double Value2)
@@ -125,7 +116,7 @@ BitParserInterface::BitResultType BitParserInterface::equalOperation(double Valu
     {
         return BitParserInterface::BitResultType::BitResultNotTested;
     }
-    return std::abs(Value1 - Value2) < std::numeric_limits<double>::epsilon() ? BitParserInterface::BitResultType::BitResultFailed : BitParserInterface::BitResultType::BitResultOk;
+    return std::abs(Value1 - Value2) < std::numeric_limits<double>::epsilon() ? BitParserInterface::BitResultType::BitResultOk : BitParserInterface::BitResultType::BitResultFailed;
 }
 
 BitParserInterface::BitResultType BitParserInterface::notEqualOperation(double Value1, double Value2)
@@ -135,21 +126,28 @@ BitParserInterface::BitResultType BitParserInterface::notEqualOperation(double V
     {
         return BitParserInterface::BitResultType::BitResultNotTested;
     }
-    return std::abs(Value1 - Value2) > std::numeric_limits<double>::epsilon() ? BitParserInterface::BitResultType::BitResultFailed : BitParserInterface::BitResultType::BitResultOk;
+    return std::abs(Value1 - Value2) > std::numeric_limits<double>::epsilon() ? BitParserInterface::BitResultType::BitResultOk : BitParserInterface::BitResultType::BitResultFailed;
 }
 
 void BitParserInterface::addTestVariable(std::string s)
 {
+    toUpperCase(s);
     m_TestResultsMap[s] = BitResultType::BitResultNotTested;
+    // Perform the real tests here, just print for now.
+    cout << "Performing test " << s << endl;
 }
 
 void BitParserInterface::addMeasureVariable(std::string s)
 {
+    toUpperCase(s);
     m_MeasureResultsMap[s] = std::numeric_limits<double>::min();
+    // Perform the real measurements here, just print for now.
+    cout << "Performing measurement " << s << endl;
 }
 
 bool BitParserInterface::setTestResult(std::string Name, BitResultType Result)
 {
+    toUpperCase(Name);
     TestResultsMapType::iterator i = m_TestResultsMap.find(Name);
     if(m_TestResultsMap.end() == i)
         return false;
@@ -159,6 +157,7 @@ bool BitParserInterface::setTestResult(std::string Name, BitResultType Result)
 
 bool BitParserInterface::setMesuredResult(std::string Name, double Result)
 {
+    toUpperCase(Name);
     MeasureResultsMapType::iterator i = m_MeasureResultsMap.find(Name);
     if(m_MeasureResultsMap.end() == i)
         return false;
@@ -168,6 +167,7 @@ bool BitParserInterface::setMesuredResult(std::string Name, double Result)
 
 bool BitParserInterface::parseResultString(std::string s, BitParserInterface* Parser)
 {
+    toUpperCase(s);
     void* pp = nullptr;
     bitlex_init_extra(Parser, &pp);
     yy_buffer_state* p = bit_scan_string(const_cast<char*>(s.c_str()), pp);
@@ -179,6 +179,7 @@ bool BitParserInterface::parseResultString(std::string s, BitParserInterface* Pa
 
 bool BitParserInterface::parseDefinitionsString(std::string s, BitParserInterface* Parser)
 {
+    toUpperCase(s);
     void* pp = nullptr;
     deflex_init_extra(Parser, &pp);
     yy_buffer_state* p = def_scan_string(const_cast<const char*>(s.c_str()), pp);
@@ -190,9 +191,10 @@ bool BitParserInterface::parseDefinitionsString(std::string s, BitParserInterfac
 
 bool BitParserInterface::performSetComand(std::string SetName, std::string Value)
 {
+    toUpperCase(SetName);
     // Chack if set ID is defined
     // Future check
-    if("id_1" != SetName)
+    if("ID_1" != SetName)
         return false;
     stringstream Convert;
     Convert << Value;

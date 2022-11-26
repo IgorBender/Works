@@ -26,8 +26,10 @@
 
 #include <semaphore.h>
 #include <time.h>
+#include <stdint.h>
 
-#include "ThreadException.h"
+//#include "ThreadException.h"
+#include <PThreadClassLib.h>
 
 ///
 /// \class SemaphoreClass

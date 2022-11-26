@@ -24,7 +24,7 @@
 #include "CondVarClass.h"
 #include <time.h>
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 #ifdef __VXWORKS__
 #include <sys/times.h>
 #else
@@ -200,13 +200,13 @@ int CondVarClass::wait(time_t Timeout)
 {
     int Result;
     struct timespec Time;
-#ifdef _WIN32
+#ifdef _MSC_VER
 //    struct timeval CurrTime;
     struct timeb TimeStruct;
 #endif
     if(Timeout)
     {
-#ifdef _WIN32
+#ifdef _MSC_VER
 		ftime(&TimeStruct);
         TimeStruct.time += (Timeout / 1000);
         TimeStruct.millitm += static_cast < short > (Timeout % 1000);

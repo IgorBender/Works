@@ -26,11 +26,11 @@
 #ifndef INTERNETSOCKETV6_H
 #define INTERNETSOCKETV6_H
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #pragma warning( disable : 4290 )
 #pragma warning( disable : 4250 )
 
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 
 #ifndef _NO_IPV6
 

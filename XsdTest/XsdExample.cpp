@@ -235,16 +235,34 @@ namespace XsdExample
     this->zip_.set (x);
   }
 
-  const USAddress::country_type& USAddress::
+  const USAddress::country_optional& USAddress::
   country () const
   {
-    return this->country_.get ();
+    return this->country_;
   }
 
-  const USAddress::country_type& USAddress::
-  country_default_value ()
+  USAddress::country_optional& USAddress::
+  country ()
   {
-    return country_default_value_;
+    return this->country_;
+  }
+
+  void USAddress::
+  country (const country_type& x)
+  {
+    this->country_.set (x);
+  }
+
+  void USAddress::
+  country (const country_optional& x)
+  {
+    this->country_ = x;
+  }
+
+  void USAddress::
+  country (::std::unique_ptr< country_type > x)
+  {
+    this->country_.set (std::move (x));
   }
 }
 
@@ -388,9 +406,6 @@ namespace XsdExample
   // USAddress
   //
 
-  const USAddress::country_type USAddress::country_default_value_ (
-    "US");
-
   USAddress::
   USAddress (const name_type& name,
              const street_type& street,
@@ -403,7 +418,7 @@ namespace XsdExample
     city_ (city, this),
     state_ (state, this),
     zip_ (zip, this),
-    country_ (country_default_value (), this)
+    country_ (this)
   {
   }
 
@@ -566,11 +581,6 @@ namespace XsdExample
         this->country_.set (country_traits::create (i, f, this));
         continue;
       }
-    }
-
-    if (!country_.present ())
-    {
-      this->country_.set (country_default_value ());
     }
   }
 
@@ -1143,13 +1153,14 @@ namespace XsdExample
 
     // country
     //
+    if (i.country ())
     {
       ::xercesc::DOMAttr& a (
         ::xsd::cxx::xml::dom::create_attribute (
           "country",
           e));
 
-      a << i.country ();
+      a << *i.country ();
     }
   }
 }

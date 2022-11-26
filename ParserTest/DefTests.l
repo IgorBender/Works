@@ -29,7 +29,7 @@ MEASURE_ID    [mM][0-9]+
 TEST_ID       [tT][0-9]+
 
 /* Space, EOL and TAB are considered as WhiteSpaces. */
-WS        [ \n\t]
+WS        [ \n\t,]
 %%
 
 {NUM_VAL}    {

@@ -22,7 +22,7 @@
 
 #ifndef _NO_IPV6
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <ws2tcpip.h>
 #endif
 
@@ -39,7 +39,7 @@ MulticastBoundV6::MulticastBoundV6(uint16_t Port, in6_addr Address) : Addr(Addre
 
     if(!isBound())
     {
-#ifdef _WIN32
+#ifdef _MSC_VER
         setEndPoint(static_cast < in6_addr > (Addr), Port);
 #else
         setEndPoint(in6addr_any, Port);
@@ -52,7 +52,7 @@ MulticastBoundV6::MulticastBoundV6(uint16_t Port, const char* Address)
 {
     if(!isBound())
     {
-#ifdef _WIN32
+#ifdef _MSC_VER
         setEndPoint(Address, Port);
 #else
         inet_pton(AF_INET6, Address, &Addr);

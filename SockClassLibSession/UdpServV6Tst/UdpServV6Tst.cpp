@@ -9,7 +9,7 @@
 using namespace std;
 
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <Ws2tcpip.h>
 #include <iphlpapi.h>
 #else
@@ -67,7 +67,7 @@ bool getAddresses(in6_addr& InterfaceAddr)
 	}
 	freeifaddrs(pAddrs);
 	return false;
-#elif _WIN32
+#elif _MSC_VER
 	PIP_ADAPTER_ADDRESSES pAddresses = NULL;
 	unsigned long OutBufLen = 16 * 1024;
 	const int MAX_TRIES = 3;
@@ -167,7 +167,7 @@ int main(int argc, char* argv[])
 	return 1;
 #else
     in6_addr InterfAddr;
-#ifdef _WIN32
+#ifdef _MSC_VER
 
     WORD wVersionRequested;
     WSADATA wsaData;
@@ -270,7 +270,7 @@ int main(int argc, char* argv[])
     SOCK_EXCEPT_CATCH_ALL(cout)
     SOCK_EXCEPT_CATCH_END
 
-#ifdef _WIN32
+#ifdef _MSC_VER
     WSACleanup();
 #endif
 

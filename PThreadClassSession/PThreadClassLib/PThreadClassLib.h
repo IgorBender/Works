@@ -44,15 +44,15 @@
 #ifndef PTHREADCLASSLIB_H
 #define PTHREADCLASSLIB_H
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #ifdef PTHREADCLASSLIB_EXPORTS
 #define PTHREADCLASSLIB_API __declspec(dllexport)
 #else
 #define PTHREADCLASSLIB_API __declspec(dllimport)
 #endif
-#else // _WIN32
+#else // _MSC_VER
 #define PTHREADCLASSLIB_API
-#endif // _WIN32
+#endif // _MSC_VER
 
 #define PTHREAD_INFINITE 0UL
 

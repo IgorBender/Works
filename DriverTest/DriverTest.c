@@ -48,7 +48,7 @@ int main(int32_t argc, char** argv)
     }
 
     /*
-     * Obtain module version using ioctl.
+     * Obtain module version via ioctl.
      */
     OperationResult = ioctl(TestFd, TESTDRV_GET_DRIVER_VERSION, &ModuleVersion);
     if(0 != OperationResult)

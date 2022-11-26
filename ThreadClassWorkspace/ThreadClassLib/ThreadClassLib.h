@@ -44,15 +44,15 @@
 #ifndef THREADCLASSLIB_H
 #define THREADCLASSLIB_H
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #ifdef THREADCLASSLIB_EXPORTS
 #define THREADCLASSLIB_API __declspec(dllexport)
 #else
 #define THREADCLASSLIB_API __declspec(dllimport)
 #endif
-#else // _WIN32
+#else // _MSC_VER
 #define THREADCLASSLIB_API
-#endif // _WIN32
+#endif // _MSC_VER
 
 namespace ThreadClassLib
 {

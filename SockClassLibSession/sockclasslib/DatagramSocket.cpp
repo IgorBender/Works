@@ -65,7 +65,7 @@ int DatagramSocket::sendTo(const void* Buffer, size_t Length, int Flags)
 #else
                         const_cast < char* > (reinterpret_cast < const char* > (Buffer)),
 #endif
-#ifndef _WIN32
+#ifndef _MSC_VER
                         Length,
 #else
                         static_cast < int > (Length),
@@ -91,7 +91,7 @@ int DatagramSocket::receiveFrom(void* Buffer, size_t Length, int Flags)
     socklen_type Size = sizeof(struct sockaddr);
     memset(&m_Source, '\0', Size);
     if((Result = static_cast<int>(recvfrom(m_Sock, reinterpret_cast < char* > (Buffer),
-                      #ifndef _WIN32
+                      #ifndef _MSC_VER
                                               Length,
                       #else
                                               static_cast < int > (Length),

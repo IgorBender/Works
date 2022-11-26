@@ -23,12 +23,12 @@
  */
 
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <windows.h>
-#endif // _WIN32
+#endif // _MSC_VER
 #include "PThreadClassLib.h"
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 BOOL APIENTRY DllMain( HANDLE hModule, 
                        DWORD  ul_reason_for_call, 
                        LPVOID lpReserved
@@ -47,7 +47,7 @@ BOOL APIENTRY DllMain( HANDLE hModule,
 
 //PTHREADCLASSLIB_API int DummyInt = 0; // To create LIB
 
-#endif // _WIN32
+#endif // _MSC_VER
 
 /// Get socket class library version.
 /// \param Versions : VersionTriple structure to be filled with versions.

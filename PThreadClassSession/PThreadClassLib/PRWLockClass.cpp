@@ -24,7 +24,7 @@
 
 #include "PRWLockClass.h"
 #include <time.h>
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <sys/timeb.h>
 #endif
 
@@ -44,7 +44,7 @@ PRWLockClass::PRWLockClass() noexcept(false)
     {
         THREAD_EXCEPT_THROW(Result);
     }
-#ifdef _WIN32
+#ifdef _MSC_VER
     memset(&LockAttr, 0, sizeof LockAttr);
 #endif
     Result = pthread_rwlock_init(&m_RWLock, &LockAttr);
@@ -72,7 +72,7 @@ PRWLockClass::PRWLockClass()
         Ok = false;
         return;
     }
-#ifdef _WIN32
+#ifdef _MSC_VER
     memset(&LockAttr, 0, sizeof LockAttr);
 #endif
     Result = pthread_rwlock_init(&m_RWLock, &LockAttr);

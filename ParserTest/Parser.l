@@ -24,10 +24,10 @@
 
 TESTID     [tT][0-9]+
 NUMID      [mM][0-9]+
-REAL       [0-9]*"."?[0-9]*
+REAL       [+-]?[0-9]*"."?[0-9]*
 OP_AND     [&]
 OP_OR      [|]
-OP_NOT     [~]
+OP_NOT     [!]
 OP_LESS    [<]
 OP_MORE    [>]
 OP_LESS_EQ [<][=]

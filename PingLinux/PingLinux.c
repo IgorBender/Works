@@ -9,6 +9,7 @@
 #include <sys/capability.h>
 #include <unistd.h>
 #include <strings.h>
+#include <string.h>
 
 #define PACKETSIZE  64
 struct packet
@@ -17,8 +18,8 @@ struct packet
     char msg[PACKETSIZE - sizeof(struct icmphdr)];
 };
 
-static int pid = -1;
-static uint16_t cnt = 1;
+//static int pid = -1;
+//static uint16_t cnt = 1;
 
 /*--------------------------------------------------------------------*/
 /*--- checksum - standard 1s complement checksum                   ---*/
@@ -41,7 +42,7 @@ unsigned short checksum(void *b, int len)
 
 /*--------------------------------------------------------------------*/
 /*--- ping - Create message and send it.                           ---*/
-/*    return 0 is ping OK, return 1 is ping not OK.                ---*/
+/*    return 0 if ping OK, return 1 if ping not OK.                ---*/
 /*--------------------------------------------------------------------*/
 int ping(char *adress)
 {
@@ -52,33 +53,34 @@ int ping(char *adress)
     struct sockaddr_in r_addr;
     int loop;
     struct sockaddr_in addr_ping;
+    int pid = -1;
+    uint16_t cnt = 1;
 
     pid = getpid();
-    bzero(&addr_ping, sizeof(addr_ping));
+    memset(&addr_ping, 0, sizeof(addr_ping));
     addr_ping.sin_family = AF_INET;
     addr_ping.sin_port = 0;
     addr_ping.sin_addr.s_addr = inet_addr(adress);
 
     sd = socket(PF_INET, SOCK_RAW, IPPROTO_ICMP);
-    if (sd < 0)
+    if(sd < 0)
     {
         perror("socket");
         return 1;
     }
-    if (setsockopt(sd, SOL_IP, IP_TTL, &val, sizeof(val)) != 0)
+    if(setsockopt(sd, SOL_IP, IP_TTL, &val, sizeof(val)) != 0)
     {
         perror("Set TTL option");
         return 1;
     }
-    if (fcntl(sd, F_SETFL, O_NONBLOCK) != 0)
+    if(fcntl(sd, F_SETFL, O_NONBLOCK) != 0)
     {
         perror("Request nonblocking I/O");
         return 1;
     }
 
-    for (loop = 0; loop < 10; loop++)
+    for(loop = 0; loop < 10; loop++)
     {
-
         socklen_t len = sizeof(r_addr);
 
         if(recvfrom(sd, &pckt, sizeof(pckt), 0, (struct sockaddr*) &r_addr,
@@ -87,15 +89,15 @@ int ping(char *adress)
             return 0;
         }
 
-        bzero(&pckt, sizeof(pckt));
+        memset(&pckt, 0, sizeof(pckt));
         pckt.hdr.type = ICMP_ECHO;
         pckt.hdr.un.echo.id = (uint16_t)pid;
-        for (i = 0; i < (int8_t)sizeof(pckt.msg) - 1; i++)
+        for(i = 0; i < (int8_t)sizeof(pckt.msg) - 1; i++)
             pckt.msg[i] = (int8_t)i + '0';
         pckt.msg[i] = 0;
         pckt.hdr.un.echo.sequence = cnt++;
         pckt.hdr.checksum = checksum(&pckt, sizeof(pckt));
-        if (sendto(sd, &pckt, sizeof(pckt), 0, (struct sockaddr*) &addr_ping,
+        if(sendto(sd, &pckt, sizeof(pckt), 0, (struct sockaddr*) &addr_ping,
                 sizeof(addr_ping)) <= 0)
             perror("sendto");
 
@@ -116,7 +118,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        if (ping("192.168.1.137"))
+        if(ping("192.168.1.24"))
             printf("Ping is not OK. \n");
         else
             printf("Ping is OK. \n");

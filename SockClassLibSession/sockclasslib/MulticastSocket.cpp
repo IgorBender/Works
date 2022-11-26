@@ -20,7 +20,7 @@
 
 #include <MulticastSocket.h>
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <ws2tcpip.h>
 #endif
 
