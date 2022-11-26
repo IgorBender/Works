@@ -192,7 +192,7 @@ int main(int32_t argc, char** argv)
     /*
      * Test mmap operations
      */
-    BuffPtr = (char*)mmap(NULL, 4096, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_SYNC | MAP_LOCKED, TestFd, 0);
+    BuffPtr = (char*)mmap(NULL, 4096, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_LOCKED, TestFd, 0);
     if(NULL == BuffPtr)
     {
         sprintf(ErrStr, "mmap of %s ", DeviceName);

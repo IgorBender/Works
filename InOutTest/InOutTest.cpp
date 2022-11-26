@@ -120,7 +120,7 @@ int main()
                                            StringColorizer::Font::Bold)
          << " bin : " << bitset<32>(InVal) << StringColorizer::EndColorize() << "." << endl;
 
-    // Alternative way to state hex base 0x explicitly and ommit showbase
+    // Alternative way to state hex base 0x explicitly and omit showbase
     cout << "The number is"
          << StringColorizer::StartColorize(StringColorizer::Forground::Green,
                                            StringColorizer::Background::None,
