@@ -1,6 +1,6 @@
 /*  testdrv.c - Kernel module implementing user access to PS DMAs of MpSoc/RfSoC.
 
-* Copyright (C) 2020 RAFAEL, Inc
+* Copyright (C) 2022 Igor Bender 
 *
 *   This program is free software; you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
 
 /* Standard module information, edit as appropriate */
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("RAFAEL Inc.");
+MODULE_AUTHOR("Igor Bender");
 MODULE_DESCRIPTION("testdrv - user access ioctl test");
 
 #define DRIVER_NAME "testdrv"
@@ -74,7 +74,7 @@ int testdrv_open(struct inode *i_node, struct file *filp)
     int minor = iminor(i_node);
 
     struct testdrv_data* p_data = &device_data[minor];
-
+    dev_warn(p_data->device, " open device %d\n", minor);
 //    p_lp = container_of(i_node->i_cdev, struct reg_access_local, cdev);
     filp->private_data = p_data;
     filp->f_pos = 0;
@@ -84,9 +84,10 @@ int testdrv_open(struct inode *i_node, struct file *filp)
 
 int testdrv_release(struct inode *i_node, struct file *filp)
 {
-//    int minor = iminor(i_node);
+    int minor = iminor(i_node);
 
-//    struct testdrv_data* p_data = &device_data[minor];
+    struct testdrv_data* p_data = &device_data[minor];
+    dev_warn(p_data->device, " close device %d\n", minor);
     return 0;
 }
 
@@ -104,6 +105,8 @@ long testdrv_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		case TESTDRV_GET_DRIVER_VERSION:
 		{   
 			struct Version Ver;
+			dev_warn(p_data->device, " ioctl get version\n");
+
 			Ver.Major = DRIVER_VERSION_MAJOR;
 			Ver.Minor = DRIVER_VERSION_MINOR;
 			res = copy_to_user((void*)arg, &Ver, sizeof(struct Version));
@@ -112,6 +115,8 @@ long testdrv_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		
 		case TESTDRV_ZERO_MEMORY:
 		{
+			dev_warn(p_data->device, " ioctl zero memory\n");
+
 			if(!p_data->p_mem)
 				return -EFAULT;
 			
@@ -121,7 +126,7 @@ long testdrv_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 
 		case TESTDRV_FILL_MEMORY:
 		{
-            dev_info(p_data->device, " ioctl fill char %d\n", (u8)arg);
+			dev_warn(p_data->device, " ioctl fill char %d\n", (u8)arg);
 
 			if(!p_data->p_mem)
 				return -EFAULT;
@@ -156,10 +161,10 @@ int testdrv_mmap(struct file *filp, struct vm_area_struct *vma)
     vma->vm_flags |= VM_DONTEXPAND | VM_DONTDUMP;
     if(remap_pfn_range(vma, vma->vm_start, pfn, size, vma->vm_page_prot))
     {
-		dev_info(p_data->device, " mmap() error\n");
+		dev_warn(p_data->device, " mmap() error\n");
         return -EAGAIN;
     }
-    dev_info(p_data->device, " mmap() success\n");
+    dev_warn(p_data->device, " mmap() success\n");
     return 0;
 }
 
@@ -169,20 +174,22 @@ ssize_t testdrv_write(struct file *filp, const char __user *buf, size_t count, l
     int size;
     int res;
     loff_t offset = *f_pos;
-	lp = filp->private_data;
+
+    lp = filp->private_data;
 
 
     if(count > TESTDRV_MEM_SIZE - offset)
         size = TESTDRV_MEM_SIZE - offset;
     else
         size = count;
+    dev_warn(lp->device, " write %d bytes at offset %lld\n", size, offset);
 
     res = copy_from_user(lp->p_mem + offset, buf, size);
     if(0 != res)
-	{
-		*f_pos += size - res;
-		return size - res;
-	}
+    {
+	*f_pos += size - res;
+	return size - res;
+    }
     *f_pos += size;
     return size;
 }
@@ -200,12 +207,13 @@ ssize_t testdrv_read(struct file *filp, char __user *buf, size_t count, loff_t *
         size = TESTDRV_MEM_SIZE - offset;
     else
         size = count;
+    dev_warn(lp->device, " read %d bytes at offset %lld\n", size, offset);
     res = copy_to_user(buf, lp->p_mem + offset, size);
     if(0 != res)
-	{
-		*f_pos += size - res;
-		return size - res;
-	}
+    {
+        *f_pos += size - res;
+        return size - res;
+    }
     *f_pos += size;
     return size;
 }
@@ -215,18 +223,21 @@ loff_t testdrv_llseek(struct file *filp, loff_t off, int whence)
 	struct testdrv_data *lp;
 	loff_t newpos;
 
-    lp = filp->private_data;
+   	lp = filp->private_data;
 
 	switch(whence) {
 	  case 0: /* SEEK_SET */
+		dev_warn(lp->device, " set file offset %lld bytes from begin\n", off);
 		newpos = off;
 		break;
 
 	  case 1: /* SEEK_CUR */
+		dev_warn(lp->device, " set file offset %lld bytes from current position\n", off);
 		newpos = filp->f_pos + off;
 		break;
 
 	  case 2: /* SEEK_END */
+		dev_warn(lp->device, " set file offset %lld bytes from end\n", off);
 		newpos = TESTDRV_MEM_SIZE + off;
 		break;
 
@@ -252,10 +263,10 @@ struct file_operations testdrv_fops = {
 static int __init testdrv_init(void)
 {
     int err = 0;
-	u32 chan_id = 0;
+    u32 chan_id = 0;
     int devno;
     struct device* p_dev;
-	int rc = 0;
+    int rc = 0;
 
     memset(device_data, 0, sizeof(struct testdrv_data) * NUMBER_TESTDRV_CHANNELS);
     err = alloc_chrdev_region(&dev, 0, NUMBER_TESTDRV_CHANNELS, testdrv_DEVICE_NAME);
@@ -285,10 +296,11 @@ static int __init testdrv_init(void)
 		p_dev = device_create(class, NULL, devno, &device_data[chan_id], "testdrv%d", chan_id);
 		if(NULL == p_dev)
 		{
-			dev_warn(p_dev, "create_device() failed");
+			dev_err(p_dev, "create_device() failed");
 			rc = -EINVAL;
 			goto error1;
 		}
+		dev_warn(p_dev, "create_device() for %d\n", chan_id);
 		device_data[chan_id].device = p_dev;
 	}
 	return 0;
@@ -300,17 +312,18 @@ error1:
 static void __exit testdrv_exit(void)
 {
 	int i;
-    int devno;
+	int devno;
 	
 	for(i = 0; i < NUMBER_TESTDRV_CHANNELS; ++i)
 	{
 	    devno = MKDEV(major, i);
+	    dev_warn(device_data[i].device, "destroy_device() %d\n", i);    
 	    cdev_del(&device_data[i].cdev);
-        device_destroy(class, devno);
-        kfree(device_data[i].p_mem);
+	    device_destroy(class, devno);
+	    kfree(device_data[i].p_mem);
 	}
 	class_destroy(class);
-    unregister_chrdev_region(dev, NUMBER_TESTDRV_CHANNELS);
+	unregister_chrdev_region(dev, NUMBER_TESTDRV_CHANNELS);
 	memset(device_data, 0, sizeof(device_data));
 }
 
