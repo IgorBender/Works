@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(TestDriver LANGUAGES C CXX)
+
+IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/../Debug)
+ENDIF()
+IF("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/../Release)
+ENDIF()
+
+add_executable(TestDriver TestDriver.cpp testdrv-ioctl.h)
+
+install(TARGETS TestDriver
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
