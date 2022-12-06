@@ -14,3 +14,14 @@ build*
 *.cmake
 CMakeLists.txt.user
 CMakeSettings.json
+*~
+core*
+.depend 
+.*.cmd
+*.ko
+*.mod.c
+.tmp_versions
+*.mod
+*symvers
+*.order
+*.o
