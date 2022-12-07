@@ -6,6 +6,11 @@
 /**********************************************************************
  * Explore the way to achive affinity of a thread to certain CPU and
  * assure no other task can be ran on the very same CPU.
+ * It is recomended to instruct the kernel not to account on chusen CPU
+ * in regular shceduling, the CPU will be taken by cpu_set to be base for
+ * thread affinity, thus providing the thread will own the CPU solely.
+ * The CPU dedication in kernel can be acheived by kernel commad line
+ * parameter isolcpus= .
  * ********************************************************************/
 
 #include <iostream>
@@ -18,6 +23,8 @@
 
 using namespace std;
 
+// The variable is static to sure computation will not be optimizesd out
+// in Release configuration.
 static double Dummy = 0.0;
 
 // Thread routine
@@ -32,12 +39,13 @@ int main()
 {
     THREAD_TRY
     {
-        // Construct thread
+        // Construct thread as cyclic with no timeout.
         PThreadExtended Thread(Runnable(PThreadRoutineType(cpuLoadThreadRoutine)), PTHREAD_INFINITE, true);
         Thread.run();
 
         cpu_set_t Cpu;
         CPU_ZERO(&Cpu);
+        // Get default thread CPU affinity, should be all processors.
         int32_t Res = pthread_getaffinity_np(Thread.getThreadId(), sizeof(cpu_set_t), &Cpu);
         if(0 != Res)
         {
