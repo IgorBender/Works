@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 #include <thread>
-#include <cmath>
 
 // Use ptheard wrapping library.
 #include <PThreadExtended.h>
