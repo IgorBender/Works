@@ -23,54 +23,136 @@
 
 using namespace std;
 
-// The variable is static to sure computation will not be optimizesd out
-// in Release configuration.
-static double Dummy = 0.0;
 
-// Thread routine
+static uint32_t Counter = 0;
+
+int32_t limit = 5000;
+int32_t primes = 0;
+bool Started = false;
+bool End = false;
+chrono::high_resolution_clock::time_point Start;
+chrono::high_resolution_clock::time_point Stop;
+const uint32_t NUMBER_OF_LOAD_THREADS = 16;
+
+// Thread routine for load CPUs
 void cpuLoadThreadRoutine()
 {
-    for(uint32_t i = 0; i < 10000000; ++i)
-        Dummy = 81.0, Dummy = sqrt(Dummy) * 184.78;
+    for(int32_t num = 1; num <= limit; ++num)
+    {
+         int32_t i = 2;
+         while(i <= num)
+         {
+             if(num % i == 0)
+                 break;
+             i++;
+         }
+         if(i == num)
+             primes++;
+    }
+}
+
+// Thread routine for test
+void cpuTestThreadRoutine()
+{
+    if(!Started)
+    {
+        Started = true;
+        Start = chrono::high_resolution_clock::now();
+    }
+
+    for(int32_t num = 1; num <= limit; ++num)
+    {
+         int32_t i = 2;
+         while(i <= num)
+         {
+             if(num % i == 0)
+                 break;
+             i++;
+         }
+         if(i == num)
+             primes++;
+    }
+
+    if(End)
+        Stop = chrono::high_resolution_clock::now();
+
+
+    ++Counter;
 }
 
 
 int main()
 {
+    // Thread pool for simulation CPUs load, number of threads is equal or more
+    // than number of CPUs.
+    PThreadExtended* LoadThreads[NUMBER_OF_LOAD_THREADS];
+
     THREAD_TRY
     {
-        // Construct thread as cyclic with no timeout.
-        PThreadExtended Thread(Runnable(PThreadRoutineType(cpuLoadThreadRoutine)), PTHREAD_INFINITE, true);
+        // Craete threads as cyclic with no timeout.
+        for(uint32_t i = 0; i < NUMBER_OF_LOAD_THREADS; ++i)
+        {
+            LoadThreads[i] = new PThreadExtended(
+                        Runnable(PThreadRoutineType(cpuLoadThreadRoutine)),
+                        PTHREAD_INFINITE, true);
+            LoadThreads[i]->run();
+        }
+        // Construct test thread as cyclic with no timeout.
+        PThreadExtended Thread(
+                    Runnable(PThreadRoutineType(cpuTestThreadRoutine)),
+                    PTHREAD_INFINITE, true);
         Thread.run();
 
         cpu_set_t Cpu;
         CPU_ZERO(&Cpu);
-        // Get default thread CPU affinity, should be all processors.
-        int32_t Res = pthread_getaffinity_np(Thread.getThreadId(), sizeof(cpu_set_t), &Cpu);
+        // Get default thread CPU affinity, should be all available
+        // processors (not isolated).
+        int32_t Res = pthread_getaffinity_np(Thread.getThreadId(),
+                                             sizeof(cpu_set_t), &Cpu);
         if(0 != Res)
         {
             THREAD_EXCEPT_THROW("Get affinity");
         }
-        cout << " == Thread can run  on " << CPU_COUNT(&Cpu) << "  CPU" << (1 == CPU_COUNT(&Cpu) ? "" : "s") << " ==" << endl;
+        cout << " == Thread can run  on " << CPU_COUNT(&Cpu) << "  CPU"
+             << (1 == CPU_COUNT(&Cpu) ? "" : "s") << " ==" << endl;
 
         cout << " -- Set cpu_set for thread --" << endl;
         CPU_ZERO(&Cpu);
         CPU_SET(1, &Cpu);
-        cout << " == Thread can run  on " << CPU_COUNT(&Cpu) << "  CPU" << (1 == CPU_COUNT(&Cpu) ? "" : "s") << " ==" << endl;
-        Res = pthread_setaffinity_np(Thread.getThreadId(), sizeof(cpu_set_t), &Cpu);
+        cout << " == Thread can run  on " << CPU_COUNT(&Cpu) << "  CPU"
+             << (1 == CPU_COUNT(&Cpu) ? "" : "s") << " ==" << endl;
+        Res = pthread_setaffinity_np(Thread.getThreadId(),
+                                     sizeof(cpu_set_t), &Cpu);
         if(0 != Res)
         {
             THREAD_EXCEPT_THROW("Set affinity");
         }
+        for(uint32_t i = 0; i < NUMBER_OF_LOAD_THREADS; ++i)
+        {
+            LoadThreads[i]->start();
+        }
         Thread.start();
-        this_thread::sleep_for(chrono::seconds{5});
+        while(5000 > Counter)
+        {
+            this_thread::sleep_for(chrono::seconds{1});
+        }
+        End = true;
+        this_thread::sleep_for(chrono::seconds{1});
         Thread.stop();
         Thread.exit();
+        for(uint32_t i = 0; i < NUMBER_OF_LOAD_THREADS; ++i)
+        {
+            LoadThreads[i]->stop();
+            LoadThreads[i]->exit();
+        }
+
+        cout << fixed
+             << chrono::duration<double, ratio<1,1> >(Stop - Start).count()
+             << " seconds" << endl;
     }
     THREAD_EXCEPT_CATCH_BEGIN_NOREP
         return 1;
     THREAD_EXCEPT_CATCH_END
-
 
     return 0;
 }
