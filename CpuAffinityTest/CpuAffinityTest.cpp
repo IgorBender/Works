@@ -6,9 +6,9 @@
 /**********************************************************************
  * Explore the way to achive affinity of a thread to certain CPU and
  * assure no other task can be ran on the very same CPU.
- * It is recomended to instruct the kernel not to account on chusen CPU
- * in regular shceduling, the CPU will be taken by cpu_set to be base for
- * thread affinity, thus providing the thread will own the CPU solely.
+ * It is recomended to instruct the kernel not to account on choosen CPU
+ * in regular scheduling, the CPU will be taken by cpu_set to be base for
+ * thread affinity, thus providing the thread will solely own the CPU.
  * The CPU dedication in kernel can be acheived by kernel commad line
  * parameter isolcpus= .
  * ********************************************************************/
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <iomanip>
 #include <thread>
+#include <memory>
+#include <array>
 
 // Use ptheard wrapping library.
 #include <PThreadExtended.h>
@@ -82,20 +84,23 @@ void cpuTestThreadRoutine()
 
 int main()
 {
-    // Thread pool for simulation CPUs load, number of threads is equal or more
+    // Thread pool for simulation CPUs load, number of threads should be equal or more
     // than number of CPUs.
-    PThreadExtended* LoadThreads[NUMBER_OF_LOAD_THREADS];
+    array<shared_ptr<PThreadExtended>, NUMBER_OF_LOAD_THREADS> LoadThreads;
 
     THREAD_TRY
     {
-        // Craete threads as cyclic with no timeout.
-        for(uint32_t i = 0; i < NUMBER_OF_LOAD_THREADS; ++i)
+        // Create threads as cyclic with no timeout.
+        for(auto& p : LoadThreads)
         {
-            LoadThreads[i] = new PThreadExtended(
-                        Runnable(PThreadRoutineType(cpuLoadThreadRoutine)),
-                        PTHREAD_INFINITE, true);
-            LoadThreads[i]->run();
+            shared_ptr<PThreadExtended> pTmp(
+                        new PThreadExtended(
+                            Runnable(PThreadRoutineType(cpuLoadThreadRoutine)),
+                            PTHREAD_INFINITE, true));
+            p = pTmp;
+            p->run();
         }
+
         // Construct test thread as cyclic with no timeout.
         PThreadExtended Thread(
                     Runnable(PThreadRoutineType(cpuTestThreadRoutine)),
@@ -126,11 +131,12 @@ int main()
         {
             THREAD_EXCEPT_THROW("Set affinity");
         }
-        for(uint32_t i = 0; i < NUMBER_OF_LOAD_THREADS; ++i)
-        {
-            LoadThreads[i]->start();
-        }
+
+        for(auto& p : LoadThreads)
+            p->start();
+
         Thread.start();
+
         while(5000 > Counter)
         {
             this_thread::sleep_for(chrono::seconds{1});
@@ -139,12 +145,13 @@ int main()
         this_thread::sleep_for(chrono::seconds{1});
         Thread.stop();
         Thread.exit();
-        for(uint32_t i = 0; i < NUMBER_OF_LOAD_THREADS; ++i)
-        {
-            LoadThreads[i]->stop();
-            LoadThreads[i]->exit();
-        }
 
+        for(auto& p : LoadThreads)
+        {
+            p->stop();
+            p->exit();
+        }
+	
         cout << fixed
              << chrono::duration<double, ratio<1,1> >(Stop - Start).count()
              << " seconds" << endl;
