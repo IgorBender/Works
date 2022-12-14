@@ -84,8 +84,8 @@ void cpuTestThreadRoutine()
 
 int main()
 {
-    // Thread pool for simulation CPUs load, number of threads should be equal or more
-    // than number of CPUs.
+    // Thread pool for simulation CPUs load, number of threads should be equal
+    // or more than number of CPUs.
     array<shared_ptr<PThreadExtended>, NUMBER_OF_LOAD_THREADS> LoadThreads;
 
     THREAD_TRY
