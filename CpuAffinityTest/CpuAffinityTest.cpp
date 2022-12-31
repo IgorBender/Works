@@ -15,78 +15,163 @@
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <thread>
 #include <memory>
 #include <array>
+#include <sys/mman.h>
+#include <time.h>
 
 // Use ptheard wrapping library.
 #include <PThreadExtended.h>
 
+// Auxiliary average computation class
+#include "AccumulatedAverage.h"
+
 using namespace std;
 
-
-static uint32_t Counter = 0;
-
-int32_t limit = 5000;
-int32_t primes = 0;
-bool Started = false;
-bool End = false;
-chrono::high_resolution_clock::time_point Start;
-chrono::high_resolution_clock::time_point Stop;
-const uint32_t NUMBER_OF_LOAD_THREADS = 16;
-
-// Thread routine for load CPUs
-void cpuLoadThreadRoutine()
+// Auxilliary time duration functions
+constexpr double diff_timespec_sec(const struct timespec *time1,
+                                   const struct timespec *time0)
 {
-    for(int32_t num = 1; num <= limit; ++num)
-    {
-         int32_t i = 2;
-         while(i <= num)
-         {
-             if(num % i == 0)
-                 break;
-             i++;
-         }
-         if(i == num)
-             primes++;
-    }
+  return (time1->tv_sec - time0->tv_sec)
+      + (time1->tv_nsec - time0->tv_nsec) / 1000000000.0;
 }
 
-// Thread routine for test
-void cpuTestThreadRoutine()
+constexpr double diff_timespec_m(const struct timespec *time1,
+                                 const struct timespec *time0)
 {
-    if(!Started)
-    {
-        Started = true;
-        Start = chrono::high_resolution_clock::now();
-    }
-
-    for(int32_t num = 1; num <= limit; ++num)
-    {
-         int32_t i = 2;
-         while(i <= num)
-         {
-             if(num % i == 0)
-                 break;
-             i++;
-         }
-         if(i == num)
-             primes++;
-    }
-
-    if(End)
-        Stop = chrono::high_resolution_clock::now();
-
-
-    ++Counter;
+  return (time1->tv_sec - time0->tv_sec) * 1000.0
+      + (time1->tv_nsec - time0->tv_nsec) / 1000000.0;
 }
 
+constexpr double diff_timespec_u(const struct timespec *time1,
+                                 const struct timespec *time0)
+{
+  return (time1->tv_sec - time0->tv_sec) * 1000000.0
+      + (time1->tv_nsec - time0->tv_nsec) / 1000.0;
+}
+// ----------------------------------
+
+
+class TimingTest
+{
+public:
+    TimingTest()
+    {
+        m_LastTime.tv_nsec = 0;
+        m_LastTime.tv_sec = 0;
+    }
+    ~TimingTest(){}
+
+    uint32_t test();
+
+protected:
+    uint32_t m_Counter = 0;
+    int32_t m_Limit = 5000;
+    int32_t m_Primes = 0;
+    bool m_Started = false;
+    bool m_End = false;
+    timespec m_Start;
+    timespec m_Stop;
+    timespec m_LastTime;
+    static const uint32_t NUMBER_OF_LOAD_THREADS = 16;
+    double* m_pDurations = nullptr;
+    static const uint32_t TEST_COUNTER = 5000;
+    uint32_t m_CurrentTest = 0;
+
+    // Thread routine for load CPUs
+    void* cpuLoadThreadRoutine();
+    static void* staticCpuLoadThreadRoutine(void* p)
+    {
+        return (reinterpret_cast<TimingTest*>(p))->cpuLoadThreadRoutine();
+    }
+    // Thread routine for test
+    void* cpuTestThreadRoutine();
+    static void* staticCpuTestThreadRoutine(void* p)
+    {
+        return (reinterpret_cast<TimingTest*>(p))->cpuTestThreadRoutine();
+    }
+    void analyzeResults();
+};
 
 int main()
 {
+    TimingTest Test;
+    Test.test();
+
+    return 0;
+}
+
+void* TimingTest::cpuLoadThreadRoutine()
+{
+    for(int32_t num = 1; num <= m_Limit; ++num)
+    {
+         int32_t i = 2;
+         while(i <= num)
+         {
+             if(num % i == 0)
+                 break;
+             i++;
+         }
+         if(i == num)
+             m_Primes++;
+    }
+    return nullptr;
+}
+
+void* TimingTest::cpuTestThreadRoutine()
+{
+    if(!m_Started)
+    {
+        m_Started = true;
+        clock_gettime(CLOCK_REALTIME, &m_Start);
+    }
+
+    for(int32_t num = 1; num <= m_Limit; ++num)
+    {
+         int32_t i = 2;
+         while(i <= num)
+         {
+             if(num % i == 0)
+                 break;
+             i++;
+         }
+         if(i == num)
+             m_Primes++;
+    }
+
+    timespec CurrentTime;
+    clock_gettime(CLOCK_REALTIME, &CurrentTime);
+    if(0 != m_LastTime.tv_sec && m_CurrentTest < TEST_COUNTER)
+    {
+        m_pDurations[m_CurrentTest] =
+                diff_timespec_u(&CurrentTime, &m_LastTime);
+        ++m_CurrentTest;
+    }
+    m_LastTime = CurrentTime;
+
+    if(m_End)
+        clock_gettime(CLOCK_REALTIME, &m_Stop);
+
+    ++m_Counter;
+    return nullptr;
+}
+
+uint32_t TimingTest::test()
+{
+    // Allocate memory for storage of tests timings.
+    m_pDurations = new double[TEST_COUNTER];
+
+    // Lock allocated memory
+    int32_t LockStatus = mlockall(MCL_CURRENT);
+    if(0 != LockStatus)
+        cerr << "Memory lock failed" << endl;
+
     // Thread pool for simulation CPUs load, number of threads should be equal
     // or more than number of CPUs.
-    array<shared_ptr<PThreadExtended>, NUMBER_OF_LOAD_THREADS> LoadThreads;
+    array<shared_ptr<
+            PThreadExtended>, TimingTest::NUMBER_OF_LOAD_THREADS> LoadThreads;
 
     THREAD_TRY
     {
@@ -95,7 +180,10 @@ int main()
         {
             shared_ptr<PThreadExtended> pTmp(
                         new PThreadExtended(
-                            Runnable(PThreadRoutineType(cpuLoadThreadRoutine)),
+                            Runnable(
+                                PThreadRoutineType(
+                                    TimingTest::staticCpuLoadThreadRoutine),
+                                nullptr, this),
                             PTHREAD_INFINITE, true));
             p = pTmp;
             p->run();
@@ -103,7 +191,10 @@ int main()
 
         // Construct test thread as cyclic with no timeout.
         PThreadExtended Thread(
-                    Runnable(PThreadRoutineType(cpuTestThreadRoutine)),
+                    Runnable(
+                        PThreadRoutineType(
+                            TimingTest::staticCpuTestThreadRoutine),
+                        nullptr, this),
                     PTHREAD_INFINITE, true);
         Thread.run();
 
@@ -137,28 +228,67 @@ int main()
 
         Thread.start();
 
-        while(5000 > Counter)
+        while(TEST_COUNTER > m_Counter)
         {
             this_thread::sleep_for(chrono::seconds{1});
         }
-        End = true;
+        m_End = true;
         this_thread::sleep_for(chrono::seconds{1});
         Thread.stop();
         Thread.exit();
+        Thread.join();
 
         for(auto& p : LoadThreads)
         {
             p->stop();
             p->exit();
+            p->join();
         }
-	
+
         cout << fixed
-             << chrono::duration<double, ratio<1,1> >(Stop - Start).count()
-             << " seconds" << endl;
+             << diff_timespec_sec(&m_Stop, &m_Start) << " seconds" << endl;
     }
     THREAD_EXCEPT_CATCH_BEGIN_NOREP
+        if(m_pDurations)
+        {
+            munlockall();
+            delete [] m_pDurations;
+            m_pDurations = 0;
+        }
         return 1;
     THREAD_EXCEPT_CATCH_END
 
+    analyzeResults();
+
+    if(m_pDurations)
+    {
+        munlockall();
+        delete [] m_pDurations;
+        m_pDurations = 0;
+    }
     return 0;
+}
+
+void TimingTest::analyzeResults()
+{
+    // Open file for store cycle durations, file name is Results.txt and
+    // it's located in working directory aside executable. To sorted view
+    // run in shell command line :
+    // sort Results.txt
+    // or for saving sorted data :
+    // sort Results.txt | cat > sorted.txt
+    ofstream Results;
+    Results.open("Results.txt");
+
+    AccumulatedAverage<double> Duration;
+    for(uint32_t i = 0; i < TEST_COUNTER; ++i)
+    {
+        Duration.accumulate(m_pDurations[i]);
+        if(!Results)
+            continue;
+        Results << m_pDurations[i] << endl;;
+    }
+    Results.close();
+    cout << "Average cycle time " << Duration.getAverage()
+         << " microseconds" << endl;
 }
