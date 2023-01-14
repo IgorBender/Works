@@ -19,6 +19,7 @@
 #include <thread>
 #include <memory>
 #include <array>
+#include <limits>
 #include <sys/mman.h>
 #include <time.h>
 
@@ -53,23 +54,36 @@ constexpr double diff_timespec_u(const struct timespec *time1,
 }
 // ----------------------------------
 
-
+///
+/// \brief The TimingTest class
+///
+///
 class TimingTest
 {
 public:
+    ///
+    /// \brief TimingTest - constructor, no parameters
+    ///
     TimingTest()
     {
         m_LastTime.tv_nsec = 0;
         m_LastTime.tv_sec = 0;
     }
+    ///
+    /// Destructor
     ~TimingTest(){}
 
+    ///
+    /// \brief test - test method
+    /// \return 0 - success
+    ///
     uint32_t test();
 
 protected:
-    uint32_t m_Counter = 0;
-    int32_t m_Limit = 5000;
-    int32_t m_Primes = 0;
+    uint32_t m_Counter = 0; /// Counter of test cycles
+    static const int32_t m_Limit = 5000; /// Number of test cycles
+    int32_t m_PrimesForLoad = 0;
+    int32_t m_PrimesForTest = 0;
     bool m_Started = false;
     bool m_End = false;
     timespec m_Start;
@@ -107,15 +121,15 @@ void* TimingTest::cpuLoadThreadRoutine()
 {
     for(int32_t num = 1; num <= m_Limit; ++num)
     {
-         int32_t i = 2;
-         while(i <= num)
-         {
-             if(num % i == 0)
-                 break;
-             i++;
-         }
-         if(i == num)
-             m_Primes++;
+        int32_t i = 2;
+        while(i <= num)
+        {
+            if(num % i == 0)
+                break;
+            i++;
+        }
+        if(i == num)
+           ++m_PrimesForLoad;
     }
     return nullptr;
 }
@@ -130,15 +144,15 @@ void* TimingTest::cpuTestThreadRoutine()
 
     for(int32_t num = 1; num <= m_Limit; ++num)
     {
-         int32_t i = 2;
-         while(i <= num)
-         {
-             if(num % i == 0)
-                 break;
-             i++;
-         }
-         if(i == num)
-             m_Primes++;
+        int32_t i = 2;
+        while(i <= num)
+        {
+            if(num % i == 0)
+                break;
+            i++;
+        }
+        if(i == num)
+            ++m_PrimesForTest;
     }
 
     timespec CurrentTime;
@@ -281,14 +295,22 @@ void TimingTest::analyzeResults()
     Results.open("Results.txt");
 
     AccumulatedAverage<double> Duration;
+    double MaxTime = numeric_limits<double>::min();
+    double MinTime = numeric_limits<double>::max();
     for(uint32_t i = 0; i < TEST_COUNTER; ++i)
     {
+        MaxTime = max(m_pDurations[i], MaxTime);
+        MinTime = min(m_pDurations[i], MinTime);
         Duration.accumulate(m_pDurations[i]);
         if(!Results)
             continue;
-        Results << m_pDurations[i] << endl;;
+        Results << m_pDurations[i] << endl;
     }
     Results.close();
     cout << "Average cycle time " << Duration.getAverage()
          << " microseconds" << endl;
+    cout << "Minimal cycle time " << MinTime << " microseconds, deviation "
+         << MinTime - Duration.getAverage() << " microseconds" << endl;
+    cout << "Maximal cycle time " << MaxTime << " microseconds, deviation "
+         << MaxTime - Duration.getAverage() << " microseconds" << endl;
 }
