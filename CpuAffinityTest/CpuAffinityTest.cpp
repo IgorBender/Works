@@ -11,6 +11,8 @@
  * thread affinity, thus providing the thread will solely own the CPU.
  * The CPU dedication in kernel can be acheived by kernel commad line
  * parameter isolcpus= .
+ * Alternatively explore an a way and influence if upscaling threa's
+ * priority.
  * ********************************************************************/
 
 #include <iostream>
@@ -19,6 +21,7 @@
 #include <thread>
 #include <memory>
 #include <array>
+#include <limits>
 #include <sys/mman.h>
 #include <time.h>
 
@@ -53,23 +56,36 @@ constexpr double diff_timespec_u(const struct timespec *time1,
 }
 // ----------------------------------
 
-
+///
+/// \brief The TimingTest class
+///
+///
 class TimingTest
 {
 public:
+    ///
+    /// \brief TimingTest - constructor, no parameters
+    ///
     TimingTest()
     {
         m_LastTime.tv_nsec = 0;
         m_LastTime.tv_sec = 0;
     }
+    ///
+    /// Destructor
     ~TimingTest(){}
 
+    ///
+    /// \brief test - test method
+    /// \return 0 - success
+    ///
     uint32_t test();
 
 protected:
-    uint32_t m_Counter = 0;
-    int32_t m_Limit = 5000;
-    int32_t m_Primes = 0;
+    uint32_t m_Counter = 0; /// Counter of test cycles
+    static const int32_t m_Limit = 5000; /// Number of computation cycles
+    int32_t m_PrimesForLoad = 0;
+    int32_t m_PrimesForTest = 0;
     bool m_Started = false;
     bool m_End = false;
     timespec m_Start;
@@ -97,6 +113,16 @@ protected:
 
 int main()
 {
+    // For posiibility of change thread's priority.
+    // --------------------------------------------
+//    sched_param Param;
+//    Param.__sched_priority = 10;
+//    int SchedRes =  sched_setscheduler(0, SCHED_FIFO, &Param);
+//    if(SchedRes)
+//    {
+//        cout << "Wrong sched_setscheduler" << endl;
+//    }
+    // --------------------------------------------
     TimingTest Test;
     Test.test();
 
@@ -107,15 +133,15 @@ void* TimingTest::cpuLoadThreadRoutine()
 {
     for(int32_t num = 1; num <= m_Limit; ++num)
     {
-         int32_t i = 2;
-         while(i <= num)
-         {
-             if(num % i == 0)
-                 break;
-             i++;
-         }
-         if(i == num)
-             m_Primes++;
+        int32_t i = 2;
+        while(i <= num)
+        {
+            if(num % i == 0)
+                break;
+            i++;
+        }
+        if(i == num)
+           ++m_PrimesForLoad;
     }
     return nullptr;
 }
@@ -130,15 +156,15 @@ void* TimingTest::cpuTestThreadRoutine()
 
     for(int32_t num = 1; num <= m_Limit; ++num)
     {
-         int32_t i = 2;
-         while(i <= num)
-         {
-             if(num % i == 0)
-                 break;
-             i++;
-         }
-         if(i == num)
-             m_Primes++;
+        int32_t i = 2;
+        while(i <= num)
+        {
+            if(num % i == 0)
+                break;
+            i++;
+        }
+        if(i == num)
+            ++m_PrimesForTest;
     }
 
     timespec CurrentTime;
@@ -196,8 +222,15 @@ uint32_t TimingTest::test()
                             TimingTest::staticCpuTestThreadRoutine),
                         nullptr, this),
                     PTHREAD_INFINITE, true);
+        // Comment out this if test thread priority should not to be changed.
+        // ------------------------------------------------------------------
+//        Thread.setPolicy(SCHED_FIFO);
+//        Thread.setPriority(98);
+        // ------------------------------------------------------------------
         Thread.run();
 
+        // Comment out this if test thread affinity should not be done.
+        // ------------------------------------------------------------
         cpu_set_t Cpu;
         CPU_ZERO(&Cpu);
         // Get default thread CPU affinity, should be all available
@@ -222,6 +255,7 @@ uint32_t TimingTest::test()
         {
             THREAD_EXCEPT_THROW("Set affinity");
         }
+        // ------------------------------------------------------------
 
         for(auto& p : LoadThreads)
             p->start();
@@ -281,14 +315,34 @@ void TimingTest::analyzeResults()
     Results.open("Results.txt");
 
     AccumulatedAverage<double> Duration;
+    double MaxTime = numeric_limits<double>::min();
+    double MinTime = numeric_limits<double>::max();
     for(uint32_t i = 0; i < TEST_COUNTER; ++i)
     {
+        MaxTime = max(m_pDurations[i], MaxTime);
+        MinTime = min(m_pDurations[i], MinTime);
         Duration.accumulate(m_pDurations[i]);
         if(!Results)
             continue;
-        Results << m_pDurations[i] << endl;;
+        Results << m_pDurations[i] << endl;
     }
     Results.close();
+
+    uint32_t NumberOfThreshholdDeviations = 0;
+    const double DEVIATION_TRESHOLD = 1000.0;
+
+    for(uint32_t i = 0; i < TEST_COUNTER; ++i)
+    {
+        if(DEVIATION_TRESHOLD < abs(m_pDurations[i]) - Duration.getAverage())
+            ++NumberOfThreshholdDeviations;
+    }
+
     cout << "Average cycle time " << Duration.getAverage()
          << " microseconds" << endl;
+    cout << "Minimal cycle time " << MinTime << " microseconds, deviation "
+         << MinTime - Duration.getAverage() << " microseconds" << endl;
+    cout << "Maximal cycle time " << MaxTime << " microseconds, deviation "
+         << MaxTime - Duration.getAverage() << " microseconds" << endl;
+    cout << "Number of deviations above " << DEVIATION_TRESHOLD
+         << " microseconds - " << NumberOfThreshholdDeviations << endl;
 }
