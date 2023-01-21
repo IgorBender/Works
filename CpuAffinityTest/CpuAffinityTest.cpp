@@ -252,6 +252,7 @@ uint32_t TimingTest::test()
         {
             THREAD_EXCEPT_THROW("Set affinity");
         }
+        // ------------------------------------------------------------
 
         for(auto& p : LoadThreads)
             p->start();
