@@ -32,10 +32,10 @@ set(CMAKE_SKIP_RPATH false)
 #        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/Release)
 #ENDIF()
 
+add_subdirectory(PThreadClassLib)
 
 add_executable(CpuAffinityTest CpuAffinityTest.cpp AccumulatedAverage.h)
 
 target_include_directories(CpuAffinityTest PUBLIC PThreadClassLib)
 target_link_libraries(CpuAffinityTest PThreadClassLib pthread)
 
-add_subdirectory(PThreadClassLib)
