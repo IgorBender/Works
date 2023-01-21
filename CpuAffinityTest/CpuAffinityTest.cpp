@@ -11,8 +11,6 @@
  * thread affinity, thus providing the thread will solely own the CPU.
  * The CPU dedication in kernel can be acheived by kernel commad line
  * parameter isolcpus= .
- * Alternatively explore an a way and influence if upscaling threa's
- * priority.
  * ********************************************************************/
 
 #include <iostream>
@@ -21,7 +19,6 @@
 #include <thread>
 #include <memory>
 #include <array>
-#include <limits>
 #include <sys/mman.h>
 #include <time.h>
 
@@ -255,7 +252,6 @@ uint32_t TimingTest::test()
         {
             THREAD_EXCEPT_THROW("Set affinity");
         }
-        // ------------------------------------------------------------
 
         for(auto& p : LoadThreads)
             p->start();
