@@ -58,7 +58,7 @@ noexcept(false)
     TaskId = 0;
 #endif
 #ifndef _MSC_VER
-    bzero(reinterpret_cast < char* > (&m_ThreadId), sizeof m_ThreadId);
+    memset(reinterpret_cast < char* > (&m_ThreadId), 0, sizeof m_ThreadId);
 #else
     memset(&m_ThreadId, 0, sizeof m_ThreadId);
 #endif
@@ -66,7 +66,7 @@ noexcept(false)
     m_pStartCondition = new SpecificCondition(m_ControlCondVar, m_ControlCondVar.addPredicate(false));
     m_pWaitCondition = new SpecificCondition(m_ControlCondVar, m_ControlCondVar.addPredicate(false));
     int Result = pthread_attr_init(&m_ThreadAttribute);
-    if(Result != 0)
+    if(0 != Result)
     {
         THREAD_EXCEPT_THROW(Result);
 #ifdef _WITHOUT_THREAD_EXCEPTIONS
@@ -74,7 +74,7 @@ noexcept(false)
 #endif
     }
     Result = pthread_attr_setdetachstate(&m_ThreadAttribute, m_Attached ? PTHREAD_CREATE_JOINABLE : PTHREAD_CREATE_DETACHED);
-    if(Result != 0)
+    if(0 != Result)
     {
         THREAD_EXCEPT_THROW(Result);
 #ifdef _WITHOUT_THREAD_EXCEPTIONS
@@ -83,7 +83,7 @@ noexcept(false)
     }
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 )
     Result = pthread_attr_setinheritsched(&m_ThreadAttribute, PTHREAD_EXPLICIT_SCHED);
-    if(Result != 0)
+    if(0 != Result)
     {
         THREAD_EXCEPT_THROW(Result);
     }
@@ -95,7 +95,7 @@ noexcept(false)
 #endif
 #ifdef __SunOS
     Result = pthread_attr_setscope(&m_ThreadAttribute, m_Bound ? PTHREAD_SCOPE_SYSTEM : PTHREAD_SCOPE_PROCESS);
-    if(Result != 0)
+    if(0 != Result)
     {
         THREAD_EXCEPT_THROW(Result);
     }
@@ -319,17 +319,17 @@ bool PThreadClass::setPriority(int Prio)
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING  >= 1 ) || defined(_MSC_VER)
     sched_param Params;
 #ifndef _MSC_VER
-    bzero(reinterpret_cast < char* > (&Params), sizeof Params);
+    memset(reinterpret_cast < char* > (&Params), 0, sizeof Params);
 #else
     memset(&Params, 0, sizeof Params);
 #endif
     
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(pthread_equal(Dummy, m_ThreadId) || 0 != pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) != 0)
+    if(0 != pthread_kill(m_ThreadId, 0))
 #endif
     {
         Params.sched_priority = Prio;
@@ -364,22 +364,18 @@ int PThreadClass::getPriority()
 {
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(pthread_equal(Dummy, m_ThreadId) || 0 != pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) != 0)
+    if(0 != pthread_kill(m_ThreadId, 0))
 #endif
         return -1;
     
     sched_param Params;
-#ifndef _MSC_VER
-    bzero(reinterpret_cast < char* > (&Params), sizeof Params);
-#else
     memset(&Params, 0, sizeof Params);
-#endif
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 ) || defined(_MSC_VER)
     int TmpPolicy;
-    if(pthread_getschedparam(m_ThreadId, &TmpPolicy, &Params) != 0)
+    if(0 != pthread_getschedparam(m_ThreadId, &TmpPolicy, &Params))
     {
         return -1;
     }
@@ -394,15 +390,15 @@ bool PThreadClass::setPolicy(int Pol)
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 )
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(pthread_equal(Dummy, m_ThreadId) || 0 != pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) != 0)
+    if(0 != pthread_kill(m_ThreadId, 0))
 #endif
     {
-        if(pthread_attr_setschedpolicy(&m_ThreadAttribute, Pol) == 0)
+        if(0 == pthread_attr_setschedpolicy(&m_ThreadAttribute, Pol))
         {
-            if(pthread_attr_setinheritsched(&m_ThreadAttribute, PTHREAD_EXPLICIT_SCHED) == 0)
+            if(0 == pthread_attr_setinheritsched(&m_ThreadAttribute, PTHREAD_EXPLICIT_SCHED))
                 return true;
             else
                 return false;
@@ -413,18 +409,14 @@ bool PThreadClass::setPolicy(int Pol)
     else
     {
         sched_param Params;
-#ifndef _MSC_VER
-        bzero(reinterpret_cast < char* > (&Params), sizeof Params);
-#else
         memset(&Params, 0, sizeof Params);
-#endif
         int Policy;
-        if(pthread_getschedparam(m_ThreadId, &Policy, &Params) != 0)
+        if(0 != pthread_getschedparam(m_ThreadId, &Policy, &Params))
         {
             return false;
         }
         Policy = Pol;
-        if(pthread_setschedparam(m_ThreadId, Policy, &Params) == 0)
+        if(0 == pthread_setschedparam(m_ThreadId, Policy, &Params))
             return true;
         else
             return false;
@@ -439,22 +431,18 @@ int PThreadClass::getPolicy()
 {
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(pthread_equal(Dummy, m_ThreadId) || 0 != pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) != 0)
+    if(0 != pthread_kill(m_ThreadId, 0))
 #endif
         return -1;
     
     sched_param Params;
-#ifndef _MSC_VER
-    bzero(reinterpret_cast < char* > (&Params), sizeof Params);
-#else
     memset(&Params, 0, sizeof Params);
-#endif
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 )
     int Policy;
-    if(pthread_getschedparam(m_ThreadId, &Policy, &Params) != 0)
+    if(0 != pthread_getschedparam(m_ThreadId, &Policy, &Params))
     {
         return -1;
     }
@@ -471,23 +459,23 @@ bool PThreadClass::setStackAddr(void* pStack)
 #endif
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(!pthread_equal(Dummy, m_ThreadId) && 0 == pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) == 0)
+    if(0 == pthread_kill(m_ThreadId, 0))
 #endif
         return false;
 #ifdef _MSC_VER
-    if(pthread_attr_setstackaddr(&m_ThreadAttribute, pStack) != 0)
+    if(0 != pthread_attr_setstackaddr(&m_ThreadAttribute, pStack))
         return false;
     else
         return true;
 #else
     void* pTmpAddr;
     size_t Size;
-    if(pthread_attr_getstack(&m_ThreadAttribute, &pTmpAddr, &Size) != 0)
+    if(0 != pthread_attr_getstack(&m_ThreadAttribute, &pTmpAddr, &Size))
         return  false;
-    if(pthread_attr_setstack(&m_ThreadAttribute, pStack, Size) != 0)
+    if(0 != pthread_attr_setstack(&m_ThreadAttribute, pStack, Size))
         return false;
     else
         return true;
@@ -503,13 +491,13 @@ void* PThreadClass::getStackAddr()
 #endif
     void* TmpPtr = nullptr;
 #ifdef _MSC_VER
-    if(pthread_attr_getstackaddr(&m_ThreadAttribute, &TmpPtr) != 0)
+    if(0 != pthread_attr_getstackaddr(&m_ThreadAttribute, &TmpPtr))
         return NULL;
     else
         return TmpPtr;
 #else
     size_t Size;
-    if(pthread_attr_getstack(&m_ThreadAttribute, &TmpPtr, &Size) != 0)
+    if(0 != pthread_attr_getstack(&m_ThreadAttribute, &TmpPtr, &Size))
         return  nullptr;
     else
         return TmpPtr;
@@ -525,17 +513,16 @@ bool PThreadClass::setStackSize(size_t StackSize)
 #endif
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(!pthread_equal(Dummy, m_ThreadId) && 0 == pthread_kill(m_ThreadId, 0))
 #else
     if(pthread_kill(m_ThreadId, 0) == 0)
 #endif
         return false;
-    if(pthread_attr_setstacksize(&m_ThreadAttribute, StackSize) != 0)
+    if(0 != pthread_attr_setstacksize(&m_ThreadAttribute, StackSize))
         return false;
     else
         return true;
-//    return true;
 }
 
 size_t PThreadClass::getStackSize()
@@ -544,11 +531,10 @@ size_t PThreadClass::getStackSize()
     return false;
 #endif
     size_t TmpSize = 0;
-    if(pthread_attr_getstacksize(&m_ThreadAttribute, &TmpSize) != 0)
+    if(0 != pthread_attr_getstacksize(&m_ThreadAttribute, &TmpSize))
         return static_cast < size_t > (-1);
     else
         return TmpSize;
-//    return static_cast < size_t > (-1);
 }
 
 void PThreadClass::setCyclic(bool On)

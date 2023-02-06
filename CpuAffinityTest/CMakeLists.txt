@@ -34,7 +34,7 @@ set(CMAKE_SKIP_RPATH false)
 
 add_subdirectory(PThreadClassLib)
 
-add_executable(CpuAffinityTest CpuAffinityTest.cpp AccumulatedAverage.h)
+add_executable(CpuAffinityTest CpuAffinityTest.cpp TimingTest.h TimingTest.cpp AccumulatedAverage.h)
 
 target_include_directories(CpuAffinityTest PUBLIC PThreadClassLib)
 target_link_libraries(CpuAffinityTest PThreadClassLib pthread)

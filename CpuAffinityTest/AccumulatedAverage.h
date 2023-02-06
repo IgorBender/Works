@@ -6,7 +6,8 @@
 template<typename T, typename NumType = uint32_t> class AccumulatedAverage
 {
 public:
-    AccumulatedAverage(NumType Threshold = NumType(0)) : m_Num(NumType(0)), m_Threshold(Threshold) {}
+    AccumulatedAverage(NumType Threshold = NumType(0)) : m_Num(NumType(0)),
+        m_Threshold(Threshold) {}
     void init(const T& Initial, NumType First)
     {
         m_Average = Initial;
