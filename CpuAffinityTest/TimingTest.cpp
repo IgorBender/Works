@@ -108,6 +108,7 @@ uint32_t TimingTest::test()
     THREAD_TRY
     {
         // Create threads as cyclic with no timeout.
+        uint32_t LoadThreadNum = 0;
         for(auto& p : LoadThreads)
         {
             shared_ptr<PThreadExtended> pTmp(
@@ -118,6 +119,10 @@ uint32_t TimingTest::test()
                                 nullptr, this),
                             PTHREAD_INFINITE, true));
             p = pTmp;
+            stringstream ThreadName;
+            ThreadName << "load_thread_";
+            ThreadName << setw(2) << setfill('0') << LoadThreadNum++ << ends;
+            p->nameThread(ThreadName.str());
             p->run();
         }
 
@@ -133,6 +138,7 @@ uint32_t TimingTest::test()
 //        Thread.setPolicy(SCHED_FIFO);
 //        Thread.setPriority(98);
         // ------------------------------------------------------------------
+        Thread.nameThread("test_thread");
         Thread.run();
 
         // Comment out this if test thread affinity should not be done.
