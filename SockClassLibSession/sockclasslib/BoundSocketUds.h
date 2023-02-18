@@ -1,4 +1,4 @@
-/* BoundSocketV4.h
+/* BoundSocketUds.h
  *
  *
  * Original code by Igor Bender
@@ -23,24 +23,26 @@
  * distribution.
  */
 
-#ifndef BOUNDSOCKETV4_H
-#define BOUNDSOCKETV4_H
+#ifndef BOUNDSOCKETUDS_H
+#define BOUNDSOCKETUDS_H
 
-#include <InternetSocketV4.h>
+#include "UnixDomainSocket.h"
 
-/// Socket bounded to particular port and IPv4 address (end-point).
+/// Socket bounded to particular path (end-point).
 
-class SOCKLIB_API BoundSocketV4 : virtual public InternetSocketV4
+class SOCKLIB_API BoundSocketUds : virtual public UnixDomainSocket
 {
 public:
     /// Constructor.
     /// Default constructor.
-    BoundSocketV4();
+    BoundSocketUds();
 
     /// Destructor
-    /// Empty virtual destructor for warning elimination
-    virtual ~BoundSocketV4()
-    {}
+    virtual ~BoundSocketUds()
+    {
+        if(m_Bound)
+            unlink(m_EndPoint.sun_path);
+    }
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     /// Bind socket to endpoint.
@@ -51,26 +53,15 @@ public:
 #endif
 
     /// Set endpoint for bind the socket.
-    /// \param Addr : sockaddr_in structure filled with endpoint properties.
-    virtual void setEndPoint(sockaddr_in Addr)
+    /// \param Addr : sockaddr_un structure filled with endpoint properties.
+    virtual void setEndPoint(sockaddr_un& Addr)
     {
-        m_EndPoint.sin_family = Addr.sin_family;
-        m_EndPoint.sin_addr.s_addr = Addr.sin_addr.s_addr;
-        m_EndPoint.sin_port = Addr.sin_port;
+        m_EndPoint.sun_family = Addr.sun_family;
+        strncpy(m_EndPoint.sun_path, Addr.sun_path, sizeof(m_EndPoint.sun_path));
     }
     /// Set endpoint for bind the socket.
-    /// \param Address : IPv4 address in network byte order.
-    /// \param Port : port number in network byte order.
-    virtual void setEndPoint(in_addr_t Address, uint16_t Port);
-#ifndef _WITHOUT_SOCK_EXCEPTIONS
-
-    /// Set endpoint for bind the socket.
-    /// \param Address : IPv4 address in decimal dot notation.
-    /// \param Port : port number in network byte order.
-    virtual void setEndPoint(const char* Address, uint16_t Port);
-#else
-    virtual int setEndPoint(const char* Address, uint16_t Port);
-#endif
+    /// \param Path : socket path.
+    virtual void setEndPoint(const std::string& Path);
     /// Is the socket bound already?
     /// \return Bound status.
     bool isBound()
@@ -79,9 +70,8 @@ public:
     }
 
 protected:
-    sockaddr_in m_EndPoint; ///< Socket's bound endpoint.
+    sockaddr_un m_EndPoint; ///< Socket's bound endpoint.
     bool m_Bound; ///< Bound status.
 };
 
-#endif
-
+#endif // BOUNDSOCKETUDS_H

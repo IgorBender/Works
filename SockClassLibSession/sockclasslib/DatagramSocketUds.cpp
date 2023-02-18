@@ -1,35 +1,36 @@
-/* DatagramSocket.cpp
- *
- * Copyright 2000 Igor Bender
+/* DatagramSocketUds.cpp
  *
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
+ * Original code by Igor Bender
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * This software is provided 'as-is', without any express or implied
+ * warranty. In no event will the authors be held liable for any
+ * damages arising from the use of this software.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ * Permission is granted to anyone to use this software for any
+ * purpose, including commercial applications, and to alter it and
+ * redistribute it freely, subject to the following restrictions:
+ *
+ * 1. The origin of this software must not be misrepresented; you must
+ * not claim that you wrote the original software. If you use this
+ * software in a product, an acknowledgment in the product documentation
+ * would be appreciated but is not required.
+ *
+ * 2. Altered source versions must be plainly marked as such, and
+ * must not be misrepresented as being the original software.
+ *
+ * 3. This notice may not be removed or altered from any source
+ * distribution.
  */
 
-#include <DatagramSocket.h>
-#include <string.h>
+#include "DatagramSocketUds.h"
 
-// See article Q263823 on support.microsoft.com
-#define SIO_UDP_CONNRESET _WSAIOW(IOC_VENDOR,12)
-
-DatagramSocket::DatagramSocket(int protocol) : ConnectedSocketV4()
+DatagramSocketUds::DatagramSocketUds(int protocol) : ConnectedSocketUds()
 {
     m_Type = UDP_SOCK;
     m_Protocol = protocol;
     memset(&m_Source, 0, sizeof m_Source); // m_Destination is initialized in base class
-    m_Source.sin_family = NO_DOMAIN;
+    m_Source.sun_family = NO_DOMAIN;
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
     create();
 #else
@@ -41,22 +42,22 @@ DatagramSocket::DatagramSocket(int protocol) : ConnectedSocketV4()
 #endif
 }
 
-DatagramSocket::~DatagramSocket()
+DatagramSocketUds::~DatagramSocketUds()
 {
     close();
 }
 
-int DatagramSocket::sendTo(const void* Buffer, size_t Length, int Flags)
+int DatagramSocketUds::sendTo(const void* Buffer, size_t Length, int Flags)
 {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-    if(m_Destination.sin_family == NO_DOMAIN)
+    if(m_Destination.sun_family == NO_DOMAIN)
     {
         SOCK_EXCEPT_THROW("Wrong socket domain", m_Sock);
     }
 #endif
     if(Length == 0)
         return 0;
-    
+
     int Result;
 
     if((Result = static_cast<int>(sendto(m_Sock,
@@ -82,13 +83,13 @@ int DatagramSocket::sendTo(const void* Buffer, size_t Length, int Flags)
     return Result;
 }
 
-int DatagramSocket::receiveFrom(void* Buffer, size_t Length, int Flags)
+int DatagramSocketUds::receiveFrom(void* Buffer, size_t Length, int Flags)
 {
     if(Length == 0)
         return 0;
-    
+
     int Result;
-    socklen_type Size = sizeof(struct sockaddr_in);
+    socklen_type Size = sizeof(struct sockaddr_un);
     memset(&m_Source, '\0', Size);
     if((Result = static_cast<int>(recvfrom(m_Sock, reinterpret_cast < char* > (Buffer),
                       #ifndef _MSC_VER

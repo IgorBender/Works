@@ -146,9 +146,9 @@ namespace SockClassLib
     /// \param Versions : VersionTriple structure to be filled with versions.
     inline void SOCKLIB_API getVersion(VersionTriple& Versions)
     {
-        Versions.Major = 3;
+        Versions.Major = 4;
         Versions.Minor = 0;
-        Versions.SubMinor = 8;
+        Versions.SubMinor = 0;
     }
 /// \}
 }

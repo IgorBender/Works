@@ -4,6 +4,21 @@ project(sockclasslib LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+IF(UNIX)
+set(FILES_LIST_UDS   UnixDomainSocket.h     UnixDomainSocket.cpp
+    BoundSocketUds.h       BoundSocketUds.cpp
+    ConnectedSocketUds.cpp ConnectedSocketUds.h
+    StreamSocketUds.h      StreamSocketUds.cpp
+    DatagramSocketUds.cpp  DatagramSocketUds.h
+    DatagramBoundUds.cpp   DatagramBoundUds.h
+    ClientSimpleUds.h      ClientBoundUds.h
+    StreamBoundUds.h       StreamBoundUds.cpp
+    ServerSimpleUds.h      ServerSimpleUds.cpp
+)
+ELSE()
+set(FILES_LIST_UDS )
+ENDIF()
+
 add_library(sockclasslib SHARED
     BaseException.h        DatagramSocket.cpp     ServerSimple.cpp
     BoundSocketV4.cpp      DatagramSocket.h       ServerSimple.h
@@ -26,6 +41,7 @@ add_library(sockclasslib SHARED
     DatagramBound.h        ServerReuse.h          StreamSocketV6.cpp
     DatagramBoundV6.cpp    ServerReuseV6.cpp      StreamSocketV6.h
     DatagramBoundV6.h      ServerReuseV6.h
+    ${FILES_LIST_UDS}
 )
 
 IF(NOT UNIX)
