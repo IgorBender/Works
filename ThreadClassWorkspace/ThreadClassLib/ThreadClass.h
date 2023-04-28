@@ -97,6 +97,15 @@ public:
     	m_pThread = nullptr;
     }
 
+    ///
+    /// \brief operator std::thread *
+    /// Casting operator
+    /// \returns : thread pointer
+    operator std::thread*()
+    {
+        return this->m_pThread;
+    }
+
     /// Initialize and run thread, make it ready to execute thread routine.
     /// @throw ThreadException
     /// @returns false if thread cannot be created, true on success
