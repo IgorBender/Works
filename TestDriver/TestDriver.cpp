@@ -12,7 +12,6 @@
 #include <sys/mman.h>
 
 #include <iostream>
-#include <iomanip>
 #include <sstream>
 
 
@@ -28,6 +27,7 @@ int main(int32_t argc, char** argv)
     char ReadBuffer[8192];
     char WriteBuffer[8192];
     bool Exit = false;
+
 
     while(!Exit)
     {
