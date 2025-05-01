@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.16)
+
+project(PingLinux LANGUAGES C)
+
+#set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+IF("${CMAKE_C_COMPILER}" STREQUAL "/usr/bin/clang")
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/../DebugClang)
+    ENDIF()
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/../ReleaseClang)
+    ENDIF()
+ENDIF()
+
+IF("${CMAKE_C_COMPILER}" STREQUAL "/usr/bin/gcc")
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/../Debug)
+    ENDIF()
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/../Release)
+    ENDIF()
+ENDIF()
+
+IF("${CMAKE_C_COMPILER}" STREQUAL "/home/opt/intel/sw_dev_tools/bin/icc")
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/../DebugIntel)
+    ENDIF()
+    IF("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/../ReleaseIntel)
+    ENDIF()
+ENDIF()
+
+#link_libraries(gcrypt)
+
+add_executable(PingLinux PingLinux.c)

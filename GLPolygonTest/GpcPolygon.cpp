@@ -8,18 +8,35 @@ GpcPolygon::GpcPolygon()
     m_PolygonPtr->hole = NULL;
 }
 
-GpcPolygon::GpcPolygon(int NumOfVertices, double* Vertices)
+GpcPolygon::GpcPolygon(uint32_t NumOfVertices, double* Vertices)
 {
     m_PolygonPtr = new gpc_polygon;
     m_PolygonPtr->num_contours = 1;
     m_PolygonPtr->contour = (gpc_vertex_list*)malloc(sizeof(gpc_vertex_list));
     m_PolygonPtr->contour->num_vertices = NumOfVertices;
     m_PolygonPtr->contour->vertex = (gpc_vertex*)malloc(sizeof(gpc_vertex) * NumOfVertices);
-    int i, j;
+    uint32_t i, j;
     for(i = 0, j= 0;  i < NumOfVertices;  ++i, ++j)
     {
         m_PolygonPtr->contour->vertex[i].x = Vertices[j++];
         m_PolygonPtr->contour->vertex[i].y = Vertices[j];
+    }
+    m_PolygonPtr->hole = (int*)malloc(sizeof(int));
+    m_PolygonPtr->hole[0] = 0;
+}
+
+GpcPolygon::GpcPolygon(uint32_t NumOfVertices, std::pair<double, double>* Vertices)
+{
+    m_PolygonPtr = new gpc_polygon;
+    m_PolygonPtr->num_contours = 1;
+    m_PolygonPtr->contour = (gpc_vertex_list*)malloc(sizeof(gpc_vertex_list));
+    m_PolygonPtr->contour->num_vertices = NumOfVertices;
+    m_PolygonPtr->contour->vertex = (gpc_vertex*)malloc(sizeof(gpc_vertex) * NumOfVertices);
+    uint32_t i = 0;
+    for(i = 0; i < NumOfVertices; ++i)
+    {
+        m_PolygonPtr->contour->vertex[i].x = Vertices[i].first;
+        m_PolygonPtr->contour->vertex[i].y = Vertices[i].second;
     }
     m_PolygonPtr->hole = (int*)malloc(sizeof(int));
     m_PolygonPtr->hole[0] = 0;
@@ -127,20 +144,20 @@ GpcPolygon operator^(const GpcPolygon& a, const GpcPolygon& b)
     return TmpPolygon;
 }
 
-ostream& operator << (ostream& ostr, GpcPolygon& Poly)
+std::ostream& operator << (std::ostream& ostr, GpcPolygon& Poly)
 {
-    ostr << "-------------------------------" << endl << "Polygon" << endl;
-    ostr << "    Contours : " << Poly.getPolyPtr()->num_contours << endl;
+    ostr << "-------------------------------" << std::endl << "Polygon" << std::endl;
+    ostr << "    Contours : " << Poly.getPolyPtr()->num_contours << std::endl;
     for(int i = 0;  i < Poly.getPolyPtr()->num_contours;  ++i)
     {
-        ostr << (Poly.getPolyPtr()->hole[i] ? "        Hole " : "        Contour ") << i << endl;
+        ostr << (Poly.getPolyPtr()->hole[i] ? "        Hole " : "        Contour ") << i << std::endl;
         for(int j = 0;  j < Poly.getPolyPtr()->contour[i].num_vertices;  ++j)
         {
             ostr << "            Vertex" << j << " : x = " << Poly.getPolyPtr()->contour[i].vertex[j].x << "; y : "
-            << Poly.getPolyPtr()->contour[i].vertex[j].y << endl;
+            << Poly.getPolyPtr()->contour[i].vertex[j].y << std::endl;
         }
     }
-    ostr << "-------------------------------" << endl;
+    ostr << "-------------------------------" << std::endl;
 
     return ostr;
 }

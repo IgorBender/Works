@@ -5,6 +5,10 @@
 #include <cstdlib>
 #include <DatagramBoundUds.h>
 #include <iostream>
+<<<<<<< HEAD
+=======
+#include <iomanip>
+>>>>>>> 3af00fd88634be79b9a007f4037c54733365de7b
 using namespace std;
 
 
@@ -25,11 +29,18 @@ using namespace std;
 #define forever for(;;)
 
 
+<<<<<<< HEAD
+=======
+const std::string ServerPath = "/tmp/uds_udp_server";
+>>>>>>> 3af00fd88634be79b9a007f4037c54733365de7b
 const int MAX_BUF_SIZE = 4096;
 
 int main(int argc, char* argv[])
 {
+<<<<<<< HEAD
     const std::string ServerPath = "/tmp/uds_udp_server";
+=======
+>>>>>>> 3af00fd88634be79b9a007f4037c54733365de7b
     if(1 < argc)
     {
         cout << argv[0] << " has no command line arguments." << endl;
@@ -72,10 +83,15 @@ int main(int argc, char* argv[])
                 if(std::string(Serv.getSource().sun_path).length())
                 {
                     cout << "Send to " << std::string(Serv.getSource().sun_path) << endl;
+<<<<<<< HEAD
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
                     Serv.sendToLast(Buf, Len);
 #else
                     Len = Serv.sendToLast(Buf, Len);
+=======
+                    Len = Serv.sendToLast(Buf, Len);
+#ifdef _WITHOUT_SOCK_EXCEPTIONS
+>>>>>>> 3af00fd88634be79b9a007f4037c54733365de7b
                     if(Len == SOCKET_ERROR)
                     {
                         char Msg[256];

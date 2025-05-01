@@ -21,8 +21,11 @@
 #include <fcntl.h>
 #endif
 
+<<<<<<< HEAD
 using namespace std;
 
+=======
+>>>>>>> 3af00fd88634be79b9a007f4037c54733365de7b
 #define forever for(;;)
 
 const std::string ServerPath = "/tmp/uds_tcp_server";

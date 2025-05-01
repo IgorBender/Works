@@ -27,7 +27,7 @@
 
 #include <time.h>
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 #include <sys/time.h>
 #else
 #include <time.h>

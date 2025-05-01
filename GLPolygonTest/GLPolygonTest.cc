@@ -44,17 +44,23 @@ void renderScene(void)
     Vert1[6] = -1.0;
     Vert1[7] = 1.0;
     GpcPolygon Poly1(4, Vert1);
-    Vert1[0] = 0.3;
-    Vert1[1] = 0.3;
-    Vert1[2] = 1.25;
-    Vert1[3] = 0.3;
-    Vert1[4] = 1.25;
-    Vert1[5] = 1.25;
-    Vert1[6] = 0.3;
-    Vert1[7] = 1.25;
+    std::pair<double, double> Vert3[4];
+    Vert3[0] = std::make_pair(0.3, 0.3);
+    Vert3[1] = std::make_pair(1.25, 0.3);
+    Vert3[2] = std::make_pair(1.25, 1.25);
+    Vert3[3] = std::make_pair(0.3, 1.25);
+//    Vert1[0] = 0.3;
+//    Vert1[1] = 0.3;
+//    Vert1[2] = 1.25;
+//    Vert1[3] = 0.3;
+//    Vert1[4] = 1.25;
+//    Vert1[5] = 1.25;
+//    Vert1[6] = 0.3;
+//    Vert1[7] = 1.25;
    
-    Poly1 += GpcPolygon(4, Vert1);
-    
+//    Poly1 += GpcPolygon(4, Vert1);
+    Poly1 += GpcPolygon(4, Vert3);
+
     double Vert2[8];
     Vert2[0] = -0.5;
     Vert2[1] = -0.5;

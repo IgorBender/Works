@@ -23,7 +23,7 @@
  */
 
 #include "PThreadClass.h"
-#if (!defined(_WIN32) &&  !defined(__VXWORKS__))
+#if (!defined(_MSC_VER) &&  !defined(__VXWORKS__))
 #include <strings.h>
 #include <signal.h>
 #endif
@@ -57,8 +57,8 @@ noexcept(false)
 #ifdef __VXWORKS__
     TaskId = 0;
 #endif
-#ifndef _WIN32
-    bzero(reinterpret_cast < char* > (&m_ThreadId), sizeof m_ThreadId);
+#ifndef _MSC_VER
+    memset(reinterpret_cast < char* > (&m_ThreadId), 0, sizeof m_ThreadId);
 #else
     memset(&m_ThreadId, 0, sizeof m_ThreadId);
 #endif
@@ -66,7 +66,7 @@ noexcept(false)
     m_pStartCondition = new SpecificCondition(m_ControlCondVar, m_ControlCondVar.addPredicate(false));
     m_pWaitCondition = new SpecificCondition(m_ControlCondVar, m_ControlCondVar.addPredicate(false));
     int Result = pthread_attr_init(&m_ThreadAttribute);
-    if(Result != 0)
+    if(0 != Result)
     {
         THREAD_EXCEPT_THROW(Result);
 #ifdef _WITHOUT_THREAD_EXCEPTIONS
@@ -74,7 +74,7 @@ noexcept(false)
 #endif
     }
     Result = pthread_attr_setdetachstate(&m_ThreadAttribute, m_Attached ? PTHREAD_CREATE_JOINABLE : PTHREAD_CREATE_DETACHED);
-    if(Result != 0)
+    if(0 != Result)
     {
         THREAD_EXCEPT_THROW(Result);
 #ifdef _WITHOUT_THREAD_EXCEPTIONS
@@ -83,7 +83,7 @@ noexcept(false)
     }
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 )
     Result = pthread_attr_setinheritsched(&m_ThreadAttribute, PTHREAD_EXPLICIT_SCHED);
-    if(Result != 0)
+    if(0 != Result)
     {
         THREAD_EXCEPT_THROW(Result);
     }
@@ -95,7 +95,7 @@ noexcept(false)
 #endif
 #ifdef __SunOS
     Result = pthread_attr_setscope(&m_ThreadAttribute, m_Bound ? PTHREAD_SCOPE_SYSTEM : PTHREAD_SCOPE_PROCESS);
-    if(Result != 0)
+    if(0 != Result)
     {
         THREAD_EXCEPT_THROW(Result);
     }
@@ -172,7 +172,7 @@ void* PThreadClass::threadLoop()
         {
             m_pStartCondition->setPredicate(false);
             m_ControlCondVar.unlockMutex();
-            ftime(&m_StartTime);
+            clock_gettime(CLOCK_MONOTONIC, &m_StartTime);
             int Dummy;
             if(PTHREAD_CANCEL_ASYNCHRONOUS == m_CancelType)
             {
@@ -185,12 +185,12 @@ void* PThreadClass::threadLoop()
             }
             if(m_Cyclic)
             {
-                struct timeb TimeStruct;
-                ftime(&TimeStruct);
-                if(m_TimeOut && m_TimeOut > static_cast < unsigned > (((TimeStruct.time - m_StartTime.time) * 1000 + (TimeStruct.millitm - m_StartTime.millitm))))
+                struct timespec TimeStruct;
+                clock_gettime(CLOCK_MONOTONIC, &TimeStruct);
+                if(m_TimeOut && m_TimeOut > static_cast < unsigned > (((TimeStruct.tv_sec - m_StartTime.tv_sec) * 1000 + (TimeStruct.tv_nsec - m_StartTime.tv_nsec) / 1000 / 1000)))
                 {
                     m_pWaitCondition->lockMutex();
-                    m_pWaitCondition->wait(m_TimeOut - ((TimeStruct.time - m_StartTime.time) * 1000 + (TimeStruct.millitm - m_StartTime.millitm)));
+                    m_pWaitCondition->wait(m_TimeOut - ((TimeStruct.tv_sec - m_StartTime.tv_sec) * 1000 + (TimeStruct.tv_nsec - m_StartTime.tv_nsec) / 1000 / 1000));
                     m_pWaitCondition->unlockMutex();
                 }
                 m_pStartCondition->lockMutex();
@@ -316,20 +316,20 @@ bool PThreadClass::join()
 
 bool PThreadClass::setPriority(int Prio)
 {
-#if ( _POSIX_THREAD_PRIORITY_SCHEDULING  >= 1 ) || defined(_WIN32)
+#if ( _POSIX_THREAD_PRIORITY_SCHEDULING  >= 1 ) || defined(_MSC_VER)
     sched_param Params;
-#ifndef _WIN32
-    bzero(reinterpret_cast < char* > (&Params), sizeof Params);
+#ifndef _MSC_VER
+    memset(reinterpret_cast < char* > (&Params), 0, sizeof Params);
 #else
     memset(&Params, 0, sizeof Params);
 #endif
     
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(pthread_equal(Dummy, m_ThreadId) || 0 != pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) != 0)
+    if(0 != pthread_kill(m_ThreadId, 0))
 #endif
     {
         Params.sched_priority = Prio;
@@ -364,22 +364,18 @@ int PThreadClass::getPriority()
 {
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(pthread_equal(Dummy, m_ThreadId) || 0 != pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) != 0)
+    if(0 != pthread_kill(m_ThreadId, 0))
 #endif
         return -1;
     
     sched_param Params;
-#ifndef _WIN32
-    bzero(reinterpret_cast < char* > (&Params), sizeof Params);
-#else
     memset(&Params, 0, sizeof Params);
-#endif
-#if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 ) || defined(_WIN32)
+#if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 ) || defined(_MSC_VER)
     int TmpPolicy;
-    if(pthread_getschedparam(m_ThreadId, &TmpPolicy, &Params) != 0)
+    if(0 != pthread_getschedparam(m_ThreadId, &TmpPolicy, &Params))
     {
         return -1;
     }
@@ -394,15 +390,15 @@ bool PThreadClass::setPolicy(int Pol)
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 )
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(pthread_equal(Dummy, m_ThreadId) || 0 != pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) != 0)
+    if(0 != pthread_kill(m_ThreadId, 0))
 #endif
     {
-        if(pthread_attr_setschedpolicy(&m_ThreadAttribute, Pol) == 0)
+        if(0 == pthread_attr_setschedpolicy(&m_ThreadAttribute, Pol))
         {
-            if(pthread_attr_setinheritsched(&m_ThreadAttribute, PTHREAD_EXPLICIT_SCHED) == 0)
+            if(0 == pthread_attr_setinheritsched(&m_ThreadAttribute, PTHREAD_EXPLICIT_SCHED))
                 return true;
             else
                 return false;
@@ -413,24 +409,20 @@ bool PThreadClass::setPolicy(int Pol)
     else
     {
         sched_param Params;
-#ifndef _WIN32
-        bzero(reinterpret_cast < char* > (&Params), sizeof Params);
-#else
         memset(&Params, 0, sizeof Params);
-#endif
         int Policy;
-        if(pthread_getschedparam(m_ThreadId, &Policy, &Params) != 0)
+        if(0 != pthread_getschedparam(m_ThreadId, &Policy, &Params))
         {
             return false;
         }
         Policy = Pol;
-        if(pthread_setschedparam(m_ThreadId, Policy, &Params) == 0)
+        if(0 == pthread_setschedparam(m_ThreadId, Policy, &Params))
             return true;
         else
             return false;
     }        
 #endif
-#ifdef _WIN32
+#ifdef _MSC_VER
     return true;
 #endif
 }
@@ -439,22 +431,18 @@ int PThreadClass::getPolicy()
 {
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(pthread_equal(Dummy, m_ThreadId) || 0 != pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) != 0)
+    if(0 != pthread_kill(m_ThreadId, 0))
 #endif
         return -1;
     
     sched_param Params;
-#ifndef _WIN32
-    bzero(reinterpret_cast < char* > (&Params), sizeof Params);
-#else
     memset(&Params, 0, sizeof Params);
-#endif
 #if ( _POSIX_THREAD_PRIORITY_SCHEDULING >= 1 )
     int Policy;
-    if(pthread_getschedparam(m_ThreadId, &Policy, &Params) != 0)
+    if(0 != pthread_getschedparam(m_ThreadId, &Policy, &Params))
     {
         return -1;
     }
@@ -471,23 +459,23 @@ bool PThreadClass::setStackAddr(void* pStack)
 #endif
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(!pthread_equal(Dummy, m_ThreadId) && 0 == pthread_kill(m_ThreadId, 0))
 #else
-    if(pthread_kill(m_ThreadId, 0) == 0)
+    if(0 == pthread_kill(m_ThreadId, 0))
 #endif
         return false;
-#ifdef _WIN32
-    if(pthread_attr_setstackaddr(&m_ThreadAttribute, pStack) != 0)
+#ifdef _MSC_VER
+    if(0 != pthread_attr_setstackaddr(&m_ThreadAttribute, pStack))
         return false;
     else
         return true;
 #else
     void* pTmpAddr;
     size_t Size;
-    if(pthread_attr_getstack(&m_ThreadAttribute, &pTmpAddr, &Size) != 0)
+    if(0 != pthread_attr_getstack(&m_ThreadAttribute, &pTmpAddr, &Size))
         return  false;
-    if(pthread_attr_setstack(&m_ThreadAttribute, pStack, Size) != 0)
+    if(0 != pthread_attr_setstack(&m_ThreadAttribute, pStack, Size))
         return false;
     else
         return true;
@@ -502,14 +490,14 @@ void* PThreadClass::getStackAddr()
     return false;
 #endif
     void* TmpPtr = nullptr;
-#ifdef _WIN32
-    if(pthread_attr_getstackaddr(&m_ThreadAttribute, &TmpPtr) != 0)
+#ifdef _MSC_VER
+    if(0 != pthread_attr_getstackaddr(&m_ThreadAttribute, &TmpPtr))
         return NULL;
     else
         return TmpPtr;
 #else
     size_t Size;
-    if(pthread_attr_getstack(&m_ThreadAttribute, &TmpPtr, &Size) != 0)
+    if(0 != pthread_attr_getstack(&m_ThreadAttribute, &TmpPtr, &Size))
         return  nullptr;
     else
         return TmpPtr;
@@ -525,17 +513,16 @@ bool PThreadClass::setStackSize(size_t StackSize)
 #endif
 #if (__linux__)
     pthread_t Dummy; // Empty thread
-    bzero(reinterpret_cast < char* > (&Dummy), sizeof Dummy);
+    memset(reinterpret_cast < char* > (&Dummy), 0, sizeof Dummy);
     if(!pthread_equal(Dummy, m_ThreadId) && 0 == pthread_kill(m_ThreadId, 0))
 #else
     if(pthread_kill(m_ThreadId, 0) == 0)
 #endif
         return false;
-    if(pthread_attr_setstacksize(&m_ThreadAttribute, StackSize) != 0)
+    if(0 != pthread_attr_setstacksize(&m_ThreadAttribute, StackSize))
         return false;
     else
         return true;
-//    return true;
 }
 
 size_t PThreadClass::getStackSize()
@@ -544,14 +531,74 @@ size_t PThreadClass::getStackSize()
     return false;
 #endif
     size_t TmpSize = 0;
-    if(pthread_attr_getstacksize(&m_ThreadAttribute, &TmpSize) != 0)
+    if(0 != pthread_attr_getstacksize(&m_ThreadAttribute, &TmpSize))
         return static_cast < size_t > (-1);
     else
         return TmpSize;
-//    return static_cast < size_t > (-1);
 }
 
 void PThreadClass::setCyclic(bool On)
 {
     m_Cyclic = On;
 }
+
+#ifdef _MSC_VER
+int clock_gettime_monotonic(struct timespec* tv)
+{
+    static LARGE_INTEGER ticksPerSec;
+    LARGE_INTEGER ticks;
+    double seconds;
+
+    if (!ticksPerSec.QuadPart) {
+        QueryPerformanceFrequency(&ticksPerSec);
+        if (!ticksPerSec.QuadPart) {
+            errno = ENOTSUP;
+            return -1;
+        }
+    }
+
+    QueryPerformanceCounter(&ticks);
+
+    seconds = (double)ticks.QuadPart / (double)ticksPerSec.QuadPart;
+    tv->tv_sec = (time_t)seconds;
+    tv->tv_nsec = (long)((ULONGLONG)(seconds * NS_PER_SEC) % NS_PER_SEC);
+
+    return 0;
+}
+
+int clock_gettime_realtime(struct timespec* tv)
+{
+    FILETIME ft;
+    ULARGE_INTEGER hnsTime;
+
+    GetSystemTimeAsFileTime(&ft);
+
+    hnsTime.LowPart = ft.dwLowDateTime;
+    hnsTime.HighPart = ft.dwHighDateTime;
+
+    // To get POSIX Epoch as baseline, subtract the number of hns intervals from Jan 1, 1601 to Jan 1, 1970.
+    hnsTime.QuadPart -= (11644473600ULL * HNS_PER_SEC);
+
+    // modulus by hns intervals per second first, then convert to ns, as not to lose resolution
+    tv->tv_nsec = (long)((hnsTime.QuadPart % HNS_PER_SEC) * NS_PER_HNS);
+    tv->tv_sec = (long)(hnsTime.QuadPart / HNS_PER_SEC);
+
+    return 0;
+}
+
+int clock_gettime(clockid_t type, struct timespec* tp)
+{
+    if (type == CLOCK_MONOTONIC)
+    {
+        return clock_gettime_monotonic(tp);
+    }
+    else if (type == CLOCK_REALTIME)
+    {
+        return clock_gettime_realtime(tp);
+    }
+
+    errno = ENOTSUP;
+    return -1;
+}
+
+#endif

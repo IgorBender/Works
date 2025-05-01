@@ -14,6 +14,20 @@ build*
 *.cmake
 CMakeLists.txt.user
 CMakeSettings.json
+<<<<<<< HEAD
 XsdExample.h
 XsdExample.c*
 
+=======
+*~
+core*
+.depend 
+.*.cmd
+*.ko
+*.mod.c
+.tmp_versions
+*.mod
+*symvers
+*.order
+*.o
+>>>>>>> 3af00fd88634be79b9a007f4037c54733365de7b

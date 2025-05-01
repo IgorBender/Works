@@ -42,7 +42,7 @@ namespace ThreadClassLib
 ///
 /// \{
 /// Timeout duration zero constant.
-#ifndef _WIN32
+#ifndef _MSC_VER
 constexpr std::chrono::steady_clock::duration THREAD_IMMEDIATE(std::chrono::steady_clock::duration::zero());
 #else
 const std::chrono::steady_clock::duration THREAD_IMMEDIATE = std::chrono::steady_clock::duration::zero();
@@ -95,6 +95,15 @@ public:
     {
     	delete m_pThread;
     	m_pThread = nullptr;
+    }
+
+    ///
+    /// \brief operator std::thread *
+    /// Casting operator
+    /// \returns : thread pointer
+    operator std::thread*()
+    {
+        return this->m_pThread;
     }
 
     /// Initialize and run thread, make it ready to execute thread routine.

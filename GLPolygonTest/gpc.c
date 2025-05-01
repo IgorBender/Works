@@ -101,8 +101,8 @@ Copyright: (C) Advanced Interfaces Group,
                             do {(d)= (d)->next;} while (!(d)->outp[(p)]); \
                             (i)= (d)->bot.x + (d)->dx * ((j)-(d)->bot.y);}
 
-#define MALLOC(p, b, s, t) {if ((b) > 0) { \
-                            p= (t*)malloc(b); if (!(p)) { \
+#define MALLOC(p, b, s, t) {if (((unsigned long)b) > 0) { \
+                            p= (t*)malloc(((unsigned long)b)); if (!(p)) { \
                             fprintf(stderr, "gpc malloc failure: %s\n", s); \
                             exit(0);}} else p= NULL;}
 
@@ -1030,27 +1030,30 @@ void gpc_free_polygon(gpc_polygon *p)
 void gpc_read_polygon(FILE *fp, int read_hole_flags, gpc_polygon *p)
 {
   int c, v;
+  int scanf_res;
 
-  fscanf(fp, "%d", &(p->num_contours));
+  scanf_res = fscanf(fp, "%d", &(p->num_contours));
   MALLOC(p->hole, p->num_contours * sizeof(int),
          "hole flag array creation", int);
   MALLOC(p->contour, p->num_contours
          * sizeof(gpc_vertex_list), "contour creation", gpc_vertex_list);
   for (c= 0; c < p->num_contours; c++)
   {
-    fscanf(fp, "%d", &(p->contour[c].num_vertices));
+    scanf_res= fscanf(fp, "%d", &(p->contour[c].num_vertices));
 
     if (read_hole_flags)
-      fscanf(fp, "%d", &(p->hole[c]));
+      scanf_res = fscanf(fp, "%d", &(p->hole[c]));
     else
       p->hole[c]= FALSE; /* Assume all contours to be external */
 
     MALLOC(p->contour[c].vertex, p->contour[c].num_vertices
            * sizeof(gpc_vertex), "vertex creation", gpc_vertex);
     for (v= 0; v < p->contour[c].num_vertices; v++)
-      fscanf(fp, "%lf %lf", &(p->contour[c].vertex[v].x),
+     scanf_res =  fscanf(fp, "%lf %lf", &(p->contour[c].vertex[v].x),
                             &(p->contour[c].vertex[v].y));
   }
+  if(0 > scanf_res)
+      printf("----\n");
 }
 
 

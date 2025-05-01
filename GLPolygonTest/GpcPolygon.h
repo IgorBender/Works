@@ -11,14 +11,16 @@ extern "C" {
 #endif
 
 #include <iostream>
-using namespace std;
+#include <list>
+//using namespace std;
 
 
 class GpcPolygon
 {
 public:
     GpcPolygon();
-    GpcPolygon(int NumOfVertices, double* Vertices);
+    GpcPolygon(uint32_t NumOfVertices, double* Vertices);
+    GpcPolygon(uint32_t NumOfVertices, std::pair<double, double>* Vertices);
     GpcPolygon(const GpcPolygon&);
     GpcPolygon(const gpc_polygon&);
     virtual ~GpcPolygon();
@@ -33,7 +35,7 @@ public:
     friend GpcPolygon operator-(const GpcPolygon&, const GpcPolygon&);
     friend GpcPolygon operator&(const GpcPolygon&, const GpcPolygon&);
     friend GpcPolygon operator^(const GpcPolygon&, const GpcPolygon&);
-    friend ostream& operator<<(ostream& ostr, GpcPolygon&);
+    friend std::ostream& operator<<(std::ostream& ostr, GpcPolygon&);
     friend class GpcTrianglesStrips;
     
  private:
@@ -54,7 +56,7 @@ GpcPolygon operator-(const GpcPolygon&, const GpcPolygon&);
 GpcPolygon operator&(const GpcPolygon&, const GpcPolygon&);
 GpcPolygon operator^(const GpcPolygon&, const GpcPolygon&);
 
-ostream& operator<<(ostream& ostr, GpcPolygon&);
+std::ostream& operator<<(std::ostream& ostr, GpcPolygon&);
 
 class GpcTrianglesStrips
 {
