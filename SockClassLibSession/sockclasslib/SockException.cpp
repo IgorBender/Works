@@ -1,21 +1,25 @@
 /* SockException.cpp
  *
- * Copyright 2000 Igor Bender
+ * Original code by Igor Bender
  *
+ * This software is provided 'as-is', without any express or implied
+ * warranty. In no event will the authors be held liable for any
+ * damages arising from the use of this software.
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or(at your option) any later version.
+ * Permission is granted to anyone to use this software for any
+ * purpose, including commercial applications, and to alter it and
+ * redistribute it freely, subject to the following restrictions:
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * 1. The origin of this software must not be misrepresented; you must
+ * not claim that you wrote the original software. If you use this
+ * software in a product, an acknowledgment in the product documentation
+ * would be appreciated but is not required.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111 - 1307, USA.
+ * 2. Altered source versions must be plainly marked as such, and
+ * must not be misrepresented as being the original software.
+ *
+ * 3. This notice may not be removed or altered from any source
+ * distribution.
  */
 
 #include <SockException.h>
@@ -60,16 +64,16 @@ const char* SockException::what()
 
 char* SockException::formatMessage()
 {
-#ifdef _WIN32
+#ifdef _MSC_VER
 	DWORD FormRes = FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM |
 		FORMAT_MESSAGE_IGNORE_INSERTS,
-		NULL,
+		nullptr,
 		m_ErrCode,
 		MAKELANGID(LANG_NEUTRAL,
 		SUBLANG_DEFAULT),
 		(LPTSTR) &lpMsgBuf,
 		256,
-		NULL);
+		nullptr);
 	if (FormRes == 0)
 	{
 		FormRes = LoadString((HINSTANCE)hLibMod, m_ErrCode, (LPTSTR)&lpMsgBuf,
@@ -79,10 +83,10 @@ char* SockException::formatMessage()
 	{
 		return m_Message;
 	}
-#else /* _WIN32 */
+#else /* _MSC_VER */
 	::strcpy(lpMsgBuf, strerror(m_ErrCode));
 	strcat(lpMsgBuf, "\n");
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 	
 	return reinterpret_cast < char* >(lpMsgBuf);
 }
@@ -91,16 +95,16 @@ bool SockException::formatMessage(char(*MsgBuf)[256])
 {
 	if (0 == getErrNum())
 		return false;
-#ifdef _WIN32
+#ifdef _MSC_VER
 	DWORD FormRes = FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM |
 		FORMAT_MESSAGE_IGNORE_INSERTS,
-		NULL,
+		nullptr,
 		getErrNum(),
 		MAKELANGID(LANG_NEUTRAL,
 		SUBLANG_DEFAULT),
 		(LPTSTR) MsgBuf,
 		256,
-		NULL);
+		nullptr);
 	if (FormRes == 0)
 	{
 		FormRes = LoadString((HINSTANCE)hLibMod, getErrNum(), (LPTSTR)MsgBuf,
@@ -110,10 +114,10 @@ bool SockException::formatMessage(char(*MsgBuf)[256])
 	{
 		return false;
 	}
-#else /* _WIN32 */
+#else /* _MSC_VER */
 	
 	::strcpy(*MsgBuf, strerror(getErrNum()));
 	strcat(*MsgBuf, "\n");
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 	return true;
 }

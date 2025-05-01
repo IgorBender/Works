@@ -32,7 +32,8 @@
 #include <BoundSocketV6.h>
 
 /// UDP socket bound to specified port and address (aka UDP server) for IPv6.
-class SOCKLIB_API DatagramBoundV6 : public DatagramSocketV6, public BoundSocketV6
+class SOCKLIB_API DatagramBoundV6 : public DatagramSocketV6,
+                                    public BoundSocketV6
 {
 public:
     /// Constructor.

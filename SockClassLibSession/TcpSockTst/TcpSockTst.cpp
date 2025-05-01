@@ -1,4 +1,4 @@
-#ifndef _WIN32
+#ifndef _MSC_VER
 #include <strings.h>
 #endif
 #include <cstdlib>
@@ -7,7 +7,7 @@
 #include <ClientSimple.h>
 #include <signal.h>
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <Ws2tcpip.h>
 #else
 #include <strings.h>
@@ -21,16 +21,18 @@
 #include <fcntl.h>
 #endif
 
+using namespace std;
+
 #define forever for(;;)
 
 const unsigned short SERV_PORT = 15000;
 const size_type MAX_BUF_SIZE = 4096;
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& NetMask)
 {
     int Sock = socket(AF_INET, SOCK_DGRAM, 0);
-    int NumOfInterfaces;
+    uint32_t NumOfInterfaces;
     int IORes;
 #ifndef __linux__
     IORes = ioctl(Sock, SIOCGIFNUM, &NumOfInterfaces);
@@ -45,13 +47,13 @@ bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& Net
     lifreq *pReq = new lifreq[NumOfInterfaces];
 #else
     IfConfStruct.ifc_len = 32000;
-    IfConfStruct.ifc_buf = NULL;
+    IfConfStruct.ifc_buf = nullptr;
     IORes = ioctl(Sock, SIOCGIFCONF, &IfConfStruct);
-    NumOfInterfaces = IfConfStruct.ifc_len / sizeof(struct ifreq);
-    IfConfStruct.ifc_len = NumOfInterfaces * sizeof(struct ifreq);
+    NumOfInterfaces = static_cast<uint32_t>(static_cast<uint32_t>(IfConfStruct.ifc_len) / sizeof(struct ifreq));
+    IfConfStruct.ifc_len = static_cast<int32_t>(NumOfInterfaces * sizeof(struct ifreq));
     ifreq *pReq = new ifreq[NumOfInterfaces];
 #endif
-    IfConfStruct.ifc_buf = (caddr_t)pReq;
+    IfConfStruct.ifc_buf = reinterpret_cast<caddr_t>(pReq);
     IORes = ioctl(Sock, SIOCGIFCONF, &IfConfStruct);
     if(IORes < 0)
     {
@@ -59,8 +61,8 @@ bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& Net
         return false;
     }
     ifreq *IfReqStrPointer;
-    int i;
-    for(i = 0, IfReqStrPointer = (ifreq *)IfConfStruct.ifc_buf;
+    uint32_t i;
+    for(i = 0, IfReqStrPointer = reinterpret_cast<ifreq*>(IfConfStruct.ifc_buf);
             i < NumOfInterfaces;  i++, IfReqStrPointer++)
     {
         InterfaceAddr = BroadAddr = NetMask = 0;
@@ -105,7 +107,7 @@ int main(int argc, char* argv[])
     in_addr_t InterfAddr = 0;
     in_addr_t InterfMask = 0;
     in_addr_t InterfBroad = 0;
-#ifdef _WIN32
+#ifdef _MSC_VER
 
     WORD wVersionRequested;
     WSADATA wsaData;
@@ -180,14 +182,14 @@ int main(int argc, char* argv[])
             }
             SOCK_EXCEPT_CATCH_BEGIN(cout)
             //SOCK_EXCEPT_CATCH_BEGIN_NOREP
-#if !(_WIN32 || __linux__)
+#if !(_MSC_VER || __linux__)
                 Sock.reset();
 #endif
 
                 shared_ptr < ClientSimple > SockTmp(new ClientSimple);
                 Sock = SockTmp;
                 //SockTmp.release();
-#ifndef _WIN32
+#ifndef _MSC_VER
 
                 sleep(1);
 #else
@@ -208,7 +210,7 @@ int main(int argc, char* argv[])
                     cout << "Error : " << SockException::getErrNum() << " - " << MsgStr << endl;
                 else
                     cout << "Connection refused" << endl;
-#ifndef _WIN32
+#ifndef _MSC_VER
 
                 Sock.reset();
 #endif
@@ -216,7 +218,7 @@ int main(int argc, char* argv[])
                 shared_ptr < ClientSimple > SockTmp(new ClientSimple);
                 Sock = SockTmp;
 //                SockTmp.release();
-#ifndef _WIN32
+#ifndef _MSC_VER
 
                 sleep(1);
 #else
@@ -245,7 +247,7 @@ int main(int argc, char* argv[])
         forever
         {
             char StrBuf[MAX_BUF_SIZE];
-#ifndef _WIN32
+#ifndef _MSC_VER
             bzero(StrBuf, MAX_BUF_SIZE);
 #else
             memset(StrBuf, 0, MAX_BUF_SIZE);
@@ -272,7 +274,7 @@ int main(int argc, char* argv[])
 #endif
             if(strcmp(StrBuf, "END"))
             {
-#ifndef _WIN32
+#ifndef _MSC_VER
                 bzero(Buf, MAX_BUF_SIZE);
 #else
                 memset(Buf, 0, MAX_BUF_SIZE);
@@ -307,7 +309,7 @@ int main(int argc, char* argv[])
     SOCK_EXCEPT_CATCH_BEGIN(cout)
 //    SOCK_EXCEPT_CATCH_BEGIN_NOREP;
     SOCK_EXCEPT_CATCH_END
-#ifdef _WIN32
+#ifdef _MSC_VER
     WSACleanup();
 #endif
 

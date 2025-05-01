@@ -1,21 +1,25 @@
 /* SocketClass.cpp
  *
- * Copyright 2000 Igor Bender
+ * Original code by Igor Bender
  *
+ * This software is provided 'as-is', without any express or implied
+ * warranty. In no event will the authors be held liable for any
+ * damages arising from the use of this software.
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
+ * Permission is granted to anyone to use this software for any
+ * purpose, including commercial applications, and to alter it and
+ * redistribute it freely, subject to the following restrictions:
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * 1. The origin of this software must not be misrepresented; you must
+ * not claim that you wrote the original software. If you use this
+ * software in a product, an acknowledgment in the product documentation
+ * would be appreciated but is not required.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ * 2. Altered source versions must be plainly marked as such, and
+ * must not be misrepresented as being the original software.
+ *
+ * 3. This notice may not be removed or altered from any source
+ * distribution.
  */
 
 #include <errno.h>
@@ -24,7 +28,7 @@
 #include <string.h>
 #endif
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 #include <fcntl.h>
 #endif
 
@@ -52,7 +56,7 @@ void SocketClass::create()
         SOCK_EXCEPT_THROW(WSAGetLastError(), -1);
     }
 
-#if ((!_WIN32) && (!__VXWORKS__))
+#if ((!_MSC_VER) && (!__VXWORKS__))
     m_Flags = fcntl(m_Sock, F_GETFL, 0);
 #endif
 }
@@ -64,7 +68,7 @@ int SocketClass::create()
         return SOCKET_ERROR;
     }
 
-#if ((!_WIN32) && (!__VXWORKS__))
+#if ((!_MSC_VER) && (!__VXWORKS__))
     m_Flags = fcntl(m_Sock, F_GETFL, 0);
     return m_Flags;
 #else
@@ -78,7 +82,7 @@ int SocketClass::create()
 void SocketClass::setNonBlockMode(bool On)
 {
     int Result;
-#ifndef _WIN32
+#ifndef _MSC_VER
     if(On)
     {
 #ifndef __VXWORKS__
@@ -121,7 +125,7 @@ void SocketClass::setNonBlockMode(bool On)
 #else // _WITHOUT_SOCK_EXCEPTIONS
 int SocketClass::setNonBlockMode(bool On)
 {
-#ifndef _WIN32
+#ifndef _MSC_VER
     int Result;
     if(On)
     {
@@ -219,7 +223,7 @@ int SocketClass::send(const void* Buffer, size_t Length, int Flags)
         return 0;
 
     int Result = static_cast<int>(::send(m_Sock, reinterpret_cast < const char* > (Buffer),
-#ifdef _WIN32
+#ifdef _MSC_VER
                         static_cast < int > (Length),
 #else
                         Length,
@@ -237,12 +241,12 @@ int SocketClass::send(const void* Buffer, size_t Length, int Flags)
     {
         m_Connected = false;
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-#ifdef _WIN32
+#ifdef _MSC_VER
 
         DISCONN_EXCEPT_THROW(0, m_Sock);
-#else // _WIN32
+#else // _MSC_VER
         DISCONN_EXCEPT_THROW(errno, m_Sock);
-#endif // _WIN32
+#endif // _MSC_VER
 #endif // _WITHOUT_SOCK_EXCEPTIONS
 
     }
@@ -268,7 +272,7 @@ int SocketClass::receive(void* Buffer, size_t Length, int Flags)
         return 0;
 
     int Result = static_cast<int>(recv(m_Sock, reinterpret_cast < char* > (Buffer),
-#ifdef _WIN32
+#ifdef _MSC_VER
                                        static_cast < int > (Length),
 #else
                                        Length,

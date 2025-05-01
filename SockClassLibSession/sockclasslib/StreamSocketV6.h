@@ -32,7 +32,8 @@
 
 /// Stream socket class for IPv6.
 /// The base class for all stream-oriented sockets.
-class SOCKLIB_API StreamSocketV6 : virtual public InternetSocketV6, virtual public StreamSocket
+class SOCKLIB_API StreamSocketV6 : virtual public InternetSocketV6,
+                                   virtual public StreamSocket
 {
 public:
     /// Constructor.

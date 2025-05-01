@@ -14,3 +14,6 @@ build*
 *.cmake
 CMakeLists.txt.user
 CMakeSettings.json
+XsdExample.h
+XsdExample.c*
+

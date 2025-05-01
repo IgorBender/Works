@@ -38,7 +38,7 @@ public:
     BoundSocketV4();
 
     /// Destructor
-    /// Empty virtual destructor for warning elimination in Eclipse
+    /// Empty virtual destructor for warning elimination
     virtual ~BoundSocketV4()
     {}
 

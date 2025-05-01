@@ -6,7 +6,7 @@
 using namespace std;
 
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <Ws2tcpip.h>
 #include <iphlpapi.h>
 #else
@@ -39,7 +39,7 @@ bool getAddresses(in6_addr& InterfaceAddr)
 	}
 	ifaddrs* pTempAddr;
 	pTempAddr = pAddrs;
-	while(NULL != pTempAddr)
+    while(nullptr != pTempAddr)
 	{
 		if(AF_INET6 == pTempAddr->ifa_addr->sa_family)
 		{
@@ -64,7 +64,7 @@ bool getAddresses(in6_addr& InterfaceAddr)
 	}
 	freeifaddrs(pAddrs);
 	return false;
-#elif _WIN32
+#elif _MSC_VER
 	PIP_ADAPTER_ADDRESSES pAddresses = NULL;
 	unsigned long OutBufLen = 16 * 1024;
 	const int MAX_TRIES = 3;
@@ -164,7 +164,7 @@ int main(int argc, char* argv[])
 	return 1;
 #else
     in6_addr InterfAddr;
-#ifdef _WIN32
+#ifdef _MSC_VER
     WORD wVersionRequested;
     WSADATA wsaData;
     int err;
@@ -215,7 +215,7 @@ int main(int argc, char* argv[])
             		<< inet_ntop(AF_INET6, &Sock->getPeerName().sin6_addr, Tmp, 64) << "-" << ntohs(Sock->getPeerName().sin6_port)
             		<< endl;
 #else
-            if (Sock.get() == NULL)
+            if (Sock.get() == nullptr)
             {
                 cout << "Accept error" << endl;
                 Sock.reset();
@@ -245,7 +245,7 @@ int main(int argc, char* argv[])
                             Sock->disconnect(5000);
                             break;
                         }
-                        Sock->send(Buf, Res);
+                        Sock->send(Buf, static_cast<size_t>(Res));
                         cout << "Echo sent..." << endl;
                     }
 #ifdef _WITHOUT_SOCK_EXCEPTIONS
@@ -277,7 +277,7 @@ int main(int argc, char* argv[])
     SOCK_EXCEPT_CATCH_ALL(cout)
     SOCK_EXCEPT_CATCH_END
 
-#ifdef _WIN32
+#ifdef _MSC_VER
     WSACleanup();
 #endif
 

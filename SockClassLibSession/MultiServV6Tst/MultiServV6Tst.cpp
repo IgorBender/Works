@@ -5,7 +5,7 @@
 using namespace std;
 
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <Ws2tcpip.h>
 #include <iphlpapi.h>
 #else
@@ -23,8 +23,8 @@ using namespace std;
 
 #define forever for(;;)
 
-const short SERV_PORT = 15000;
-const int MAX_BUF_SIZE = 4096;
+//const short SERV_PORT = 15000;
+//const int MAX_BUF_SIZE = 4096;
 
 #ifndef _NO_IPV6
 bool getAddresses(in6_addr& InterfaceAddr)
@@ -38,7 +38,7 @@ bool getAddresses(in6_addr& InterfaceAddr)
 	}
 	ifaddrs* pTempAddr;
 	pTempAddr = pAddrs;
-	while(NULL != pTempAddr)
+    while(nullptr != pTempAddr)
 	{
 		if(AF_INET6 == pTempAddr->ifa_addr->sa_family)
 		{
@@ -63,7 +63,7 @@ bool getAddresses(in6_addr& InterfaceAddr)
 	}
 	freeifaddrs(pAddrs);
 	return false;
-#elif _WIN32
+#elif _MSC_VER
 	PIP_ADAPTER_ADDRESSES pAddresses = NULL;
 	unsigned long OutBufLen = 16 * 1024;
 	const int MAX_TRIES = 3;
@@ -163,7 +163,7 @@ int main(int argc, char* argv[])
 	return 1;
 #else
     in6_addr InterfAddr;
-#ifdef _WIN32
+#ifdef _MSC_VER
     WORD wVersionRequested;
     WSADATA wsaData;
     int err;
@@ -274,7 +274,7 @@ int main(int argc, char* argv[])
     SOCK_EXCEPT_CATCH_ALL(cout)
     SOCK_EXCEPT_CATCH_END
 
-#ifdef _WIN32
+#ifdef _MSC_VER
     WSACleanup();
 #endif
 

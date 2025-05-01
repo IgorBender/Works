@@ -40,7 +40,8 @@ public:
     /// \param Address : IPv6 address for bind.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    StreamBoundV6(uint16_t Port, in6_addr Address = in6addr_any, bool LateBind = false);
+    StreamBoundV6(uint16_t Port, in6_addr Address = in6addr_any,
+                  bool LateBind = false);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv6 address for bind in textual notation.

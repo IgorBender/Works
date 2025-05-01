@@ -10,7 +10,7 @@
 using namespace std;
 
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <Ws2tcpip.h>
 #else
 #include <strings.h>
@@ -30,7 +30,7 @@ using namespace std;
 const short SERV_PORT = 15000;
 const int MAX_BUF_SIZE = 4096;
 
-#ifndef _WIN32
+#ifndef _MSC_VER
 bool getAddresses(in_addr_t& InterfaceAddr, in_addr_t& BroadAddr, in_addr_t& NetMask)
 {
     SOCKET Sock = socket(AF_INET, SOCK_DGRAM, 0);
@@ -110,7 +110,7 @@ int main(int argc, char* argv[])
     in_addr_t InterfAddr = 0;
     in_addr_t InterfMask = 0;
     in_addr_t InterfBroad = 0;
-#ifdef _WIN32
+#ifdef _MSC_VER
 
     WORD wVersionRequested;
     WSADATA wsaData;
@@ -181,7 +181,7 @@ int main(int argc, char* argv[])
             exit(1);
         }
 
-#ifndef _WIN32
+#ifndef _MSC_VER
         DatagramBound Serv2(htons(SERV_PORT + 1), InterfBroad);
 #else
         DatagramBound Serv2(htons(SERV_PORT + 1), InterfAddr);
@@ -264,7 +264,7 @@ int main(int argc, char* argv[])
     SOCK_EXCEPT_CATCH_ALL(cout)
     SOCK_EXCEPT_CATCH_END
 
-#ifdef _WIN32
+#ifdef _MSC_VER
     WSACleanup();
 #endif
 

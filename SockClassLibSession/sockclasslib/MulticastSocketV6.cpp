@@ -27,7 +27,7 @@
 
 #include "MulticastSocketV6.h"
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 #else
@@ -129,8 +129,8 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
     }
     m_Index = static_cast<uint32_t>(Request.ifr_ifindex);
 #endif
-#ifdef _WIN32
-	PIP_ADAPTER_ADDRESSES pAddresses = NULL;
+#ifdef _MSC_VER
+	PIP_ADAPTER_ADDRESSES pAddresses = nullptr;
 	unsigned long OutBufLen = 16 * 1024;
 	const int MAX_TRIES = 3;
 	int Iterations = 0;
@@ -138,20 +138,20 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
 	do {
 
 		pAddresses = reinterpret_cast<IP_ADAPTER_ADDRESSES*>(new char[OutBufLen]);
-		if (pAddresses == NULL) {
+		if (pAddresses == nullptr) {
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-			SOCK_EXCEPT_THROW("Memory allocation failed for IP_ADAPTER_ADDRESSES struct.");
+			SOCK_EXCEPT_THROW("Memory allocation failed for IP_ADAPTER_ADDRESSES struct.", m_Sock);
 #else
 			return SOCKET_ERROR;
 #endif
 		}
 		RetVal = GetAdaptersAddresses(AF_INET6,
-			GAA_FLAG_SKIP_ANYCAST | GAA_FLAG_SKIP_MULTICAST | GAA_FLAG_SKIP_DNS_SERVER | GAA_FLAG_SKIP_FRIENDLY_NAME, NULL,
+			GAA_FLAG_SKIP_ANYCAST | GAA_FLAG_SKIP_MULTICAST | GAA_FLAG_SKIP_DNS_SERVER | GAA_FLAG_SKIP_FRIENDLY_NAME, nullptr,
 			pAddresses, &OutBufLen);
 
 		if (RetVal == ERROR_BUFFER_OVERFLOW) {
 			delete [] pAddresses;
-			pAddresses = NULL;
+			pAddresses = nullptr;
 		}
 		else {
 			break;
@@ -166,7 +166,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
 		while(pCurrAddresses)
 		{
 			PIP_ADAPTER_UNICAST_ADDRESS_LH pUnicast = pCurrAddresses->FirstUnicastAddress;
-			while(pUnicast != NULL)
+			while(pUnicast != nullptr)
 			{
 				sockaddr_in6* pTmp = reinterpret_cast<sockaddr_in6*>(pUnicast->Address.lpSockaddr);
 				if (memcmp(&Address.s6_addr, pTmp->sin6_addr.s6_addr, sizeof(Address)))
@@ -179,7 +179,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
 					break;
 				}
 			}
-			if (NULL == pUnicast)
+			if (nullptr == pUnicast)
 			{
 				pCurrAddresses = pCurrAddresses->Next;
 				continue;
@@ -190,10 +190,10 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
 			}
 			pCurrAddresses = pCurrAddresses->Next;
 		}
-		if (NULL == pCurrAddresses)
+		if (nullptr == pCurrAddresses)
 		{
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-			SOCK_EXCEPT_THROW("Wrong address.");
+			SOCK_EXCEPT_THROW("Wrong address.", m_Sock);
 #else
 			return SOCKET_ERROR;
 #endif
@@ -203,7 +203,7 @@ int MulticastSocketV6::setDefaultIf(in6_addr Address)
 	else
 	{
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-		SOCK_EXCEPT_THROW("Wrong address.");
+		SOCK_EXCEPT_THROW("Wrong address.", m_Sock);
 #else
 		return SOCKET_ERROR;
 #endif

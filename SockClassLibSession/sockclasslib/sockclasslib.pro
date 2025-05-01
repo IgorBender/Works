@@ -10,8 +10,26 @@ TARGET = sockclasslib
 TEMPLATE = lib
 
 DEFINES += SOCKCLASSLIB_LIBRARY
+CONFIG += c++11
 
+contains(QMAKE_CXX, clang++) {
+CONFIG(debug_NO_EXCEPTIONS, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
+    DESTDIR = ../../DebugClang_NO_EXCEPTIONS
+    QMAKE_CXXFLAGS += -D_WITHOUT_SOCK_EXCEPTIONS
+}
+CONFIG(release_NO_EXCEPTIONS, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
+    DESTDIR = ../../ReleaseClang_NO_EXCEPTIONS
+    QMAKE_CXXFLAGS += -D_WITHOUT_SOCK_EXCEPTIONS
+}
+CONFIG(debug, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
+    DESTDIR = ../../DebugClang
+}
+CONFIG(release, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
+    DESTDIR = ../../ReleaseClang
+}
+}
 
+contains(QMAKE_CXX, g++) {
 CONFIG(debug_NO_EXCEPTIONS, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
     DESTDIR = ../../Debug_NO_EXCEPTIONS
     QMAKE_CXXFLAGS += -D_WITHOUT_SOCK_EXCEPTIONS
@@ -26,12 +44,33 @@ CONFIG(debug, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
 CONFIG(release, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
     DESTDIR = ../../Release
 }
+}
 
-QMAKE_CXXFLAGS += -std=c++0x -I. -Wno-unused-parameter -Wno-undef
+contains(QMAKE_CXX, icpc) {
+QMAKE_RPATHDIR += /home/opt/intel/sw_dev_tools/lib/intel64
+CONFIG(debug_NO_EXCEPTIONS, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
+    DESTDIR = ../../DebugIntel_NO_EXCEPTIONS
+    QMAKE_CXXFLAGS += -D_WITHOUT_SOCK_EXCEPTIONS
+}
+CONFIG(release_NO_EXCEPTIONS, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
+    DESTDIR = ../../ReleaseIntel_NO_EXCEPTIONS
+    QMAKE_CXXFLAGS += -D_WITHOUT_SOCK_EXCEPTIONS
+}
+CONFIG(debug, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
+    DESTDIR = ../../DebugIntel
+}
+CONFIG(release, debug|release|debug_NO_EXCEPTIONS|release_NO_EXCEPTIONS) {
+    DESTDIR = ../../ReleaseIntel
+}
+}
+
+INCLUDEPATH += .
+QMAKE_CXXFLAGS += -Wno-unused-parameter -Wno-undef
 
 QMAKE_CLEAN += $$DESTDIR/lib$$TARGET*
 
-VERSION = 3.0.6
+VERSION = 3.0.8
+#CONFIG += unversioned_libname unversioned_soname
 
 SOURCES += \
     BoundSocketV4.cpp \

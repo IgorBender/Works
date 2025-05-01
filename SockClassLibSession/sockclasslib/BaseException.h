@@ -26,7 +26,7 @@
 #ifndef BASEEXCEPTION_H
 #define BASEEXCEPTION_H
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #pragma warning(disable : 4786)
 #pragma warning(disable : 4251)
 // #pragma warning(disable : 4275)
@@ -43,7 +43,7 @@
 #include <vector>
 #if GCC_VERSION >= 3001
 #include <sstream>
-#define repstream stringstream
+#define repstream std::stringstream
 #else
 #include <strstream>
 #include <string>
@@ -101,7 +101,7 @@ public:
     /// \return String buffer with report text.
     virtual const char* what()
     {
-        std::repstream report;
+        repstream report;
         report << "Exception in ";
         report << "file : " << m_FileName << ", line : " << m_LineNum << std::endl;
         report << std::ends;

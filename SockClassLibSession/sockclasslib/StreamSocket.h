@@ -28,7 +28,7 @@
 
 #include <SocketClass.h>
 #include <DisconnectException.h>
-#ifndef _WIN32
+#ifndef _MSC_VER
 #if (__QNX__ || __VXWORKS__ || __linux__)
 #include <netinet/tcp.h>
 #else
@@ -52,19 +52,6 @@ public:
     /// Destructor.
     virtual ~StreamSocket();
 
-//#ifndef _WITHOUT_SOCK_EXCEPTIONS
-//    /// Deliver bound endpoint properties.
-//    /// \return sockaddr_in structure filled with bound endpoint properties.
-//    /// \throw SockException.
-//    sockaddr_in& getSockName();
-//    /// Deliver connected endpoint properties.
-//    /// \return sockaddr_in structure filled with connected endpoint properties.
-//    /// \throw SockException.
-//    sockaddr_in& getPeerName();
-//#else
-//    int getSockName(sockaddr_in* SockAddr);
-//    int getPeerName(sockaddr_in* PeerAddr);
-//#endif
     /// Set socket file descriptor/handle.
     /// \param i : socket file descriptor/handle.
     void setSock(int i)
@@ -89,7 +76,8 @@ public:
     int getTcpLevelOpt(int Opt, char* Value, socklen_type* OptLen);
 #endif
     /// Disconnect endpoint.
-    /// \param Timeout : Time to wait for orderly close the socket in milliseconds.
+    /// \param Timeout : Time to wait for orderly close the socket\
+    ///  in milliseconds.
     void disconnect(long Timeout = 0);
 
 protected:

@@ -28,11 +28,11 @@
 #include <sockclasslib.h>
 #include <BaseException.h>
 #include <iostream>
-using namespace std;
 
-#ifdef _WIN32
+
+#ifdef _MSC_VER
 #include <winbase.h>
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 
 /// \file
 

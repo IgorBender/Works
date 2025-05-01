@@ -30,7 +30,8 @@
 
 /// Stream socket class for IPv4.
 /// The base class for IPv4 stream-oriented sockets.
-class SOCKLIB_API StreamSocketV4 : virtual public InternetSocketV4, virtual public StreamSocket
+class SOCKLIB_API StreamSocketV4 : virtual public InternetSocketV4,
+                                   virtual public StreamSocket
 {
 public:
     /// Constructor.

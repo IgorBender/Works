@@ -9,4 +9,7 @@ link_directories(${LINKDIR} )
 add_executable(MultiServTst MultiServTst.cpp)
 
 target_link_libraries(MultiServTst sockclasslib)
+IF(!${UNIX})
+    target_link_libraries(MultiServTst ws2_32.lib)
+ENDIF()
 
