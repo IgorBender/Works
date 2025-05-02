@@ -12,13 +12,8 @@ build*
 .suo
 .vs
 *.cmake
-CMakeLists.txt.user
+CMakeLists.txt.user*
 CMakeSettings.json
-<<<<<<< HEAD
-XsdExample.h
-XsdExample.c*
-
-=======
 *~
 core*
 .depend 
@@ -30,4 +25,3 @@ core*
 *symvers
 *.order
 *.o
->>>>>>> 3af00fd88634be79b9a007f4037c54733365de7b

@@ -41,7 +41,7 @@ ServerReuseIpDual::ServerReuseIpDual(uint16_t Port, in6_addr Address) :
     if(!isBound())
     {
         setEndPoint(Address, Port);
-        bind();
+        BoundSocketIpDual::bind();
     }
 }
 
@@ -60,7 +60,7 @@ ServerReuseIpDual::ServerReuseIpDual(uint16_t Port, const char* Address) :
     if(!isBound())
     {
         setEndPoint(Address, Port);
-        bind();
+        BoundSocketIpDual::bind();
     }
 }
 

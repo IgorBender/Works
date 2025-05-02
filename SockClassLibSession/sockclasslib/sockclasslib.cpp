@@ -51,6 +51,6 @@ BOOL APIENTRY DllMain(HANDLE hModule,
 void getVersion(SockClassLib::VersionTriple& Versions)
 {
     Versions.Major = 5;
-    Versions.Minor = 0;
+    Versions.Minor = 1;
     Versions.SubMinor = 0;
 }

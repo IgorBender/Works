@@ -95,9 +95,8 @@ add_library(
   ${FILES_LIST_UDS}
   BoundSocketIpDual.h
   BoundSocketIpDual.cpp
-  ClientBoundIpDual.h
-  DatagranBoundIpDual.h
-  DatagranBoundIpDual.cpp
+  DatagramBoundIpDual.h
+  DatagramBoundIpDual.cpp
   StreamBoundIpDual.h StreamBoundIpDual.cpp
   ServerSimpleIpDual.h ServerSimpleIpDual.cpp
   ServerReuseIpDual.h ServerReuseIpDual.cpp)

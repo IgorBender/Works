@@ -35,7 +35,7 @@ StreamBoundIpDual::StreamBoundIpDual(uint16_t Port, in6_addr Address, bool LateB
         setEndPoint(Address, Port);
         if(!LateBind)
         {
-            bind();
+            BoundSocketIpDual::bind();
         }
     }
 }
@@ -47,7 +47,7 @@ StreamBoundIpDual::StreamBoundIpDual(uint16_t Port, const char* Address, bool La
         setEndPoint(Address, Port);
         if(!LateBind)
         {
-            bind();
+            BoundSocketIpDual::bind();
         }
     }
 }

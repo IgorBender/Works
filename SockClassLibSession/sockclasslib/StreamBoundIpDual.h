@@ -29,10 +29,10 @@
 #ifndef _NO_IPV6
 
 #include <StreamSocketV6.h>
-#include "BoundSocketV6.h"
+#include "BoundSocketIpDual.h"
 
 /// TCP socket bound to specified port and address.
-class SOCKLIB_API StreamBoundIpDual : public StreamSocketV6, public BoundSocketV6
+class SOCKLIB_API StreamBoundIpDual : public StreamSocketV6, public BoundSocketIpDual
 {
 public:
     /// Constructor.

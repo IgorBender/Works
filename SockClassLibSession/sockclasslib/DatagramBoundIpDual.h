@@ -1,4 +1,4 @@
-/* DatagranBoundIpDual.h
+/* DatagramBoundIpDual.h
  *
  *
  * Original code by Igor Bender
@@ -23,8 +23,8 @@
  * distribution.
  */
 
-#ifndef DATAGRANBOUNDIPDUAL_H
-#define DATAGRANBOUNDIPDUAL_H
+#ifndef DATAGRAMBOUNDIPDUAL_H
+#define DATAGRAMBOUNDIPDUAL_H
 
 #ifndef _NO_IPV6
 
@@ -32,7 +32,7 @@
 #include <BoundSocketIpDual.h>
 
 /// UDP socket bound to specified port and address (aka UDP server) for IPv6.
-class SOCKLIB_API DatagranBoundIpDual : public DatagramSocketV6,
+class SOCKLIB_API DatagramBoundIpDual : public DatagramSocketV6,
                                         public BoundSocketIpDual
 {
 public:
@@ -40,22 +40,22 @@ public:
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv6 address for bind in network byte order.
     /// \throw SockException.
-    DatagranBoundIpDual(uint16_t Port, in6_addr Address = in6addr_any);
+    DatagramBoundIpDual(uint16_t Port, in6_addr Address = in6addr_any);
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv6 address for bind in textual notation.
     /// \throw SockException.
-    DatagranBoundIpDual(uint16_t Port, const char* Address);
+    DatagramBoundIpDual(uint16_t Port, const char* Address);
 
 private:
     /// Copy constructor.
     /// Makes the class uncopyable.
-    DatagranBoundIpDual(DatagranBoundIpDual& d);
+    DatagramBoundIpDual(DatagramBoundIpDual& d);
     /// Operator assign.
     /// Makes the class uncopyable.
-    DatagranBoundIpDual& operator=(DatagranBoundIpDual& d);
+    DatagramBoundIpDual& operator=(DatagramBoundIpDual& d);
 };
 
 #endif /* _NO_IPV6 */
 
-#endif // DATAGRANBOUNDIPDUAL_H
+#endif // DATAGRAMBOUNDIPDUAL_H

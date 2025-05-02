@@ -25,9 +25,9 @@
 
 #ifndef _NO_IPV6
 
-#include "DatagranBoundIpDual.h"
+#include "DatagramBoundIpDual.h"
 
-DatagranBoundIpDual::DatagranBoundIpDual(uint16_t Port, in6_addr Address)
+DatagramBoundIpDual::DatagramBoundIpDual(uint16_t Port, in6_addr Address)
 {
     if(!isBound())
     {
@@ -36,7 +36,7 @@ DatagranBoundIpDual::DatagranBoundIpDual(uint16_t Port, in6_addr Address)
     }
 }
 
-DatagranBoundIpDual::DatagranBoundIpDual(uint16_t Port, const char* Address)
+DatagramBoundIpDual::DatagramBoundIpDual(uint16_t Port, const char* Address)
 {
     if(!isBound())
     {
