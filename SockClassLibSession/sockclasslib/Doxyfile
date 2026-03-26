@@ -1888,3 +1888,9 @@ GENERATE_LEGEND        = YES
 # the various graphs.
 
 DOT_CLEANUP            = YES
+
+GENERATE_TREEVIEW      = YES # required!
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = NO
+HTML_EXTRA_STYLESHEET  = doxygen-awesome.css 
+HTML_COLORSTYLE        = LIGHT # required with Doxygen >= 1.9.5

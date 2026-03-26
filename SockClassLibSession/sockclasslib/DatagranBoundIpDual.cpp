@@ -1,4 +1,5 @@
-/* sockclasslib.cpp
+/* DatagranBoundIpDual.cpp
+ *
  *
  * Original code by Igor Bender
  *
@@ -22,35 +23,26 @@
  * distribution.
  */
 
-#include "sockclasslib.h"
+#ifndef _NO_IPV6
 
-#ifdef _MSC_VER
+#include "DatagranBoundIpDual.h"
 
-#include <ws2tcpip.h>
-
-HANDLE hLibMod;
-
-BOOL APIENTRY DllMain(HANDLE hModule,
-                      DWORD  ul_reason_for_call,
-                      LPVOID lpReserved)
+DatagranBoundIpDual::DatagranBoundIpDual(uint16_t Port, in6_addr Address)
 {
-    hLibMod = hModule;
-    switch(ul_reason_for_call)
+    if(!isBound())
     {
-        case DLL_PROCESS_ATTACH:
-        case DLL_THREAD_ATTACH:
-        case DLL_THREAD_DETACH:
-        case DLL_PROCESS_DETACH:
-            break;
+        setEndPoint(Address, Port);
+        bind();
     }
-    return TRUE;
 }
 
-#endif /* _MSC_VER */
-
-void getVersion(SockClassLib::VersionTriple& Versions)
+DatagranBoundIpDual::DatagranBoundIpDual(uint16_t Port, const char* Address)
 {
-    Versions.Major = 5;
-    Versions.Minor = 3;
-    Versions.SubMinor = 0;
+    if(!isBound())
+    {
+        setEndPoint(Address, Port);
+        bind();
+    }
 }
+
+#endif /* _NO_IPV6 */

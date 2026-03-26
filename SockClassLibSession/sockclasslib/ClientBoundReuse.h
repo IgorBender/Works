@@ -1,4 +1,4 @@
-/* ClientBound.h
+/* ClientBoundReuse.h
  *
  *
  * Original code by Igor Bender
@@ -23,86 +23,40 @@
  * distribution.
  */
 
-#ifndef CLIENTBOUND_H
-#define CLIENTBOUND_H
+#ifndef CLIENTBOUNDREUSE_H
+#define CLIENTBOUNDREUSE_H
 
+#include "ClientSimple.h"
+#include "BoundSocketV4.h"
 
-#include <ClientSimple.h>
-#include <BoundSocketV4.h>
-
-/// Client socket bound to specified port and address.
-class SOCKLIB_API ClientBound : public ClientSimple, public BoundSocketV4
+/// Client socket bound to specified port and address with socket reuse.
+class SOCKLIB_API ClientBoundReuse : public ClientSimple, public BoundSocketV4
 {
 public:
-#ifndef _WITHOUT_SOCK_EXCEPTIONS
+
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv4 address for bind in network byte order.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ClientBound(uint16_t Port, in_addr_t Address = INADDR_ANY,
-                bool LateBind = false)
-    {
-        if(!isBound())
-        {
-            setEndPoint(Address, Port);
-            if(!LateBind)
-            {
-                bind();
-            }
-        }
-    }
+    ClientBoundReuse(uint16_t Port, in_addr_t Address = INADDR_ANY,
+                     bool LateBind = false);
 
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
     /// \param Address : IPv4 address for bind in decimal dot notation.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ClientBound(uint16_t Port, const char* Address, bool LateBind = false)
-    {
-        if(!isBound())
-        {
-            setEndPoint(Address, Port);
-            if(!LateBind)
-            {
-                bind();
-            }
-        }
-    }
-#else
-    ClientBound(uint16_t Port, in_addr_t Address = INADDR_ANY, bool LateBind = false)
-    {
-        if(!isBound())
-        {
-            setEndPoint(Address, Port);
-            if(!LateBind)
-            {
-                bind();
-            }
-        }
-    }
-
-    ClientBound(uint16_t Port, const char* Address, bool LateBind = false)
-    {
-        if(!isBound())
-        {
-            setEndPoint(Address, Port);
-            if(!LateBind)
-            {
-                bind();
-            }
-        }
-    }
-#endif
+    ClientBoundReuse(uint16_t Port, const char* Address, bool LateBind = false);
 
 private:
     /// Copy constructor.
     /// Makes the class uncopyable.
-    ClientBound(ClientBound& s);
+    ClientBoundReuse(ClientBoundReuse& s);
     /// Operator assign.
     /// Makes the class uncopyable.
-    ClientBound& operator= (ClientBound& s);
+    ClientBoundReuse& operator= (ClientBoundReuse& s);
+
 };
 
-#endif /* CLIENTBOUND_H */
-
+#endif // CLIENTBOUNDREUSE_H

@@ -93,25 +93,14 @@ int main(int argc, char* argv[])
 #endif
             break;
         }
-//        sockaddr_un Name;
         sockaddr_un Peer;
-//#ifndef _WITHOUT_SOCK_EXCEPTIONS
-//        Name = Sock->getSockName();
-//#else
-//        Sock->getSockName(&Name);
-//#endif
-
         Peer = Sock->getDestination();
         cout << "Socket " << " connected to " << std::string(Peer.sun_path) << endl;
         forever
         {
             char StrBuf[MAX_BUF_SIZE];
-#ifndef _MSC_VER
-            bzero(StrBuf, MAX_BUF_SIZE);
-#else
             memset(StrBuf, 0, MAX_BUF_SIZE);
-#endif
-            //string Str(StrBuf, MAX_BUF_SIZE);
+
             cout << "Enter string or END for end -> " << flush;
             cin.getline(StrBuf, MAX_BUF_SIZE);
             if(!strlen(StrBuf))
@@ -133,19 +122,13 @@ int main(int argc, char* argv[])
 #endif
             if(strcmp(StrBuf, "END"))
             {
-#ifndef _MSC_VER
-                bzero(Buf, MAX_BUF_SIZE);
-#else
                 memset(Buf, 0, MAX_BUF_SIZE);
-#endif
                 Sock->receive(Buf, MAX_BUF_SIZE);
                 cout << "Echo is -> " << Buf << endl;
 
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-//                Name = Sock->getSockName();
                 Peer = Sock->getPeerName();
 #else
-//                Sock->getSockName(&Name);
                 Sock->getPeerName(&Peer);
 #endif
                 cout << "Socket " << " connected to " << std::string(Peer.sun_path) << endl;
@@ -163,7 +146,6 @@ int main(int argc, char* argv[])
     }
     DISCONN_EXCEPT_CATCH_END
     SOCK_EXCEPT_CATCH_BEGIN(cout)
-//    SOCK_EXCEPT_CATCH_BEGIN_NOREP;
     SOCK_EXCEPT_CATCH_END
 #ifdef _MSC_VER
     WSACleanup();

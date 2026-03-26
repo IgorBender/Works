@@ -1,4 +1,4 @@
-/* ClientBound.h
+/* ClientBoundIpDual.h
  *
  *
  * Original code by Igor Bender
@@ -23,25 +23,27 @@
  * distribution.
  */
 
-#ifndef CLIENTBOUND_H
-#define CLIENTBOUND_H
+#ifndef CLIENTBOUNDIPDUAL_H
+#define CLIENTBOUNDIPDUAL_H
 
+#ifndef _NO_IPV6
 
-#include <ClientSimple.h>
-#include <BoundSocketV4.h>
+#include <ClientSimpleV6.h>
+#include <BoundSocketIpDual.h>.h>
 
 /// Client socket bound to specified port and address.
-class SOCKLIB_API ClientBound : public ClientSimple, public BoundSocketV4
+class SOCKLIB_API ClientBoundIpDual : public ClientSimpleV6,
+                                      public BoundSocketIpDual
 {
 public:
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
-    /// Constructor.
+        /// Constructor.
     /// \param Port : port number for bind in network byte order.
-    /// \param Address : IPv4 address for bind in network byte order.
+    /// \param Address : IPv6 address for bind in network byte order.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ClientBound(uint16_t Port, in_addr_t Address = INADDR_ANY,
-                bool LateBind = false)
+    ClientBoundIpDual(uint16_t Port, in6_addr Address = in6addr_any,
+                      bool LateBind = false)
     {
         if(!isBound())
         {
@@ -55,10 +57,10 @@ public:
 
     /// Constructor.
     /// \param Port : port number for bind in network byte order.
-    /// \param Address : IPv4 address for bind in decimal dot notation.
+    /// \param Address : IPv6 address for bind in textual notation.
     /// \param LateBind : do bind now or later according to bind method call.
     /// \throw SockException.
-    ClientBound(uint16_t Port, const char* Address, bool LateBind = false)
+    ClientBoundIpDual(uint16_t Port, const char* Address, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -70,7 +72,8 @@ public:
         }
     }
 #else
-    ClientBound(uint16_t Port, in_addr_t Address = INADDR_ANY, bool LateBind = false)
+    ClientBoundIpDual(uint16_t Port, in6_addr Address = in6addr_any,
+                      bool LateBind = false)
     {
         if(!isBound())
         {
@@ -82,7 +85,7 @@ public:
         }
     }
 
-    ClientBound(uint16_t Port, const char* Address, bool LateBind = false)
+    ClientBoundIpDual(uint16_t Port, const char* Address, bool LateBind = false)
     {
         if(!isBound())
         {
@@ -98,11 +101,12 @@ public:
 private:
     /// Copy constructor.
     /// Makes the class uncopyable.
-    ClientBound(ClientBound& s);
+    ClientBoundIpDual(ClientBoundIpDual& s);
     /// Operator assign.
     /// Makes the class uncopyable.
-    ClientBound& operator= (ClientBound& s);
+    ClientBoundIpDual& operator= (ClientBoundIpDual& s);
 };
 
-#endif /* CLIENTBOUND_H */
+#endif /* _NO_IPV6 */
 
+#endif // CLIENTBOUNDIPDUAL_H

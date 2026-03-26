@@ -1,8 +1,8 @@
 #include <cstdlib>
-#include <ClientSimpleV6.h>
+#include <ClientBoundReuseV6.h>
 #include <memory>
 #include <iostream>
-#include <iomanip>
+//#include <iomanip>
 using namespace std;
 
 
@@ -25,6 +25,7 @@ using namespace std;
 #define forever for(;;)
 
 const short SERV_PORT = 15000;
+const short CLIENT_PORT = 16000;
 const int MAX_BUF_SIZE = 4096;
 
 #ifndef _NO_IPV6
@@ -202,7 +203,8 @@ int main(int argc, char* argv[])
 
     SOCK_TRY
     {
-        shared_ptr < ClientSimpleV6 > Sock(new ClientSimpleV6);
+        shared_ptr < ClientBoundReuseV6 > Sock(
+            new ClientBoundReuseV6(htons(CLIENT_PORT)));
         forever
 		{
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
@@ -216,7 +218,8 @@ int main(int argc, char* argv[])
                 Sock.reset();
 #endif
 
-                shared_ptr < ClientSimpleV6 > SockTmp(new ClientSimpleV6);
+                shared_ptr < ClientBoundReuseV6 > SockTmp(
+                    new ClientBoundReuseV6(htons(CLIENT_PORT)));
                 Sock = SockTmp;
 //                SockTmp.release();
 #ifndef _MSC_VER
@@ -278,18 +281,12 @@ int main(int argc, char* argv[])
         forever
         {
             char StrBuf[MAX_BUF_SIZE];
-#ifndef _MSC_VER
-            bzero(StrBuf, MAX_BUF_SIZE);
-#else
             memset(StrBuf, 0, MAX_BUF_SIZE);
-#endif
-            //string Str(StrBuf, MAX_BUF_SIZE);
             cout << "Enter string or END for end -> " << flush;
             cin.getline(StrBuf, MAX_BUF_SIZE);
             if(!strlen(StrBuf))
             continue;
             char Buf[MAX_BUF_SIZE];
-            //Sock.send(const_cast <char*> (Str.c_str()), Str.length());
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
             Sock->send(StrBuf, strlen(StrBuf));
 #else
@@ -305,11 +302,7 @@ int main(int argc, char* argv[])
 #endif
             if(strcmp(StrBuf, "END"))
             {
-#ifndef _MSC_VER
-                bzero(Buf, MAX_BUF_SIZE);
-#else
                 memset(Buf, 0, MAX_BUF_SIZE);
-#endif
                 Sock->receive(Buf, MAX_BUF_SIZE);
                 cout << "Echo is -> " << Buf << endl;
 
@@ -338,7 +331,6 @@ int main(int argc, char* argv[])
     }
     DISCONN_EXCEPT_CATCH_END
     SOCK_EXCEPT_CATCH_BEGIN(cout)
-//    SOCK_EXCEPT_CATCH_BEGIN_NOREP;
     SOCK_EXCEPT_CATCH_END;
 
 #ifdef _MSC_VER

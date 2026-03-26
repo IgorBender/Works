@@ -99,7 +99,9 @@ add_library(
   DatagramBoundIpDual.cpp
   StreamBoundIpDual.h StreamBoundIpDual.cpp
   ServerSimpleIpDual.h ServerSimpleIpDual.cpp
-  ServerReuseIpDual.h ServerReuseIpDual.cpp)
+  ServerReuseIpDual.h ServerReuseIpDual.cpp
+  ClientBoundReuse.h ClientBoundReuse.cpp
+  ClientBoundReuseV6.h ClientBoundReuseV6.cpp)
 
 if(NOT UNIX)
   target_compile_definitions(

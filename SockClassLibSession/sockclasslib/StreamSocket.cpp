@@ -32,8 +32,6 @@ StreamSocket::StreamSocket()
 {
     m_GotSockName = false;
     m_GotPeerName = false;
-//    memset(&m_SockName, 0, sizeof m_SockName);
-//    memset(&m_PeerName, 0, sizeof m_PeerName);
     m_Type = TCP_SOCK;
     m_Protocol = 0;
 #ifndef _WITHOUT_SOCK_EXCEPTIONS
